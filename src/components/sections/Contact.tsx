@@ -1,12 +1,15 @@
 import {useState} from 'react';
 import {motion} from 'framer-motion';
-import {Mail, Send, Copy, Check, Github, Linkedin, Sparkles} from 'lucide-react';
+import {Mail, Send, Copy, Check, Github, Linkedin, Sparkles, MessageSquare} from 'lucide-react';
 import {useTheme} from '../../context/ThemeContext';
 
 export function Contact() {
   const {theme} = useTheme();
   const isDark = theme === 'dark';
   const [copied, setCopied] = useState(false);
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+
   const emailAddress = 'a.zwak.khan@gmail.com';
 
   const copyEmail = () => {
@@ -15,83 +18,130 @@ export function Contact() {
     setTimeout(() => setCopied(false), 2500);
   };
 
+  const handleMailtoSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const mailtoUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(
+      subject || 'Project Inquiry'
+    )}&body=${encodeURIComponent(message)}`;
+    window.location.href = mailtoUrl;
+  };
+
   return (
     <section
       id="contact"
       className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/50 dark:bg-[#07090e] text-slate-900 dark:text-white relative overflow-hidden transition-colors duration-300"
     >
-      {/* Dynamic Atmospheric Glow (Proper Light & Dark adaptation) */}
+      {/* Dynamic Atmospheric Glow */}
       <div
         className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] sm:w-[650px] h-[550px] sm:h-[650px] blur-[150px] pointer-events-none rounded-full transition-colors duration-700 ${
           isDark
-            ? 'bg-gradient-to-tr from-indigo-600/20 via-sky-600/15 to-purple-600/15'
-            : 'bg-gradient-to-tr from-indigo-200/50 via-sky-100/40 to-purple-100/35'
+            ? 'bg-gradient-to-tr from-indigo-600/15 via-sky-600/10 to-purple-600/10'
+            : 'bg-gradient-to-tr from-indigo-200/40 via-sky-100/30 to-purple-100/25'
         }`}
       />
 
       {/* Subtle Technical Grid */}
-      <div className={`absolute inset-0 pointer-events-none ${isDark ? 'bg-tech-grid-dark' : 'bg-tech-grid-light'}`} />
+      <div className={`absolute inset-0 pointer-events-none ${isDark ? 'bg-tech-grid-dark' : 'bg-tech-grid-light'} opacity-20`} />
 
-      <div className="max-w-4xl mx-auto relative z-10 text-center">
+      <div className="max-w-3xl mx-auto relative z-10 text-center">
         <motion.div
-          initial={{opacity: 0, scale: 0.95, y: 24}}
+          initial={{opacity: 0, scale: 0.98, y: 16}}
           whileInView={{opacity: 1, scale: 1, y: 0}}
           viewport={{ once: false, amount: 0.2 }}
-          transition={{duration: 0.5, ease: [0.16, 1, 0.3, 1] as const}}
-          className="p-6 sm:p-12 md:p-14 rounded-3xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 backdrop-blur-2xl shadow-xl shadow-indigo-500/5 dark:shadow-2xl relative"
+          transition={{duration: 0.45, ease: [0.16, 1, 0.3, 1] as const}}
+          className="p-6 sm:p-10 md:p-12 rounded-3xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 backdrop-blur-2xl shadow-xl relative"
         >
-          {/* Top Decorative Icon */}
-          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/80 dark:border-indigo-800/60 flex items-center justify-center mx-auto mb-6 sm:mb-7 shadow-xs text-indigo-600 dark:text-indigo-400">
-            <Mail size={28} />
+          {/* Top Icon */}
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/80 dark:border-indigo-800/60 flex items-center justify-center mx-auto mb-5 text-indigo-600 dark:text-indigo-400 shadow-xs">
+            <Mail size={24} />
           </div>
 
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/80 dark:border-indigo-800/60 text-indigo-700 dark:text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-4">
-            <Sparkles size={12} />
-            <span>06 — LET'S COLLABORATE</span>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/80 dark:border-indigo-800/60 text-indigo-700 dark:text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-3">
+            <Sparkles size={11} />
+            <span>06 — GET IN TOUCH</span>
           </span>
 
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-outfit mb-4 sm:mb-6 leading-tight text-slate-900 dark:text-white text-balance tracking-tight">
-            Have an idea or a <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-indigo-600 via-indigo-500 to-sky-500 dark:from-indigo-400 dark:via-sky-300 dark:to-indigo-300 bg-clip-text text-transparent">
-              project in mind?
-            </span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-outfit mb-3 leading-tight text-slate-900 dark:text-white text-balance tracking-tight">
+            Have a project or opportunity in mind?
           </h2>
 
-          <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed text-balance">
-            Let's turn it into something real. I'm always open to discussing new projects, practical
-            software solutions, or collaborative learning opportunities.
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-6 max-w-xl mx-auto leading-relaxed text-balance">
+            I’m always open to discussing new software projects, collaborative learning, or technical opportunities.
           </p>
 
-          {/* Action CTAs: Direct Mail & Copy Email with Instant Feedback */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10">
+          {/* Quick Direct Actions: Send Direct Mail & Copy Email */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
             <a
               href={`mailto:${emailAddress}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs sm:text-sm rounded-xl transition-all duration-200 shadow-md shadow-indigo-600/25 hover:shadow-indigo-600/40 hover:-translate-y-0.5 cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs sm:text-sm rounded-xl transition-all duration-200 shadow-md shadow-indigo-600/25 hover:shadow-indigo-600/40 hover:-translate-y-0.5 cursor-pointer"
             >
-              <span>Contact Me</span>
-              <Send size={15} />
+              <span>Send Direct Email</span>
+              <Send size={14} />
             </a>
 
             <button
               onClick={copyEmail}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm rounded-xl border border-slate-200/90 dark:border-slate-700 shadow-2xs hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm rounded-xl border border-slate-200/90 dark:border-slate-700 shadow-2xs hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
             >
               {copied ? (
                 <>
-                  <Check size={15} className="text-emerald-500" />
+                  <Check size={14} className="text-emerald-500" />
                   <span className="text-emerald-600 dark:text-emerald-400">Email Copied to Clipboard</span>
                 </>
               ) : (
                 <>
-                  <Copy size={15} className="text-slate-500 dark:text-slate-400" />
+                  <Copy size={14} className="text-slate-500 dark:text-slate-400" />
                   <span>Copy: {emailAddress}</span>
                 </>
               )}
             </button>
           </div>
 
-          {/* Verified Social Profile Placeholders */}
-          <div className="pt-6 sm:pt-8 border-t border-slate-200/80 dark:border-slate-800 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-500 dark:text-slate-400">
+          {/* Transparent Mailto Prefill Form (Explicitly truthful: Opens User's Email Client) */}
+          <form
+            onSubmit={handleMailtoSubmit}
+            className="p-4 sm:p-5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 text-left max-w-lg mx-auto mb-8 space-y-3"
+          >
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+              <MessageSquare size={13} className="text-indigo-600 dark:text-indigo-400" />
+              <span>Draft a Message Shortcut</span>
+            </div>
+
+            <div>
+              <input
+                type="text"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                placeholder="Subject (e.g. Project Collaboration, Question)"
+                className="w-full px-3 py-2 text-xs rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-1 focus:ring-indigo-500"
+              />
+            </div>
+
+            <div>
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Your message details..."
+                rows={3}
+                className="w-full px-3 py-2 text-xs rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-1 focus:ring-indigo-500 resize-none"
+              />
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-1">
+              <span className="text-[11px] text-slate-500 dark:text-slate-400">
+                * Opens your default email app with this message prefilled.
+              </span>
+              <button
+                type="submit"
+                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl transition-colors shrink-0 cursor-pointer"
+              >
+                Open in Email App
+              </button>
+            </div>
+          </form>
+
+          {/* Social Profiles */}
+          <div className="pt-6 border-t border-slate-200/80 dark:border-slate-800 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-500 dark:text-slate-400">
             <a
               href={`mailto:${emailAddress}`}
               className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center gap-1.5"
@@ -99,16 +149,26 @@ export function Contact() {
               <Mail size={14} />
               <span>{emailAddress}</span>
             </a>
-            <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">·</span>
-            <span className="text-slate-400 dark:text-slate-500 flex items-center gap-1">
+            <span aria-hidden="true" className="text-slate-300 dark:text-slate-700 hidden sm:inline">·</span>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-slate-900 dark:hover:text-white transition-colors flex items-center gap-1.5"
+            >
               <Github size={14} />
-              <span>GitHub (Coming Soon)</span>
-            </span>
-            <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">·</span>
-            <span className="text-slate-400 dark:text-slate-500 flex items-center gap-1">
+              <span>GitHub</span>
+            </a>
+            <span aria-hidden="true" className="text-slate-300 dark:text-slate-700 hidden sm:inline">·</span>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors flex items-center gap-1.5"
+            >
               <Linkedin size={14} />
-              <span>LinkedIn (Coming Soon)</span>
-            </span>
+              <span>LinkedIn</span>
+            </a>
           </div>
         </motion.div>
       </div>

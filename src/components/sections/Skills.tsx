@@ -1,11 +1,12 @@
 import {motion} from 'framer-motion';
-import {Code2, Database, Laptop, Cpu, BookOpen, CheckCircle, ArrowRight} from 'lucide-react';
+import {Code2, Database, Laptop, Cpu, BookOpen, Wrench, CheckCircle2} from 'lucide-react';
 import {skillGroups, learningSkills} from '../../data/skills';
 
 const categoryIcons: Record<string, React.ReactNode> = {
   Programming: <Code2 size={20} className="text-indigo-600 dark:text-indigo-400" />,
-  Database: <Database size={20} className="text-sky-600 dark:text-sky-400" />,
-  Development: <Laptop size={20} className="text-emerald-600 dark:text-emerald-400" />,
+  'Web Development': <Laptop size={20} className="text-sky-600 dark:text-sky-400" />,
+  Databases: <Database size={20} className="text-emerald-600 dark:text-emerald-400" />,
+  'Tools & Workflow': <Wrench size={20} className="text-amber-600 dark:text-amber-400" />,
   'AI & Automation': <Cpu size={20} className="text-purple-600 dark:text-purple-400" />,
 };
 
@@ -21,7 +22,7 @@ export function Skills() {
   };
 
   const cardVariants = {
-    hidden: {opacity: 0, y: 18, scale: 0.98},
+    hidden: {opacity: 0, y: 16, scale: 0.98},
     visible: {
       opacity: 1,
       y: 0,
@@ -32,16 +33,16 @@ export function Skills() {
 
   return (
     <section id="skills" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/60 dark:bg-[#07090e] relative overflow-hidden transition-colors duration-300">
-      {/* Section-Specific Atmospheric Gradient Background (Emerald & Cyan Tech Theme) */}
+      {/* Soft Ambient Glow Background */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
-        <div className="absolute top-1/4 -right-20 w-[450px] h-[450px] rounded-full bg-gradient-to-br from-emerald-500/15 via-sky-500/10 to-transparent dark:from-emerald-600/15 dark:via-sky-600/10 dark:to-transparent blur-[85px]" />
-        <div className="absolute -bottom-24 -left-20 w-[420px] h-[420px] rounded-full bg-gradient-to-tr from-indigo-500/15 via-purple-500/10 to-transparent dark:from-indigo-600/15 dark:via-purple-600/10 dark:to-transparent blur-[85px]" />
-        <div className="absolute inset-0 bg-tech-grid-light dark:bg-tech-grid-dark opacity-30" />
+        <div className="absolute top-1/4 -right-20 w-[450px] h-[450px] rounded-full bg-gradient-to-br from-emerald-500/10 via-sky-500/8 to-transparent dark:from-emerald-600/10 dark:via-sky-600/8 dark:to-transparent blur-[85px]" />
+        <div className="absolute -bottom-24 -left-20 w-[420px] h-[420px] rounded-full bg-gradient-to-tr from-indigo-500/10 via-purple-500/8 to-transparent dark:from-indigo-600/10 dark:via-purple-600/8 dark:to-transparent blur-[85px]" />
+        <div className="absolute inset-0 bg-tech-grid-light dark:bg-tech-grid-dark opacity-20" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
-          initial={{opacity: 0, y: 18}}
+          initial={{opacity: 0, y: 16}}
           whileInView={{opacity: 1, y: 0}}
           viewport={{ once: false, amount: 0.2 }}
           transition={{duration: 0.45, ease: [0.16, 1, 0.3, 1]}}
@@ -52,110 +53,111 @@ export function Skills() {
             02 — TECHNICAL TOOLKIT
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-outfit tracking-tight text-slate-900 dark:text-white leading-tight">
-            Current Skills & Competencies
+            Skills & Practical Evidence
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 mt-3 text-xs sm:text-sm">
-            Technologies and concepts I actively utilize to design, build, and deploy practical solutions.
+          <p className="text-slate-600 dark:text-slate-400 mt-2 text-xs sm:text-sm">
+            Grounded in real project implementation — no arbitrary percentages or inflated claims.
           </p>
         </motion.div>
 
-        {/* 4 Primary Skill Categories */}
+        {/* 5 Real Skill Categories with Project Evidence */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           {skillGroups.map((group) => (
             <motion.div
               key={group.category}
               variants={cardVariants}
-              whileHover={{y: -3, transition: {duration: 0.2}}}
-              className="group p-5 sm:p-6 rounded-2xl bg-white/90 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+              whileHover={{y: -4, transition: {duration: 0.2}}}
+              className="group p-5 sm:p-6 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
-                  {categoryIcons[group.category] || (
-                    <Code2 size={20} className="text-indigo-600 dark:text-indigo-400" />
-                  )}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center group-hover:scale-105 transition-transform">
+                    {categoryIcons[group.category] || (
+                      <Code2 size={20} className="text-indigo-600 dark:text-indigo-400" />
+                    )}
+                  </div>
+                  <span className="text-[11px] font-mono text-slate-400 dark:text-slate-500">
+                    {group.items.length} competencies
+                  </span>
                 </div>
 
-                <h3 className="text-base font-bold font-outfit text-slate-900 dark:text-white mb-1">
+                <h3 className="text-base font-bold font-outfit text-slate-900 dark:text-white mb-3">
                   {group.category}
                 </h3>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 mb-4">
-                  {group.items.length} tools & competencies
-                </p>
 
-                {/* Skill Chips */}
-                <div className="flex flex-wrap gap-1.5">
+                {/* Skill List with Quiet Evidence Links */}
+                <div className="space-y-2">
                   {group.items.map((skill) => (
-                    <span
+                    <div
                       key={skill.name}
-                      className="text-[11px] font-medium text-slate-700 dark:text-slate-300 bg-slate-100/80 dark:bg-slate-800/80 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 hover:text-indigo-600 dark:hover:text-indigo-400 px-2.5 py-1 rounded-lg border border-slate-200/70 dark:border-slate-700/70 transition-colors"
+                      className="p-2.5 rounded-xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
                     >
-                      {skill.name}
-                    </span>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-semibold text-slate-800 dark:text-slate-200">
+                          {skill.name}
+                        </span>
+                        <CheckCircle2 size={13} className="text-emerald-500/70" />
+                      </div>
+                      {skill.evidence && (
+                        <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 truncate">
+                          {skill.evidence}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
               </div>
 
-              <div className="mt-6 pt-3.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-1.5 text-[10px] font-mono text-slate-400 dark:text-slate-500">
-                <CheckCircle size={12} className="text-emerald-500" />
-                <span>Active Capability</span>
+              <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 dark:text-slate-500">
+                <span>Domain Verified</span>
+                <span className="text-indigo-600 dark:text-indigo-400 font-medium">Applied in Code</span>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Distinct "Currently Learning" Blueprint Section */}
+        {/* Distinct "Currently Learning" Section */}
         <motion.div
-          initial={{opacity: 0, y: 24}}
+          initial={{opacity: 0, y: 20}}
           whileInView={{opacity: 1, y: 0}}
           viewport={{ once: false, amount: 0.2 }}
-          transition={{duration: 0.5, ease: [0.16, 1, 0.3, 1] as const}}
-          className="mt-12 sm:mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-indigo-500/5 via-sky-500/5 to-purple-500/5 dark:from-indigo-950/30 dark:via-slate-900/40 dark:to-purple-950/20 border-2 border-dashed border-indigo-300/60 dark:border-indigo-800/50 relative overflow-hidden"
+          transition={{duration: 0.45, ease: [0.16, 1, 0.3, 1] as const}}
+          className="mt-10 sm:mt-12 p-5 sm:p-7 rounded-2xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 relative overflow-hidden"
         >
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-indigo-600/10 dark:bg-indigo-400/10 border border-indigo-600/20 dark:border-indigo-400/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-                <BookOpen size={18} />
+              <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/60 dark:border-indigo-800/60 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
+                <BookOpen size={16} />
               </div>
               <div>
-                <div className="flex items-center gap-2">
-                  <h3 className="text-lg font-bold font-outfit text-slate-900 dark:text-white">
-                    Currently Learning
-                  </h3>
-                  <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold uppercase tracking-wider bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300">
-                    In Progress
-                  </span>
-                </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
-                  Future skill targets I am actively studying and experimenting with in coursework
+                <h3 className="text-sm sm:text-base font-bold font-outfit text-slate-900 dark:text-white">
+                  Active Learning & Expansion Targets
+                </h3>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                  Concepts and frameworks currently being explored through university coursework and personal labs
                 </p>
               </div>
             </div>
 
-            <span className="text-xs text-indigo-600 dark:text-indigo-400 font-mono flex items-center gap-1">
-              <span>Growing toward full-stack capability</span>
-              <ArrowRight size={13} />
+            <span className="text-xs text-indigo-600 dark:text-indigo-400 font-mono self-start md:self-auto">
+              In Study · 2026
             </span>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+          <div className="flex flex-wrap gap-2 pt-2">
             {learningSkills.map((skill) => (
-              <div
+              <span
                 key={skill}
-                className="p-3 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-indigo-100 dark:border-indigo-900/40 text-center shadow-2xs hover:border-indigo-400 dark:hover:border-indigo-500 transition-colors"
+                className="text-xs text-slate-600 dark:text-slate-300 bg-slate-100/90 dark:bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-200/80 dark:border-slate-700/80 font-medium"
               >
-                <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 block truncate">
-                  {skill}
-                </span>
-                <span className="text-[9px] text-indigo-600/80 dark:text-indigo-400/80 font-mono mt-0.5 block">
-                  Target
-                </span>
-              </div>
+                {skill}
+              </span>
             ))}
           </div>
         </motion.div>

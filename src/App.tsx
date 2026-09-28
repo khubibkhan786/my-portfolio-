@@ -36,8 +36,8 @@ function PortfolioContent({loading}: {loading: boolean}) {
               transition={{duration: 0.4}}
               className="flex flex-col items-center gap-4"
             >
-              <div className="w-10 h-10 rounded-2xl bg-indigo-600 flex items-center justify-center font-mono font-bold text-sm shadow-lg shadow-indigo-600/40">
-                JZ
+              <div className="w-12 h-12 rounded-2xl bg-indigo-600 flex items-center justify-center font-mono font-bold text-sm shadow-lg shadow-indigo-600/40 text-white">
+                AGZ
               </div>
               <div className="text-sm font-extrabold tracking-widest font-syne uppercase">
                 ABDUL JALIL ZWAK

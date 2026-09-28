@@ -13,11 +13,15 @@ export interface Project {
   liveDemo?: string;
   github?: string;
   features: string[];
+  problem?: string;
+  solution?: string;
+  role?: string;
 }
 
 export interface Skill {
   name: string;
   icon?: string;
+  evidence?: string;
 }
 
 export interface SkillGroup {

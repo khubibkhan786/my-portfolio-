@@ -58,11 +58,6 @@ export function Hero() {
         {/* Minimal Technical Grid */}
         <div className={`absolute inset-0 ${isDark ? 'bg-tech-grid-dark' : 'bg-tech-grid-light'}`} />
 
-        {/* Minimal Architectural Coordinate Meta */}
-        <div className="absolute top-20 right-8 hidden xl:flex flex-col items-end gap-1 text-[10px] font-mono text-slate-400/80 dark:text-slate-600 tracking-widest uppercase">
-          <span>PORTFOLIO // 2026</span>
-          <span>DEV // CS & IS</span>
-        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
@@ -74,32 +69,36 @@ export function Hero() {
             animate="visible"
             className="lg:col-span-6 flex flex-col justify-center text-left"
           >
-            {/* Identity Label */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2.5 mb-4 sm:mb-5">
+            {/* Identity & Status */}
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2 mb-4 sm:mb-5">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 text-xs font-semibold tracking-wider text-slate-800 dark:text-slate-200 shadow-2xs backdrop-blur-md">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span className="font-mono uppercase tracking-wider text-[11px] font-bold text-indigo-600 dark:text-indigo-400">
+                <span className="uppercase tracking-wider text-[11px] font-bold text-indigo-600 dark:text-indigo-400">
                   Abdul Jalil Zwak
                 </span>
               </span>
 
-              <span className="inline-flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-medium">
-                <Globe2 size={13} className="text-slate-400" />
-                <span>Information Systems · 2026</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                Information Systems · 2026
               </span>
+            </motion.div>
+
+            {/* Sub-label */}
+            <motion.div variants={itemVariants} className="text-xs sm:text-sm font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">
+              Software Developer
             </motion.div>
 
             {/* 2. Responsive Clamp-Based Main Headline with Modern Outfit Font */}
             <motion.h1
               variants={itemVariants}
-              className="text-[clamp(1.85rem,4.2vw,3.25rem)] font-extrabold font-outfit tracking-tight text-slate-900 dark:text-white leading-[1.12] mb-4 sm:mb-5 text-balance break-words"
+              className="text-[clamp(1.9rem,4.4vw,3.25rem)] font-extrabold font-outfit tracking-tight text-slate-900 dark:text-white leading-[1.12] mb-4 sm:mb-5 text-balance break-words"
             >
-              Computer Science Student &{' '}
+              I build practical software and{' '}
               <span className="bg-gradient-to-r from-indigo-600 via-indigo-500 to-sky-500 dark:from-indigo-400 dark:via-sky-300 dark:to-cyan-300 bg-clip-text text-transparent inline-block">
-                Aspiring Software Developer
+                modern digital experiences.
               </span>
             </motion.h1>
 
@@ -108,8 +107,7 @@ export function Hero() {
               variants={itemVariants}
               className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6 sm:mb-8 max-w-xl text-balance font-normal"
             >
-              I build practical digital solutions through software development, modern web
-              technologies, AI tools, and automation.
+              Computer Science student focused on building useful applications, responsive web interfaces, and automated workflows with clean code and disciplined problem-solving.
             </motion.p>
 
             {/* Action Buttons */}
@@ -118,7 +116,7 @@ export function Hero() {
                 href="#projects"
                 className="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-semibold text-xs sm:text-sm rounded-xl transition-all duration-200 shadow-md shadow-indigo-600/25 hover:shadow-indigo-600/40 hover:-translate-y-0.5 group cursor-pointer"
               >
-                <span>Explore My Work</span>
+                <span>View My Work</span>
                 <ArrowRight
                   className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
                   size={16}
@@ -145,7 +143,7 @@ export function Hero() {
                 </div>
                 <div className="min-w-0">
                   <div className="text-[11px] sm:text-xs font-bold text-slate-900 dark:text-white truncate">Software</div>
-                  <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 truncate">Java & Android</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 truncate">Java & Kotlin</div>
                 </div>
               </div>
 
@@ -155,7 +153,7 @@ export function Hero() {
                 </div>
                 <div className="min-w-0">
                   <div className="text-[11px] sm:text-xs font-bold text-slate-900 dark:text-white truncate">Web Dev</div>
-                  <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 truncate">Frontend</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 truncate">React & TS</div>
                 </div>
               </div>
 
@@ -164,8 +162,8 @@ export function Hero() {
                   <Cpu size={15} />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-[11px] sm:text-xs font-bold text-slate-900 dark:text-white truncate">AI Tools</div>
-                  <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 truncate">Automation</div>
+                  <div className="text-[11px] sm:text-xs font-bold text-slate-900 dark:text-white truncate">Data & AI</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 truncate">SQL & Scripts</div>
                 </div>
               </div>
             </motion.div>

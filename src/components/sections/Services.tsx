@@ -1,13 +1,13 @@
 import {motion} from 'framer-motion';
-import {AppWindow, Globe, Bot, Zap, ArrowUpRight, Target, ShieldCheck, Sparkles} from 'lucide-react';
+import {AppWindow, Globe, Database, Layout, ArrowUpRight, Target, ShieldCheck} from 'lucide-react';
 import {services, futureGrowth} from '../../data/services';
 import {cn} from '../../lib/utils';
 
 const iconMap: Record<string, React.ReactNode> = {
   AppWindow: <AppWindow size={22} className="text-indigo-600 dark:text-indigo-400" />,
   Globe: <Globe size={22} className="text-sky-600 dark:text-sky-400" />,
-  Bot: <Bot size={22} className="text-purple-600 dark:text-purple-400" />,
-  Zap: <Zap size={22} className="text-amber-600 dark:text-amber-400" />,
+  Database: <Database size={22} className="text-emerald-600 dark:text-emerald-400" />,
+  Layout: <Layout size={22} className="text-purple-600 dark:text-purple-400" />,
 };
 
 export function Services() {

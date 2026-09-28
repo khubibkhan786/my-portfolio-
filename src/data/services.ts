@@ -2,29 +2,29 @@ import {Service} from '../types';
 
 export const services: Service[] = [
   {
-    title: 'Simple Application Development',
-    description: 'Building lightweight and practical applications designed for specific needs.',
+    title: 'Software Development',
+    description: 'Engineering practical software applications with structured object-oriented foundations in Java and modern Kotlin.',
     icon: 'AppWindow'
   },
   {
-    title: 'Website Development',
-    description: 'Creating modern, responsive websites for individuals, small businesses, and personal projects.',
+    title: 'Web Development',
+    description: 'Crafting responsive, high-performance web applications using React, TypeScript, and utility-first Tailwind CSS.',
     icon: 'Globe'
   },
   {
-    title: 'AI-Assisted Development',
-    description: 'Using modern AI development tools to prototype and develop practical digital solutions.',
-    icon: 'Bot'
+    title: 'Database Solutions',
+    description: 'Designing normalized relational schemas, executing SQL queries, and implementing offline-first SQLite / Room persistence.',
+    icon: 'Database'
   },
   {
-    title: 'Basic Automation',
-    description: 'Creating simple automation solutions for repetitive digital tasks and workflows.',
-    icon: 'Zap'
+    title: 'UI Implementation',
+    description: 'Translating design concepts into clean, accessible user interfaces with refined spacing, smooth transitions, and mobile polish.',
+    icon: 'Layout'
   }
 ];
 
 export const futureGrowth: string[] = [
-  'Full-Stack Applications',
-  'Advanced Web Platforms',
-  'Complex Software Solutions'
+  'Full-Stack Architecture',
+  'RESTful API Development',
+  'Scalable Backend Systems'
 ];
