@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import {ThemeProvider, useTheme} from './context/ThemeContext';
+import {LanguageProvider} from './context/LanguageContext';
 import {Navbar} from './components/ui/Navbar';
 import {Hero} from './components/sections/Hero';
 import {About} from './components/sections/About';
@@ -108,7 +109,9 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      <PortfolioContent loading={loading} />
+      <LanguageProvider>
+        <PortfolioContent loading={loading} />
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

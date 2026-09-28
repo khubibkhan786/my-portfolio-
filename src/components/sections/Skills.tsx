@@ -1,6 +1,7 @@
 import {motion} from 'framer-motion';
 import {Code2, Database, Laptop, Cpu, BookOpen, Wrench, CheckCircle2} from 'lucide-react';
 import {skillGroups, learningSkills} from '../../data/skills';
+import {useLanguage} from '../../context/LanguageContext';
 
 const categoryIcons: Record<string, React.ReactNode> = {
   Programming: <Code2 size={20} className="text-indigo-600 dark:text-indigo-400" />,
@@ -10,7 +11,17 @@ const categoryIcons: Record<string, React.ReactNode> = {
   'AI & Automation': <Cpu size={20} className="text-purple-600 dark:text-purple-400" />,
 };
 
+const categoryTranslations: Record<string, {ps: string; fa: string}> = {
+  Programming: {ps: 'پروګرامینګ', fa: 'برنامه‌نویسی'},
+  'Web Development': {ps: 'وېب پرمختیا', fa: 'توسعه وب'},
+  Databases: {ps: 'ډېټابېسونه', fa: 'پایگاه داده'},
+  'Tools & Workflow': {ps: 'کاري وسایل', fa: 'ابزارهای کاری'},
+  'AI & Automation': {ps: 'مصنوعي هوښیارتیا او اتومات', fa: 'هوش مصنوعی و اتوماسیون'},
+};
+
 export function Skills() {
+  const {t, language} = useLanguage();
+
   const containerVariants = {
     hidden: {opacity: 0},
     visible: {
@@ -48,15 +59,15 @@ export function Skills() {
           transition={{duration: 0.45, ease: [0.16, 1, 0.3, 1]}}
           className="text-center max-w-2xl mx-auto mb-12 sm:mb-14"
         >
-          <span className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 font-semibold tracking-wider uppercase text-xs mb-2.5">
+          <span className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 font-semibold tracking-wider uppercase text-xs mb-2.5 font-mono">
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400" />
-            02 — TECHNICAL TOOLKIT
+            {t.skills.tag}
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-outfit tracking-tight text-slate-900 dark:text-white leading-tight">
-            Skills & Practical Evidence
+            {t.skills.headline}
           </h2>
           <p className="text-slate-600 dark:text-slate-400 mt-2 text-xs sm:text-sm">
-            Grounded in real project implementation — no arbitrary percentages or inflated claims.
+            {t.skills.subtitle}
           </p>
         </motion.div>
 
@@ -68,58 +79,65 @@ export function Skills() {
           viewport={{ once: false, amount: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
         >
-          {skillGroups.map((group) => (
-            <motion.div
-              key={group.category}
-              variants={cardVariants}
-              whileHover={{y: -4, transition: {duration: 0.2}}}
-              className="group p-5 sm:p-6 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center group-hover:scale-105 transition-transform">
-                    {categoryIcons[group.category] || (
-                      <Code2 size={20} className="text-indigo-600 dark:text-indigo-400" />
-                    )}
-                  </div>
-                  <span className="text-[11px] font-mono text-slate-400 dark:text-slate-500">
-                    {group.items.length} competencies
-                  </span>
-                </div>
+          {skillGroups.map((group) => {
+            const localizedCategoryName =
+              language !== 'en' && categoryTranslations[group.category]
+                ? categoryTranslations[group.category][language as 'ps' | 'fa']
+                : group.category;
 
-                <h3 className="text-base font-bold font-outfit text-slate-900 dark:text-white mb-3">
-                  {group.category}
-                </h3>
-
-                {/* Skill List with Quiet Evidence Links */}
-                <div className="space-y-2">
-                  {group.items.map((skill) => (
-                    <div
-                      key={skill.name}
-                      className="p-2.5 rounded-xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-semibold text-slate-800 dark:text-slate-200">
-                          {skill.name}
-                        </span>
-                        <CheckCircle2 size={13} className="text-emerald-500/70" />
-                      </div>
-                      {skill.evidence && (
-                        <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 truncate">
-                          {skill.evidence}
-                        </div>
+            return (
+              <motion.div
+                key={group.category}
+                variants={cardVariants}
+                whileHover={{y: -4, transition: {duration: 0.2}}}
+                className="group p-5 sm:p-6 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center group-hover:scale-105 transition-transform">
+                      {categoryIcons[group.category] || (
+                        <Code2 size={20} className="text-indigo-600 dark:text-indigo-400" />
                       )}
                     </div>
-                  ))}
-                </div>
-              </div>
+                    <span className="text-[11px] font-mono text-slate-400 dark:text-slate-500">
+                      {group.items.length} {t.skills.competenciesSuffix}
+                    </span>
+                  </div>
 
-              <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 dark:text-slate-500">
-                <span>Domain Verified</span>
-                <span className="text-indigo-600 dark:text-indigo-400 font-medium">Applied in Code</span>
-              </div>
-            </motion.div>
-          ))}
+                  <h3 className="text-base font-bold font-outfit text-slate-900 dark:text-white mb-3">
+                    {localizedCategoryName}
+                  </h3>
+
+                  {/* Skill List with Quiet Evidence Links */}
+                  <div className="space-y-2">
+                    {group.items.map((skill) => (
+                      <div
+                        key={skill.name}
+                        className="p-2.5 rounded-xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 font-mono">
+                            {skill.name}
+                          </span>
+                          <CheckCircle2 size={13} className="text-emerald-500/80 shrink-0" />
+                        </div>
+                        {skill.evidence && (
+                          <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 truncate">
+                            {skill.evidence}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 dark:text-slate-500">
+                  <span>{t.skills.activeCapability}</span>
+                  <span className="text-indigo-600 dark:text-indigo-400 font-medium">{t.skills.appliedInCode}</span>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
         {/* Distinct "Currently Learning" Section */}
@@ -137,16 +155,16 @@ export function Skills() {
               </div>
               <div>
                 <h3 className="text-sm sm:text-base font-bold font-outfit text-slate-900 dark:text-white">
-                  Active Learning & Expansion Targets
+                  {t.skills.activeLearningTitle}
                 </h3>
                 <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                  Concepts and frameworks currently being explored through university coursework and personal labs
+                  {t.skills.activeLearningSubtitle}
                 </p>
               </div>
             </div>
 
             <span className="text-xs text-indigo-600 dark:text-indigo-400 font-mono self-start md:self-auto">
-              In Study · 2026
+              {t.skills.inStudyBadge}
             </span>
           </div>
 

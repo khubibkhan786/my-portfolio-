@@ -2,9 +2,11 @@ import {useState} from 'react';
 import {motion} from 'framer-motion';
 import {Mail, Send, Copy, Check, Github, Linkedin, Sparkles, MessageSquare} from 'lucide-react';
 import {useTheme} from '../../context/ThemeContext';
+import {useLanguage} from '../../context/LanguageContext';
 
 export function Contact() {
   const {theme} = useTheme();
+  const {t} = useLanguage();
   const isDark = theme === 'dark';
   const [copied, setCopied] = useState(false);
   const [subject, setSubject] = useState('');
@@ -56,17 +58,17 @@ export function Contact() {
             <Mail size={24} />
           </div>
 
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/80 dark:border-indigo-800/60 text-indigo-700 dark:text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-3">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/80 dark:border-indigo-800/60 text-indigo-700 dark:text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-3 font-mono">
             <Sparkles size={11} />
-            <span>06 — GET IN TOUCH</span>
+            <span>{t.contact.tag}</span>
           </span>
 
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-outfit mb-3 leading-tight text-slate-900 dark:text-white text-balance tracking-tight">
-            Have a project or opportunity in mind?
+            {t.contact.headline}
           </h2>
 
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-6 max-w-xl mx-auto leading-relaxed text-balance">
-            I’m always open to discussing new software projects, collaborative learning, or technical opportunities.
+            {t.contact.subtitle}
           </p>
 
           {/* Quick Direct Actions: Send Direct Mail & Copy Email */}
@@ -75,7 +77,7 @@ export function Contact() {
               href={`mailto:${emailAddress}`}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs sm:text-sm rounded-xl transition-all duration-200 shadow-md shadow-indigo-600/25 hover:shadow-indigo-600/40 hover:-translate-y-0.5 cursor-pointer"
             >
-              <span>Send Direct Email</span>
+              <span>{t.contact.directEmail}</span>
               <Send size={14} />
             </a>
 
@@ -86,25 +88,25 @@ export function Contact() {
               {copied ? (
                 <>
                   <Check size={14} className="text-emerald-500" />
-                  <span className="text-emerald-600 dark:text-emerald-400">Email Copied to Clipboard</span>
+                  <span className="text-emerald-600 dark:text-emerald-400">{t.contact.emailCopied}</span>
                 </>
               ) : (
                 <>
                   <Copy size={14} className="text-slate-500 dark:text-slate-400" />
-                  <span>Copy: {emailAddress}</span>
+                  <span>{t.contact.copyEmail}</span>
                 </>
               )}
             </button>
           </div>
 
-          {/* Transparent Mailto Prefill Form (Explicitly truthful: Opens User's Email Client) */}
+          {/* Transparent Mailto Prefill Form */}
           <form
             onSubmit={handleMailtoSubmit}
-            className="p-4 sm:p-5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 text-left max-w-lg mx-auto mb-8 space-y-3"
+            className="p-4 sm:p-5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 text-left rtl:text-right max-w-lg mx-auto mb-8 space-y-3"
           >
             <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-              <MessageSquare size={13} className="text-indigo-600 dark:text-indigo-400" />
-              <span>Draft a Message Shortcut</span>
+              <MessageSquare size={13} className="text-indigo-600 dark:text-indigo-400 shrink-0" />
+              <span>{t.contact.draftShortcut}</span>
             </div>
 
             <div>
@@ -112,7 +114,7 @@ export function Contact() {
                 type="text"
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
-                placeholder="Subject (e.g. Project Collaboration, Question)"
+                placeholder={t.contact.subjectPlaceholder}
                 className="w-full px-3 py-2 text-xs rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-1 focus:ring-indigo-500"
               />
             </div>
@@ -121,7 +123,7 @@ export function Contact() {
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Your message details..."
+                placeholder={t.contact.messagePlaceholder}
                 rows={3}
                 className="w-full px-3 py-2 text-xs rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-1 focus:ring-indigo-500 resize-none"
               />
@@ -129,19 +131,19 @@ export function Contact() {
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-1">
               <span className="text-[11px] text-slate-500 dark:text-slate-400">
-                * Opens your default email app with this message prefilled.
+                {t.contact.emailClientNote}
               </span>
               <button
                 type="submit"
                 className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl transition-colors shrink-0 cursor-pointer"
               >
-                Open in Email App
+                {t.contact.openInEmailApp}
               </button>
             </div>
           </form>
 
           {/* Social Profiles */}
-          <div className="pt-6 border-t border-slate-200/80 dark:border-slate-800 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-500 dark:text-slate-400">
+          <div className="pt-6 border-t border-slate-200/80 dark:border-slate-800 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-500 dark:text-slate-400 font-mono">
             <a
               href={`mailto:${emailAddress}`}
               className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center gap-1.5"

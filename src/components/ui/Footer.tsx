@@ -1,17 +1,23 @@
+import {useMemo} from 'react';
 import {Github, Linkedin, Mail, ArrowUp} from 'lucide-react';
-
-const footerLinks = [
-  {name: 'Home', href: '#home'},
-  {name: 'About', href: '#about'},
-  {name: 'Skills', href: '#skills'},
-  {name: 'Services', href: '#services'},
-  {name: 'Projects', href: '#projects'},
-  {name: 'Journey', href: '#journey'},
-  {name: 'Contact', href: '#contact'},
-];
+import {useLanguage} from '../../context/LanguageContext';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const {t} = useLanguage();
+
+  const footerLinks = useMemo(
+    () => [
+      {name: t.nav.home, href: '#home'},
+      {name: t.nav.about, href: '#about'},
+      {name: t.nav.skills, href: '#skills'},
+      {name: t.nav.services, href: '#services'},
+      {name: t.nav.projects, href: '#projects'},
+      {name: t.nav.journey, href: '#journey'},
+      {name: t.nav.contact, href: '#contact'},
+    ],
+    [t]
+  );
 
   const scrollToTop = () => {
     window.scrollTo({top: 0, behavior: 'smooth'});
@@ -21,7 +27,7 @@ export function Footer() {
     <footer className="bg-slate-100/70 dark:bg-[#07090e] border-t border-slate-200/80 dark:border-slate-800/80 py-10 sm:py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8">
         {/* AGZ Logo & Identity */}
-        <div className="text-center md:text-left">
+        <div className="text-center md:text-left rtl:md:text-right">
           <a
             href="#home"
             className="group inline-flex items-center gap-2 mb-2 focus:outline-hidden select-none"
@@ -37,11 +43,11 @@ export function Footer() {
               <span className="w-1 h-1 rounded-full bg-cyan-400 ml-0.5" />
             </div>
             <span className="text-sm font-bold font-outfit text-slate-900 dark:text-white tracking-tight">
-              Abdul Jalil Zwak
+              {t.hero.statusBadge}
             </span>
           </a>
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            Computer Science & Software Development
+            {t.footer.subline}
           </p>
         </div>
 
@@ -88,7 +94,7 @@ export function Footer() {
 
           <button
             onClick={scrollToTop}
-            className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all ml-1 shadow-2xs cursor-pointer"
+            className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all ml-1 rtl:mr-1 rtl:ml-0 shadow-2xs cursor-pointer"
             aria-label="Scroll back to top"
           >
             <ArrowUp size={15} />
@@ -97,7 +103,7 @@ export function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-6 pt-5 border-t border-slate-200/60 dark:border-slate-800/80 text-center text-xs text-slate-400 dark:text-slate-500">
-        © {currentYear} Abdul Jalil Zwak · All rights reserved.
+        © {currentYear} {t.hero.statusBadge} · {t.footer.rightsReserved}
       </div>
     </footer>
   );

@@ -1,10 +1,13 @@
 import {useState, useEffect, useRef} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import {MessageSquare, Mail, Github, Linkedin, ArrowUpRight, X, Sparkles} from 'lucide-react';
+import {useLanguage} from '../../context/LanguageContext';
+import {cn} from '../../lib/utils';
 
 export function FloatingActionHub() {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const {t, isRtl} = useLanguage();
 
   // Close on outside click
   useEffect(() => {
@@ -33,7 +36,7 @@ export function FloatingActionHub() {
 
   const quickLinks = [
     {
-      title: 'Send Email',
+      title: t.contact.directEmail,
       subtitle: 'a.zwak.khan@gmail.com',
       icon: <Mail size={16} className="text-indigo-500" />,
       href: 'mailto:a.zwak.khan@gmail.com',
@@ -54,8 +57,8 @@ export function FloatingActionHub() {
       isExternal: true,
     },
     {
-      title: 'Direct Message',
-      subtitle: 'Jump to contact form',
+      title: t.hero.contactMe,
+      subtitle: t.contact.draftShortcut,
       icon: <Sparkles size={16} className="text-emerald-500" />,
       href: '#contact',
       isExternal: false,
@@ -75,7 +78,10 @@ export function FloatingActionHub() {
   return (
     <div
       ref={containerRef}
-      className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 z-40 select-none"
+      className={cn(
+        'fixed bottom-6 z-40 select-none transition-all duration-300',
+        isRtl ? 'right-6 sm:right-8' : 'left-6 sm:left-8'
+      )}
     >
       {/* Expanded Quick Connect Menu */}
       <AnimatePresence>
@@ -85,7 +91,10 @@ export function FloatingActionHub() {
             animate={{opacity: 1, scale: 1, y: 0}}
             exit={{opacity: 0, scale: 0.85, y: 16}}
             transition={{duration: 0.22, ease: [0.16, 1, 0.3, 1]}}
-            className="absolute bottom-16 left-0 mb-2 w-72 p-3 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-2xl shadow-indigo-500/10 dark:shadow-black/60 overflow-hidden"
+            className={cn(
+              'absolute bottom-16 mb-2 w-72 p-3 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-2xl shadow-indigo-500/10 dark:shadow-black/60 overflow-hidden',
+              isRtl ? 'right-0' : 'left-0'
+            )}
           >
             {/* Header with availability status */}
             <div className="flex items-center justify-between pb-2.5 mb-2 border-b border-slate-100 dark:border-slate-800/80 px-1">
@@ -95,10 +104,10 @@ export function FloatingActionHub() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                 </span>
                 <span className="text-[11px] font-semibold tracking-wider uppercase text-emerald-600 dark:text-emerald-400">
-                  Available for hire
+                  {t.hero.statusBadge}
                 </span>
               </div>
-              <span className="text-[10px] text-slate-600 dark:text-slate-400">Quick Connect</span>
+              <span className="text-[10px] text-slate-500 dark:text-slate-400">AGZ Hub</span>
             </div>
 
             {/* Action Items List */}
@@ -117,7 +126,7 @@ export function FloatingActionHub() {
                       setIsOpen(false);
                     }
                   }}
-                  initial={{opacity: 0, x: -10}}
+                  initial={{opacity: 0, x: isRtl ? 10 : -10}}
                   animate={{opacity: 1, x: 0}}
                   transition={{delay: idx * 0.04, duration: 0.2}}
                   className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/80 transition-colors group cursor-pointer"
@@ -137,7 +146,10 @@ export function FloatingActionHub() {
                   </div>
                   <ArrowUpRight
                     size={14}
-                    className="text-slate-400 group-hover:text-indigo-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                    className={cn(
+                      'text-slate-400 group-hover:text-indigo-500 transition-all',
+                      isRtl ? 'rotate-[-90deg]' : 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'
+                    )}
                   />
                 </motion.a>
               ))}
@@ -155,20 +167,17 @@ export function FloatingActionHub() {
         aria-label="Open quick connect menu"
         className="relative flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800/90 text-slate-800 dark:text-slate-200 shadow-lg shadow-indigo-500/10 dark:shadow-2xl dark:shadow-black/60 hover:border-indigo-500/50 dark:hover:border-indigo-500/50 transition-colors cursor-pointer group focus:outline-hidden focus:ring-2 focus:ring-indigo-500/40"
       >
-        {/* Pulsing online badge indicator */}
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
         </span>
 
-        {/* Dynamic Icon */}
         <div className="text-indigo-600 dark:text-indigo-400">
           {isOpen ? <X size={17} /> : <MessageSquare size={17} />}
         </div>
 
-        {/* Text Label */}
         <span className="text-xs font-semibold tracking-tight text-slate-700 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors hidden sm:inline">
-          {isOpen ? 'Close' : 'Quick Connect'}
+          {isOpen ? '✕' : t.nav.letsTalk}
         </span>
       </motion.button>
     </div>

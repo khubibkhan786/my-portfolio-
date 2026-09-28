@@ -16,6 +16,28 @@ export interface Project {
   problem?: string;
   solution?: string;
   role?: string;
+  platformBadge?: string;
+  storeBadge?: string;
+  translations?: {
+    ps?: {
+      title?: string;
+      category?: string;
+      shortDescription?: string;
+      fullDescription?: string;
+      features?: string[];
+      problem?: string;
+      solution?: string;
+    };
+    fa?: {
+      title?: string;
+      category?: string;
+      shortDescription?: string;
+      fullDescription?: string;
+      features?: string[];
+      problem?: string;
+      solution?: string;
+    };
+  };
 }
 
 export interface Skill {
@@ -39,6 +61,18 @@ export interface JourneyStep {
   year: string;
   title: string;
   description: string;
+  translations?: {
+    ps?: {
+      title: string;
+      description: string;
+      year?: string;
+    };
+    fa?: {
+      title: string;
+      description: string;
+      year?: string;
+    };
+  };
 }
 
 export type Theme = 'light' | 'dark';
