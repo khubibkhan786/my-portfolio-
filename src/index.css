@@ -8,6 +8,7 @@
   --font-space: "Space Grotesk", sans-serif;
   --font-syne: "Syne", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+  --font-vazir: "Vazirmatn", "Noto Sans Arabic", sans-serif;
 }
 
 :root {
@@ -35,16 +36,90 @@ html.dark {
   --shadow: rgba(0, 0, 0, 0.4);
 }
 
-/* RTL Language Typography Optimization */
+/* RTL Language Modern Typography - Vazirmatn & Noto Sans Arabic */
 html[dir="rtl"] {
-  font-family: "Vazirmatn", "Noto Sans Arabic", "Segoe UI", Tahoma, -apple-system, sans-serif;
+  font-family: "Vazirmatn", "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   letter-spacing: normal !important;
+  line-height: 1.75;
 }
 
-html[dir="rtl"] .font-mono {
+html[dir="rtl"] body {
+  font-family: "Vazirmatn", "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  line-height: 1.75;
+}
+
+/* Headings in RTL: Enhanced weight & generous line-height to prevent diacritics clipping */
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] h5,
+html[dir="rtl"] h6,
+html[dir="rtl"] .font-outfit,
+html[dir="rtl"] .font-syne,
+html[dir="rtl"] .font-space {
+  font-family: "Vazirmatn", "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-weight: 750 !important;
+  line-height: 1.45 !important;
+  letter-spacing: 0 !important;
+  font-feature-settings: "kern" 1;
+}
+
+/* Paragraphs & Descriptions: Balanced 450 weight & 1.8 line-height */
+html[dir="rtl"] p {
+  font-family: "Vazirmatn", "Noto Sans Arabic", sans-serif !important;
+  font-weight: 450 !important;
+  line-height: 1.8 !important;
+}
+
+/* Text spans, labels, inputs */
+html[dir="rtl"] span,
+html[dir="rtl"] a,
+html[dir="rtl"] button,
+html[dir="rtl"] input,
+html[dir="rtl"] textarea,
+html[dir="rtl"] .font-plus-jakarta {
+  font-family: "Vazirmatn", "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+html[dir="rtl"] button,
+html[dir="rtl"] a.font-semibold {
+  font-weight: 600 !important;
+}
+
+/* Maintain crisp LTR for code, terminals, monograms, and tech badges */
+html[dir="rtl"] .font-mono,
+html[dir="rtl"] code,
+html[dir="rtl"] pre,
+html[dir="rtl"] [dir="ltr"] {
   direction: ltr !important;
   text-align: left !important;
   font-family: "JetBrains Mono", monospace !important;
+  line-height: 1.5 !important;
+}
+
+/* Soft Ambient Hover Underglow for Cards ("نرم رنګ") */
+.card-soft-underglow {
+  position: absolute;
+  inset: -3px;
+  border-radius: 1.5rem;
+  background: radial-gradient(circle at 50% 60%, rgba(99, 102, 241, 0.28) 0%, rgba(6, 182, 212, 0.22) 50%, transparent 75%);
+  opacity: 0;
+  pointer-events: none;
+  filter: blur(16px);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(4px);
+  z-index: 0;
+}
+
+.group:hover .card-soft-underglow {
+  opacity: 1;
+  transform: translateY(8px);
+}
+
+.dark .card-soft-underglow {
+  background: radial-gradient(circle at 50% 60%, rgba(99, 102, 241, 0.35) 0%, rgba(6, 182, 212, 0.28) 50%, transparent 75%);
+  filter: blur(20px);
 }
 
 /* Smooth Theme & Surface Transitions */

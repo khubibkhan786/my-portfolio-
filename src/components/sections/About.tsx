@@ -67,40 +67,52 @@ export function About() {
 
             {/* Scannable 4-Column Information Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 sm:mt-7">
-              <div className="p-4 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 shadow-2xs">
-                <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 mb-1.5">
-                  <GraduationCap size={16} />
-                  <span className="text-xs font-bold uppercase tracking-wider">{t.about.educationTitle}</span>
+              <div className="group relative">
+                <div className="card-soft-underglow" />
+                <div className="relative z-10 p-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-2xs group-hover:shadow-xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm h-full">
+                  <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 mb-1.5">
+                    <GraduationCap size={16} />
+                    <span className="text-xs font-bold uppercase tracking-wider">{t.about.educationTitle}</span>
+                  </div>
+                  <div className="text-sm font-semibold text-slate-900 dark:text-white">{t.about.educationDegree}</div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{t.about.educationSub}</div>
                 </div>
-                <div className="text-sm font-semibold text-slate-900 dark:text-white">{t.about.educationDegree}</div>
-                <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{t.about.educationSub}</div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 shadow-2xs">
-                <div className="flex items-center gap-2 text-sky-600 dark:text-sky-400 mb-1.5">
-                  <Code size={16} />
-                  <span className="text-xs font-bold uppercase tracking-wider">{t.about.focusTitle}</span>
+              <div className="group relative">
+                <div className="card-soft-underglow" />
+                <div className="relative z-10 p-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-2xs group-hover:shadow-xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm h-full">
+                  <div className="flex items-center gap-2 text-sky-600 dark:text-sky-400 mb-1.5">
+                    <Code size={16} />
+                    <span className="text-xs font-bold uppercase tracking-wider">{t.about.focusTitle}</span>
+                  </div>
+                  <div className="text-sm font-semibold text-slate-900 dark:text-white">{t.about.focusDomain}</div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{t.about.focusSub}</div>
                 </div>
-                <div className="text-sm font-semibold text-slate-900 dark:text-white">{t.about.focusDomain}</div>
-                <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{t.about.focusSub}</div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 shadow-2xs">
-                <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 mb-1.5">
-                  <Layers size={16} />
-                  <span className="text-xs font-bold uppercase tracking-wider">{t.about.buildingTitle}</span>
+              <div className="group relative">
+                <div className="card-soft-underglow" />
+                <div className="relative z-10 p-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-2xs group-hover:shadow-xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm h-full">
+                  <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 mb-1.5">
+                    <Layers size={16} />
+                    <span className="text-xs font-bold uppercase tracking-wider">{t.about.buildingTitle}</span>
+                  </div>
+                  <div className="text-sm font-semibold text-slate-900 dark:text-white">{t.about.buildingProject}</div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{t.about.buildingSub}</div>
                 </div>
-                <div className="text-sm font-semibold text-slate-900 dark:text-white">{t.about.buildingProject}</div>
-                <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{t.about.buildingSub}</div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 shadow-2xs">
-                <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 mb-1.5">
-                  <Compass size={16} />
-                  <span className="text-xs font-bold uppercase tracking-wider">{t.about.learningTitle}</span>
+              <div className="group relative">
+                <div className="card-soft-underglow" />
+                <div className="relative z-10 p-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-2xs group-hover:shadow-xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm h-full">
+                  <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 mb-1.5">
+                    <Compass size={16} />
+                    <span className="text-xs font-bold uppercase tracking-wider">{t.about.learningTitle}</span>
+                  </div>
+                  <div className="text-sm font-semibold text-slate-900 dark:text-white">{t.about.learningDomain}</div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{t.about.learningSub}</div>
                 </div>
-                <div className="text-sm font-semibold text-slate-900 dark:text-white">{t.about.learningDomain}</div>
-                <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{t.about.learningSub}</div>
               </div>
             </div>
 
@@ -172,40 +184,43 @@ export function About() {
             </div>
 
             {/* RahimDev-Style Dedicated Currently Building Spotlight Card */}
-            <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-indigo-50/80 via-white/80 to-emerald-50/50 dark:from-slate-900/90 dark:via-slate-900/90 dark:to-indigo-950/40 border border-indigo-200/70 dark:border-indigo-900/50 shadow-sm backdrop-blur-xl relative overflow-hidden">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-indigo-600 dark:text-indigo-400">
-                  {t.about.currentlyBuildingBadge}
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  {t.about.inDevelopment}
-                </span>
-              </div>
+            <div className="group relative">
+              <div className="card-soft-underglow" />
+              <div className="relative z-10 p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-indigo-50/90 via-white/90 to-emerald-50/70 dark:from-slate-900/95 dark:via-slate-900/95 dark:to-indigo-950/60 border border-indigo-200/70 dark:border-indigo-900/60 group-hover:border-indigo-500/60 shadow-sm group-hover:shadow-2xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1 transition-all duration-300 backdrop-blur-xl">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-indigo-600 dark:text-indigo-400">
+                    {t.about.currentlyBuildingBadge}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    {t.about.inDevelopment}
+                  </span>
+                </div>
 
-              <h4 className="text-base sm:text-lg font-bold font-outfit text-slate-900 dark:text-white">
-                Islamic Companion
-              </h4>
+                <h4 className="text-base sm:text-lg font-bold font-outfit text-slate-900 dark:text-white">
+                  Islamic Companion
+                </h4>
 
-              <div className="text-xs text-slate-500 dark:text-slate-400 my-1 font-mono">
-                Android · Kotlin · Room DB · Offline-first
-              </div>
+                <div className="text-xs text-slate-500 dark:text-slate-400 my-1 font-mono">
+                  Android · Kotlin · Room DB · Offline-first
+                </div>
 
-              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mt-2">
-                {t.about.companionDesc}
-              </p>
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mt-2">
+                  {t.about.companionDesc}
+                </p>
 
-              <div className="mt-4 pt-3 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center justify-between text-xs">
-                <span className="text-slate-500 dark:text-slate-400 text-[11px]">
-                  {t.about.targetAndroid}
-                </span>
-                <a
-                  href="#projects"
-                  className="inline-flex items-center gap-1 font-semibold text-indigo-600 dark:text-indigo-400 hover:underline text-xs"
-                >
-                  <span>{t.about.viewInProjects}</span>
-                  <ArrowUpRight size={13} className={isRtl ? 'rotate-[-90deg]' : ''} />
-                </a>
+                <div className="mt-4 pt-3 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center justify-between text-xs">
+                  <span className="text-slate-500 dark:text-slate-400 text-[11px]">
+                    {t.about.targetAndroid}
+                  </span>
+                  <a
+                    href="#projects"
+                    className="inline-flex items-center gap-1 font-semibold text-indigo-600 dark:text-indigo-400 hover:underline text-xs"
+                  >
+                    <span>{t.about.viewInProjects}</span>
+                    <ArrowUpRight size={13} className={isRtl ? 'rotate-[-90deg]' : ''} />
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>

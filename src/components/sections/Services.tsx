@@ -99,42 +99,46 @@ export function Services() {
               <motion.div
                 key={service.title}
                 variants={cardVariants}
-                whileHover={{y: -4, transition: {duration: 0.2}}}
-                className="group p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between shadow-xs hover:shadow-lg bg-white/80 dark:bg-slate-900/80 border-slate-200/90 dark:border-slate-800 hover:border-indigo-500/50"
+                className="group relative flex flex-col justify-between"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-2xs group-hover:scale-105 group-hover:border-indigo-500/40 transition-all">
-                      {service.icon}
+                {/* Soft Ambient Hover Underglow ("نرم رنګ") */}
+                <div className="card-soft-underglow" />
+
+                <div className="relative z-10 p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between shadow-xs group-hover:shadow-2xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1.5 bg-white/95 dark:bg-slate-900/95 border-slate-200/90 dark:border-slate-800 group-hover:border-indigo-500/50 backdrop-blur-sm h-full">
+                  <div>
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-2xs group-hover:scale-105 group-hover:border-indigo-500/40 transition-all">
+                        {service.icon}
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200/60 dark:border-indigo-800/60">
+                          {service.badge}
+                        </span>
+                        <span className="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">
+                          {indexString}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200/60 dark:border-indigo-800/60">
-                        {service.badge}
-                      </span>
-                      <span className="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">
-                        {indexString}
-                      </span>
-                    </div>
+
+                    <h3 className="text-base sm:text-lg font-bold font-outfit text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                      {service.title}
+                    </h3>
+
+                    <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-5">
+                      {service.description}
+                    </p>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold font-outfit text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-5">
-                    {service.description}
-                  </p>
-                </div>
-
-                <div className="pt-3.5 border-t border-slate-200/60 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
-                  <span className="text-[11px] font-mono">{t.services.productionQuality}</span>
-                  <ArrowUpRight
-                    size={15}
-                    className={cn(
-                      'transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5',
-                      isRtl ? 'rotate-[-90deg]' : ''
-                    )}
-                  />
+                  <div className="pt-3.5 border-t border-slate-200/60 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
+                    <span className="text-[11px] font-mono">{t.services.productionQuality}</span>
+                    <ArrowUpRight
+                      size={15}
+                      className={cn(
+                        'transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5',
+                        isRtl ? 'rotate-[-90deg]' : ''
+                      )}
+                    />
+                  </div>
                 </div>
               </motion.div>
             );

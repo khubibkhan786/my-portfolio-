@@ -32,8 +32,12 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
       viewport={{ once: false, amount: 0.2 }}
       exit={{opacity: 0, scale: 0.98}}
       transition={{duration: 0.35, ease: [0.16, 1, 0.3, 1] as const}}
-      className="group bg-white/90 dark:bg-slate-900/90 rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-800/90 hover:border-indigo-500/50 dark:hover:border-indigo-500/50 shadow-xs hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full"
+      className="group relative flex flex-col h-full"
     >
+      {/* Soft Ambient Hover Underglow ("نرم رنګ") */}
+      <div className="card-soft-underglow" />
+
+      <div className="relative z-10 bg-white/95 dark:bg-slate-900/95 rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-800/90 group-hover:border-indigo-500/50 dark:group-hover:border-indigo-500/50 shadow-xs group-hover:shadow-2xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full backdrop-blur-sm">
       {/* Visual Image Media Container - Compact 16:9 ratio */}
       <div className="relative aspect-[16/9] max-h-[190px] overflow-hidden bg-slate-100 dark:bg-slate-800">
         {project.image ? (
@@ -177,6 +181,7 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
             </span>
           )}
         </div>
+      </div>
       </div>
     </motion.div>
   );

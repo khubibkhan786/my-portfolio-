@@ -89,51 +89,55 @@ export function Skills() {
               <motion.div
                 key={group.category}
                 variants={cardVariants}
-                whileHover={{y: -4, transition: {duration: 0.2}}}
-                className="group p-5 sm:p-6 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+                className="group relative flex flex-col justify-between"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center group-hover:scale-105 transition-transform">
-                      {categoryIcons[group.category] || (
-                        <Code2 size={20} className="text-indigo-600 dark:text-indigo-400" />
-                      )}
-                    </div>
-                    <span className="text-[11px] font-mono text-slate-400 dark:text-slate-500">
-                      {group.items.length} {t.skills.competenciesSuffix}
-                    </span>
-                  </div>
+                {/* Soft Ambient Hover Underglow ("نرم رنګ") */}
+                <div className="card-soft-underglow" />
 
-                  <h3 className="text-base font-bold font-outfit text-slate-900 dark:text-white mb-3">
-                    {localizedCategoryName}
-                  </h3>
-
-                  {/* Skill List with Quiet Evidence Links */}
-                  <div className="space-y-2">
-                    {group.items.map((skill) => (
-                      <div
-                        key={skill.name}
-                        className="p-2.5 rounded-xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
-                      >
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 font-mono">
-                            {skill.name}
-                          </span>
-                          <CheckCircle2 size={13} className="text-emerald-500/80 shrink-0" />
-                        </div>
-                        {skill.evidence && (
-                          <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 truncate">
-                            {skill.evidence}
-                          </div>
+                <div className="relative z-10 p-5 sm:p-6 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 group-hover:border-indigo-500/50 dark:group-hover:border-indigo-500/50 shadow-xs group-hover:shadow-2xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between backdrop-blur-sm h-full">
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center group-hover:scale-105 transition-transform">
+                        {categoryIcons[group.category] || (
+                          <Code2 size={20} className="text-indigo-600 dark:text-indigo-400" />
                         )}
                       </div>
-                    ))}
-                  </div>
-                </div>
+                      <span className="text-[11px] font-mono text-slate-400 dark:text-slate-500">
+                        {group.items.length} {t.skills.competenciesSuffix}
+                      </span>
+                    </div>
 
-                <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 dark:text-slate-500">
-                  <span>{t.skills.activeCapability}</span>
-                  <span className="text-indigo-600 dark:text-indigo-400 font-medium">{t.skills.appliedInCode}</span>
+                    <h3 className="text-base font-bold font-outfit text-slate-900 dark:text-white mb-3">
+                      {localizedCategoryName}
+                    </h3>
+
+                    {/* Skill List with Quiet Evidence Links */}
+                    <div className="space-y-2">
+                      {group.items.map((skill) => (
+                        <div
+                          key={skill.name}
+                          className="p-2.5 rounded-xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 font-mono">
+                              {skill.name}
+                            </span>
+                            <CheckCircle2 size={13} className="text-emerald-500/80 shrink-0" />
+                          </div>
+                          {skill.evidence && (
+                            <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 truncate">
+                              {skill.evidence}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 dark:text-slate-500">
+                    <span>{t.skills.activeCapability}</span>
+                    <span className="text-indigo-600 dark:text-indigo-400 font-medium">{t.skills.appliedInCode}</span>
+                  </div>
                 </div>
               </motion.div>
             );
@@ -146,37 +150,42 @@ export function Skills() {
           whileInView={{opacity: 1, y: 0}}
           viewport={{ once: false, amount: 0.2 }}
           transition={{duration: 0.45, ease: [0.16, 1, 0.3, 1] as const}}
-          className="mt-10 sm:mt-12 p-5 sm:p-7 rounded-2xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 relative overflow-hidden"
+          className="mt-10 sm:mt-12 group relative"
         >
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/60 dark:border-indigo-800/60 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
-                <BookOpen size={16} />
+          {/* Soft Ambient Hover Underglow */}
+          <div className="card-soft-underglow" />
+
+          <div className="relative z-10 p-5 sm:p-7 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-xs group-hover:shadow-2xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/60 dark:border-indigo-800/60 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
+                  <BookOpen size={16} />
+                </div>
+                <div>
+                  <h3 className="text-sm sm:text-base font-bold font-outfit text-slate-900 dark:text-white">
+                    {t.skills.activeLearningTitle}
+                  </h3>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                    {t.skills.activeLearningSubtitle}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-sm sm:text-base font-bold font-outfit text-slate-900 dark:text-white">
-                  {t.skills.activeLearningTitle}
-                </h3>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                  {t.skills.activeLearningSubtitle}
-                </p>
-              </div>
+
+              <span className="text-xs text-indigo-600 dark:text-indigo-400 font-mono self-start md:self-auto">
+                {t.skills.inStudyBadge}
+              </span>
             </div>
 
-            <span className="text-xs text-indigo-600 dark:text-indigo-400 font-mono self-start md:self-auto">
-              {t.skills.inStudyBadge}
-            </span>
-          </div>
-
-          <div className="flex flex-wrap gap-2 pt-2">
-            {learningSkills.map((skill) => (
-              <span
-                key={skill}
-                className="text-xs text-slate-600 dark:text-slate-300 bg-slate-100/90 dark:bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-200/80 dark:border-slate-700/80 font-medium"
-              >
-                {skill}
-              </span>
-            ))}
+            <div className="flex flex-wrap gap-2 pt-2">
+              {learningSkills.map((skill) => (
+                <span
+                  key={skill}
+                  className="text-xs text-slate-600 dark:text-slate-300 bg-slate-100/90 dark:bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-200/80 dark:border-slate-700/80 font-medium"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
