@@ -1,26 +1,25 @@
-# International SEO (hreflang) Implementation Plan
+# Implementation Plan: Animated Proficiency Progress Bars for Skills Section (Completed)
 
-Configure multilingual international SEO tags (`hreflang`), alternate OpenGraph locales, and URL parameter language routing for **English**, **پښتو (Pashto)**, and **دری (Dari)** in `index.html` and `LanguageContext.tsx`.
-
-## Proposed Changes
-
-### 1. International SEO & Hreflang Tags (`index.html`)
-- Add standard `<link rel="alternate" hreflang="..." />` tags right below the canonical URL:
-  - `hreflang="x-default"`: Default global landing URL.
-  - `hreflang="en"`: English edition.
-  - `hreflang="ps"` and `hreflang="ps-AF"`: Pashto edition (`?lang=ps` & Afghanistan locale).
-  - `hreflang="fa"`, `hreflang="prs"`, and `hreflang="fa-AF"`: Dari / Afghan Persian edition (`?lang=fa` & Afghanistan locale).
-- Add OpenGraph alternate locale metadata:
-  - `<meta property="og:locale:alternate" content="ps_AF" />`
-  - `<meta property="og:locale:alternate" content="fa_AF" />`
-- Update JSON-LD structured data `inLanguage` property to indicate trilingual availability (`["en", "ps", "fa"]`).
-
-### 2. URL Parameter Language Detection (`src/context/LanguageContext.tsx`)
-- Allow search engines and direct links with `?lang=ps` or `?lang=fa` to automatically load in the designated language on initial visit, while keeping `localStorage` synchronized.
+Implemented animated proficiency progress bars for each skill in the Skills section that fill up on scroll reveal, engineered specifically for high-efficiency, buttery-smooth 60fps performance on low-end and low-graphics computers without stutter or lag ("خخ خخ نشي").
 
 ---
 
-## Verification Plan
+## 1. Implemented Features
 
-- Inspect `index.html` to confirm all `hreflang` tags, canonical references, and OG alternate locales conform to Google Search Central international SEO standards.
-- Run `compile_applet` and `lint_applet` to verify zero build or syntax issues.
+### A. GPU-Accelerated Transform Animation (Zero Reflow)
+- Replaced CPU-heavy layout recalculations with GPU-composited CSS transforms: `transform: scaleX(progress)` with direction-aware `transformOrigin: isRtl ? 'right' : 'left'`.
+- Added `will-change: transform` and `transform-gpu` to keep the animation on dedicated compositor hardware layers.
+- Used `viewport={{ once: true, amount: 0.2 }}` to trigger the animation once upon scroll reveal, preventing repetitive background recalculations on low-spec hardware.
+
+### B. Visual Metrics & Typographic Precision
+- Displayed percentage metrics (`92%`, `88%`, `95%`, etc.) in bold monospace with semantic color hierarchy (`text-indigo-600 dark:text-indigo-400`).
+- Slim, elegant 6px progress rails with smooth multi-stop gradients (`from-indigo-500 via-sky-500 to-emerald-400`).
+- Retained verified evidence annotations under each skill name.
+- Fully accessible with `role="progressbar"`, `aria-valuenow`, `aria-valuemin`, and `aria-valuemax`.
+
+---
+
+## 2. Verification
+- `compile_applet`: Passed with zero errors.
+- `lint_applet`: Passed clean with zero warnings.
+- Tested LTR (English) and RTL (Pashto/Dari) transform directions.

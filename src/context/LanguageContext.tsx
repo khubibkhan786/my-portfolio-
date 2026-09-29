@@ -13,23 +13,23 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({children}: {children: ReactNode}) {
   const [language, setLanguageState] = useState<Language>(() => {
     try {
-      const saved = localStorage.getItem('agz_language');
-      if (saved === 'ps' || saved === 'fa' || saved === 'en') {
+      const saved = localStorage.getItem('agz_user_lang');
+      if (saved === 'en' || saved === 'ps' || saved === 'fa') {
         return saved;
       }
     } catch {
       // Fallback
     }
-    return 'en'; // English as default as confirmed in Q&A
+    return 'en'; // English is the strict default language
   });
 
   const isRtl = language === 'ps' || language === 'fa';
-  const t = translations[language];
+  const t = translations[language] || translations.en;
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     try {
-      localStorage.setItem('agz_language', lang);
+      localStorage.setItem('agz_user_lang', lang);
     } catch {
       // Ignore localStorage error
     }

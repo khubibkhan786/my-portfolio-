@@ -1,19 +1,55 @@
-import {useState, useMemo, useEffect} from 'react';
+import {useState, useMemo, useEffect, useRef} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
-import {Github, ExternalLink, Code2, ArrowUpRight, X, CheckCircle2, Layers, Terminal, AlertCircle, Smartphone, Globe, Cpu} from 'lucide-react';
+import {
+  Github,
+  ExternalLink,
+  Code2,
+  ArrowUpRight,
+  X,
+  CheckCircle2,
+  Layers,
+  Terminal,
+  AlertCircle,
+  Smartphone,
+  Globe,
+  Sparkles,
+  LayoutGrid,
+  Cpu
+} from 'lucide-react';
 import {projects} from '../../data/projects';
 import {Project} from '../../types';
 import {useLanguage} from '../../context/LanguageContext';
 import {cn} from '../../lib/utils';
 
+type FilterCategory = 'all' | 'ai' | 'web' | 'automation' | 'mobile';
+
+interface FilterOption {
+  key: FilterCategory;
+  labelKey: 'all' | 'ai' | 'web' | 'automation' | 'mobile';
+  icon: typeof LayoutGrid;
+  accent: string;
+}
+
+const FILTER_OPTIONS: FilterOption[] = [
+  {key: 'all', labelKey: 'all', icon: LayoutGrid, accent: 'group-hover:text-indigo-500'},
+  {key: 'ai', labelKey: 'ai', icon: Sparkles, accent: 'group-hover:text-purple-500'},
+  {key: 'web', labelKey: 'web', icon: Globe, accent: 'group-hover:text-sky-500'},
+  {key: 'automation', labelKey: 'automation', icon: Terminal, accent: 'group-hover:text-amber-500'},
+  {key: 'mobile', labelKey: 'mobile', icon: Smartphone, accent: 'group-hover:text-emerald-500'},
+];
+
 interface ProjectCardProps {
   project: Project;
   onSelect: (project: Project) => void;
+  onFilterClick?: (category: FilterCategory) => void;
 }
 
 // Compact, Refined RahimDev-Style Developer Project Card
 function ProjectCard({project, onSelect}: ProjectCardProps) {
   const {t, language, isRtl} = useLanguage();
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [mousePos, setMousePos] = useState({x: 0, y: 0});
+  const [isHovered, setIsHovered] = useState(false);
 
   const title =
     (language !== 'en' && project.translations?.[language as 'ps' | 'fa']?.title) || project.title;
@@ -24,22 +60,66 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
 
   const isCompleted = project.status === 'Completed';
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   return (
     <motion.div
+      ref={cardRef}
       layout
       initial={{opacity: 0, y: 16}}
       whileInView={{opacity: 1, y: 0}}
       viewport={{ once: false, amount: 0.2 }}
       exit={{opacity: 0, scale: 0.98}}
-      transition={{duration: 0.35, ease: [0.16, 1, 0.3, 1] as const}}
-      className="group relative flex flex-col h-full"
+      whileHover={{ scale: 1.02, y: -4 }}
+      transition={{
+        layout: { duration: 0.3, ease: 'easeOut' },
+        scale: { type: 'spring', stiffness: 380, damping: 26 },
+        y: { type: 'spring', stiffness: 380, damping: 26 },
+        opacity: { duration: 0.3 }
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative flex flex-col h-full cursor-pointer"
     >
       {/* Soft Ambient Hover Underglow ("نرم رنګ") */}
       <div className="card-soft-underglow" />
 
-      <div className="relative z-10 bg-white/95 dark:bg-slate-900/95 rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-800/90 group-hover:border-indigo-500/50 dark:group-hover:border-indigo-500/50 shadow-xs group-hover:shadow-2xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full backdrop-blur-sm">
-      {/* Visual Image Media Container - Compact 16:9 ratio */}
-      <div className="relative aspect-[16/9] max-h-[190px] overflow-hidden bg-slate-100 dark:bg-slate-800">
+      <div className="relative z-10 bg-white/95 dark:bg-slate-900/95 rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-800/90 group-hover:border-indigo-500/50 dark:group-hover:border-indigo-500/50 shadow-xs group-hover:shadow-2xl group-hover:shadow-indigo-500/15 transition-all duration-300 flex flex-col h-full backdrop-blur-sm">
+        {/* Interactive Cursor-Tracking Dispersed Spotlight Glow ("پاشل شوی رنګ") */}
+        <div
+          className="pointer-events-none absolute inset-0 z-20 transition-opacity duration-300 rounded-2xl overflow-hidden"
+          style={{
+            opacity: isHovered ? 1 : 0,
+            background: `radial-gradient(420px circle at ${mousePos.x}px ${mousePos.y}px, rgba(99, 102, 241, 0.16), rgba(6, 182, 212, 0.10), transparent 70%)`,
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Dynamic Border Rim Illumination on Mouse Position */}
+        <div
+          className="pointer-events-none absolute inset-0 z-25 rounded-2xl transition-opacity duration-300 overflow-hidden"
+          style={{
+            opacity: isHovered ? 1 : 0,
+            background: `radial-gradient(300px circle at ${mousePos.x}px ${mousePos.y}px, rgba(99, 102, 241, 0.45), rgba(6, 182, 212, 0.30), transparent 65%)`,
+            mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+            WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+            maskComposite: 'exclude',
+            WebkitMaskComposite: 'xor',
+            padding: '1.5px',
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Visual Image Media Container - Compact 16:9 ratio */}
+        <div className="relative aspect-[16/9] max-h-[190px] overflow-hidden bg-slate-100 dark:bg-slate-800 z-10">
         {project.image ? (
           <img
             src={project.image}
@@ -89,7 +169,7 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
         </div>
 
         {/* Hover Quick Actions */}
-        <div className="absolute bottom-3 right-3 z-10 flex gap-1.5 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-200">
+        <div className="absolute bottom-3 right-3 z-30 flex gap-1.5 translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-200">
           {project.github && (
             <a
               href={project.github}
@@ -103,7 +183,7 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
           )}
           <button
             onClick={() => onSelect(project)}
-            className="p-1.5 bg-indigo-600 text-white backdrop-blur-md rounded-lg hover:bg-indigo-500 transition-colors shadow-xs"
+            className="p-1.5 bg-indigo-600 text-white backdrop-blur-md rounded-lg hover:bg-indigo-500 transition-colors shadow-xs cursor-pointer"
             aria-label="Open case study modal"
           >
             <ExternalLink size={13} />
@@ -112,14 +192,29 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
       </div>
 
       {/* Card Content & Metadata */}
-      <div className="p-5 flex flex-col flex-grow">
-        {/* Unboxed Metadata Line with typographic separators */}
-        <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2 font-medium">
-          <span className="text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide text-[11px] uppercase">
-            {category}
-          </span>
-          <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
-          <span className="font-mono text-[11px]">{project.year}</span>
+      <div className="p-5 flex flex-col flex-grow relative z-30">
+        {/* Unboxed Metadata Line with typographic separators and Category Tags */}
+        <div className="flex items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2 font-medium">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide text-[11px] uppercase">
+              {category}
+            </span>
+            <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
+            <span className="font-mono text-[11px]">{project.year}</span>
+          </div>
+
+          {project.filterCategories && (
+            <div className="flex items-center gap-1">
+              {project.filterCategories.map((cat) => (
+                <span
+                  key={cat}
+                  className="px-1.5 py-0.5 rounded text-[9px] font-mono font-semibold uppercase bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-300 border border-indigo-200/50 dark:border-indigo-800/50"
+                >
+                  {cat}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Title */}
@@ -177,7 +272,7 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
             </a>
           ) : (
             <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500">
-              {t.projects.verifiedProject}
+              {isCompleted ? t.projects.statusCompleted : t.projects.statusInProgress}
             </span>
           )}
         </div>
@@ -189,7 +284,7 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
 
 export function Projects() {
   const {t, language, isRtl} = useLanguage();
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [selectedCategory, setSelectedCategory] = useState<FilterCategory>('all');
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
 
   // Close modal on Escape key
@@ -215,16 +310,62 @@ export function Projects() {
     };
   }, [activeModalProject]);
 
-  // Clean category extraction
-  const categories = useMemo(() => {
-    const cats = ['All', ...new Set(projects.map((p) => p.category))];
-    return cats;
+  // Project matching function for categories ('all', 'ai', 'web', 'automation', 'mobile')
+  const isProjectInFilter = (project: Project, filter: FilterCategory): boolean => {
+    if (filter === 'all') return true;
+    if (project.filterCategories && project.filterCategories.length > 0) {
+      if (filter === 'ai') return project.filterCategories.includes('AI');
+      if (filter === 'web') return project.filterCategories.includes('Web');
+      if (filter === 'automation') return project.filterCategories.includes('Automation');
+      if (filter === 'mobile') return project.filterCategories.includes('Mobile');
+    }
+    if (filter === 'ai') {
+      return !!(
+        project.category.toLowerCase().includes('ai') ||
+        project.technologies.some((tech) => tech.toLowerCase().includes('ai'))
+      );
+    }
+    if (filter === 'web') {
+      return !!(
+        project.category.toLowerCase().includes('web') ||
+        project.technologies.some((tech) =>
+          ['react', 'typescript', 'html5', 'javascript', 'tailwind css', 'weather api'].includes(tech.toLowerCase())
+        )
+      );
+    }
+    if (filter === 'automation') {
+      return !!(
+        project.category.toLowerCase().includes('automation') ||
+        project.technologies.some((tech) =>
+          tech.toLowerCase().includes('automation') || tech.toLowerCase().includes('node') || tech.toLowerCase().includes('json')
+        )
+      );
+    }
+    if (filter === 'mobile') {
+      return !!(
+        project.category.toLowerCase().includes('android') ||
+        project.technologies.some((tech) =>
+          ['java', 'kotlin', 'android', 'android sdk', 'room database', 'sqlite', 'android jetpack'].includes(tech.toLowerCase())
+        )
+      );
+    }
+    return true;
+  };
+
+  // Pre-calculate counts for each filter option
+  const categoryCounts = useMemo(() => {
+    return {
+      all: projects.length,
+      ai: projects.filter((p) => isProjectInFilter(p, 'ai')).length,
+      web: projects.filter((p) => isProjectInFilter(p, 'web')).length,
+      automation: projects.filter((p) => isProjectInFilter(p, 'automation')).length,
+      mobile: projects.filter((p) => isProjectInFilter(p, 'mobile')).length,
+    };
   }, []);
 
   // Filter projects dynamically
   const filteredProjects = useMemo(() => {
-    if (selectedCategory === 'All') return projects;
-    return projects.filter((p) => p.category === selectedCategory);
+    return projects.filter((p) => isProjectInFilter(p, selectedCategory));
   }, [selectedCategory]);
 
   // Modal localized project details
@@ -291,46 +432,110 @@ export function Projects() {
           </p>
         </motion.div>
 
-        {/* Instant Interactive Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-8 sm:mb-10 p-1 bg-slate-200/60 dark:bg-slate-900/80 rounded-2xl max-w-full overflow-x-auto border border-slate-300/70 dark:border-slate-800 shadow-2xs">
-          {categories.map((category) => {
-            const isActive = selectedCategory === category;
-            const count =
-              category === 'All'
-                ? projects.length
-                : projects.filter((p) => p.category === category).length;
-            const label = category === 'All' ? t.projects.allFilter : category;
+        {/* Interactive Category Filter Bar */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 sm:mb-10">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 p-1.5 bg-white/90 dark:bg-slate-900/90 rounded-2xl max-w-full overflow-x-auto border border-slate-200/90 dark:border-slate-800 shadow-xs backdrop-blur-md">
+            {FILTER_OPTIONS.map((option) => {
+              const Icon = option.icon;
+              const isActive = selectedCategory === option.key;
+              const count = categoryCounts[option.key];
+              const label = t.projects.filters[option.labelKey] || option.key;
 
-            return (
+              return (
+                <button
+                  key={option.key}
+                  onClick={() => setSelectedCategory(option.key)}
+                  className={cn(
+                    'relative flex items-center gap-2 px-3.5 sm:px-4 py-2 text-xs font-semibold rounded-xl transition-all duration-200 whitespace-nowrap cursor-pointer group',
+                    isActive
+                      ? 'text-indigo-600 dark:text-white font-bold'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100/70 dark:hover:bg-slate-800/70'
+                  )}
+                  aria-pressed={isActive}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeCategoryPill"
+                      className="absolute inset-0 bg-slate-100 dark:bg-slate-800 rounded-xl border border-indigo-500/30 dark:border-indigo-500/40 -z-10 shadow-2xs"
+                      transition={{type: 'spring', stiffness: 500, damping: 35}}
+                    />
+                  )}
+                  <Icon
+                    size={14}
+                    className={cn(
+                      'transition-transform duration-200 group-hover:scale-110',
+                      isActive ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-500',
+                      option.accent
+                    )}
+                  />
+                  <span>{label}</span>
+                  <span
+                    className={cn(
+                      'text-[10px] font-mono px-1.5 py-0.5 rounded-full transition-colors font-medium',
+                      isActive
+                        ? 'bg-indigo-600/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 font-bold'
+                        : 'bg-slate-200/70 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                    )}
+                  >
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Filter Pill Status & Clear Option */}
+          {selectedCategory !== 'all' && (
+            <motion.div
+              initial={{opacity: 0, x: isRtl ? -10 : 10}}
+              animate={{opacity: 1, x: 0}}
+              className="flex items-center gap-2 self-start sm:self-auto text-xs text-slate-500 dark:text-slate-400 font-medium"
+            >
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 border border-indigo-200/70 dark:border-indigo-800/70 shadow-2xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400 animate-pulse" />
+                <span>
+                  {t.projects.filters[selectedCategory]}:{' '}
+                  <strong className="font-mono">{filteredProjects.length}</strong>
+                </span>
+              </span>
               <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={cn(
-                  'px-3 sm:px-4 py-1.5 text-xs font-semibold rounded-xl transition-all duration-200 whitespace-nowrap cursor-pointer',
-                  isActive
-                    ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-white shadow-xs'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
-                )}
+                onClick={() => setSelectedCategory('all')}
+                className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer px-2.5 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent hover:border-slate-200 dark:hover:border-slate-700"
               >
-                {label}
-                <span className="ml-1 opacity-60 text-[10px] font-mono">({count})</span>
+                <X size={13} />
+                <span>{t.projects.resetFilter}</span>
               </button>
-            );
-          })}
+            </motion.div>
+          )}
         </div>
 
-        {/* 2-3 Project Cards visible in grid on desktop */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onSelect={(proj) => setActiveModalProject(proj)}
-              />
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        {/* Project Cards Grid / Empty State */}
+        {filteredProjects.length > 0 ? (
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  onSelect={(proj) => setActiveModalProject(proj)}
+                />
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        ) : (
+          <div className="p-12 text-center rounded-2xl bg-white/60 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 max-w-md mx-auto">
+            <Layers className="mx-auto text-slate-400 mb-3" size={32} />
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1">
+              {t.projects.noProjectsMatch}
+            </h3>
+            <button
+              onClick={() => setSelectedCategory('all')}
+              className="mt-4 px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 text-white hover:bg-indigo-500 transition-colors shadow-xs cursor-pointer"
+            >
+              {t.projects.resetFilter}
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Case Study Modal Dialog */}

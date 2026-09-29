@@ -3,22 +3,22 @@ import {Service} from '../types';
 export const services: Service[] = [
   {
     title: 'Software Development',
-    description: 'Engineering practical software applications with structured object-oriented foundations in Java and modern Kotlin.',
+    description: 'Building practical applications using Java and Kotlin with a focus on clean structure and understandable code.',
     icon: 'AppWindow'
   },
   {
     title: 'Web Development',
-    description: 'Crafting responsive, high-performance web applications using React, TypeScript, and utility-first Tailwind CSS.',
+    description: 'Creating responsive web interfaces using HTML, CSS, JavaScript, React, and TypeScript.',
     icon: 'Globe'
   },
   {
     title: 'Database Solutions',
-    description: 'Designing normalized relational schemas, executing SQL queries, and implementing offline-first SQLite / Room persistence.',
+    description: 'Designing relational database structures and working with SQL, MySQL, SQLite, and Room.',
     icon: 'Database'
   },
   {
     title: 'UI Implementation',
-    description: 'Translating design concepts into clean, accessible user interfaces with refined spacing, smooth transitions, and mobile polish.',
+    description: 'Turning interface ideas into responsive and clean user interfaces with attention to spacing, usability, and mobile responsiveness.',
     icon: 'Layout'
   }
 ];

@@ -143,34 +143,34 @@ export function Hero() {
               </a>
             </motion.div>
 
-            {/* RahimDev-Inspired Deliverables Metrics Ribbon */}
+            {/* Student Deliverables Metrics Ribbon */}
             <motion.div
               variants={itemVariants}
-              className="pt-5 border-t border-slate-200/80 dark:border-slate-800/80 grid grid-cols-3 gap-3 max-w-lg"
+              className="pt-5 border-t border-slate-200/80 dark:border-slate-800/80 grid grid-cols-3 gap-2 sm:gap-3 max-w-lg"
             >
-              <div className="p-2.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/80">
+              <div className="p-2 sm:p-2.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/80 text-center sm:text-left rtl:sm:text-right">
                 <div className="text-base sm:text-lg font-black font-outfit text-indigo-600 dark:text-indigo-400">
                   {t.hero.metrics.metric1Value}
                 </div>
-                <div className="text-[11px] text-slate-600 dark:text-slate-400 truncate">
+                <div className="text-[10.5px] sm:text-xs text-slate-600 dark:text-slate-400 truncate">
                   {t.hero.metrics.metric1Label}
                 </div>
               </div>
 
-              <div className="p-2.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/80">
-                <div className="text-base sm:text-lg font-black font-outfit text-emerald-600 dark:text-emerald-400">
+              <div className="p-2 sm:p-2.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/80 text-center sm:text-left rtl:sm:text-right">
+                <div className="text-xs sm:text-sm font-bold font-outfit text-emerald-600 dark:text-emerald-400 truncate pt-0.5">
                   {t.hero.metrics.metric2Value}
                 </div>
-                <div className="text-[11px] text-slate-600 dark:text-slate-400 truncate">
+                <div className="text-[10.5px] sm:text-xs text-slate-600 dark:text-slate-400 truncate">
                   {t.hero.metrics.metric2Label}
                 </div>
               </div>
 
-              <div className="p-2.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/80">
+              <div className="p-2 sm:p-2.5 rounded-xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/80 text-center sm:text-left rtl:sm:text-right">
                 <div className="text-base sm:text-lg font-black font-outfit text-sky-600 dark:text-sky-400">
                   {t.hero.metrics.metric3Value}
                 </div>
-                <div className="text-[11px] text-slate-600 dark:text-slate-400 truncate">
+                <div className="text-[10.5px] sm:text-xs text-slate-600 dark:text-slate-400 truncate">
                   {t.hero.metrics.metric3Label}
                 </div>
               </div>

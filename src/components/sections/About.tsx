@@ -148,8 +148,30 @@ export function About() {
                     <h4 className="font-outfit font-bold text-slate-900 dark:text-white text-sm sm:text-base">
                       {t.about.principlesHeading}
                     </h4>
-                    <p>{t.about.principlesP1}</p>
-                    <p>{t.about.principlesP2}</p>
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                      {t.about.principlesP1}
+                    </p>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 font-mono text-[11px] text-indigo-700 dark:text-indigo-300">
+                      {(t.about.principlesList || [
+                        'Build practical solutions',
+                        'Keep code understandable',
+                        'Learn through real projects',
+                        'Prefer simple and reliable solutions',
+                        'Improve through iteration',
+                        'Respect privacy and efficient resource usage',
+                      ]).map((principle, index) => (
+                        <li
+                          key={index}
+                          className="flex items-center gap-1.5 bg-indigo-50/70 dark:bg-indigo-950/40 px-2.5 py-1.5 rounded-lg border border-indigo-200/50 dark:border-indigo-800/40"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400 shrink-0" />
+                          <span>{principle}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 pt-1">
+                      {t.about.principlesP2}
+                    </p>
                   </div>
                 </motion.div>
               )}
@@ -177,13 +199,13 @@ export function About() {
                     {t.hero.role}
                   </p>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 font-mono">
-                    Nangarhar University · CS & IS
+                    Paktia University · CS & IS
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* RahimDev-Style Dedicated Currently Building Spotlight Card */}
+            {/* Dedicated Currently Building Spotlight Card */}
             <div className="group relative">
               <div className="card-soft-underglow" />
               <div className="relative z-10 p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-indigo-50/90 via-white/90 to-emerald-50/70 dark:from-slate-900/95 dark:via-slate-900/95 dark:to-indigo-950/60 border border-indigo-200/70 dark:border-indigo-900/60 group-hover:border-indigo-500/60 shadow-sm group-hover:shadow-2xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1 transition-all duration-300 backdrop-blur-xl">
@@ -198,11 +220,11 @@ export function About() {
                 </div>
 
                 <h4 className="text-base sm:text-lg font-bold font-outfit text-slate-900 dark:text-white">
-                  Islamic Companion
+                  {t.about.buildingProject}
                 </h4>
 
                 <div className="text-xs text-slate-500 dark:text-slate-400 my-1 font-mono">
-                  Android · Kotlin · Room DB · Offline-first
+                  {t.about.buildingSub}
                 </div>
 
                 <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mt-2">

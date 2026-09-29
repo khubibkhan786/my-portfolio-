@@ -36,13 +36,6 @@ export function FloatingActionHub() {
 
   const quickLinks = [
     {
-      title: t.contact.directEmail,
-      subtitle: 'a.zwak.khan@gmail.com',
-      icon: <Mail size={16} className="text-indigo-500" />,
-      href: 'mailto:a.zwak.khan@gmail.com',
-      isExternal: true,
-    },
-    {
       title: 'LinkedIn',
       subtitle: 'Professional profile',
       icon: <Linkedin size={16} className="text-sky-500" />,

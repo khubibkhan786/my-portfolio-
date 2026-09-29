@@ -4,6 +4,7 @@ export interface Project {
   shortDescription: string;
   fullDescription: string;
   category: string;
+  filterCategories?: string[];
   technologies: string[];
   image?: string;
   screenshots?: string[];
@@ -44,6 +45,7 @@ export interface Skill {
   name: string;
   icon?: string;
   evidence?: string;
+  proficiency?: number;
 }
 
 export interface SkillGroup {
@@ -76,3 +78,4 @@ export interface JourneyStep {
 }
 
 export type Theme = 'light' | 'dark';
+export type Language = 'en' | 'ps' | 'fa';

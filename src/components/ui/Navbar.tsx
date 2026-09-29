@@ -141,8 +141,9 @@ export function Navbar() {
             {/* Animated Light/Dark Mode Switch */}
             <button
               onClick={toggleTheme}
-              className="relative p-2 rounded-xl border border-slate-200/90 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors shadow-2xs active:scale-95 cursor-pointer"
-              aria-label="Toggle visual theme"
+              className="relative p-2 rounded-xl border border-slate-200/90 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors shadow-2xs active:scale-95 cursor-pointer flex items-center justify-center"
+              aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
+              title={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
             >
               <AnimatePresence mode="wait" initial={false}>
                 {isDark ? (
@@ -206,6 +207,31 @@ export function Navbar() {
                     {t.nav.language}:
                   </div>
                   <LanguageSelector variant="mobile" />
+                </div>
+
+                {/* Mobile Theme Switcher Strip */}
+                <div className="mb-2 pb-2 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-1">
+                  <div className="text-[11px] font-medium text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                    {isDark ? <Moon size={13} className="text-indigo-400" /> : <Sun size={13} className="text-amber-500" />}
+                    <span>{isDark ? 'Dark Theme' : 'Light Theme'}</span>
+                  </div>
+                  <button
+                    onClick={toggleTheme}
+                    className="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer"
+                    aria-label="Toggle color theme"
+                  >
+                    {isDark ? (
+                      <>
+                        <Sun size={12} className="text-amber-400" />
+                        <span>Light Mode</span>
+                      </>
+                    ) : (
+                      <>
+                        <Moon size={12} className="text-indigo-600" />
+                        <span>Dark Mode</span>
+                      </>
+                    )}
+                  </button>
                 </div>
 
                 {navLinks.map((link) => {

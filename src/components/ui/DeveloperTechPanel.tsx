@@ -28,24 +28,25 @@ export function DeveloperTechPanel() {
   const getCodeContent = () => {
     switch (activeTab) {
       case 'developer':
-        return `// AGZ / Developer Profile
-export const developer = {
+        return `// AGZ / Student Developer Profile
+export const student = {
   name: "Abdul Jalil Zwak",
-  title: "Software Developer",
-  education: "Computer Science (Information Systems)",
-  focus: ["Software Development", "Web Dev", "Automation"],
-  status: "Available for projects & collaboration",
-  mindset: "Building practical, reliable software"
+  role: "Computer Science Student · Information Systems",
+  university: "Paktia University (2026)",
+  focus: ["Software Development", "Android", "Web", "SQL"],
+  status: "Building real projects & developing core skills",
+  principles: "Practical, clear, and reliable solutions"
 };`;
       case 'stack':
         return `{\n  "languages": ["Java", "Kotlin", "JavaScript", "TypeScript"],\n  "frameworks": ["Android SDK", "React", "Tailwind CSS"],\n  "databases": ["SQL", "MySQL", "SQLite", "Room"],\n  "tools": ["Git", "GitHub", "Android Studio", "VS Code"],\n  "interests": ["Offline-First Apps", "Automation Scripts"]\n}`;
       case 'status':
         return `$ ./agz-status --check
-[OK] لمونځ او اذکار (Android / SQLite) ....... COMPLETED
+[OK] لمونځ او اذکار (Android / Kotlin) ........ COMPLETED
 [OK] د هوا حالاتو (Weather App / Web) ........ COMPLETED
-[OK] Student Academic Hub (React / TS) ...... COMPLETED
-[>>] Islamic Companion (Kotlin / Room) ...... IN DEVELOPMENT
-[>>] Automation Toolkit (Node.js / AI) ..... ACTIVE`;
+[>>] Student Academic Portal (React / TS) .... IN DEV
+[>>] Workflow Automation Toolkit (Node / AI) . IN DEV
+[>>] AI Exam Prep Engine (AI / Web) .......... CONCEPT
+[>>] Academic Data Sync Utility (Python / CLI) IN DEV`;
     }
   };
 
@@ -152,13 +153,13 @@ export const developer = {
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-slate-400">title: </span>
-                    <span className="text-emerald-300">"Software Developer"</span>
+                    <span className="text-slate-400">role: </span>
+                    <span className="text-emerald-300">"CS Student · Information Systems"</span>
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-slate-400">education: </span>
-                    <span className="text-emerald-300">"Computer Science (IS)"</span>
+                    <span className="text-slate-400">university: </span>
+                    <span className="text-emerald-300">"Paktia University (2026)"</span>
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
@@ -168,7 +169,7 @@ export const developer = {
                   </div>
                   <div className="pl-4">
                     <span className="text-slate-400">status: </span>
-                    <span className="text-emerald-400 font-medium">"Building & Learning"</span>
+                    <span className="text-emerald-400 font-medium">"Building & Developing Skills"</span>
                   </div>
                   <div>
                     <span className="text-slate-300">{'}'};</span>
@@ -179,7 +180,7 @@ export const developer = {
               {activeTab === 'stack' && (
                 <div className="space-y-1 text-slate-300">
                   <div className="text-slate-500 italic mb-2">
-                    // Verified Core Technologies
+                    // Applied Technologies
                   </div>
                   <div>
                     <span className="text-slate-400">{'{'}</span>
@@ -191,9 +192,9 @@ export const developer = {
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-sky-300">"frameworks"</span>
+                    <span className="text-sky-300">"web"</span>
                     <span className="text-slate-400">: </span>
-                    <span className="text-amber-300">["Android SDK", "React", "Tailwind CSS"]</span>
+                    <span className="text-amber-300">["HTML5", "CSS3", "React", "Tailwind CSS"]</span>
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
@@ -221,25 +222,25 @@ export const developer = {
                   </div>
                   <div className="pt-1 space-y-1 text-slate-300">
                     <div className="flex items-center justify-between">
-                      <span className="text-slate-400">لمونځ او اذکار (Android)</span>
+                      <span className="text-slate-400">لمونځ او اذکار (Android / Kotlin)</span>
                       <span className="text-emerald-400 font-semibold text-[11px]">COMPLETED</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-slate-400">د هوا حالاتو (Weather App)</span>
+                      <span className="text-slate-400">د هوا حالاتو (Weather App / Web)</span>
                       <span className="text-emerald-400 font-semibold text-[11px]">COMPLETED</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-slate-400">Student Academic Hub</span>
-                      <span className="text-emerald-400 font-semibold text-[11px]">COMPLETED</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-400">Islamic Companion</span>
+                      <span className="text-slate-400">Student Academic Portal</span>
                       <span className="text-amber-400 font-semibold text-[11px]">IN DEV</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-400">Workflow Automation Toolkit</span>
+                      <span className="text-indigo-400 font-semibold text-[11px]">IN DEV</span>
                     </div>
                   </div>
                   <div className="pt-2 text-slate-500 text-[11px] flex items-center gap-1.5">
                     <CheckCircle2 size={12} className="text-emerald-400" />
-                    <span>Active workspace ready for new challenges</span>
+                    <span>Active student projects in steady development</span>
                   </div>
                 </div>
               )}

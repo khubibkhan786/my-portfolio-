@@ -67,13 +67,6 @@ export function Footer() {
         {/* Social Links & Back to Top */}
         <div className="flex items-center gap-2.5">
           <a
-            href="mailto:a.zwak.khan@gmail.com"
-            className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white dark:hover:bg-slate-900 transition-all shadow-2xs"
-            aria-label="Email Abdul Jalil Zwak"
-          >
-            <Mail size={15} />
-          </a>
-          <a
             href="https://github.com"
             target="_blank"
             rel="noreferrer"

@@ -1,6 +1,6 @@
 import {motion} from 'framer-motion';
 import {Code2, Database, Laptop, Cpu, BookOpen, Wrench, CheckCircle2} from 'lucide-react';
-import {skillGroups, learningSkills} from '../../data/skills';
+import {skillGroups, skillMaturityTiers} from '../../data/skills';
 import {useLanguage} from '../../context/LanguageContext';
 
 const categoryIcons: Record<string, React.ReactNode> = {
@@ -20,7 +20,7 @@ const categoryTranslations: Record<string, {ps: string; fa: string}> = {
 };
 
 export function Skills() {
-  const {t, language} = useLanguage();
+  const {t, language, isRtl} = useLanguage();
 
   const containerVariants = {
     hidden: {opacity: 0},
@@ -71,7 +71,7 @@ export function Skills() {
           </p>
         </motion.div>
 
-        {/* 5 Real Skill Categories with Project Evidence */}
+        {/* 5 Real Skill Categories with Project Evidence and Animated Progress Bars */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -111,26 +111,50 @@ export function Skills() {
                       {localizedCategoryName}
                     </h3>
 
-                    {/* Skill List with Quiet Evidence Links */}
-                    <div className="space-y-2">
-                      {group.items.map((skill) => (
-                        <div
-                          key={skill.name}
-                          className="p-2.5 rounded-xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
-                        >
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 font-mono">
-                              {skill.name}
-                            </span>
-                            <CheckCircle2 size={13} className="text-emerald-500/80 shrink-0" />
-                          </div>
-                          {skill.evidence && (
-                            <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 truncate">
-                              {skill.evidence}
+                    {/* Skill List with GPU-Accelerated Animated Proficiency Bars */}
+                    <div className="space-y-2.5">
+                      {group.items.map((skill) => {
+                        const pct = skill.proficiency || 85;
+                        return (
+                          <div
+                            key={skill.name}
+                            className="p-2.5 rounded-xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
+                          >
+                            <div className="flex items-center justify-between gap-2 mb-2">
+                              <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 font-mono truncate">
+                                {skill.name}
+                              </span>
+                              <CheckCircle2 size={13} className="text-emerald-500/80 shrink-0" />
                             </div>
-                          )}
-                        </div>
-                      ))}
+
+                            {/* Low-spec 60fps GPU Composited Progress Rail */}
+                            <div
+                              className="h-1.5 w-full bg-slate-200/70 dark:bg-slate-800 rounded-full overflow-hidden"
+                              role="progressbar"
+                              aria-valuenow={pct}
+                              aria-valuemin={0}
+                              aria-valuemax={100}
+                              aria-label={`${skill.name} proficiency`}
+                            >
+                              <motion.div
+                                initial={{scaleX: 0}}
+                                whileInView={{scaleX: pct / 100}}
+                                viewport={{once: true, amount: 0.2}}
+                                transition={{
+                                  duration: 0.85,
+                                  ease: [0.16, 1, 0.3, 1],
+                                  delay: 0.05,
+                                }}
+                                style={{
+                                  transformOrigin: isRtl ? 'right' : 'left',
+                                  willChange: 'transform',
+                                }}
+                                className="h-full w-full rounded-full bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-400 dark:from-indigo-400 dark:via-sky-400 dark:to-emerald-400 transform-gpu"
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -144,7 +168,7 @@ export function Skills() {
           })}
         </motion.div>
 
-        {/* Distinct "Currently Learning" Section */}
+        {/* Distinct Skill Maturity Matrix (Foundations · Developing · Learning Next) */}
         <motion.div
           initial={{opacity: 0, y: 20}}
           whileInView={{opacity: 1, y: 0}}
@@ -155,8 +179,8 @@ export function Skills() {
           {/* Soft Ambient Hover Underglow */}
           <div className="card-soft-underglow" />
 
-          <div className="relative z-10 p-5 sm:p-7 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-xs group-hover:shadow-2xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+          <div className="relative z-10 p-5 sm:p-7 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-xs group-hover:shadow-2xl group-hover:shadow-indigo-500/10 transition-all duration-300 backdrop-blur-sm">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-6">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/60 dark:border-indigo-800/60 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
                   <BookOpen size={16} />
@@ -176,14 +200,38 @@ export function Skills() {
               </span>
             </div>
 
-            <div className="flex flex-wrap gap-2 pt-2">
-              {learningSkills.map((skill) => (
-                <span
-                  key={skill}
-                  className="text-xs text-slate-600 dark:text-slate-300 bg-slate-100/90 dark:bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-200/80 dark:border-slate-700/80 font-medium"
+            {/* 3-Tier Grid: Current Foundations, Actively Developing, Learning Next */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {skillMaturityTiers.map((tier) => (
+                <div
+                  key={tier.id}
+                  className="p-4 rounded-xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-800 flex flex-col justify-between"
                 >
-                  {skill}
-                </span>
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <h4 className="text-xs font-bold font-outfit text-slate-900 dark:text-white">
+                        {tier.title}
+                      </h4>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-indigo-100/70 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200/60 dark:border-indigo-800/60">
+                        {tier.badge}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mb-3 leading-relaxed">
+                      {tier.description}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {tier.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="text-[11px] font-mono text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 px-2 py-1 rounded-md border border-slate-200/80 dark:border-slate-700/80 font-medium"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>

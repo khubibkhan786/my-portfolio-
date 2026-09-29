@@ -8,24 +8,26 @@ export function Contact() {
   const {theme} = useTheme();
   const {t} = useLanguage();
   const isDark = theme === 'dark';
-  const [copied, setCopied] = useState(false);
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [copiedDraft, setCopiedDraft] = useState(false);
+  const [statusNotice, setStatusNotice] = useState('');
 
-  const emailAddress = 'a.zwak.khan@gmail.com';
-
-  const copyEmail = () => {
-    navigator.clipboard.writeText(emailAddress);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
-  };
-
-  const handleMailtoSubmit = (e: React.FormEvent) => {
+  const handleDraftSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(
-      subject || 'Project Inquiry'
-    )}&body=${encodeURIComponent(message)}`;
-    window.location.href = mailtoUrl;
+    if (!subject && !message) {
+      setStatusNotice('Please write a subject or message.');
+      setTimeout(() => setStatusNotice(''), 3000);
+      return;
+    }
+    const fullText = `Subject: ${subject || 'Project Inquiry'}\n\n${message}`;
+    navigator.clipboard.writeText(fullText);
+    setCopiedDraft(true);
+    setStatusNotice(t.contact.emailCopied);
+    setTimeout(() => {
+      setCopiedDraft(false);
+      setStatusNotice('');
+    }, 4000);
   };
 
   return (
@@ -71,37 +73,32 @@ export function Contact() {
             {t.contact.subtitle}
           </p>
 
-          {/* Quick Direct Actions: Send Direct Mail & Copy Email */}
+          {/* Quick Direct Actions: LinkedIn & GitHub */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
             <a
-              href={`mailto:${emailAddress}`}
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs sm:text-sm rounded-xl transition-all duration-200 shadow-md shadow-indigo-600/25 hover:shadow-indigo-600/40 hover:-translate-y-0.5 cursor-pointer"
             >
-              <span>{t.contact.directEmail}</span>
-              <Send size={14} />
+              <Linkedin size={15} />
+              <span>Connect on LinkedIn</span>
             </a>
 
-            <button
-              onClick={copyEmail}
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm rounded-xl border border-slate-200/90 dark:border-slate-700 shadow-2xs hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
             >
-              {copied ? (
-                <>
-                  <Check size={14} className="text-emerald-500" />
-                  <span className="text-emerald-600 dark:text-emerald-400">{t.contact.emailCopied}</span>
-                </>
-              ) : (
-                <>
-                  <Copy size={14} className="text-slate-500 dark:text-slate-400" />
-                  <span>{t.contact.copyEmail}</span>
-                </>
-              )}
-            </button>
+              <Github size={15} />
+              <span>Explore GitHub</span>
+            </a>
           </div>
 
-          {/* Transparent Mailto Prefill Form */}
+          {/* Message Draft Form */}
           <form
-            onSubmit={handleMailtoSubmit}
+            onSubmit={handleDraftSubmit}
             className="p-4 sm:p-5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 text-left rtl:text-right max-w-lg mx-auto mb-8 space-y-3"
           >
             <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
@@ -129,29 +126,37 @@ export function Contact() {
               />
             </div>
 
+            {statusNotice && (
+              <div className="text-[11.5px] font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/50 p-2 rounded-lg">
+                {statusNotice}
+              </div>
+            )}
+
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-1">
               <span className="text-[11px] text-slate-500 dark:text-slate-400">
                 {t.contact.emailClientNote}
               </span>
               <button
                 type="submit"
-                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl transition-colors shrink-0 cursor-pointer"
+                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl transition-colors shrink-0 cursor-pointer flex items-center gap-1.5"
               >
-                {t.contact.openInEmailApp}
+                {copiedDraft ? (
+                  <>
+                    <Check size={13} />
+                    <span>Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy size={13} />
+                    <span>Copy Draft</span>
+                  </>
+                )}
               </button>
             </div>
           </form>
 
           {/* Social Profiles */}
           <div className="pt-6 border-t border-slate-200/80 dark:border-slate-800 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-500 dark:text-slate-400 font-mono">
-            <a
-              href={`mailto:${emailAddress}`}
-              className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center gap-1.5"
-            >
-              <Mail size={14} />
-              <span>{emailAddress}</span>
-            </a>
-            <span aria-hidden="true" className="text-slate-300 dark:text-slate-700 hidden sm:inline">·</span>
             <a
               href="https://github.com"
               target="_blank"
@@ -161,7 +166,7 @@ export function Contact() {
               <Github size={14} />
               <span>GitHub</span>
             </a>
-            <span aria-hidden="true" className="text-slate-300 dark:text-slate-700 hidden sm:inline">·</span>
+            <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
             <a
               href="https://linkedin.com"
               target="_blank"
