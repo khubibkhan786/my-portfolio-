@@ -21,6 +21,7 @@ export function Navbar() {
       {name: t.nav.home, href: '#home', id: 'home'},
       {name: t.nav.about, href: '#about', id: 'about'},
       {name: t.nav.skills, href: '#skills', id: 'skills'},
+      {name: t.nav.roadmap, href: '#roadmap', id: 'roadmap'},
       {name: t.nav.services, href: '#services', id: 'services'},
       {name: t.nav.projects, href: '#projects', id: 'projects'},
       {name: t.nav.journey, href: '#journey', id: 'journey'},

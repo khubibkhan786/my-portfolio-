@@ -11,6 +11,7 @@ export function Footer() {
       {name: t.nav.home, href: '#home'},
       {name: t.nav.about, href: '#about'},
       {name: t.nav.skills, href: '#skills'},
+      {name: t.nav.roadmap, href: '#roadmap'},
       {name: t.nav.services, href: '#services'},
       {name: t.nav.projects, href: '#projects'},
       {name: t.nav.journey, href: '#journey'},

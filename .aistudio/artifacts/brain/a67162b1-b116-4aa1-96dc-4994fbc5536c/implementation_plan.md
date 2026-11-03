@@ -1,40 +1,100 @@
-# Implementation Plan: AGZ Developer Portfolio — Master Redesign & Typographic Harmony (Completed)
+# Implementation Plan: AGZ Developer Portfolio — Final Master Update (Completed)
 
-This plan records the comprehensive second-stage refinement and optimization of the AGZ Developer Portfolio for Abdul Jalil Zwak (Computer Science student at Paktia University specializing in Information Systems).
-
----
-
-## 1. Core Architectural & Structural Achievements
-
-### A. About Section Structural Separation
-- **Flagship Project Removal**: Completely removed the *Islamic Companion* (*لمونځ او اذکار*) project card from the About section, ensuring it is exclusively showcased within the Projects section.
-- **Genuine Academic & Engineering Identity**: Redesigned About around Abdul Jalil Zwak's verified educational background at Paktia University, Information Systems specialization, 3 structured focus pillars, an expandable principles accordion, and an Academic Direction card with primary engineering interests.
-- **Trilingual Accuracy**: Updated English, Pashto, and Dari copy to reflect genuine student learning, development principles, and real project work.
-
-### B. Skills Section Restructuring & Elimination of Artificial Stats
-- **5 Verified Categories**: Re-organized skills strictly into `Programming Languages`, `Android Development`, `Web Development`, `Databases`, and `Development Tools`.
-- **Truthful Presentation**: Eliminated artificial proficiency percentages and progress bars in favor of clean cards with verified evidence descriptions.
-- **3-Tier Learning Roadmap**: Implemented a compact, structured roadmap covering `Established Foundations`, `Actively Developing`, and `Future Learning Goals`.
-
-### C. Global Typographic Harmony & Monospace Discipline
-- **Root Cause Fix**: Removed `[dir="ltr"]` from the global `font-family: "JetBrains Mono" !important` selector in `src/index.css`. Scoped `JetBrains Mono` strictly to genuine code, terminal output (`DeveloperTechPanel`), and code blocks.
-- **Sans-Serif Restoration**: Restored `Plus Jakarta Sans` as the primary font for English and `Vazirmatn` for Pashto and Dari across all section headings, tags, body prose, filter chips, buttons, milestone years, and metadata separators.
-- **Systematic Cleanup**: Removed artificial `font-mono` utilities from `Hero.tsx`, `Services.tsx`, `Projects.tsx`, `Journey.tsx`, and `Contact.tsx`.
-
-### D. Featured Project Showcase & Filter System
-- **Flagship Spotlight**: Elevated *لمونځ او اذکار* (*Lemunz Aw Azkar*) to the prominent featured position with high-definition preview, core features bullet list, real tech stack (Kotlin, Room Database, SQLite), and direct case study / GitHub actions.
-- **Responsive Filter Grid**: Dynamic category filters (`All`, `Mobile`, `Web`, `Automation`, `AI`) with category count pills and empty state fallbacks.
-
-### E. Low-Power Hardware Optimization (Celeron N4000 Compliance)
-- **Eliminated Heavy 3D Overheads**: Removed unused Three.js dependencies (`three`, `@react-three/fiber`, `@react-three/drei`).
-- **Compositor-Only Animations**: Replaced layout-thrashing animations with lightweight CSS keyframes and hardware-composited transforms.
-- **Ambient Cursor Safety**: Disabled custom cursor on touch/coarse pointers and under `prefers-reduced-motion`.
+This document records the comprehensive final master update for the AGZ Developer Portfolio of Abdul Jalil Zwak (Computer Science student at Paktia University specializing in Information Systems).
 
 ---
 
-## 2. Verification Results
-- **TypeScript Typecheck (`tsc --noEmit`)**: 0 errors, 0 warnings.
-- **Applet Compilation (`compile_applet`)**: Succeeded.
-- **Production Build (`npm run build`)**: Succeeded (1.16s build time).
-- **Multilingual Support**: Fully verified across English (LTR), Pashto (RTL), and Dari (RTL).
-- **Theme Support**: Clean contrast and soft underglow verified in both Light and Dark modes.
+## 1. Professional Identity & Authentic Positioning
+
+- **Role & Title**: `Software Developer` (authentic student-builder positioning without artificial senior/expert claims).
+- **Core Headline**: *"Building Thoughtful Software. Solving Real Problems."*
+- **Developer Contribution Model**: Explicitly emphasizes practical contributions across product planning, software architecture, UI design decisions, implementation guidance, code reviews, debugging, and continuous refinement.
+- **Workflow Realism**: Transparently communicates modern development practices, including practical AI-assisted tools alongside rigorous manual review and architectural ownership.
+- **Natural Trilingual Copy**: Idiomatic, fluent translations in English (`en`), Pashto (`ps`), and Dari (`fa`) avoiding automated or robotic phrasing.
+
+---
+
+## 2. Skills Restructuring & 4-Tier Accuracy
+
+Eliminated all artificial percentage meters, progress bars, and arbitrary mastery ratings. Reorganized skills into 4 distinct, truthful tiers:
+
+1. **Practical Application**:
+   - Technologies genuinely used in real projects with concrete implementation evidence (e.g., `Kotlin`, `React 19`, `TypeScript`, `Tailwind CSS 4`, `Git & GitHub`, `Vite`).
+   - Direct associations with verified projects (`lemunz-azkar`, `student-portal-hub`).
+2. **Currently Learning**:
+   - Active university coursework, academic lab exercises, and practical exploration (`SQL (Queries & Joins)`, `MySQL (Schema & Relations)`, `Software Engineering Principles`).
+3. **Foundational Knowledge**:
+   - Theoretical understanding, core concepts, and developing capabilities (`Java & OOP Fundamentals`, `Node.js & Express Basics`, `Data Structures & Algorithms`).
+4. **Future Software Engineering Roadmap**:
+   - Extracted into a dedicated, prominent section (`#roadmap`) with visual progression stages and status indicators.
+
+---
+
+## 3. Dedicated 7-Stage Software Engineering Roadmap (`FutureRoadmap.tsx`)
+
+A dedicated section visually mapping Abdul Jalil Zwak's path from university foundations to full-stack engineering:
+
+- **Stage 1**: Programming Foundations (`completed` — Java, Kotlin, OOP, Data Structures).
+- **Stage 2**: Database Engineering (`in-progress` — SQL, MySQL, Normalization, Query Optimization).
+- **Stage 3**: Modern Web Development (`completed` — React 19, TypeScript, Tailwind CSS, Responsive Design).
+- **Stage 4**: Backend Engineering (`planned` — Architectural Note: *Explicitly leaves the path open between Option A: Java / Spring Boot vs Option B: TypeScript / Node.js until relational database and OOP foundations are solidified*).
+- **Stage 5**: Mobile App Development (`in-progress` — Native Android, Kotlin, Room Database, SQLite).
+- **Stage 6**: AI-Integrated Software (`planned` — Gemini API, Local Models, Intelligent Querying).
+- **Stage 7**: Full-Stack Software Engineering (`planned` — Production Architecture, CI/CD, Microservices, System Design).
+
+---
+
+## 4. 9-Dimensional Project Architecture & Case Study Modal (`Projects.tsx`)
+
+Every project is structured around 9 authentic dimensions:
+1. **Overview & Summary**: Real product context.
+2. **Product Vision**: Purpose and target users.
+3. **Design & Planning**: Workflow, layout choices, and UX decisions.
+4. **Architecture**: Offline-first, reactive state, component isolation.
+5. **Implemented Features**: Verified, functional feature list.
+6. **Tech Actually Used**: Honest tech stack (e.g., Kotlin, Room Database, SQLite in *لمونځ او اذکار*).
+7. **Challenges & Solutions**: Concrete engineering trade-offs (e.g., offline prayer calculations without drift).
+8. **Current Status**: Active production / APK release / prototype.
+9. **Verified Developer Contribution**: Clear breakdown of planning, architecture, design, and code review.
+
+Enhanced "Behind the Build" interactive case study modal with 3 structured tabs:
+- *Tab 1: Overview & Vision*
+- *Tab 2: Architecture & Design*
+- *Tab 3: Contribution & Engineering Challenges*
+
+---
+
+## 5. Practical Services & Responsible Delivery Process (`Services.tsx`)
+
+- **6 Realistic Services**:
+  1. *Responsive Web Development*
+  2. *Developer & Student Portfolios*
+  3. *UI Implementation & Prototyping*
+  4. *Website Improvements & Performance*
+  5. *Database-Driven Applications (Academic / Small Business)*
+  6. *Android Application Development (Native Kotlin)*
+- **7-Step Responsible Delivery Workflow**:
+  1. *Requirement Discovery*
+  2. *Product Planning & Wireframing*
+  3. *Architecture & Tech Selection*
+  4. *Implementation & Iterative Build*
+  5. *Testing & Problem Solving*
+  6. *Refinement & Polish*
+  7. *Delivery & Future Roadmap*
+
+---
+
+## 6. Developer Tech Panel & Navigation (`DeveloperTechPanel.tsx`, `Navbar.tsx`, `Footer.tsx`)
+
+- Updated quick-view developer panel with 3 tabs: `Profile` (authentic credentials & academic status), `Tech Focus` (practical tools & active coursework), and `Roadmap` (active 7-stage software engineering path).
+- Added `#roadmap` link to desktop, mobile navigation drawers, and footer site map.
+
+---
+
+## 7. Performance & Verification Results
+
+- **Celeron N4000 Efficiency**: Zero heavy 3D runtimes; lightweight compositor-only transitions; smooth on 4GB-16GB machines.
+- **TypeScript Verification (`tsc --noEmit`)**: 0 errors, 0 warnings.
+- **Compilation Check (`compile_applet`)**: Build succeeded.
+- **Production Build (`npm run build`)**: 0 errors, 1.16s build time.
+- **RTL / LTR & Theme Consistency**: Verified across English, Pashto, and Dari in both Dark and Light modes.

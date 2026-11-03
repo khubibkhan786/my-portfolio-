@@ -15,8 +15,8 @@ interface TabItem {
 
 const tabs: TabItem[] = [
   {id: 'profile', label: 'Profile', filename: 'Developer.ts', icon: User},
-  {id: 'tech', label: 'Tech Stack', filename: 'TechStack.json', icon: Layers},
-  {id: 'focus', label: 'Current Focus', filename: 'ActiveFocus.sh', icon: Terminal},
+  {id: 'tech', label: 'Tech Focus', filename: 'TechnicalFocus.json', icon: Layers},
+  {id: 'focus', label: 'Roadmap', filename: 'EngineeringRoadmap.sh', icon: Terminal},
 ];
 
 export function DeveloperTechPanel() {
@@ -28,30 +28,32 @@ export function DeveloperTechPanel() {
   const getCodeContent = () => {
     switch (activeTab) {
       case 'profile':
-        return `// AGZ / Student Developer Profile
+        return `// AGZ / Developer Profile
 export const developer = {
   name: "Abdul Jalil Zwak",
-  identity: "Computer Science Student",
-  field: "Information Systems",
+  title: "Software Developer",
+  education: "Computer Science · Information Systems",
   university: "Paktia University (Class of 2026)",
+  positioning: "Building thoughtful software. Solving real problems.",
+  workflow: "Product planning, architecture, implementation & code review",
   interests: [
-    "Android Applications",
-    "Responsive Web Interfaces",
-    "Relational Databases",
-    "Offline-First Architecture"
-  ],
-  direction: "Practical software engineering & accessible digital tools",
-  values: "Reliable code, lightweight performance, zero telemetry"
+    "Software Engineering",
+    "Full-Stack Development",
+    "Mobile (Native Android)",
+    "AI-Integrated Systems"
+  ]
 };`;
       case 'tech':
-        return `{\n  "languages": ["Kotlin", "Java", "JavaScript", "TypeScript", "SQL"],\n  "mobile": ["Android SDK", "Room Database", "SQLite", "Android Studio"],\n  "web": ["React", "Tailwind CSS", "HTML5", "CSS3"],\n  "tools": ["Git & GitHub", "VS Code", "Node.js"],\n  "paradigms": ["Offline-First", "Relational Modeling", "Responsive UI"]\n}`;
+        return `{\n  "practical_application": ["Kotlin", "React 19", "TypeScript", "Tailwind CSS", "HTML5", "CSS3", "JavaScript"],\n  "currently_learning": ["SQL", "MySQL (Relational Databases)", "Software Architecture"],\n  "foundational_knowledge": ["Java (OOP)", "Node.js Basics", "Data Structures"],\n  "tools": ["Git & GitHub", "Android Studio", "VS Code"]\n}`;
       case 'focus':
-        return `$ ./agz-status --verified
-[OK] لمونځ او اذکار (Android / Kotlin / Room) ........ COMPLETED
-[OK] د هوا حالاتو (Weather App / Web) ................. COMPLETED
-[>>] Student Academic Portal (React / TypeScript) ..... IN DEVELOPMENT
-[>>] Workflow Automation Toolkit (Node.js / CLI) ...... IN DEVELOPMENT
-[--] Backend REST APIs & Coroutines ................... LEARNING TARGET`;
+        return `$ cat ./software-engineering-roadmap.md
+1. Programming Foundations .... Java, OOP, Data Structures, Problem Solving
+2. Database Engineering ....... SQL, MySQL, Relational Design, Normalization
+3. Modern Web Development ..... TypeScript, React 19, Responsive UI, Web APIs
+4. Backend Architecture ....... [Path Open: Java/Spring Boot vs TS/Node.js]
+5. Mobile Engineering ......... Kotlin, Android Jetpack, Room, Offline-First
+6. AI-Integrated Software ..... Secure AI APIs, Chat UX, Streaming, RAG
+7. Full-Stack Engineering ..... Complete End-to-End Multi-Platform Systems`;
     }
   };
 
@@ -144,17 +146,22 @@ export const developer = {
               {activeTab === 'profile' && (
                 <div className="space-y-1 text-slate-300">
                   <div className="text-slate-500 italic mb-2">
-                    // Verified Student Developer Profile
+                    // Verified Developer Profile
                   </div>
                   <div>
                     <span className="text-purple-400 font-semibold">export const </span>
-                    <span className="text-sky-300">student </span>
+                    <span className="text-sky-300">developer </span>
                     <span className="text-slate-400">= </span>
                     <span className="text-slate-300">{'{'}</span>
                   </div>
                   <div className="pl-4">
                     <span className="text-slate-400">name: </span>
                     <span className="text-emerald-300">"Abdul Jalil Zwak"</span>
+                    <span className="text-slate-400">,</span>
+                  </div>
+                  <div className="pl-4">
+                    <span className="text-slate-400">role: </span>
+                    <span className="text-emerald-300">"Software Developer"</span>
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
@@ -168,13 +175,13 @@ export const developer = {
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-slate-400">interests: </span>
-                    <span className="text-amber-300">["Android", "Web UI", "SQL", "Offline Apps"]</span>
+                    <span className="text-slate-400">headline: </span>
+                    <span className="text-amber-300">"Building Thoughtful Software. Solving Real Problems."</span>
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
                     <span className="text-slate-400">direction: </span>
-                    <span className="text-sky-300">"Practical software engineering with reliable code"</span>
+                    <span className="text-sky-300">"Practical full-stack, native mobile & AI-integrated software"</span>
                   </div>
                   <div>
                     <span className="text-slate-300">{'}'};</span>
@@ -182,37 +189,37 @@ export const developer = {
                 </div>
               )}
 
-              {/* Tab 2: Tech Stack (TechStack.json) */}
+              {/* Tab 2: Tech Stack (TechnicalFocus.json) */}
               {activeTab === 'tech' && (
                 <div className="space-y-1 text-slate-300">
                   <div className="text-slate-500 italic mb-2">
-                    // Genuine Studied & Applied Technologies
+                    // Categorized Technical Proficiencies
                   </div>
                   <div>
                     <span className="text-slate-400">{'{'}</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-sky-300">"languages"</span>
+                    <span className="text-sky-300">"practical_application"</span>
                     <span className="text-slate-400">: </span>
-                    <span className="text-amber-300">["Kotlin", "Java", "JavaScript", "TypeScript", "SQL"]</span>
+                    <span className="text-emerald-300">["Kotlin", "React 19", "TypeScript", "Tailwind CSS", "HTML/CSS"]</span>
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-sky-300">"mobile"</span>
+                    <span className="text-sky-300">"currently_learning"</span>
                     <span className="text-slate-400">: </span>
-                    <span className="text-amber-300">["Android SDK", "Room Database", "SQLite", "Android Studio"]</span>
+                    <span className="text-amber-300">["SQL", "MySQL (Relational Databases)", "Software Architecture"]</span>
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-sky-300">"web"</span>
+                    <span className="text-sky-300">"foundational_knowledge"</span>
                     <span className="text-slate-400">: </span>
-                    <span className="text-amber-300">["React", "Tailwind CSS", "HTML5", "CSS3"]</span>
+                    <span className="text-indigo-300">["Java (OOP)", "Node.js Basics", "Data Structures"]</span>
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
                     <span className="text-sky-300">"tools"</span>
                     <span className="text-slate-400">: </span>
-                    <span className="text-amber-300">["Git & GitHub", "VS Code", "Node.js"]</span>
+                    <span className="text-slate-300">["Git & GitHub", "Android Studio", "VS Code"]</span>
                   </div>
                   <div>
                     <span className="text-slate-400">{'}'}</span>
@@ -220,47 +227,68 @@ export const developer = {
                 </div>
               )}
 
-              {/* Tab 3: Current Focus (ActiveFocus.sh) */}
+              {/* Tab 3: Current Focus (EngineeringRoadmap.sh) */}
               {activeTab === 'focus' && (
                 <div className="space-y-1.5 text-xs text-slate-300 font-mono">
                   <div className="text-emerald-400 flex items-center gap-1.5 mb-2">
                     <span className="text-slate-500">$</span>
-                    <span>./agz-status --verified-projects</span>
+                    <span>cat ./software-engineering-roadmap.md</span>
                   </div>
 
-                  <div className="space-y-1 text-slate-300">
+                  <div className="space-y-1 text-slate-300 text-[11px] leading-relaxed">
                     <div className="flex items-center justify-between gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                      <span className="text-slate-300 truncate">لمونځ او اذکار (Android / Kotlin)</span>
-                      <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/70 px-2 py-0.5 rounded border border-emerald-800/60 shrink-0">
-                        COMPLETED
+                      <span className="text-slate-200">1. Programming Foundations (Java, OOP)</span>
+                      <span className="text-[10px] font-bold text-sky-400 bg-sky-950/70 px-2 py-0.5 rounded border border-sky-800/60 shrink-0">
+                        FOUNDATIONAL
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                      <span className="text-slate-300 truncate">د هوا حالاتو (Weather App / Web)</span>
+                      <span className="text-slate-200">2. Database Engineering (SQL & MySQL)</span>
                       <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/70 px-2 py-0.5 rounded border border-emerald-800/60 shrink-0">
-                        COMPLETED
+                        LEARNING
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                      <span className="text-slate-300 truncate">Student Academic Portal (React / TS)</span>
+                      <span className="text-slate-200">3. Modern Web (TypeScript & React 19)</span>
+                      <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/70 px-2 py-0.5 rounded border border-emerald-800/60 shrink-0">
+                        PRACTICAL
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
+                      <span className="text-slate-200">4. Backend (Spring Boot vs Node.js)</span>
+                      <span className="text-[10px] font-bold text-purple-400 bg-purple-950/70 px-2 py-0.5 rounded border border-purple-800/60 shrink-0">
+                        PATH OPEN
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
+                      <span className="text-slate-200">5. Mobile (Kotlin & Native Android)</span>
+                      <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/70 px-2 py-0.5 rounded border border-emerald-800/60 shrink-0">
+                        PRACTICAL
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
+                      <span className="text-slate-200">6. AI-Integrated Software (Secure APIs)</span>
                       <span className="text-[10px] font-bold text-amber-400 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800/60 shrink-0">
-                        IN DEV
+                        ROADMAP
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                      <span className="text-slate-300 truncate">Workflow Automation Toolkit (Node.js)</span>
+                      <span className="text-slate-200">7. Full-Stack Software Engineering</span>
                       <span className="text-[10px] font-bold text-indigo-400 bg-indigo-950/70 px-2 py-0.5 rounded border border-indigo-800/60 shrink-0">
-                        IN DEV
+                        LONG-TERM
                       </span>
                     </div>
                   </div>
 
                   <div className="pt-2 text-slate-400 text-[11px] flex items-center gap-1.5">
                     <ShieldCheck size={12} className="text-emerald-400 shrink-0" />
-                    <span>Real coursework & personal project deliverables only</span>
+                    <span>Progression grounded in verified coursework and real building</span>
                   </div>
                 </div>
               )}

@@ -7,24 +7,26 @@ import {
   ArrowUpRight,
   X,
   Layers,
-  Terminal,
   Smartphone,
   Globe,
-  Sparkles,
   LayoutGrid,
   Star,
-  CheckCircle2
+  CheckCircle2,
+  Wrench,
+  Compass,
+  Cpu,
+  AlertCircle
 } from 'lucide-react';
 import {projects} from '../../data/projects';
 import {Project} from '../../types';
 import {useLanguage} from '../../context/LanguageContext';
 import {cn} from '../../lib/utils';
 
-type FilterCategory = 'all' | 'ai' | 'web' | 'automation' | 'mobile';
+type FilterCategory = 'all' | 'mobile' | 'web' | 'automation' | 'ai';
 
 interface FilterOption {
   key: FilterCategory;
-  labelKey: 'all' | 'ai' | 'web' | 'automation' | 'mobile';
+  labelKey: 'all' | 'mobile' | 'web' | 'automation' | 'ai';
   icon: typeof LayoutGrid;
   accent: string;
 }
@@ -33,8 +35,8 @@ const FILTER_OPTIONS: FilterOption[] = [
   {key: 'all', labelKey: 'all', icon: LayoutGrid, accent: 'group-hover:text-indigo-500'},
   {key: 'mobile', labelKey: 'mobile', icon: Smartphone, accent: 'group-hover:text-emerald-500'},
   {key: 'web', labelKey: 'web', icon: Globe, accent: 'group-hover:text-sky-500'},
-  {key: 'automation', labelKey: 'automation', icon: Terminal, accent: 'group-hover:text-amber-500'},
-  {key: 'ai', labelKey: 'ai', icon: Sparkles, accent: 'group-hover:text-purple-500'},
+  {key: 'automation', labelKey: 'automation', icon: Wrench, accent: 'group-hover:text-amber-500'},
+  {key: 'ai', labelKey: 'ai', icon: Cpu, accent: 'group-hover:text-purple-500'},
 ];
 
 interface ProjectCardProps {
@@ -157,7 +159,7 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
 
         {/* Card Content & Metadata */}
         <div className="p-5 flex flex-col flex-grow relative z-30 text-left rtl:text-right">
-          {/* Unboxed Metadata Line with typographic separators */}
+          {/* Metadata Line */}
           <div className="flex items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2 font-medium">
             <div className="flex items-center gap-1.5 flex-wrap">
               <span className="text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide text-[11px] uppercase">
@@ -214,7 +216,7 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
                 target="_blank"
                 rel="noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="text-[11px] text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1"
+                className="text-[11px] text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 font-medium"
               >
                 <Github size={12} />
                 <span>{t.projects.sourceCode}</span>
@@ -235,6 +237,7 @@ export function Projects() {
   const {t, language, isRtl} = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<FilterCategory>('all');
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
+  const [modalTab, setModalTab] = useState<'overview' | 'architecture' | 'behind'>('overview');
 
   // Close modal on Escape key
   useEffect(() => {
@@ -251,6 +254,7 @@ export function Projects() {
   useEffect(() => {
     if (activeModalProject) {
       document.body.style.overflow = 'hidden';
+      setModalTab('overview');
     } else {
       document.body.style.overflow = '';
     }
@@ -259,7 +263,6 @@ export function Projects() {
     };
   }, [activeModalProject]);
 
-  // Project matching function for categories ('all', 'ai', 'web', 'automation', 'mobile')
   const isProjectInFilter = (project: Project, filter: FilterCategory): boolean => {
     if (filter === 'all') return true;
     if (project.filterCategories && project.filterCategories.length > 0) {
@@ -268,51 +271,19 @@ export function Projects() {
       if (filter === 'automation') return project.filterCategories.includes('Automation');
       if (filter === 'mobile') return project.filterCategories.includes('Mobile');
     }
-    if (filter === 'ai') {
-      return !!(
-        project.category.toLowerCase().includes('ai') ||
-        project.technologies.some((tech) => tech.toLowerCase().includes('ai'))
-      );
-    }
-    if (filter === 'web') {
-      return !!(
-        project.category.toLowerCase().includes('web') ||
-        project.technologies.some((tech) =>
-          ['react', 'typescript', 'html5', 'javascript', 'tailwind css', 'weather api'].includes(tech.toLowerCase())
-        )
-      );
-    }
-    if (filter === 'automation') {
-      return !!(
-        project.category.toLowerCase().includes('automation') ||
-        project.technologies.some((tech) =>
-          tech.toLowerCase().includes('automation') || tech.toLowerCase().includes('node') || tech.toLowerCase().includes('json')
-        )
-      );
-    }
-    if (filter === 'mobile') {
-      return !!(
-        project.category.toLowerCase().includes('android') ||
-        project.technologies.some((tech) =>
-          ['java', 'kotlin', 'android', 'android sdk', 'room database', 'sqlite'].includes(tech.toLowerCase())
-        )
-      );
-    }
     return true;
   };
 
-  // Pre-calculate counts for each filter option
   const categoryCounts = useMemo(() => {
     return {
       all: projects.length,
-      ai: projects.filter((p) => isProjectInFilter(p, 'ai')).length,
+      mobile: projects.filter((p) => isProjectInFilter(p, 'mobile')).length,
       web: projects.filter((p) => isProjectInFilter(p, 'web')).length,
       automation: projects.filter((p) => isProjectInFilter(p, 'automation')).length,
-      mobile: projects.filter((p) => isProjectInFilter(p, 'mobile')).length,
+      ai: projects.filter((p) => isProjectInFilter(p, 'ai')).length,
     };
   }, []);
 
-  // Filter projects dynamically
   const filteredProjects = useMemo(() => {
     return projects.filter((p) => isProjectInFilter(p, selectedCategory));
   }, [selectedCategory]);
@@ -341,6 +312,9 @@ export function Projects() {
   const featuredFeatures =
     (language !== 'en' && featuredProject.translations?.[language as 'ps' | 'fa']?.features) ||
     featuredProject.features;
+  const featuredVision =
+    (language !== 'en' && featuredProject.translations?.[language as 'ps' | 'fa']?.productVision) ||
+    featuredProject.productVision;
 
   // Modal localized project details
   const modalTitle = activeModalProject
@@ -359,14 +333,24 @@ export function Projects() {
       activeModalProject.fullDescription
     : '';
 
-  const modalProblem = activeModalProject
-    ? (language !== 'en' && activeModalProject.translations?.[language as 'ps' | 'fa']?.problem) ||
-      activeModalProject.problem
+  const modalVision = activeModalProject
+    ? (language !== 'en' && activeModalProject.translations?.[language as 'ps' | 'fa']?.productVision) ||
+      activeModalProject.productVision
     : '';
 
-  const modalSolution = activeModalProject
-    ? (language !== 'en' && activeModalProject.translations?.[language as 'ps' | 'fa']?.solution) ||
-      activeModalProject.solution
+  const modalPlanning = activeModalProject
+    ? (language !== 'en' && activeModalProject.translations?.[language as 'ps' | 'fa']?.designAndPlanning) ||
+      activeModalProject.designAndPlanning
+    : '';
+
+  const modalArchitecture = activeModalProject
+    ? (language !== 'en' && activeModalProject.translations?.[language as 'ps' | 'fa']?.architecture) ||
+      activeModalProject.architecture
+    : '';
+
+  const modalContribution = activeModalProject
+    ? (language !== 'en' && activeModalProject.translations?.[language as 'ps' | 'fa']?.developerContribution) ||
+      activeModalProject.developerContribution
     : '';
 
   const modalFeatures = activeModalProject
@@ -374,16 +358,21 @@ export function Projects() {
       activeModalProject.features
     : [];
 
+  const modalChallenges = activeModalProject
+    ? (language !== 'en' && activeModalProject.translations?.[language as 'ps' | 'fa']?.challengesAndSolutions) ||
+      activeModalProject.challengesAndSolutions || []
+    : [];
+
   return (
     <section
       id="projects"
-      className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/50 dark:bg-[#07090e] relative overflow-hidden transition-colors duration-300"
+      className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/50 dark:bg-[#07090e] relative overflow-hidden transition-colors duration-300"
     >
-      {/* Restrained Atmospheric Ambient Glow */}
+      {/* Ambient Glow */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
         <div className="absolute top-1/4 -left-20 w-[420px] h-[420px] rounded-full bg-gradient-to-br from-indigo-500/10 via-sky-500/8 to-transparent dark:from-indigo-600/10 dark:via-sky-600/8 dark:to-transparent blur-[85px]" />
         <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] rounded-full bg-gradient-to-tl from-emerald-500/10 via-indigo-500/8 to-transparent dark:from-emerald-600/10 dark:via-indigo-600/8 dark:to-transparent blur-[85px]" />
-        <div className="absolute inset-0 bg-tech-grid-light dark:bg-tech-grid-dark opacity-20" />
+        <div className="absolute inset-0 bg-tech-grid-light dark:bg-tech-grid-dark opacity-15" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -510,7 +499,7 @@ export function Projects() {
                     </div>
                   )}
 
-                  {/* Gradient Overlay */}
+                  {/* Gradient Overlay on mobile */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent lg:hidden" />
 
                   {/* Flagship Badges */}
@@ -520,7 +509,7 @@ export function Projects() {
                       <span>Featured Project</span>
                     </span>
                     <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-slate-900/85 text-white backdrop-blur-md border border-white/15">
-                      {featuredProject.platformBadge || 'Android'}
+                      {featuredProject.platformBadge || 'Native Android'}
                     </span>
                   </div>
 
@@ -547,29 +536,24 @@ export function Projects() {
                       {featuredTitle}
                     </h3>
 
-                    <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-5">
+                    <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
                       {featuredDesc}
                     </p>
 
-                    {/* Key Features Bullet List (Truthful) */}
-                    <div className="mb-5 space-y-2">
-                      <div className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 font-outfit">
-                        {t.projects.keyFeatures}:
+                    {/* Product Vision Highlight */}
+                    {featuredVision && (
+                      <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-800 mb-4 text-xs text-slate-700 dark:text-slate-300">
+                        <strong className="text-indigo-600 dark:text-indigo-400 font-outfit block mb-0.5">
+                          {t.projects.productVisionTitle}:
+                        </strong>
+                        <span className="text-[12px] leading-relaxed">{featuredVision}</span>
                       </div>
-                      <ul className="space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
-                        {featuredFeatures.slice(0, 4).map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    )}
 
                     {/* Actual Technology Stack */}
                     <div className="mb-6" dir="ltr">
                       <div className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 font-outfit mb-2 text-left rtl:text-right">
-                        {t.projects.techStack}:
+                        {t.projects.techStackTitle}:
                       </div>
                       <div className="flex flex-wrap gap-1.5">
                         {featuredProject.technologies.map((tech) => (
@@ -584,7 +568,7 @@ export function Projects() {
                     </div>
                   </div>
 
-                  {/* Actions: View Case Study, GitHub link, Live Demo if available */}
+                  {/* Actions: View Case Study, GitHub link */}
                   <div className="pt-4 border-t border-slate-200/80 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
                     <button
                       onClick={() => setActiveModalProject(featuredProject)}
@@ -604,17 +588,6 @@ export function Projects() {
                         >
                           <Github size={14} />
                           <span>{t.projects.sourceCode}</span>
-                        </a>
-                      )}
-                      {featuredProject.liveDemo && (
-                        <a
-                          href={featuredProject.liveDemo}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
-                        >
-                          <ExternalLink size={13} />
-                          <span>{t.projects.liveDemo}</span>
                         </a>
                       )}
                     </div>
@@ -663,7 +636,7 @@ export function Projects() {
         ) : null}
       </div>
 
-      {/* Case Study Modal Dialog */}
+      {/* Structured "Behind the Build" Case Study Modal Dialog */}
       <AnimatePresence>
         {activeModalProject && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
@@ -682,12 +655,12 @@ export function Projects() {
               animate={{opacity: 1, scale: 1, y: 0}}
               exit={{opacity: 0, scale: 0.95, y: 15}}
               transition={{duration: 0.3, ease: [0.16, 1, 0.3, 1]}}
-              className="relative w-full max-w-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl z-10 overflow-hidden my-8 max-h-[90vh] flex flex-col text-left rtl:text-right"
+              className="relative w-full max-w-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl z-10 overflow-hidden my-6 max-h-[92vh] flex flex-col text-left rtl:text-right"
             >
               {/* Modal Header */}
               <div className="p-6 border-b border-slate-200/80 dark:border-slate-800 flex items-start justify-between gap-4">
                 <div>
-                  <div className="flex items-center gap-2 text-xs text-indigo-600 dark:text-indigo-400 mb-1 font-medium">
+                  <div className="flex items-center gap-2 text-xs text-indigo-600 dark:text-indigo-400 mb-1.5 font-medium">
                     <span>{modalCategory}</span>
                     <span>·</span>
                     <span>{activeModalProject.year}</span>
@@ -712,10 +685,47 @@ export function Projects() {
                 </button>
               </div>
 
-              {/* Modal Body */}
+              {/* Modal Navigation Tabs (Overview, Architecture, Behind the Build) */}
+              <div className="px-6 pt-3 pb-2 border-b border-slate-200/70 dark:border-slate-800/70 flex items-center gap-2 bg-slate-50/50 dark:bg-slate-900/50 overflow-x-auto">
+                <button
+                  onClick={() => setModalTab('overview')}
+                  className={cn(
+                    'px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap',
+                    modalTab === 'overview'
+                      ? 'bg-indigo-600 text-white shadow-2xs'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  )}
+                >
+                  1. Overview & Vision
+                </button>
+                <button
+                  onClick={() => setModalTab('architecture')}
+                  className={cn(
+                    'px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap',
+                    modalTab === 'architecture'
+                      ? 'bg-indigo-600 text-white shadow-2xs'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  )}
+                >
+                  2. Architecture & Design
+                </button>
+                <button
+                  onClick={() => setModalTab('behind')}
+                  className={cn(
+                    'px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap',
+                    modalTab === 'behind'
+                      ? 'bg-indigo-600 text-white shadow-2xs'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  )}
+                >
+                  3. Behind the Build (Contribution)
+                </button>
+              </div>
+
+              {/* Modal Body with 3 Tab Views */}
               <div className="p-6 overflow-y-auto space-y-6">
-                {activeModalProject.image && (
-                  <div className="rounded-2xl overflow-hidden aspect-[16/9] max-h-[260px] bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-800">
+                {activeModalProject.image && modalTab === 'overview' && (
+                  <div className="rounded-2xl overflow-hidden aspect-[16/9] max-h-[240px] bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-800">
                     <img
                       src={activeModalProject.image}
                       alt={modalTitle}
@@ -724,68 +734,128 @@ export function Projects() {
                   </div>
                 )}
 
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-outfit">
-                    Overview
-                  </h4>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    {modalFullDescription}
-                  </p>
-                </div>
+                {/* Tab 1: Overview & Vision */}
+                {modalTab === 'overview' && (
+                  <div className="space-y-5">
+                    <div>
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-outfit">
+                        Project Overview
+                      </h4>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        {modalFullDescription}
+                      </p>
+                    </div>
 
-                {modalProblem && (
-                  <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-outfit">
-                      {t.projects.problemTitle}
-                    </h4>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                      {modalProblem}
-                    </p>
+                    {modalVision && (
+                      <div className="p-4 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/30 border border-indigo-200/70 dark:border-indigo-900/50">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300 mb-1.5 font-outfit">
+                          {t.projects.productVisionTitle}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                          {modalVision}
+                        </p>
+                      </div>
+                    )}
+
+                    {modalFeatures && modalFeatures.length > 0 && (
+                      <div>
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2.5 font-outfit">
+                          {t.projects.keyFeaturesTitle}
+                        </h4>
+                        <ul className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                          {modalFeatures.map((feature, idx) => (
+                            <li key={idx} className="flex items-start gap-2">
+                              <CheckCircle2 size={14} className="text-emerald-500 mt-0.5 shrink-0" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 )}
 
-                {modalSolution && (
-                  <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-outfit">
-                      {t.projects.solutionTitle}
-                    </h4>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                      {modalSolution}
-                    </p>
+                {/* Tab 2: Architecture & Planning */}
+                {modalTab === 'architecture' && (
+                  <div className="space-y-5">
+                    {modalPlanning && (
+                      <div>
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-outfit">
+                          {t.projects.designPlanningTitle}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                          {modalPlanning}
+                        </p>
+                      </div>
+                    )}
+
+                    {modalArchitecture && (
+                      <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-800">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-1.5 font-outfit">
+                          {t.projects.architectureTitle}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                          {modalArchitecture}
+                        </p>
+                      </div>
+                    )}
+
+                    <div dir="ltr">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-outfit text-left rtl:text-right">
+                        {t.projects.techStackTitle}
+                      </h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {activeModalProject.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="text-xs font-medium text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 )}
 
-                {modalFeatures && modalFeatures.length > 0 && (
-                  <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2.5 font-outfit">
-                      {t.projects.keyFeatures}
-                    </h4>
-                    <ul className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-                      {modalFeatures.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <CheckCircle2 size={14} className="text-emerald-500 mt-0.5 shrink-0" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                {/* Tab 3: Behind the Build (Contribution & Challenges) */}
+                {modalTab === 'behind' && (
+                  <div className="space-y-5">
+                    {modalContribution && (
+                      <div className="p-4 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200/70 dark:border-emerald-900/50">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 mb-1.5 font-outfit">
+                          {t.projects.developerContributionTitle}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                          {modalContribution}
+                        </p>
+                      </div>
+                    )}
+
+                    {modalChallenges && modalChallenges.length > 0 && (
+                      <div className="space-y-3">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white font-outfit">
+                          {t.projects.challengesSolutionsTitle}
+                        </h4>
+                        {modalChallenges.map((item, idx) => (
+                          <div
+                            key={idx}
+                            className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-800 space-y-1.5 text-xs"
+                          >
+                            <div className="flex items-start gap-2 text-amber-700 dark:text-amber-400 font-semibold">
+                              <AlertCircle size={14} className="shrink-0 mt-0.5" />
+                              <span>{item.challenge}</span>
+                            </div>
+                            <div className="flex items-start gap-2 text-slate-600 dark:text-slate-300 pl-5 rtl:pl-0 rtl:pr-5">
+                              <CheckCircle2 size={13} className="text-emerald-500 shrink-0 mt-0.5" />
+                              <span>{item.solution}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
-
-                <div dir="ltr">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-outfit text-left rtl:text-right">
-                    {t.projects.techStack}
-                  </h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {activeModalProject.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-xs font-medium text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
               </div>
 
               {/* Modal Footer */}

@@ -1,3 +1,8 @@
+export interface ProjectChallenge {
+  challenge: string;
+  solution: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -19,6 +24,11 @@ export interface Project {
   role?: string;
   platformBadge?: string;
   storeBadge?: string;
+  productVision?: string;
+  designAndPlanning?: string;
+  architecture?: string;
+  developerContribution?: string;
+  challengesAndSolutions?: ProjectChallenge[];
   translations?: {
     ps?: {
       title?: string;
@@ -28,6 +38,11 @@ export interface Project {
       features?: string[];
       problem?: string;
       solution?: string;
+      productVision?: string;
+      designAndPlanning?: string;
+      architecture?: string;
+      developerContribution?: string;
+      challengesAndSolutions?: ProjectChallenge[];
     };
     fa?: {
       title?: string;
@@ -37,28 +52,41 @@ export interface Project {
       features?: string[];
       problem?: string;
       solution?: string;
+      productVision?: string;
+      designAndPlanning?: string;
+      architecture?: string;
+      developerContribution?: string;
+      challengesAndSolutions?: ProjectChallenge[];
     };
   };
 }
 
-export type SkillStatus =
-  | 'Applied in Projects'
-  | 'Practical Experience'
-  | 'Learning Foundations'
-  | 'Currently Learning'
-  | 'Active Coursework';
+export type SkillStatus = 'practical' | 'learning' | 'foundational' | 'planned';
 
-export interface Skill {
+export interface SkillItem {
   name: string;
-  status?: SkillStatus;
-  projectAssociation?: string;
-  notes?: string;
+  status: SkillStatus;
+  category: string;
+  description: string;
+  evidence?: string;
+  projectAssociation?: string[];
 }
 
-export interface SkillGroup {
+export interface SkillCategoryGroup {
   category: string;
-  description?: string;
-  items: Skill[];
+  tagline: string;
+  items: SkillItem[];
+}
+
+export interface RoadmapStage {
+  stageNumber: number;
+  id: string;
+  title: string;
+  subtitle: string;
+  status: 'foundational' | 'current' | 'future';
+  description: string;
+  skills: string[];
+  decisionNote?: string;
 }
 
 export interface Service {

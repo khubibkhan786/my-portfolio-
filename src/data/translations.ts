@@ -6,6 +6,7 @@ export interface TranslationSchema {
     home: string;
     about: string;
     skills: string;
+    roadmap: string;
     services: string;
     projects: string;
     journey: string;
@@ -31,9 +32,6 @@ export interface TranslationSchema {
       metric3Value: string;
       metric3Label: string;
     };
-    softwarePillar: string;
-    webPillar: string;
-    dataPillar: string;
   };
   about: {
     tag: string;
@@ -70,26 +68,71 @@ export interface TranslationSchema {
     tag: string;
     headline: string;
     subtitle: string;
-    competenciesSuffix: string;
-    activeCapability: string;
-    appliedInCode: string;
-    activeLearningTitle: string;
-    activeLearningSubtitle: string;
-    inStudyBadge: string;
+    categories: {
+      practical: string;
+      practicalDesc: string;
+      learning: string;
+      learningDesc: string;
+      foundational: string;
+      foundationalDesc: string;
+    };
+    filterAll: string;
+    verifiedEvidence: string;
+  };
+  roadmap: {
+    tag: string;
+    headline: string;
+    subtitle: string;
+    closingStatement: string;
+    stagePrefix: string;
+    foundationalBadge: string;
+    currentBadge: string;
+    futureBadge: string;
+    backendDecisionTitle: string;
+    stages: {
+      s1Title: string;
+      s1Subtitle: string;
+      s1Desc: string;
+      s2Title: string;
+      s2Subtitle: string;
+      s2Desc: string;
+      s3Title: string;
+      s3Subtitle: string;
+      s3Desc: string;
+      s4Title: string;
+      s4Subtitle: string;
+      s4Desc: string;
+      s4Decision: string;
+      s5Title: string;
+      s5Subtitle: string;
+      s5Desc: string;
+      s6Title: string;
+      s6Subtitle: string;
+      s6Desc: string;
+      s7Title: string;
+      s7Subtitle: string;
+      s7Desc: string;
+    };
   };
   services: {
     tag: string;
     headline: string;
     subtitle: string;
-    softwareTitle: string;
-    softwareDesc: string;
-    webTitle: string;
-    webDesc: string;
-    databaseTitle: string;
-    databaseDesc: string;
-    uiTitle: string;
-    uiDesc: string;
-    futureVision: string;
+    s1Title: string;
+    s1Desc: string;
+    s2Title: string;
+    s2Desc: string;
+    s3Title: string;
+    s3Desc: string;
+    s4Title: string;
+    s4Desc: string;
+    s5Title: string;
+    s5Desc: string;
+    s6Title: string;
+    s6Desc: string;
+    processTitle: string;
+    processSubtitle: string;
+    processSteps: string[];
     productionQuality: string;
   };
   projects: {
@@ -99,26 +142,28 @@ export interface TranslationSchema {
     allFilter: string;
     filters: {
       all: string;
-      ai: string;
+      mobile: string;
       web: string;
       automation: string;
-      mobile: string;
+      ai: string;
     };
-    showingCategory: string;
     resetFilter: string;
     noProjectsMatch: string;
     viewCaseStudy: string;
     sourceCode: string;
-    verifiedProject: string;
-    problemTitle: string;
-    solutionTitle: string;
-    keyFeatures: string;
-    techStack: string;
+    productVisionTitle: string;
+    designPlanningTitle: string;
+    architectureTitle: string;
+    developerContributionTitle: string;
+    challengesSolutionsTitle: string;
+    keyFeaturesTitle: string;
+    techStackTitle: string;
     viewRepo: string;
     liveDemo: string;
     closeCaseStudy: string;
     statusCompleted: string;
     statusInProgress: string;
+    behindTheBuild: string;
   };
   journey: {
     tag: string;
@@ -152,6 +197,7 @@ export const translations: Record<Language, TranslationSchema> = {
       home: 'Home',
       about: 'About',
       skills: 'Skills',
+      roadmap: 'Roadmap',
       services: 'Services',
       projects: 'Projects',
       journey: 'Journey',
@@ -161,139 +207,191 @@ export const translations: Record<Language, TranslationSchema> = {
     },
     hero: {
       statusBadge: 'Abdul Jalil Zwak',
-      subline: 'Computer Science · Information Systems · 2026',
+      subline: 'Computer Science · Information Systems · Paktia University',
       role: 'Software Developer',
-      headlinePre: 'I build practical software and',
-      headlineHighlight: 'modern digital experiences.',
+      headlinePre: 'Building Thoughtful Software.',
+      headlineHighlight: 'Solving Real Problems.',
       headlinePost: '',
       description:
-        'Computer Science student focused on software development, Android applications, responsive web interfaces, databases, and practical digital solutions.',
+        'I am a Computer Science student specializing in Information Systems, focused on building practical software applications and developing meaningful digital solutions. My work involves exploring product ideas, planning application structures, making design decisions, guiding implementation, reviewing code, solving technical problems, and continuously improving software products. I am particularly interested in Software Engineering, full-stack development, mobile and web applications, and AI-integrated software.',
       viewWork: 'View My Work',
       contactMe: 'Contact Me',
       metrics: {
-        metric1Value: '6+',
-        metric1Label: 'Projects',
-        metric2Value: 'Software Dev',
-        metric2Label: 'Focus',
+        metric1Value: 'Software Dev',
+        metric1Label: 'Practical Focus',
+        metric2Value: 'Android & Web',
+        metric2Label: 'Active Work',
         metric3Value: '2026',
-        metric3Label: 'CS & IS Student',
+        metric3Label: 'Paktia University',
       },
-      softwarePillar: 'Java & Kotlin',
-      webPillar: 'React & TS',
-      dataPillar: 'SQL & Databases',
     },
     about: {
-      tag: '01 — ABOUT & FOCUS',
-      headlinePre: 'Building practical software with curiosity and',
-      headlineHighlight: 'disciplined learning.',
+      tag: '01 — PERSONAL IDENTITY & FOCUS',
+      headlinePre: 'Building purposeful software with curiosity and',
+      headlineHighlight: 'disciplined engineering.',
       headlinePost: '',
       intro1:
-        'I’m Abdul Jalil Zwak, a Computer Science student at Paktia University specializing in Information Systems. I’m focused on building practical software while strengthening my foundations in programming, databases, web development, and application development.',
+        'I am a Computer Science student at Paktia University specializing in Information Systems, dedicated to engineering practical applications that solve everyday needs. My daily development work bridges product thinking with hands-on technical building.',
       intro2:
-        'I enjoy turning ideas into useful applications and continuously improving my understanding through coursework, personal projects, and hands-on experimentation.',
-      educationTitle: 'Education',
-      educationDegree: 'Computer Science',
-      educationSub: 'Information Systems · Paktia University · Class of 2026',
-      focusTitle: 'Core Focus',
-      focusDomain: 'Software Development',
-      focusSub: 'Kotlin, Java, JavaScript, TypeScript, SQL',
-      learningTitle: 'Learning Direction',
-      learningDomain: 'Full-Stack Foundations',
-      learningSub: 'APIs, Backend Architecture & Software Engineering',
+        'Rather than merely writing surface-level code, I invest substantial effort into conceptual planning, application architecture, UI design decisions, code review, debugging, and iterative refinement. I believe the best software is honest, lightweight, and dependable.',
+      educationTitle: 'Academic Background',
+      educationDegree: 'Computer Science (B.Sc.)',
+      educationSub: 'Information Systems Specialization · Paktia University (Class of 2026)',
+      focusTitle: 'Technical Development',
+      focusDomain: 'Software Engineering',
+      focusSub: 'Native Android, Web Applications, Relational Databases & Tooling',
+      learningTitle: 'Future Direction',
+      learningDomain: 'Full-Stack & AI Integration',
+      learningSub: 'Scalable Backends, Cloud Services & Intelligent Application Features',
       showLess: 'Show Less',
       showPrinciples: 'My Development Principles',
       requestResume: 'Request Resume / CV',
       principlesHeading: 'My Development Principles',
       principlesP1:
-        'I build practical solutions and keep code understandable. I prioritize learning through real projects, choosing simple and reliable solutions over unnecessary complexity.',
+        'I prioritize practical utility, clean structure, and respect for user resources. In every project, I hold myself accountable to these principles:',
       principlesList: [
-        'Build practical solutions that solve real needs',
-        'Write clean, readable, and maintainable code',
-        'Learn deeply through hands-on project implementation',
-        'Choose reliable, simple architectures over unnecessary complexity',
-        'Respect privacy and efficient resource usage in every build',
+        'Build practical solutions that address genuine user problems',
+        'Prioritize clear, maintainable architecture over unnecessary complexity',
+        'Take full ownership of product structure, design decisions, and code quality',
+        'Learn deeply through iterative project implementation and deliberate practice',
+        'Safeguard user privacy and optimize runtime performance on all hardware',
       ],
       principlesP2:
-        'I improve through iteration while respecting privacy and efficient resource usage in every project I develop.',
-      profileRole: 'Computer Science Student',
+        'Continuous growth comes through disciplined building, testing on real physical hardware, and learning from technical challenges.',
+      profileRole: 'Software Developer · CS Student',
       profileUniversity: 'Paktia University · Information Systems',
       directionTitle: 'Academic & Engineering Direction',
       directionBadge: 'Information Systems',
       directionDesc:
-        'Currently advancing in relational database systems, native Android development, and responsive web architecture while maintaining strong academic standing at Paktia University.',
-      interestsTitle: 'Primary Interests',
+        'Advancing in relational database systems, native Android development, and responsive web architecture while maintaining strong academic standing at Paktia University.',
+      interestsTitle: 'Primary Focus Areas',
       interests: [
-        'Android Application Development',
-        'Relational Database Modeling (SQL)',
-        'Responsive Web Interfaces (React)',
-        'Offline-First System Architecture',
+        'Practical Software Engineering',
+        'Native Android Development (Kotlin & Room)',
+        'Responsive Web Interfaces (React & TypeScript)',
+        'Relational Databases & Data Modeling (SQL & MySQL)',
       ],
     },
     skills: {
       tag: '02 — TECHNICAL TOOLKIT',
-      headline: 'Skills & Technical Foundations',
-      subtitle: 'Core competencies developed through coursework, practical projects, and applied software development.',
-      competenciesSuffix: 'competencies',
-      activeCapability: 'Applied Foundations',
-      appliedInCode: 'In Projects',
-      activeLearningTitle: 'Skill Maturity & Learning Targets',
-      activeLearningSubtitle: 'Current technical foundations, actively developing skills, and upcoming expansion goals',
-      inStudyBadge: 'Academic & Applied',
+      headline: 'Skills & Technical Status',
+      subtitle: 'An honest, transparent view of technical proficiencies categorized by practical application, active learning, and foundational knowledge.',
+      categories: {
+        practical: 'Practical Application',
+        practicalDesc: 'Technologies genuinely used in real projects, with sufficient understanding to explain, review, and validate their implementation.',
+        learning: 'Currently Learning',
+        learningDesc: 'Technologies actively studied through university coursework, practical exercises, and personal development.',
+        foundational: 'Foundational Knowledge',
+        foundationalDesc: 'Technologies whose fundamental concepts are understood, but whose practical proficiency is still developing.',
+      },
+      filterAll: 'All Categories',
+      verifiedEvidence: 'Verified Evidence',
+    },
+    roadmap: {
+      tag: '03 — FUTURE DIRECTION',
+      headline: 'Future Development Direction',
+      subtitle: 'From Programming Foundations to Full-Stack & AI-Integrated Software.',
+      closingStatement: 'Continuously learning. Building with purpose. Growing through practical experience.',
+      stagePrefix: 'Stage',
+      foundationalBadge: 'Foundational',
+      currentBadge: 'Active Focus',
+      futureBadge: 'Upcoming Goal',
+      backendDecisionTitle: 'Architectural Selection Open',
+      stages: {
+        s1Title: 'Programming Foundations',
+        s1Subtitle: 'Core computer science and structured software thinking',
+        s1Desc: 'Deepening comprehension of programming paradigms, robust problem solving, and disciplined debugging.',
+        s2Title: 'Database Engineering',
+        s2Subtitle: 'Relational modeling, schema design, and query optimization',
+        s2Desc: 'Mastering relational database design, data integrity, transactional safety, and query design.',
+        s3Title: 'Modern Web Development',
+        s3Subtitle: 'Accessible, responsive, and type-safe client applications',
+        s3Desc: 'Refining frontend engineering to deliver fast, accessible, and structured user experiences.',
+        s4Title: 'Backend Engineering',
+        s4Subtitle: 'Scalable server architecture, APIs, and business logic (Path Open)',
+        s4Desc: 'Designing robust backend services. The specific backend stack direction is intentionally open between two strong paths, to be finalized after solidifying programming and database foundations.',
+        s4Decision: 'Direction intentionally undecided: Option A (Java + Spring Boot) vs. Option B (TypeScript + Node.js). Final choice will follow foundational database and OOP mastery.',
+        s5Title: 'Mobile Application Development',
+        s5Subtitle: 'Native Android architecture, local storage, and offline-first reliability',
+        s5Desc: 'Expanding on native Android expertise to architect production-grade, offline-first mobile applications.',
+        s6Title: 'AI-Integrated Software',
+        s6Subtitle: 'Connecting intelligent capabilities with practical software products',
+        s6Desc: 'Integrating machine intelligence securely via backend endpoints to solve genuine user problems.',
+        s7Title: 'Full-Stack Software Engineering',
+        s7Subtitle: 'End-to-end product delivery across web, mobile, and backend systems',
+        s7Desc: 'Unifying client applications, mobile apps, shared backend APIs, relational databases, AI services, and automated testing into complete, dependable digital products.',
+      },
     },
     services: {
-      tag: '03 — SERVICES',
+      tag: '04 — SERVICES',
       headline: 'Practical Development Services',
-      subtitle: 'Realistic developer services grounded in actual coursework and software building capabilities.',
-      softwareTitle: 'Software Development',
-      softwareDesc: 'Building practical applications using Java and Kotlin with a focus on clean structure and understandable code.',
-      webTitle: 'Web Development',
-      webDesc: 'Creating responsive web interfaces using HTML, CSS, JavaScript, React, and TypeScript.',
-      databaseTitle: 'Database Solutions',
-      databaseDesc: 'Designing relational database structures and working with SQL, MySQL, SQLite, and Room.',
-      uiTitle: 'UI Implementation',
-      uiDesc: 'Turning interface ideas into responsive and clean user interfaces with attention to spacing, usability, and mobile responsiveness.',
-      futureVision: 'Committed to delivering clean, maintainable code that respects user privacy and efficient resource usage.',
-      productionQuality: 'Practical Development',
+      subtitle: 'Realistic developer services grounded in actual coursework, verified technical skills, and software building experience.',
+      s1Title: 'Responsive Website Development',
+      s1Desc: 'Building modern, fast-loading, mobile-friendly websites with clean semantic HTML5, modern CSS, and React.',
+      s2Title: 'Portfolio & Personal Websites',
+      s2Desc: 'Crafting distinctive, professional developer portfolios with dark/light themes, typography, and multilingual support.',
+      s3Title: 'UI Implementation & Redesign',
+      s3Desc: 'Translating design concepts and wireframes into clean, responsive, accessible code with attention to spacing and layout.',
+      s4Title: 'Existing Website Improvements',
+      s4Desc: 'Refining existing web pages for mobile responsiveness, performance optimizations, and typographic consistency.',
+      s5Title: 'Basic Database-Driven Applications',
+      s5Desc: 'Designing relational schemas, setting up SQLite/MySQL tables, and creating structured CRUD data flows.',
+      s6Title: 'Android Application Development',
+      s6Desc: 'Developing offline-first native Android applications in Kotlin with Room database persistence and material design.',
+      processTitle: 'Responsible Delivery Process',
+      processSubtitle: 'A structured, transparent workflow ensuring clarity and dependable results for every project.',
+      processSteps: [
+        '1. Requirement Understanding',
+        '2. Scope Definition',
+        '3. Planning & Architecture',
+        '4. Implementation',
+        '5. Review & Testing',
+        '6. Feedback & Iteration',
+        '7. Final Delivery',
+      ],
+      productionQuality: 'Realistic & Dependable Delivery',
     },
     projects: {
-      tag: '04 — SELECTED PROJECTS',
+      tag: '05 — SELECTED PROJECTS',
       headline: 'Featured Work & Practical Projects',
-      subtitle: 'Real software projects spanning native Android development, web applications, and automation scripts.',
+      subtitle: 'Real software products demonstrating thoughtful planning, architectural decisions, and verified implementation effort.',
       allFilter: 'All',
       filters: {
-        all: 'All',
-        ai: 'AI',
-        web: 'Web',
-        automation: 'Automation',
-        mobile: 'Mobile',
+        all: 'All Projects',
+        mobile: 'Mobile (Android)',
+        web: 'Web Applications',
+        automation: 'Automation & Tools',
+        ai: 'AI Prototypes',
       },
-      showingCategory: 'Showing category',
       resetFilter: 'Show All Projects',
-      noProjectsMatch: 'No projects found in this category.',
-      viewCaseStudy: 'Project Details',
+      noProjectsMatch: 'No projects match this category.',
+      viewCaseStudy: 'Behind the Build',
       sourceCode: 'Source Code',
-      verifiedProject: 'Active Project',
-      problemTitle: 'The Problem',
-      solutionTitle: 'Practical Solution',
-      keyFeatures: 'Key Features & Capabilities',
-      techStack: 'Technologies Used',
+      productVisionTitle: 'Product Vision',
+      designPlanningTitle: 'Design & Planning',
+      architectureTitle: 'Architecture & Structure',
+      developerContributionTitle: 'Verified Developer Contribution',
+      challengesSolutionsTitle: 'Challenges & Solutions',
+      keyFeaturesTitle: 'Key Implemented Features',
+      techStackTitle: 'Technologies Actually Used',
       viewRepo: 'View on GitHub',
       liveDemo: 'Live Demo',
       closeCaseStudy: 'Close Details',
       statusCompleted: 'Completed',
       statusInProgress: 'In Development',
+      behindTheBuild: 'Behind the Build: Project Case Study',
     },
     journey: {
-      tag: '05 — TIMELINE & MILESTONES',
+      tag: '06 — TIMELINE & MILESTONES',
       headline: 'Academic & Development Journey',
       subtitle: 'Progressing step-by-step from fundamental computer science to applied software engineering.',
       currentFocus: 'Current Focus',
       nextMilestone: 'Future Direction',
     },
     contact: {
-      tag: '06 — GET IN TOUCH',
+      tag: '07 — GET IN TOUCH',
       headline: 'Have a project or opportunity in mind?',
-      subtitle: 'I’m open to discussing software projects, collaborative learning, and technical opportunities.',
+      subtitle: 'I am open to discussing software projects, collaborative learning, and technical opportunities.',
       directEmail: 'Direct Inquiry',
       copyEmail: 'Copy Message',
       emailCopied: 'Message Copied to Clipboard',
@@ -313,146 +411,199 @@ export const translations: Record<Language, TranslationSchema> = {
       home: 'کور',
       about: 'زما په اړه',
       skills: 'مهارتونه',
+      roadmap: 'راتلونکی مسیر',
       services: 'خدمات',
       projects: 'پروژې',
-      journey: 'زده کړې لاره',
+      journey: 'زده کړې مزل',
       contact: 'اړیکه',
       letsTalk: 'خبرې وکړو',
       language: 'ژبه',
     },
     hero: {
       statusBadge: 'عبدالجلیل ځواک',
-      subline: 'د کمپیوټر ساینس محصل · معلوماتي سیستمونه · ۲۰۲۶',
-      role: 'سافټویر جوړونکی',
-      headlinePre: 'زه عملي سافټویرونه او',
-      headlineHighlight: 'عصري ډیجیټل تجربې جوړوم.',
+      subline: 'د کمپیوټر ساینس محصل · معلوماتي سیستمونه · پکتیا پوهنتون',
+      role: 'د سافټویر جوړونکی',
+      headlinePre: 'د باوري او ګټورو سافټویرونو جوړول؛',
+      headlineHighlight: 'د اصلي ستونزو هوارول.',
       headlinePost: '',
       description:
-        'د کمپیوټر ساینس محصل چې په ګټورو کاریالونو، انډروایډ اپلیکیشنونو، وېبپاڼو، ډېټابېسونو او عملي ډیجیټل حل لارو تمرکز لري.',
+        'زه په پکتیا پوهنتون کې د کمپیوټر ساینس پوهنځي د معلوماتي سیستمونو محصل یم، چې د عملي سافټویرونو پر جوړولو او د ګټورو ډیجیټل حل لارو پر وړاندې کولو تمرکز لرم. زما کار د نویو محصولي مفکورو څېړنه، د اپلیکیشن د جوړښت پلانول، د ډیزاین پرېکړې کول، د تطبیق لارښوونه، د کوډ بیا کتنه، د تخنیکي خنډونو هوارول او د سافټویرونو دوامداره ښه والی رانغاړي. زه په ځانګړي ډول د سافټویر انجینرۍ، فل سټیک پراختیا، موبایل او وېب اپلیکیشنونو او له AI سره د سافټویرونو یوځای کولو ته پوره لېواله یم.',
       viewWork: 'زما کارونه وګورئ',
       contactMe: 'اړیکه ونیسئ',
       metrics: {
-        metric1Value: '+۶',
-        metric1Label: 'پروژې',
-        metric2Value: 'سافټویر جوړونه',
-        metric2Label: 'کاري تمرکز',
+        metric1Value: 'سافټویر جوړونکی',
+        metric1Label: 'عملي کار',
+        metric2Value: 'انډروایډ او وېب',
+        metric2Label: 'فعال تمرکز',
         metric3Value: '۲۰۲۶',
-        metric3Label: 'د CS & IS محصل',
+        metric3Label: 'پکتیا پوهنتون',
       },
-      softwarePillar: 'جاوا او کوټلین',
-      webPillar: 'ریاکټ او ټایپ سکرېپټ',
-      dataPillar: 'ډېټابېس او SQL',
     },
     about: {
       tag: '۰۱ — زما او تمرکز په اړه',
-      headlinePre: 'د تلپاتې هڅې او زده کړې سره د',
+      headlinePre: 'د تلپاتې هڅې او پوهنتوني زده کړې سره د',
       headlineHighlight: 'عملي سافټویر جوړول.',
       headlinePost: '',
       intro1:
-        'زه عبدالجلیل ځواک یم، په پکتیا پوهنتون کې د کمپیوټر ساینس پوهنځي د معلوماتي سیستمونو (IS) محصل. زما اصلي تمرکز د عملي سافټویرونو جوړول او په پروګرامینګ، ډېټابېس، وېب او اپلیکیشن جوړونه کې د خپلو بنسټونو پیاوړي کول دي.',
+        'زه عبدالجلیل ځواک یم، په پکتیا پوهنتون کې د کمپیوټر ساینس پوهنځي د معلوماتي سیستمونو (IS) محصل. زما تمرکز د عملي او ګټورو سافټویرونو جوړول او په مسلکي سافټویر انجینرۍ کې پرمختګ دی.',
       intro2:
-        'زه په دې خوښېږم چې خپلې فکري نظریې په ګټورو کاریالونو بدلې کړم او د پوهنتوني درسونو، شخصي پروژو او عملي تجربو له لارې خپله پوهه لا ژوره کړم.',
-      educationTitle: 'زده کړې',
-      educationDegree: 'کمپیوټر ساینس',
-      educationSub: 'معلوماتي سیستمونه · پکتیا پوهنتون · ۲۰۲۶',
-      focusTitle: 'کاري تمرکز',
-      focusDomain: 'سافټویر جوړونه',
-      focusSub: 'کوټلین، جاوا، جاواسکریپټ، ټایپ‌سکرېپټ، SQL',
-      learningTitle: 'د زده کړې مسیر',
-      learningDomain: 'بشپړ سټیک اساسي بنسټونه',
-      learningSub: 'APIs، بیک اینډ او سافټویر انجینري',
+        'زه یوازې کوډ نه لیکم، بلکې د پروژې په فکري جوړښت، د انټرفیس په ساده او اغېزمن ډیزاین، د معماري په ټاکنه، د کوډ په سمون او د تخنیکي ستونزو په حل کې خپله ټوله هڅه کوم. زما موخه د داسې سافټویرونو جوړول دي چې باوري، سپک او رښتیني وي.',
+      educationTitle: 'اکاډمیک شالید',
+      educationDegree: 'کمپیوټر ساینس (لیسانس)',
+      educationSub: 'معلوماتي سیستمونه · پکتیا پوهنتون (د ۲۰۲۶ دور)',
+      focusTitle: 'فني تمرکز',
+      focusDomain: 'سافټویر انجینري',
+      focusSub: 'بومي انډروایډ، وېب اپلیکیشنونه، اړیکیز ډېټابېسونه او اوزارونه',
+      learningTitle: 'راتلونکی مسیر',
+      learningDomain: 'بشپړ سټیک او له AI سره یوځای کېدنه',
+      learningSub: 'بیک اینډ سیستمونه، کلاوډ خدمات او هوښیارې ځانګړتیاوې',
       showLess: 'لږ ښودل',
-      showPrinciples: 'زما پرمختیایي اصول',
+      showPrinciples: 'زما کاري اصول',
       requestResume: 'د سي وي غوښتنه',
-      principlesHeading: 'زما پرمختیایي اصول',
+      principlesHeading: 'زما کاري اصول',
       principlesP1:
-        'زه په عملي حل لارو او د اسانه او منظم کوډ په لیکلو باور لرم. زما لومړیتوب له رښتینو پروژو زده کړه ده، او د بې ځایه پېچلتیاوو پر ځای ساده او ډاډمنې لارې غوره ګڼم.',
+        'زه عملي حل لارو، د کوډ پاکوالي او د کاروونکو د سرچینو سپما ته ارزښت ورکوم. په خپلو کارونو کې دا اصول عملي کوم:',
       principlesList: [
-        'د رښتینو اړتیاوو لپاره عملي حل لارې جوړول',
-        'د پاک، منظم او پوهېدونکي کوډ لیکل',
-        'له رښتینو عملي پروژو څخه ژوره زده کړه',
+        'د رښتینو ستونزو د هواري لپاره عملي حل لارې جوړول',
         'د بې ځایه پېچلتیاوو پر ځای د ساده او باوري معمارۍ غوره کول',
-        'د کاروونکو محرمیت او د سرچینو سپما په پام کې نیول',
+        'د محصول په پلان، ډیزاین او د کوډ په کیفیت پوره مسؤلیت اخیستل',
+        'د عملي پروژو او دوامداره تمرین له لارې ژوره زده کړه کول',
+        'د کاروونکو محرمیت او د موبایل او کمپیوټر بېټرۍ او حافظې ته درناوی',
       ],
       principlesP2:
-        'زه په تدریجي تمرین، فکري ډیزاین او داسې کوډ لیکلو باور لرم چې ساتنه او پراختیا یې اسانه وي.',
-      profileRole: 'د کمپیوټر ساینس محصل',
+        'مسلکي وده د رښتینو پروژو په عملي جوړولو، په اصلي موبایلونو کې په ازمویلو او له تخنیکي ننګونو څخه په زده کړه ترلاسه کېږي.',
+      profileRole: 'د سافټویر جوړونکی · د CS محصل',
       profileUniversity: 'پکتیا پوهنتون · معلوماتي سیستمونه',
       directionTitle: 'اکاډمیک او انجینري مسیر',
       directionBadge: 'معلوماتي سیستمونه',
       directionDesc:
-        'په پکتیا پوهنتون کې د اړیکیزو ډېټابېسونو سیستم، د انډروایډ اپلیکیشن جوړولو او د چټکو وېبپاڼو په معمارۍ کې پرمختګ.',
-      interestsTitle: 'اصلي لېوالتیاوې',
+        'په پکتیا پوهنتون کې د اړیکیزو ډېټابېسونو سیستم، د انډروایډ اپلیکیشن جوړولو او د چټکو وېبپاڼو په معمارۍ کې ګام پر ګام پرمختګ.',
+      interestsTitle: 'اصلي کاري برخې',
       interests: [
-        'د انډروایډ اپلیکیشن جوړول',
-        'د ډېټابېس ماډلینګ (SQL)',
-        'د عصري وېب مخپاڼې (React)',
-        'افلاین سیستمونه او بې‌انټرنېټه کارېدنه',
+        'عملي سافټویر انجینري',
+        'د انډروایډ اپلیکیشن جوړول (Kotlin & Room)',
+        'ځواب ویونکې وېب مخپاڼې (React & TypeScript)',
+        'اړیکیز ډېټابېسونه او د ډېټا ماډلینګ (SQL & MySQL)',
       ],
     },
     skills: {
-      tag: '۰۲ — تخنیکي وسایل او مهارتونه',
-      headline: 'تخنیکي مهارتونه او اساسي بنسټونه',
-      subtitle: 'هغه اساسي وړتیاوې چې د پوهنتوني زده کړو، پروژو او عملي پروګرامینګ له لارې ترلاسه شوې دي.',
-      competenciesSuffix: 'مهارتونه',
-      activeCapability: 'عملي مهارت',
-      appliedInCode: 'په پروژو کې',
-      activeLearningTitle: 'د مهارتونو پړاوونه او نوي اهداف',
-      activeLearningSubtitle: 'د اوسنیو اساسي مهارتونو، د ودې په حال کې وړتیاوو او راتلونکو موخو تفکیک',
-      inStudyBadge: 'اکاډمیک او عملي',
+      tag: '۰۲ — تخنیکي مهارتونه',
+      headline: 'تخنیکي مهارتونه او د زده کړې کچه',
+      subtitle: 'د مهارتونو یو رښتینی او روښانه انځور چې د عملي کارونې، روانو زده کړو او بنسټیزو پوهو له مخې وېشل شوی دی.',
+      categories: {
+        practical: 'عملي کارونه (Practical Application)',
+        practicalDesc: 'هغه ټکنالوژۍ چې په رښتینو پروژو کې کارول شوې او بشپړ عملي پوهاوی ورڅخه لرم.',
+        learning: 'د زده کړې په حال کې (Currently Learning)',
+        learningDesc: 'هغه موضوعات چې دمګړۍ په پوهنتوني درسونو او عملي تمرینونو کې تر کار لاندې دي.',
+        foundational: 'بنسټیزه پوهه (Foundational Knowledge)',
+        foundationalDesc: 'هغه ټکنالوژۍ چې مفاهیم یې زده شوي خو عملي تجربه یې د ودې په لور روانه ده.',
+      },
+      filterAll: 'ټولې وېشنیزې',
+      verifiedEvidence: 'باوري ثبوت',
+    },
+    roadmap: {
+      tag: '۰۳ — راتلونکی مسیر',
+      headline: 'د راتلونکي پرمختګ مسیر',
+      subtitle: 'له بنسټیز پروګرامینګ څخه تر فول سټیک او له AI سره مدغم سافټویرونو پورې.',
+      closingStatement: 'دوامداره زده کړه · له هدف سره ودانول · په عملي تجربو کې وده کول.',
+      stagePrefix: 'پړاو',
+      foundationalBadge: 'بنسټیز',
+      currentBadge: 'فعال تمرکز',
+      futureBadge: 'راتلونکی هدف',
+      backendDecisionTitle: 'د بیک اینډ ټاکنه خلاصه ده',
+      stages: {
+        s1Title: 'د پروګرامینګ بنسټونه',
+        s1Subtitle: 'اصلي کمپیوټر ساینس او منظم سافټویري فکر',
+        s1Desc: 'د پروګرامینګ د اصولو ژوره زده کړه، د ستونزو حل او د کوډ اصلاح کول.',
+        s2Title: 'د ډېټابېس انجینري',
+        s2Subtitle: 'اړیکیز ماډلینګ، د جدولونو ډیزاین او د پوښتنو اصلاح',
+        s2Desc: 'د اړیکیزو ډېټابېسونو جوړول، د معلوماتو ساتنه او په SQL او MySQL کې دقیق کوېري ګانې.',
+        s3Title: 'عصري وېب پرمختیا',
+        s3Subtitle: 'چټک، ځواب ویونکي او باوري وېب اپلیکیشنونه',
+        s3Desc: 'د React او TypeScript په مرسته د چټکو، ښکلو او منظمو وېب انټرفیسونو وړاندې کول.',
+        s4Title: 'د بیک اینډ انجینري',
+        s4Subtitle: 'د سرور معمارۍ، APIs او ډېټا پروسس (لار خلاصه ده)',
+        s4Desc: 'د سرور د خدماتو جوړول. د بیک اینډ د ټکنالوژۍ ټاکنه په قصدي ډول د دوو لارو ترمنځ خلاصه ساتل شوې ترڅو د ډېټابېس او پروګرامینګ له بشپړېدو وروسته وټاکل شي.',
+        s4Decision: 'پرېکړه خلاصه ده: الف لاره (Java + Spring Boot) یا ب لاره (TypeScript + Node.js). وروستۍ ټاکنه به د عملي ضرورت له مخې وشي.',
+        s5Title: 'د موبایل اپلیکیشن جوړول',
+        s5Subtitle: 'بومي انډروایډ معمارۍ، محلي زېرمه او افلاین باور',
+        s5Desc: 'د کوټلین او Room په مرسته د لوړ کیفیت او بې‌انټرنېټه انډروایډ کاریالونو پراخول.',
+        s6Title: 'له AI سره مدغم سافټویرونه',
+        s6Subtitle: 'له رښتینو محصولاتو سره د مصنوعي هوښیارتیا نښلول',
+        s6Desc: 'د خوندي سرورونو له لارې د هوښیارو ځانګړتیاوو راوستل ترڅو د کاروونکو رښتینې ستونزې هوارې کړي.',
+        s7Title: 'بشپړ سټیک سافټویر انجینري',
+        s7Subtitle: 'له وېب او موبایل څخه تر سرورونو او ډېټابېسونو پورې پوره محصول وړاندې کول',
+        s7Desc: 'د وېبپاڼو، موبایل، بیک اینډ، ډېټابېس او د ټېسټینګ په یوځای کولو سره د بشپړو سافټویرونو سپارل.',
+      },
     },
     services: {
-      tag: '۰۳ — کاري خدمات',
+      tag: '۰۴ — کاري خدمات',
       headline: 'د سافټویر عملي خدمات',
-      subtitle: 'هغه رښتیني خدمات چې د محصل په توګه یې د پوهنتوني زده کړو او پروژو له مخې د ترسره کولو توان لرم.',
-      softwareTitle: 'سافټویر جوړونه',
-      softwareDesc: 'د جاوا او کوټلین ژبو په مرسته د پاک او پوهېدونکي کوډ سره د عملي اپلیکیشنونو جوړول.',
-      webTitle: 'وېب پرمختیا',
-      webDesc: 'د HTML، CSS، جاواسکریپټ، React او TypeScript په مرسته د چټکو او ځواب ویونکو وېبپاڼو جوړول.',
-      databaseTitle: 'د ډېټابېس حل لارې',
-      databaseDesc: 'د اړیکیزو ډېټابېسونو ډیزاین او په SQL، MySQL، SQLite او Room کې د ډېټا منظم مدیریت.',
-      uiTitle: 'د کاروونکي مخپاڼې تطبیق (UI)',
-      uiDesc: 'د ډیزاینونو عملي کول په داسې بڼه چې کارول یې ساده، منظم او په موبایل کې اسانه وي.',
-      futureVision: 'زه متعهد یم چې پاک او د پوهېدو وړ کوډ ولیکم چې د کاروونکي محرمیت او د وسیلې سپکوالي ته درناوی ولري.',
-      productionQuality: 'عملي پراختیا',
+      subtitle: 'هغه رښتیني او ګټور خدمات چې د خپلو عملي زده کړو او پروژو له مخې یې په ډاډمنه توګه وړاندې کوم.',
+      s1Title: 'ځواب ویونکې وېبپاڼې',
+      s1Desc: 'د HTML، CSS او React په کارولو سره د داسې وېبپاڼو جوړول چې په موبایل او کمپیوټر کې چټکې او ښکلې وي.',
+      s2Title: 'شخصي او پورټفولیو وېبپاڼې',
+      s2Desc: 'د متخصصینو او کاروونکو لپاره د څو ژبو، ډارک/لایټ موډ او ځانګړي ډیزاین سره د پورټفولیو جوړول.',
+      s3Title: 'د انټرفیس تطبیق (UI Implementation)',
+      s3Desc: 'د ډیزایني مفکورو او سکیچونو اړول په پاک، منظم او ځواب ویونکي کوډ باندې.',
+      s4Title: 'د موجوده وېبپاڼو سمون او ښه والی',
+      s4Desc: 'په پخوانیو وېبپاڼو کې د موبایل غبرګون، د سرعت ښه کول او د ډیزاین د نیمګړتیاوو هوارول.',
+      s5Title: 'د ډېټابېس پر بنسټ بنسټیز کاریالونه',
+      s5Desc: 'د اړیکیزو جدولونو جوړول، په SQLite او MySQL کې د معلوماتو خوندي کول او د هغوی منظم مدیریت.',
+      s6Title: 'د انډروایډ بومي کاریالونه',
+      s6Desc: 'په کوټلین کې د داسې اپلیکیشنونو جوړول چې له انټرنېټ پرته هم په چټکۍ او پوره ډاډ سره کار کوي.',
+      processTitle: 'د کار باوري او منظم پړاوونه',
+      processSubtitle: 'یو شفاف او ګام په ګام بهیر چې هر کار له پیل څخه تر پایه په بریالیتوب رسوي.',
+      processSteps: [
+        '۱. د اړتیاوو دقیق پوهاوی',
+        '۲. د کار د حدودو ټاکل',
+        '۳. پلان او د جوړښت معمارۍ',
+        '۴. د کوډ عملي تطبیق',
+        '۵. څېړنه او هراړخیز ټېسټ',
+        '۶. د پېرودونکي نظر او سمون',
+        '۷. وروستۍ سپارل او ډاډ',
+      ],
+      productionQuality: 'باوري او رښتینی کار',
     },
     projects: {
-      tag: '۰۴ — غوره پروژې',
+      tag: '۰۵ — غوره پروژې',
       headline: 'عملي کارونه او پروژې',
-      subtitle: 'هغه پروژې چې په موبایل، وېب او اتومات جوړولو کې ما پخپله جوړې کړې دي.',
+      subtitle: 'هغه پروژې چې په موبایل، وېب او اتومات جوړولو کې ما پخپله جوړې کړې او عملي کار مې پرې کړی دی.',
       allFilter: 'ټولې',
       filters: {
         all: 'ټولې پروژې',
-        ai: 'مصنوعي هوښیارتیا (AI)',
-        web: 'وېب (Web)',
-        automation: 'اتوماسیون (Automation)',
-        mobile: 'موبایل (Mobile)',
+        mobile: 'موبایل (انډروایډ)',
+        web: 'وېب اپلیکیشنونه',
+        automation: 'اتوماسیون او اوزار',
+        ai: 'د AI لومړني ماډلونه',
       },
-      showingCategory: 'د وېشنیزې پروژې',
       resetFilter: 'ټولې پروژې وښایاست',
       noProjectsMatch: 'په دې وېشنیزه کې کومه پروژه ونه موندل شوه.',
-      viewCaseStudy: 'د پروژې تفصیلي معلومات',
+      viewCaseStudy: 'د پروژې شالید او تفصیل',
       sourceCode: 'سورس کوډ',
-      verifiedProject: 'فعاله پروژه',
-      problemTitle: 'اصلي ننګونه او ستونزه',
-      solutionTitle: 'عملي حل لاره',
-      keyFeatures: 'مهمې ځانګړتیاوې',
-      techStack: 'ټکنالوژۍ او وسایل',
-      viewRepo: 'کوډ کتل (GitHub)',
+      productVisionTitle: 'د محصول موخه او لیدلوری',
+      designPlanningTitle: 'ډیزاین او پلان جوړونه',
+      architectureTitle: 'د پروژې جوړښت او معمارۍ',
+      developerContributionTitle: 'زما رښتینې ونډه او کار',
+      challengesSolutionsTitle: 'ننګونې او حل لارې',
+      keyFeaturesTitle: 'مهمې عملي ځانګړتیاوې',
+      techStackTitle: 'کارول شوې ټکنالوژۍ',
+      viewRepo: 'کوډ کتل په GitHub کې',
       liveDemo: 'ژوندی لید',
       closeCaseStudy: 'بندول',
       statusCompleted: 'بشپړه شوې',
       statusInProgress: 'تر کار لاندې',
+      behindTheBuild: 'د پروژې شاته: ژور تخنیکي معلومات',
     },
     journey: {
-      tag: '۰۵ — پړاوونه او مزل',
+      tag: '۰۶ — پړاوونه او مزل',
       headline: 'اکاډمیک او کاري مزل',
       subtitle: 'په پکتیا پوهنتون کې له بنسټیزو درسونو څخه د سافټویر انجینرۍ پر لور عملي پرمختګ.',
       currentFocus: 'اوسنی تمرکز',
       nextMilestone: 'راتلونکی مسیر',
     },
     contact: {
-      tag: '۰۶ — اړیکه',
+      tag: '۰۷ — اړیکه',
       headline: 'کومه پروژه یا همکاري لرئ؟',
       subtitle: 'زه د نویو پروژو، ګډو زده کړو او تخنیکي همکاریو په اړه خبرو اترو ته چمتو یم.',
       directEmail: 'مستقیمه پوښتنه',
@@ -474,148 +625,201 @@ export const translations: Record<Language, TranslationSchema> = {
       home: 'خانه',
       about: 'درباره من',
       skills: 'مهارت‌ها',
+      roadmap: 'مسیر آینده',
       services: 'خدمات',
       projects: 'پروژه‌ها',
-      journey: 'مسیر یادگیری',
+      journey: 'مسیر رشد',
       contact: 'تماس',
       letsTalk: 'گفتگو کنیم',
       language: 'زبان',
     },
     hero: {
       statusBadge: 'عبدالجلیل ځواک',
-      subline: 'دانشجوی کامپیوتر ساینس · سیستم‌های معلوماتی · ۲۰۲۶',
+      subline: 'دانشجوی کامپیوتر ساینس · سیستم‌های معلوماتی · پوهنتون پکتیا',
       role: 'توسعه‌دهنده نرم‌افزار',
-      headlinePre: 'من نرم‌افزارهای کاربردی و',
-      headlineHighlight: 'تجربه‌های مدرن دیجیتال می‌سازم.',
+      headlinePre: 'ساخت نرم‌افزارهای سنجیده و کاربردی؛',
+      headlineHighlight: 'حل مسائل واقعی.',
       headlinePost: '',
       description:
-        'دانشجوی کامپیوتر ساینس متمرکز بر توسعه نرم‌افزار، برنامه‌های اندروید، رابط‌های وب واکنش‌گرا، پایگاه‌های داده و راهکارهای کاربردی.',
+        'من دانشجوی کامپیوتر ساینس در پوهنتون پکتیا با گرایش سیستم‌های معلوماتی هستم که بر توسعه نرم‌افزارهای کاربردی و راهکارهای معنادار دیجیتال تمرکز دارم. کار من شامل ایده‌پردازی محصولات، ساختاربندی نرم‌افزار، تصمیم‌گیری‌های طراحی، بازبینی کد، حل چالش‌های فنی و ارتقای مستمر محصولات نرم‌افزاری است. به‌ویژه به مهندسی نرم‌افزار، توسعه فول‌استک، برنامه‌های وب و موبایل و نرم‌افزارهای مبتنی بر هوش مصنوعی علاقه‌مند هستم.',
       viewWork: 'مشاهده کارهای من',
       contactMe: 'تماس با من',
       metrics: {
-        metric1Value: '+۶',
-        metric1Label: 'پروژه‌ها',
-        metric2Value: 'توسعه نرم‌افزار',
-        metric2Label: 'تمرکز کاری',
+        metric1Value: 'توسعه نرم‌افزار',
+        metric1Label: 'تمرکز عملی',
+        metric2Value: 'اندروید و وب',
+        metric2Label: 'فعالیت جاری',
         metric3Value: '۲۰۲۶',
-        metric3Label: 'دانشجوی CS & IS',
+        metric3Label: 'پوهنتون پکتیا',
       },
-      softwarePillar: 'جاوا و کاتلین',
-      webPillar: 'ری‌اکت و تایپ‌اسکریپت',
-      dataPillar: 'دیتابیس و SQL',
     },
     about: {
-      tag: '۰۱ — درباره و تمرکز کاری',
-      headlinePre: 'ساخت نرم‌افزارهای کاربردی با کنجکاوی و',
-      headlineHighlight: 'یادگیری منضبط.',
+      tag: '۰۱ — هویت فردی و تمرکز کاری',
+      headlinePre: 'ساخت نرم‌افزارهای هدفمند با کنجکاوی و',
+      headlineHighlight: 'مهندسی منضبط.',
       headlinePost: '',
       intro1:
-        'من عبدالجلیل ځواک هستم، دانشجوی کامپیوتر ساینس در پوهنتون پکتیا با گرایش سیستم‌های معلوماتی. تمرکز اصلی من ساخت نرم‌افزارهای کاربردی و تقویت پایه‌های برنامه‌نویسی، دیتابیس، توسعه وب و اپلیکیشن است.',
+        'من عبدالجلیل ځواک هستم، دانشجوی کامپیوتر ساینس در پوهنتون پکتیا با گرایش سیستم‌های معلوماتی. هدف من ایجاد برنامه‌های کاربردی است که پاسخگوی نیازهای واقعی روزمره باشند.',
       intro2:
-        'از تبدیل ایده‌ها به برنامه‌های مفید لذت می‌برم و همواره از طریق دروس دانشگاهی، پروژه‌های شخصی و آزمایش‌های عملی دانش خود را ارتقا می‌دهم.',
-      educationTitle: 'تحصیلات',
-      educationDegree: 'کامپیوتر ساینس',
-      educationSub: 'سیستم‌های معلوماتی · پوهنتون پکتیا · ۲۰۲۶',
-      focusTitle: 'تمرکز فنی',
-      focusDomain: 'توسعه نرم‌افزار',
-      focusSub: 'کاتلین، جاوا، جاوااسکریپت، تایپ‌اسکریپت، SQL',
-      learningTitle: 'اهداف آموزشی',
-      learningDomain: 'پایه‌های توسعه فول‌استک',
-      learningSub: 'APIs، معماری نرم‌افزار و دیتابیس',
+        'رویکرد من فراتر از نوشتن کدهای سطحی است؛ من بر طراحی معماری، تصمیمات رابط کاربری، بازبینی دقیق کد، عیب‌یابی و بهینه‌سازی مستمر متمرکز هستم و باور دارم نرم‌افزار اصیل باید سبک، مطمئن و شفاف باشد.',
+      educationTitle: 'پیشینه تحصیلی',
+      educationDegree: 'لیسانس کامپیوتر ساینس',
+      educationSub: 'سیستم‌های معلوماتی · پوهنتون پکتیا (دوره ۲۰۲۶)',
+      focusTitle: 'توسعه فنی',
+      focusDomain: 'مهندسی نرم‌افزار',
+      focusSub: 'اندروید بومی، وب اپلیکیشن‌ها، دیتابیس‌های رابطه‌ای و ابزارها',
+      learningTitle: 'جهت‌گیری آینده',
+      learningDomain: 'توسعه فول‌استک و هوش مصنوعی',
+      learningSub: 'بک‌اند مقیاس‌پذیر، خدمات ابری و قابلیت‌های هوشمند نرم‌افزاری',
       showLess: 'نمایش کمتر',
       showPrinciples: 'اصول توسعه من',
       requestResume: 'درخواست سی‌وی / رزومه',
       principlesHeading: 'اصول توسعه من',
       principlesP1:
-        'به ساخت راه‌حل‌های کاربردی و کدهای خوانا باور دارم. یادگیری از طریق پروژه‌های واقعی را ترجیح می‌دهم و راه‌حل‌های ساده و قابل‌اطمینان را بر پیچیدگی‌های غیرضروری مقدم می‌دانم.',
+        'من کارایی واقعی، ساختار تمیز و بهینه‌سازی منابع کاربر را در اولویت قرار می‌دهم و همواره به این اصول پایبندم:',
       principlesList: [
-        'ساخت راه‌حل‌های کاربردی برای نیازهای واقعی',
-        'نوشتن کدهای خوانا، استاندارد و قابل‌درک',
-        'یادگیری عمیق از طریق پروژه‌های واقعی',
-        'ترجیح معماری‌های ساده و مطمئن بر پیچیدگی‌های زائد',
-        'احترام به حریم خصوصی کاربر و بهینه‌سازی منابع سیستم',
+        'توسعه راه‌حل‌های کاربردی برای حل چالش‌های واقعی کاربران',
+        'ترجیح معماری تمیز و قابل‌نگهداری بر پیچیدگی‌های زائد',
+        'پذیرش کامل مسئولیت ساختار محصول، تصمیمات طراحی و کیفیت کد',
+        'یادگیری عمیق از طریق پیاده‌سازی گام‌به‌گام پروژه‌ها و تمرین منسجم',
+        'احترام به حریم خصوصی کاربر و بهینه‌سازی مصرف پردازنده و باتری',
       ],
       principlesP2:
-        'با بازبینی مستمر پروژه‌هایم را بهبود می‌بخشم و به حریم خصوصی کاربر و مصرف بهینه منابع سیستم احترام می‌گذارم.',
-      profileRole: 'دانشجوی کامپیوتر ساینس',
+        'پیشرفت واقعی از طریق ساخت پروژه‌های واقعی، آزمایش روی دستگاه‌های فیزیکی و درس گرفتن از موانع فنی حاصل می‌شود.',
+      profileRole: 'توسعه‌دهنده نرم‌افزار · دانشجوی CS',
       profileUniversity: 'پوهنتون پکتیا · سیستم‌های معلوماتی',
       directionTitle: 'مسیر آکادمیک و مهندسی',
       directionBadge: 'سیستم‌های معلوماتی',
       directionDesc:
         'تعمیق پایه‌های سیستم‌های پایگاه داده رابطه‌ای، توسعه اپلیکیشن بومی اندروید و رابط‌های مدرن وب در پوهنتون پکتیا.',
-      interestsTitle: 'علاقه‌مندی‌های اصلی',
+      interestsTitle: 'حوزه‌های اصلی تمرکز',
       interests: [
-        'توسعه اپلیکیشن‌های اندروید',
-        'طراحی و مدلسازی دیتابیس (SQL)',
-        'رابط‌های کاربری واکنش‌گرا (React)',
-        'معماری سیستم‌های آفلاین‌محور',
+        'مهندسی کاربردی نرم‌افزار',
+        'توسعه برنامه‌های اندروید (Kotlin & Room)',
+        'رابط‌های مدرن وب (React & TypeScript)',
+        'پایگاه داده‌های رابطه‌ای و مدلسازی داده (SQL & MySQL)',
       ],
     },
     skills: {
       tag: '۰۲ — جعبه‌ابزار فنی',
-      headline: 'مهارت‌ها و پایه‌های فنی',
-      subtitle: 'قابلیت‌های اساسی که از طریق دروس دانشگاهی، پروژه‌ها و پیاده‌سازی کاربردی نرم‌افزار شکل گرفته‌اند.',
-      competenciesSuffix: 'مهارت',
-      activeCapability: 'مهارت کاربردی',
-      appliedInCode: 'در پروژه‌ها',
-      activeLearningTitle: 'سطوح مهارت و اهداف یادگیری',
-      activeLearningSubtitle: 'تفکیک مهارت‌های پایه‌ای موجود، مهارت‌های در حال گسترش و اهداف آموزشی پیش‌رو',
-      inStudyBadge: 'آکادمیک و کاربردی',
+      headline: 'مهارت‌ها و وضعیت فنی',
+      subtitle: 'نگاهی صادقانه و تفکیک‌شده به مهارت‌های فنی در قالب کاربرد عملی، یادگیری جاری و دانش پایه‌ای.',
+      categories: {
+        practical: 'کاربرد عملی (Practical Application)',
+        practicalDesc: 'فناوری‌هایی که در پروژه‌های واقعی پیاده شده و تسلط کافی برای توضیح و بازبینی آن‌ها وجود دارد.',
+        learning: 'در حال یادگیری (Currently Learning)',
+        learningDesc: 'فناوری‌هایی که در دروس دانشگاهی و تمرینات هفتگی فعالانه در حال یادگیری و تقویت هستند.',
+        foundational: 'دانش پایه‌ای (Foundational Knowledge)',
+        foundationalDesc: 'مفاهیمی که اصول اولیه آن‌ها درک شده اما تسلط عملی آن‌ها در حال شکل‌گیری است.',
+      },
+      filterAll: 'همه دسته‌ها',
+      verifiedEvidence: 'شواهد اثبات‌شده',
+    },
+    roadmap: {
+      tag: '۰۳ — مسیر آینده',
+      headline: 'مسیر پیشرفت و توسعه آینده',
+      subtitle: 'از مبانی برنامه‌نویسی تا مهندسی فول‌استک و نرم‌افزارهای هوشمند.',
+      closingStatement: 'یادگیری مستمر · ساخت هدفمند · بالندگی در بستره تجربه عملی.',
+      stagePrefix: 'مرحله',
+      foundationalBadge: 'پایه‌ای',
+      currentBadge: 'تمرکز جاری',
+      futureBadge: 'هدف آتی',
+      backendDecisionTitle: 'انتخاب بک‌اند باز است',
+      stages: {
+        s1Title: 'مبانی برنامه‌نویسی',
+        s1Subtitle: 'تفکر ساختارمند مهندسی و علوم کامپیوتر',
+        s1Desc: 'تعمیق درک الگوهای برنامه‌نویسی، حل مسئله و متدهای اصولی عیب‌یابی.',
+        s2Title: 'مهندسی پایگاه داده',
+        s2Subtitle: 'طراحی رابطه‌ای، اسکیما و بهینه‌سازی کوئری‌ها',
+        s2Desc: 'تسلط بر طراحی دیتابیس رابطه‌ای، جامعیت داده‌ها و تراکنش‌ها در SQL و MySQL.',
+        s3Title: 'توسعه وب مدرن',
+        s3Subtitle: 'برنامه‌های کلاینت دسترس‌پذیر و تایپ‌سیف',
+        s3Desc: 'توسعه رابط‌های کاربری سریع و ماژولار با React و TypeScript.',
+        s4Title: 'مهندسی بک‌اند',
+        s4Subtitle: 'معماری سرور، طراحی API و منطق تجاری (مسیر باز است)',
+        s4Desc: 'طراحی سرویس‌های پایدار بک‌اند. انتخاب تکنولوژی نهایی بک‌اند آگاهانه باز نگه داشته شده است تا پس از تقویت پایه‌های شی‌گرایی و دیتابیس تعیین گردد.',
+        s4Decision: 'تصمیم‌گیری آگاهانه باز است: گزینه الف (Java + Spring Boot) یا گزینه ب (TypeScript + Node.js).',
+        s5Title: 'توسعه اپلیکیشن موبایل',
+        s5Subtitle: 'معماری بومی اندروید و عملکرد آفلاین‌محور',
+        s5Desc: 'گسترش تخصص اندروید برای تولید برنامه‌های مقاوم و با قابلیت همگام‌سازی آفلاین با Kotlin و Room.',
+        s6Title: 'نرم‌افزارهای مبتنی بر هوش مصنوعی',
+        s6Subtitle: 'اتصال قابلیت‌های هوشمند به نرم‌افزارهای کاربردی',
+        s6Desc: 'یکپارچه‌سازی امن مدل‌های هوش مصنوعی از طریق سرور برای حل نیازهای واقعی کاربران.',
+        s7Title: 'مهندسی نرم‌افزار فول‌استک',
+        s7Subtitle: 'توسعه سرتاسری سامانه‌ها میان وب، موبایل و سرویس‌های پشتیبان',
+        s7Desc: 'یکپارچه‌سازی فرانت‌اند، اپلیکیشن موبایل، APIهای اشتراکی، پایگاه‌های داده و تست خودکار در قالب محصولی مطمئن.',
+      },
     },
     services: {
-      tag: '۰۳ — خدمات تخصصی',
+      tag: '۰۴ — خدمات تخصصی',
       headline: 'خدمات کاربردی توسعه نرم‌افزار',
-      subtitle: 'خدمات واقع‌بینانه بر مبنای دانش دانشگاهی و پروژه‌های عملی پیاده‌شده.',
-      softwareTitle: 'توسعه نرم‌افزار',
-      softwareDesc: 'توسعه اپلیکیشن‌های کاربردی با کاتلین و جاوا با تمرکز بر ساختار تمیز و کد قابل‌فهم.',
-      webTitle: 'توسعه وب',
-      webDesc: 'ایجاد وبسایت‌های واکنش‌گرا و مدرن با استفاده از HTML، CSS، جاوااسکریپت، ری‌اکت و تایپ‌اسکریپت.',
-      databaseTitle: 'راه‌حل‌های پایگاه داده',
-      databaseDesc: 'طراحی اسکیمای رابطه‌ای در SQL و مدیریت دیتابیس در SQLite و Room.',
-      uiTitle: 'پیاده‌سازی رابط کاربری (UI)',
-      uiDesc: 'تبدیل ایده‌ها به رابط‌های کاربری تمیز و هماهنگ، با رعایت فاصله، خوانایی و تناسب موبایل.',
-      futureVision: 'همواره متعهد به ارائه کدهای تمیز و بهینه‌ای هستم که حریم خصوصی و منابع کاربر را پاس می‌دارد.',
-      productionQuality: 'توسعه کاربردی',
+      subtitle: 'خدمات واقع‌بینانه بر مبنای دانش دانشگاهی، توانمندی‌های تأییدشده و تجربه عملی پیاده‌سازی.',
+      s1Title: 'توسعه وبسایت‌های واکنش‌گرا',
+      s1Desc: 'ساخت وبسایت‌های مدرن، سبک و سازگار با موبایل با HTML5، CSS مدرن و ری‌اکت.',
+      s2Title: 'سایت‌های شخصی و پورتفولیو',
+      s2Desc: 'طراحی پورتفولیوهای متمایز با پشتیبانی از حالت‌های تیره/روشن، تایپوگرافی تمیز و چندزبانه.',
+      s3Title: 'پیاده‌سازی رابط کاربری (UI)',
+      s3Desc: 'تبدیل طرح‌های شماتیک و وایرفریم‌ها به کدهای ماژولار، استاندارد و واکنش‌گرا.',
+      s4Title: 'بهینه‌سازی وبسایت‌های موجود',
+      s4Desc: 'بهینه‌سازی نمایش موبایل، افزایش سرعت بارگذاری و اصلاح ناهماهنگی‌های بصری.',
+      s5Title: 'برنامه‌های پایه مبتنی بر دیتابیس',
+      s5Desc: 'طراحی جداول رابطه‌ای، ایجاد جریان‌های داده در SQLite و MySQL و پیاده‌سازی عملیات CRUD.',
+      s6Title: 'توسعه اپلیکیشن‌های بومی اندروید',
+      s6Desc: 'توسعه اپلیکیشن‌های آفلاین‌محور در کاتلین با پایگاه داده Room و رابط کاربری منسجم.',
+      processTitle: 'فرآیند مسئولانه و شفاف تحویل',
+      processSubtitle: 'روندی گام‌به‌گام و قابل‌اتکا برای تضمین کیفیت و شفافیت در هر پروژه.',
+      processSteps: [
+        '۱. درک عمیق نیازمندی‌ها',
+        '۲. تعریف محدوده و ویژگی‌ها',
+        '۳. برنامه‌ریزی و طراحی معماری',
+        '۴. پیاده‌سازی و کدنویسی',
+        '۵. بازبینی و تست فنی',
+        '۶. بازخورد و اعمال اصلاحات',
+        '۷. تحویل نهایی و پشتیبانی',
+      ],
+      productionQuality: 'تحویل مطمئن و واقع‌بینانه',
     },
     projects: {
-      tag: '۰۴ — پروژه‌های منتخب',
+      tag: '۰۵ — پروژه‌های منتخب',
       headline: 'پروژه‌ها و نمونه‌کارها',
-      subtitle: 'پروژه‌های واقعی در حوزه اپلیکیشن‌های اندروید، وب و ابزارهای اتوماسیون.',
+      subtitle: 'محصولات واقعی نرم‌افزاری که نشان‌دهنده برنامه‌ریزی سنجیده، تصمیمات ساختاری و تلاش عملی پیاده‌سازی هستند.',
       allFilter: 'همه',
       filters: {
         all: 'همه پروژه‌ها',
-        ai: 'هوش مصنوعی (AI)',
-        web: 'وب (Web)',
-        automation: 'اتوماسیون (Automation)',
-        mobile: 'موبایل (Mobile)',
+        mobile: 'موبایل (اندروید)',
+        web: 'وب اپلیکیشن‌ها',
+        automation: 'اتوماسیون و ابزارها',
+        ai: 'طرح‌های هوش مصنوعی',
       },
-      showingCategory: 'پروژه‌های دسته‌بندی',
       resetFilter: 'نمایش همه پروژه‌ها',
       noProjectsMatch: 'پروژه‌ای در این دسته‌بندی یافت نشد.',
-      viewCaseStudy: 'جزئیات پروژه',
+      viewCaseStudy: 'روایت ساخت پروژه',
       sourceCode: 'سورس‌کد',
-      verifiedProject: 'پروژه فعال',
-      problemTitle: 'چالش و مسئله اصلی',
-      solutionTitle: 'راهکار کاربردی',
-      keyFeatures: 'قابلیت‌های کلیدی',
-      techStack: 'تکنالوژی‌های مورداستفاده',
+      productVisionTitle: 'چشم‌انداز و هدف محصول',
+      designPlanningTitle: 'طراحی و برنامه‌ریزی',
+      architectureTitle: 'ساختار و معماری فنی',
+      developerContributionTitle: 'سهم و نقش واقعی من در پروژه',
+      challengesSolutionsTitle: 'چالش‌ها و راهکارهای فنی',
+      keyFeaturesTitle: 'قابلیت‌های کلیدی پیاده‌شده',
+      techStackTitle: 'تکنالوژی‌های مورداستفاده',
       viewRepo: 'مشاهده در گیت‌هاب',
       liveDemo: 'پیش‌نمایش زنده',
       closeCaseStudy: 'بستن',
       statusCompleted: 'تکمیل‌شده',
       statusInProgress: 'در حال ساخت',
+      behindTheBuild: 'روایت ساخت: جزئیات عمیق پروژه',
     },
     journey: {
-      tag: '۰۵ — مسیر رشد و دستاوردها',
+      tag: '۰۶ — مسیر رشد و دستاوردها',
       headline: 'مسیر یادگیری و رشد',
       subtitle: 'پیشرفت گام‌به‌گام از دروس دانشگاهی پکتیا تا مهندسی نرم‌افزار.',
       currentFocus: 'تمرکز فعلی',
       nextMilestone: 'مسیر آینده',
     },
     contact: {
-      tag: '۰۶ — ارتباط با من',
+      tag: '۰۷ — ارتباط با من',
       headline: 'پروژه یا ایده‌ای در ذهن دارید؟',
-      subtitle: 'همیشه از گفتگو پیرامون پروژه‌های نرم‌افزاری و همکاری‌های فنی استقبال می‌کنم.',
+      subtitle: 'همیشه از گفتگو پیرامون پروژه‌های نرم‌افزاری، یادگیری مشترک و همکاری‌های فنی استقبال می‌کنم.',
       directEmail: 'درخواست مستقیم',
       copyEmail: 'کپی پیام',
       emailCopied: 'پیام در کلیپ‌بورد کپی شد',

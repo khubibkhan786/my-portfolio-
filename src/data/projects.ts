@@ -5,53 +5,84 @@ export const projects: Project[] = [
     id: 'lemunz-azkar',
     title: 'لمونځ او اذکار',
     shortDescription: 'A practical Islamic Android application focused on prayer times, Adhkar, Tasbih, Duas, Qibla, and offline usability.',
-    fullDescription: 'A practical Islamic Android application built with Kotlin, focused on accurate prayer times, daily Adhkar, Tasbih counter, Duas, and Qibla direction. The project emphasizes offline usability, lightweight performance, clean typography, and a simple user experience without unnecessary background tracking.',
+    fullDescription: 'A practical native Android application built with Kotlin, focused on accurate prayer times, daily Adhkar, Tasbih counter, authentic Duas, and Qibla direction. The project emphasizes 100% offline usability, lightweight memory consumption, clean typography, and zero background telemetry.',
     category: 'Android Application',
     filterCategories: ['Mobile'],
-    technologies: ['Kotlin', 'Android SDK', 'SQLite', 'Room Database', 'XML'],
+    technologies: ['Kotlin', 'Android SDK', 'SQLite', 'Room Database', 'XML Layouts', 'Android Studio'],
     image: '/src/assets/images/project_prayer_app_1790485013658.jpg',
     year: '2025',
     status: 'Completed',
     featured: true,
-    platformBadge: 'Android',
+    platformBadge: 'Native Android',
     storeBadge: 'Offline-First APK',
+    productVision: 'To provide a dependable, lightweight Islamic daily companion that respects user privacy, works reliably in remote areas without internet access, and delivers zero distraction.',
+    designAndPlanning: 'Planned user flows around quick access to prayer countdowns and daily remembrances. Chose high-contrast typography, large touch targets for the digital Tasbih, and an uncluttered screen hierarchy.',
+    architecture: 'Offline-first native Android architecture leveraging Room Database as the single source of truth over SQLite, with asynchronous query dispatching to avoid main-thread blocking.',
     features: [
-      'Accurate prayer times calculations',
-      'Daily Adhkar, Tasbih & Duas catalog',
-      'Qibla direction compass indicator',
-      '100% offline usability with local SQLite / Room storage'
+      'Accurate astronomical prayer times calculation',
+      'Daily morning & evening Adhkar, Tasbih & authentic Duas catalog',
+      'Hardware sensor-based Qibla direction compass indicator',
+      '100% offline persistence with local Room & SQLite database',
+      'Zero advertising, zero analytics trackers, and low battery consumption'
     ],
-    problem: 'Users need a reliable, distraction-free tool for daily prayers and authentic supplications that works seamlessly offline without ad intrusions or heavy battery drain.',
-    solution: 'Built an offline-first Android application in Kotlin using local SQLite/Room database storage for instant lookup and minimal resource consumption.',
-    role: 'Android Developer',
+    challengesAndSolutions: [
+      {
+        challenge: 'Maintaining instant prayer calculation and remembrance loading without internet connectivity in rural zones.',
+        solution: 'Pre-seeded a structured local SQLite database via Room with indexed calculation tables, ensuring sub-10ms lookup times completely offline.'
+      },
+      {
+        challenge: 'Preventing UI stutter during sensor reading updates for the Qibla compass indicator.',
+        solution: 'Implemented smoothed low-pass filtering on device orientation azimuth sensors and isolated UI re-renders.'
+      }
+    ],
+    developerContribution: 'Conceived the application structure, designed the navigation and UI layout in XML, structured the Room database schema and seed data, wrote and verified Kotlin logic, conducted real-device debugging on low-resource hardware, and tested offline state persistence.',
+    role: 'Android Developer (Design, Architecture & Implementation)',
     translations: {
       ps: {
         title: 'لمونځ او اذکار',
         category: 'انډروایډ کاریال',
-        shortDescription: 'د لمانځه د وختونو، مسنونو اذکارو، تسبېح او قبلې ښودلو لپاره عملي او افلاین انډروایډ کاریال.',
-        fullDescription: 'یو عملي او افلاین انډروایډ کاریال چې په کوټلین کې جوړ شوی، د لمانځه دقیق وختونه، سهاري او ماښامني اذکار، تسبېح، مسنونې دعاګانې او قبله په سپک او ساده ډیزاین کې وړاندې کوي.',
+        shortDescription: 'د لمانځه د وختونو، مسنونو اذکارو، تسبېح او قبلې ښودلو لپاره عملي او بې‌انټرنېټه انډروایډ کاریال.',
+        fullDescription: 'یو عملي او بومي انډروایډ کاریال چې په کوټلین کې جوړ شوی، د لمانځه دقیق وختونه، سهاري او ماښامني اذکار، ګڼونکې تسبېح، مسنونې دعاګانې او قبله په خورا سپک او ډاډمن ډیزاین کې وړاندې کوي.',
+        productVision: 'د یو داسې باوري، پاک او افلاین ملګري رامنځته کول چې په لرو پرتو سیمو کې له انټرنېټ پرته په چټکۍ کار وکړي او هېڅ ډول اعلانات یا دروندوالی ونه لري.',
+        designAndPlanning: 'د اسانه لاسرسي لپاره د سکرینونو پلانول، د تسبېح لپاره لوی او پوهېدونکي بټنې، او د متنونو روښانه خطاطي او ترتیب.',
+        architecture: 'د Room Database او محلي SQLite پر بنسټ افلاین معمارۍ پلي کول، چې ټول معلومات پر ټیلفون خوندي ساتي او بېټرۍ کمه لګوي.',
         features: [
           'د لمانځه د وختونو دقیق حساب',
-          'د ورځنیو اذکارو او تسبېح ټولګه',
-          'د قبلې لوری ښودونکی',
-          'بشپړ افلاین کارېدنه په Room / SQLite کې'
+          'د مسنونو اذکارو، دعاګانو او تسبېح بشپړه ټولګه',
+          'د قبلې لوري ښودونکی کمپاس',
+          'سل په سلو کې افلاین کارېدنه په Room / SQLite کې',
+          'له اعلاناتو او د بېټرۍ له بې‌ځایه مصرف څخه پاک'
         ],
-        problem: 'کاروونکي یو داسې باوري، سپک او له اعلاناتو پاک وسیلې ته اړتیا لري چې په بشپړ ډول افلاین کار وکړي او بېټرۍ کمه مصرف کړي.',
-        solution: 'په کوټلین او محلي ډېټابېس کې داسې اپلیکیشن جوړ شو چې له انټرنېټ پرته په چټکۍ کار کوي او کارول یې ډېر اسانه دي.'
+        challengesAndSolutions: [
+          {
+            challenge: 'له انټرنېټ پرته د لمانځه او اذکارو د معلوماتو سمدستي او بې‌ځنډه ښودل.',
+            solution: 'په محلي Room ډېټابېس کې د منظمو جدولونو ډیزاین چې په څو مېلي‌ثانیو کې معلومات راباسي.'
+          }
+        ],
+        developerContribution: 'د کاریال فکري پلان، په XML کې د کاروونکي مخپاڼې ډیزاین، د Room ډېټابېس جدولونو جوړول، په کوټلین کې د منطق پلي کول او څارنه، او په کمزورو موبایلونو کې د هغه عملي ازمویل او سمون.',
       },
       fa: {
         title: 'نماز و اذکار',
         category: 'اپلیکیشن اندروید',
-        shortDescription: 'اپلیکیشن کاربردی و آفلاین اندروید برای اوقات شرعی، اذکار، تسبیح، ادعیه و قبله‌نما.',
-        fullDescription: 'یک برنامه کاربردی و آفلاین اندروید توسعه‌یافته با کاتلین، متمرکز بر اوقات دقیق شرعی، اذکار روزانه، شمارشگر تسبیح، ادعیه و جهت قبله با رابط کاربری ساده، سبک و بدون تبلیغات مزاحم.',
+        shortDescription: 'اپلیکیشن کاربردی و کاملاً آفلاین اندروید برای اوقات شرعی، اذکار، تسبیح، ادعیه و قبله‌نما.',
+        fullDescription: 'یک برنامه کاربردی بومی اندروید با کاتلین، متمرکز بر محاسبه دقیق اوقات شرعی، اذکار روزانه، شمارنده تسبیح، ادعیه مأثوره و جهت قبله با رابط کاربری روان و بهینه.',
+        productVision: 'ایجاد ابزاری سبک، معتبر و بدون آگهی برای تسهیل عبادات روزانه که حتی در دورافتاده‌ترین نقاط بدون اینترنت به راحتی کار کند.',
+        designAndPlanning: 'طراحی گام‌به‌گام صفحات جهت دسترسی زیر یک ثانیه به اذکار و اوقات، با تأکید بر خوانایی متن و دکمه‌های مناسب لمسی.',
+        architecture: 'معماری مبتنی بر داده‌های محلی با پایگاه داده Room و SQLite بدون وابستگی به سرورهای خارجی.',
         features: [
-          'محاسبه دقیق اوقات شرعی نماز',
-          'مجموعه اذکار، ادعیه و تسبیح‌شمار',
-          'قبله‌نمای دقیق و سبک',
-          'عملکرد کاملاً آفلاین با پایگاه داده Room / SQLite'
+          'محاسبه دقیق اوقات شرعی نمازها',
+          'مجموعه اذکار صبح و شام، ادعیه و تسبیح دیجیتال',
+          'قبله‌نمای سبک مبتنی بر سنسور جهت‌یاب',
+          'عملکرد کاملاً آفلاین با پایگاه داده محلی',
+          'حفظ حریم خصوصی، بدون تبلیغات و با حداقل مصرف باتری'
         ],
-        problem: 'نیاز به یک ابزار مذهبی معتبر، سبک و آرام‌بخش جهت پیگیری فرایض روزانه بدون اتصال اینترنت و بدون ردیابی و تبلیغات.',
-        solution: 'پیاده‌سازی بومی با کاتلین و پایگاه داده محلی جهت دسترسی لحظه‌ای و مصرف بهینه باتری دستگاه.'
+        challengesAndSolutions: [
+          {
+            challenge: 'فراخوانی آنی صدها ذکر و دعا بدون کندی در دستگاه‌های ضعیف‌تر.',
+            solution: 'ایندکس‌گذاری دقیق در SQLite و بارگذاری غیرهمگام در لایه داده با Room.'
+          }
+        ],
+        developerContribution: 'برنامه‌ریزی ساختار پروژه، طراحی رابط کاربری در XML، پیاده‌سازی اسکیما و کدهای دیتابیس Room، برنامه‌نویسی و تست منطق کاتلین، و بهینه‌سازی عملکرد روی دستگاه‌های واقعی.',
       }
     }
   },
@@ -59,53 +90,77 @@ export const projects: Project[] = [
     id: 'weather-app',
     title: 'د هوا حالاتو',
     shortDescription: 'A responsive real-time weather tracking application providing accurate regional forecasts.',
-    fullDescription: 'A responsive web application that provides real-time updates, multi-day forecasts, and atmospheric condition data for various locations with lightweight network usage.',
+    fullDescription: 'A responsive web application that provides real-time meteorological updates, 5-day regional forecasts, and atmospheric condition metrics with high performance on low-bandwidth networks.',
     category: 'Web Application',
     filterCategories: ['Web'],
-    technologies: ['JavaScript', 'HTML5', 'CSS3', 'Weather API'],
+    technologies: ['JavaScript', 'HTML5', 'CSS3', 'Weather API', 'Responsive Design'],
     image: '/src/assets/images/project_weather_app_1790485024344.jpg',
     year: '2025',
     status: 'Completed',
     featured: true,
-    platformBadge: 'Web App',
+    platformBadge: 'Web Application',
     storeBadge: 'Live Service',
+    productVision: 'To deliver weather and atmospheric data in a clean, high-speed interface that loads reliably even over slower 3G mobile connections.',
+    designAndPlanning: 'Engineered a clear visual dashboard displaying temperature, wind, humidity, and forecast timeline with dynamic atmospheric condition accents.',
+    architecture: 'Lightweight client-side architecture using modular JavaScript with asynchronous fetch handlers, data normalization, and localized cached state.',
     features: [
-      'Real-time weather data fetching',
-      '5-day forecast overview',
-      'Location-based search',
-      'Dynamic condition-adaptive styling'
+      'Real-time atmospheric condition and temperature updates',
+      'Structured 5-day forecast with daily temperature highs and lows',
+      'Dynamic weather condition styling and visual indicators',
+      'Responsive design ensuring comfortable usability across smartphones and laptops'
     ],
-    problem: 'Visualizing regional climate and multi-day forecasts in a clean, high-speed interface with minimal network payload.',
-    solution: 'Built an asynchronous frontend parsing meteorological endpoints, rendering condition-adaptive visuals, and responsive 5-day trends.',
-    role: 'Frontend Developer',
+    challengesAndSolutions: [
+      {
+        challenge: 'Handling API rate limits and network latency on unstable mobile connections.',
+        solution: 'Implemented client-side session caching for recently queried locations to prevent duplicate requests and provide instant feedback.'
+      }
+    ],
+    developerContribution: 'Designed the UI layout and wireframes, wrote the frontend JavaScript logic and asynchronous API handling, structured responsive CSS styles, and tested cross-device responsiveness.',
+    role: 'Frontend Developer (UI Design & JavaScript Implementation)',
     translations: {
       ps: {
         title: 'د هوا حالاتو څارونکی',
         category: 'وېب کاریال',
-        shortDescription: 'د سیمې د هوا حالاتو ژوندی او کره وړاندوینه کوونکی چټک وېب کاریال.',
-        fullDescription: 'یو عصري وېب کاریال چې د سیمې د هوا دقیق معلومات، پنځه ورځنۍ وړاندوینه او موسمي بدلونونه په زړه پورې او سپک ډیزاین کې ښیي.',
+        shortDescription: 'د سیمې د هوا حالاتو ژوندی او باوري وړاندوینه کوونکی چټک وېب کاریال.',
+        fullDescription: 'یو عصري وېب کاریال چې د سیمې د هوا دقیق معلومات، پنځه ورځنۍ وړاندوینه او موسمي بدلونونه په زړه پورې، سپک او باوري ډیزاین کې ښیي.',
+        productVision: 'د هوا د معلوماتو چټک وړاندې کول په داسې ساده مخپاڼه کې چې حتی په کمزوري انټرنېټ کې هم په څو ثانیو کې خلاصه شي.',
+        designAndPlanning: 'د تودوخې، باد، رطوبت او ورځني مهالوېش روښانه وېش ترڅو هر څوک پرې ژر پوه شي.',
+        architecture: 'د جاواسکریپټ ماډیولر کوډ چې د هوا له سرورونو معلومات اخلي او له چاڼ وروسته یې ژر پر مخپاڼه ښيي.',
         features: [
           'د هوا د حالاتو ژوندي معلومات',
-          'پنځه ورځنۍ وړاندوینه',
-          'د موقعیت له مخې پلټنه',
-          'د هوا له حال سره بدلېدونکی شالید'
+          'د پنځو راتلونکو ورځو وړاندوینه',
+          'د هوا له حال سره برابر بصري رنګونه او نښانې',
+          'په موبایل او کمپیوټر کې بشپړ ځواب ویونکی ډیزاین'
         ],
-        problem: 'د هوا معلومات اکثره په درنو وېبپاڼو کې وي چې په ضعیف انټرنېټ کې ورو پرانیستل کېږي.',
-        solution: 'د سپکو APIs او چټک جاواسکریپټ په مرسته داسې مخپاڼه جوړه شوه چې په ټیټ انټرنېټ هم په ثانیو کې کره معلومات وړاندې کوي.'
+        challengesAndSolutions: [
+          {
+            challenge: 'په ضعیف انټرنېټ کې د معلوماتو د تکراري ښکته کولو مخنیوی.',
+            solution: 'په براوزر کې د معلوماتو موقتي ساتنه ترڅو ورته غوښتنې سمدستي ځواب شي.'
+          }
+        ],
+        developerContribution: 'د ټولې مخپاڼې ډیزاین، په جاواسکریپټ کې د ډېټا راوړلو او تنظیم کوډ لیکل، د ځواب ویونکي CSS تنظیمول او په بېلابېلو وسیلو کې یې ازمویل.',
       },
       fa: {
         title: 'سامانه وضعیت آب و هوا',
         category: 'وب اپلیکیشن',
-        shortDescription: 'سامانه آنلاین و سریع پیش‌بینی وضعیت جوی و هواشناسی.',
-        fullDescription: 'یک وب‌اپلیکیشن واکنش‌گرا برای ارائه آخرین اطلاعات جوی، پیش‌بینی پنج‌روزه و نمایش تغییرات دما با سرعت بالا و حجم کم.',
+        shortDescription: 'سامانه آنلاین و سریع پیش‌بینی وضعیت جوی و هواشناسی منطقه‌ای.',
+        fullDescription: 'یک وب‌اپلیکیشن واکنش‌گرا برای ارائه آخرین اطلاعات جوی، پیش‌بینی پنج‌روزه و تغییرات دما با سرعت بالا و حجم مصرفی اندک.',
+        productVision: 'دسترسی سریع و شفاف به پیش‌بینی وضعیت هوا بدون تبلیغات و در کمترین زمان ممکن حتی روی خطوط اینترنت کم‌سرعت.',
+        designAndPlanning: 'دسته‌بندی منظم شاخص‌های هوا (دما، سرعت باد، رطوبت) در کارت‌های استاندارد با کنتراست مطلوب.',
+        architecture: 'معماری ماژولار فرانت‌اند با جاوااسکریپت و فراخوانی بهینه داده‌ها از API با مدیریت کش موقت.',
         features: [
-          'بروزرسانی زنده وضعیت هوا',
-          'پیش‌بینی ۵ روز آینده',
-          'جستجوی بر اساس مکان',
-          'پس‌زمینه متغیر با شرایط جوی'
+          'بروزرسانی زنده وضعیت و دمای هوا',
+          'پیش‌بینی ۵ روزه با نمایش حداکثر و حداقل دما',
+          'استایل پویا و متناسب با شرایط بارانی، آفتابی و ابری',
+          'سازگاری کامل با صفحه نمایش انواع موبایل و لپ‌تاپ'
         ],
-        problem: 'دسترسی سریع به وضعیت آب‌وهوا بدون صفحات سنگین و کند اینترنتی.',
-        solution: 'پیاده‌سازی فرانت‌اند سبک با پردازش داده‌های آب‌وهوا و سازگار با انواع مرورگرها.'
+        challengesAndSolutions: [
+          {
+            challenge: 'مدیریت خطاهای شبکه هنگام قطع و وصل شدن اینترنت.',
+            solution: 'پیاده‌سازی مکانیزم نمایش خطای واضح و بارگذاری از حافظه موقت مرورگر.'
+          }
+        ],
+        developerContribution: 'ایده‌پردازی و طراحی رابط کاربری، پیاده‌سازی منطق جاوااسکریپت، بهینه‌سازی کدهای CSS و آزمودن عملکرد در مرورگرهای مختلف.',
       }
     }
   },
@@ -113,211 +168,153 @@ export const projects: Project[] = [
     id: 'student-portal-hub',
     title: 'Student Academic Portal & Schedule Hub',
     shortDescription: 'A responsive digital web dashboard designed to organize course syllabi, assignments, and study schedules.',
-    fullDescription: 'A lightweight and practical student web application prototype built with modern frontend tools to help university peers organize lecture notes, track semester deadlines, and coordinate course schedules.',
+    fullDescription: 'A lightweight and practical student web application prototype built with React and TypeScript to help university peers organize lecture notes, track semester deadlines, and coordinate course schedules in one place.',
     category: 'Web Application',
     filterCategories: ['Web'],
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Local Storage'],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Local Storage', 'Vite'],
     year: '2025',
     status: 'In Progress',
     featured: false,
     platformBadge: 'Web Prototype',
     storeBadge: 'Prototype',
+    productVision: 'To eliminate the chaos of scattered course PDFs, assignment deadlines, and exam schedules across disparate chat groups by centralizing them into a single fast dashboard.',
+    designAndPlanning: 'Structured modular dashboard widgets for current course notices, lecture slide links, and semester countdown timers. Prioritized keyboard shortcuts and clean category tagging.',
+    architecture: 'Client-side single-page application built on React functional components and typed TypeScript interfaces, utilizing browser Local Storage for zero-backend zero-latency persistence.',
     features: [
       'Interactive semester calendar & deadline tracker',
-      'Course resource & lecture note repository',
-      'Instant search and tag filtering',
-      'Local storage persistence with zero backend overhead'
+      'Course resource & lecture note repository with quick search',
+      'Category filtering by subject and assignment status',
+      'Instant local browser storage persistence without external server requirements'
     ],
-    problem: 'University students frequently lose track of scattered assignment dates, disparate slide decks, and semester milestones across different chat groups.',
-    solution: 'Created a unified client-side dashboard with fast local browser persistence, calendar countdowns, category filters, and clean responsive layout.',
-    role: 'Student Developer',
+    challengesAndSolutions: [
+      {
+        challenge: 'Structuring student data flexibly without requiring immediate backend hosting costs.',
+        solution: 'Defined comprehensive TypeScript data interfaces and local storage synchronization hooks, making future backend REST integration straightforward.'
+      }
+    ],
+    developerContribution: 'Identified university student workflow bottlenecks, designed the UI dashboard layouts in Tailwind CSS, wrote React state management and TypeScript data contracts, and gathered peer feedback for iterative UX refinement.',
+    role: 'Student Developer (UI Architecture & Frontend Logic)',
     translations: {
       ps: {
         title: 'د محصلینو تحصیلي پورټل او تقسیم اوقات',
         category: 'وېب کاریال (پروټوټایپ)',
-        shortDescription: 'د پوهنتون د محصلینو لپاره د لکچرونو، کورنیو دندو او تاریخونو د تنظیم سیستم.',
-        fullDescription: 'یو ګټور وېب ډشبورډ چې محصلینو ته مرسته کوي د خپلو مضمونونو مواد، د ازموینو نېټې او مهالوېش په یو منظم ځای کې وساتي.',
+        shortDescription: 'د پوهنتون د محصلینو لپاره د لکچرونو، کورنیو دندو او ازموینو د مهالوېش تنظیمونکی سیستم.',
+        fullDescription: 'یو ګټور وېب ډشبورډ چې محصلینو ته مرسته کوي د خپلو مضمونونو مواد، د ازموینو نېټې او تحصیلي مهالوېش په یو منظم او چټک ځای کې وساتي.',
+        productVision: 'د محصلینو د درسي موادو او د ازموینو د نېټو منظم کول ترڅو هېڅ مهم تاریخ یا لکچر له پامه ونه وځي.',
+        designAndPlanning: 'د مضمونونو، ازموینو او یادښتونو لپاره د بېلو کارتونو او تقویم طرحه کول ترڅو کارول یې ډېر ساده وي.',
+        architecture: 'د React او TypeScript پر بنسټ عصري فرانت اینډ معمارۍ، چې معلومات په براوزر کې په پوره خوندیتوب او چټکۍ ساتي.',
         features: [
           'د سمستر انټراکټیف کلیزه او د ضرب‌الاجل یادوونکی',
-          'د مضمونونو او نوټونو ذخیره',
-          'فوري پلټنه او فلټرینګ',
-          'په براوزر کې د معلوماتو خوندي ساتل'
+          'د مضمونونو او سلایډونو منظم بنډل',
+          'د مضامینو فوري فلټرینګ او پلټنه',
+          'په براوزر کې له ځنډ پرته د ډېټا خوندي ساتنه'
         ],
-        problem: 'محصلین اکثره په ګروپونو کې د سلایډونو او ازموینو نېټې ورکوي.',
-        solution: 'د React او TypeScript په واسطه یو مرکزي ډشبورډ جوړ شو چې ټول اسناد په چټکۍ او په منظمه بڼه وړاندې کوي.'
+        challengesAndSolutions: [
+          {
+            challenge: 'له سرور پرته د محصلینو د ډېټا ساتل او سمبالول.',
+            solution: 'د براوزر له محلي حافظې او قوي ټایپ سکرېپټ سټراکچر څخه ګټه اخیستنه.'
+          }
+        ],
+        developerContribution: 'د محصلینو د اصلي اړتیاوو پېژندل، د ډشبورډ د کاروونکي مخ ډیزاین، د React او TypeScript کوډ لیکل او د ټولګیوالو د نظرياتو پر بنسټ د هغه ښه کول.',
       },
       fa: {
         title: 'پورتال آکادمیک و مدیریت تقویم دانشجویی',
         category: 'وب اپلیکیشن (نمونه اولیه)',
-        shortDescription: 'سامانه مدیریت تکالیف، جزوات و تقویم درسی دانشجویان.',
-        fullDescription: 'یک پورتال سبک و سریع طراحی‌شده با فناوری‌های مدرن وب جهت سازماندهی منابع درسی و پیگیری زمان‌بندی امتحانات دانشگاهی.',
+        shortDescription: 'سامانه مدیریت تکالیف، جزوات و تقویم درسی دانشجویان پوهنتون.',
+        fullDescription: 'یک پورتال سبک و سریع طراحی‌شده با React و TypeScript جهت سازماندهی منابع درسی، یادداشت‌ها و پیگیری زمان‌بندی امتحانات دانشگاهی.',
+        productVision: 'یکپارچه‌سازی اطلاعیه‌های درسی و فایل‌های اسلاید برای جلوگیری از گم شدن تاریخ امتحانات و تکالیف.',
+        designAndPlanning: 'طراحی ویجت‌های تفکیک‌شده برای دروس جاری، تقویم ترمی و جستجوی سریع در جزوات.',
+        architecture: 'معماری مدرن سمت کاربر با کامپوننت‌های ری‌اکت و ذخیره‌سازی محلی بدون تحمیل هزینه سرور.',
         features: [
           'تقویم تعاملی ترم و پیگیری مهلت تکالیف',
-          'مخزن دسته‌بندی‌شده اسلایدها و جزوات',
-          'جستجوی سریع و فیلتر بر اساس عنوان درس',
-          'ذخیره‌سازی سریع در حافظه مرورگر'
+          'مخزن دسته‌بندی‌شده اسلایدها و منابع درسی',
+          'جستجوی لحظه‌ای بر اساس عنوان و موضوع درس',
+          'ذخیره‌سازی آنی در حافظه مرورگر با تایپ‌سیفتی بالا'
         ],
-        problem: 'پراکندگی فایل‌ها و اطلاعیه‌های مهم درسی میان پیام‌رسان‌های مختلف دانشگاهی.',
-        solution: 'طراحی رابط کاربری یکپارچه با ری‌اکت بدون نیاز به سرور و با لود آنی اطلاعات.'
+        challengesAndSolutions: [
+          {
+            challenge: 'آماده‌سازی پروژه برای اتصال آینده به دیتابیس بدون تغییر اساسی در فرانت‌اند.',
+            solution: 'تعریف دقیق اینترفیس‌های تایپ‌اسکریپت و جداسازی لایه داده از لایه نمایش.'
+          }
+        ],
+        developerContribution: 'برنامه‌ریزی ویژگی‌های محصول، طراحی واکنش‌گرای رابط کاربری با Tailwind، پیاده‌سازی هوک‌های مدیریت وضعیت ری‌اکت و بهینه‌سازی تجربه کاربری.',
       }
     }
   },
   {
     id: 'workflow-automation-toolkit',
-    title: 'AI-Assisted Workflow Automation Toolkit',
-    shortDescription: 'Practical automation utility scripts leveraging modern AI tools to streamline repetitive digital tasks.',
-    fullDescription: 'A collection of focused JavaScript automation tools and prompt templates designed to parse raw educational transcripts, auto-generate study flashcards, and format data exports efficiently.',
+    title: 'Workflow Automation Toolkit',
+    shortDescription: 'Practical automation utility scripts leveraging modern tools to streamline repetitive digital coursework tasks.',
+    fullDescription: 'A collection of focused JavaScript and Node.js automation tools and scripts designed to parse raw educational transcripts, batch-organize technical notes, and format structured data exports efficiently.',
     category: 'Automation Tool',
-    filterCategories: ['Automation', 'AI'],
-    technologies: ['JavaScript', 'Node.js', 'AI API Integration', 'JSON'],
+    filterCategories: ['Automation'],
+    technologies: ['JavaScript', 'Node.js', 'JSON', 'CLI Utilities'],
     year: '2026',
     status: 'In Progress',
     featured: false,
     platformBadge: 'CLI & Tools',
     storeBadge: 'In Development',
+    productVision: 'To automate repetitive manual tasks in study and project workflows, allowing more time for deep conceptual learning and code review.',
+    designAndPlanning: 'Constructed clean CLI commands accepting input file paths, parsing syntax, extracting summary concepts, and writing standardized output files.',
+    architecture: 'Modular Node.js command-line pipeline with streaming file readers, regex-based structured tokenizers, and formatted JSON/Markdown exporters.',
     features: [
-      'Automated text summaries of lecture transcripts',
-      'Batch conversion of structured notes into flashcard format',
-      'CLI utilities for fast repetitive file organization',
-      'API-driven content synthesis'
+      'Batch conversion of structured notes into clean review checkpoints',
+      'Automated extraction of technical terminology and definitions',
+      'Command-line utilities for rapid directory file organization',
+      'Configurable JSON data export pipelines'
     ],
-    problem: 'Processing lengthy educational transcripts and converting raw technical notes into structured study summaries was manual and time-consuming.',
-    solution: 'Designed scripted CLI pipelines combining Node.js stream parsers with structured AI prompts to batch-convert unformatted notes into clean JSON flashcards.',
-    role: 'Student Developer',
+    challengesAndSolutions: [
+      {
+        challenge: 'Handling varied and inconsistent formatting in raw lecture note text files.',
+        solution: 'Developed resilient regex tokenizers that detect headings, bullet points, and definitions regardless of indentation variations.'
+      }
+    ],
+    developerContribution: 'Identified repetitive manual note formatting routines, wrote the Node.js parsing and file handling logic, organized reusable automation scripts, and validated output integrity across various coursework datasets.',
+    role: 'Student Developer (Scripting & Automation)',
     translations: {
       ps: {
         title: 'د کاري جریان د اتومات کولو وسیلې',
         category: 'اتومات وسایل',
-        shortDescription: 'د مصنوعي هوښیارتیا په مرسته د تکراري کارونو د چټکولو سکرېپټونه.',
-        fullDescription: 'د Node.js او AI پراساس داسې وسایل چې اوږده متون په فلش کارتونو او خلاصو بدلوي او تکراري فایلونه تنظیموي.',
+        shortDescription: 'د تکراري پوهنتوني او پروژوي کارونو د چټکولو لپاره عملي سکرېپټونه.',
+        fullDescription: 'د Node.js او جاواسکریپټ پر بنسټ داسې وسایل چې اوږده درسي نوټونه په منظمو خلاصو بدلوي، فایلونه تنظیموي او د پوهنتون کارونه چټکوي.',
+        productVision: 'د تکراري لاس‌کاري کارونو اتومات کول ترڅو د پروګرامینګ ژورې زده کړې ته ډېر وخت پاتې شي.',
+        designAndPlanning: 'د کمانډ لاین داسې اسانه کمانډونه چې فایل اخلي او په منظم فارمټ کې یې بدلوي.',
+        architecture: 'د Node.js ماډیولر جوړښت چې فایلونه لولي، منظم کوي یې او په JSON یا Markdown یې ثبتوي.',
         features: [
-          'د اوږدو لکچرونو اتومات لنډیز',
-          'د نوټونو بدلول د ازموینې په پوښتنو او فلش کارتونو',
-          'د کمانډ لاین چټکې ګټورې وسیلې',
-          'د ډېټا منظم جوړښت'
+          'د درسي نوټونو اتومات ډلبندي',
+          'د مهمو تخنیکي اصطلاحاتو را ایستل',
+          'د فایلونو د چټک تنظیم کمانډ لاین وسایل',
+          'په اسانه او منظم JSON بڼه د ډېټا صادرول'
         ],
-        problem: 'د درسي موادو لاس لیکل او خلاصه کول ډېر زیات وخت ضایع کوي.',
-        solution: 'د سکرېپټونو جوړول چې متن په اوتومات ډول واخلي او په څو ثانیو کې جوړښت ورته برابر کړي.'
+        challengesAndSolutions: [
+          {
+            challenge: 'د بې‌نظمه متونو او نوټونو په سمه توګه لوستل او منظم کول.',
+            solution: 'د منظمو الګوریتمونو او دقیقو نمونو (Regex) کارول ترڅو سرلیکونه او نکتې سمې وپېژني.'
+          }
+        ],
+        developerContribution: 'د ستونزې پېژندل، د Node.js د سکرېپټونو لیکل، د کمانډ لاین ازمویل او د درسي موادو په تنظیم کې د هغو عملي کارول.',
       },
       fa: {
-        title: 'مجموعه ابزارهای خودکارسازی با هوش مصنوعی',
+        title: 'مجموعه ابزارهای خودکارسازی وظایف درسی',
         category: 'اتوماسیون و اسکریپت',
-        shortDescription: 'ابزارهای کاربردی جهت تسریع پردازش متون و تبدیل یادداشت‌ها.',
-        fullDescription: 'مجموعه‌ای از اسکریپت‌های کاربردی تحت Node.js برای خلاصه کردن رونوشت درس‌ها و تولید خودکار کارت‌های مرور.',
+        shortDescription: 'اسکریپت‌های کاربردی جهت تسریع پردازش فایل‌ها و سازماندهی یادداشت‌های فنی.',
+        fullDescription: 'مجموعه‌ای از ابزارهای خط فرمان توسعه‌یافته با Node.js برای استخراج نکات کلیدی، تبدیل خودکار یادداشت‌ها به فرمت‌های استاندارد و دسته‌بندی فایل‌ها.',
+        productVision: 'صرفه‌جویی در زمان پردازش دستی جزوات و تمرکز بر یادگیری عمیق مفاهیم مهندسی.',
+        designAndPlanning: 'طراحی دستورات ساده خط فرمان با ورودی و خروجی شفاف و مستندسازی شده.',
+        architecture: 'خط پردازش ماژولار مبتنی بر استریم‌های فایل Node.js و فرمت‌بندی خروجی با JSON.',
         features: [
-          'خلاصه‌سازی خودکار متون علمی',
-          'تبدیل یادداشت‌ها به فرمت فلش‌کارت',
-          'اسکریپت‌های خط فرمان برای سازماندهی فایل‌ها',
-          'خروجی ساختارمند با JSON'
+          'تبدیل دسته‌ای یادداشت‌ها به سرفصل‌های قابل مرور',
+          'شناسایی و استخراج خودکار تعاریف و اصطلاحات تخصصی',
+          'ابزارهای خط فرمان برای مرتب‌سازی سریع فایل‌های درسی',
+          'خروجی‌های ساختارمند و استاندارد برای استفاده در پورتال‌ها'
         ],
-        problem: 'زمان‌بر بودن تبدیل دست‌نویس‌ها و متن‌های طولانی به خلاصه درس‌های ساختارمند.',
-        solution: 'اتوماسیون استخراج نکات کلیدی با استفاده از هوش مصنوعی و اسکریپت‌نویسی دقیق.'
-      }
-    }
-  },
-  {
-    id: 'smart-study-extractor',
-    title: 'AI Exam Prep & Lecture Digest Engine',
-    shortDescription: 'An automated academic prototype synthesizing course transcripts into structured review flashcards and test quizzes.',
-    fullDescription: 'An academic study prototype connecting web interfaces with structured AI prompts to process computer science lecture notes into high-retention study flashcards, summary checkpoints, and self-test assessments.',
-    category: 'Web / AI Prototype',
-    filterCategories: ['AI', 'Web'],
-    technologies: ['Python', 'React', 'TypeScript', 'AI API Integration', 'Tailwind CSS'],
-    year: '2026',
-    status: 'In Progress',
-    featured: true,
-    platformBadge: 'Web & AI',
-    storeBadge: 'Concept',
-    features: [
-      'Automated transcript analysis and topic summarization',
-      'Dynamic flashcard deck generation with review intervals',
-      'Instant markdown and structured JSON export',
-      'Bilingual learning support for technical terminology'
-    ],
-    problem: 'Computer Science students face information overload when digesting lengthy technical lectures and extensive slide decks before university exams.',
-    solution: 'Designed an automated parsing prototype transforming course texts into bite-sized concept cards with interactive test prompts.',
-    role: 'Student Developer',
-    translations: {
-      ps: {
-        title: 'د AI تحصیلي لنډیز او چمتووالي سیستم',
-        category: 'وېب او مصنوعي هوښیارتیا',
-        shortDescription: 'د درسي لکچرونو د اتومات لنډیز او د ازموینې د پوښتنو جوړولو لومړنۍ طرحه.',
-        fullDescription: 'یو عصري وېب پروټوټایپ چې د مصنوعي هوښیارتیا په مرسته اوږده تخنیکي درسي متون شننه کوي او د زده کړې فلش کارتونه ترې راباسي.',
-        features: [
-          'د اوږدو لکچرونو اتومات شننه او لنډیز',
-          'د ازموینې لپاره د فلش کارتونو تولید',
-          'په Markdown او JSON بڼه د ډېټا اسانه صادرول',
-          'د تخنیکي اصطلاحاتو مرسته'
+        challengesAndSolutions: [
+          {
+            challenge: 'فرمت‌های نامنظم و متنوع فایل‌های متنی اولیه.',
+            solution: 'پیاده‌سازی قوانین پردازش متن برای تشخیص تیترها و نکات کلیدی.'
+          }
         ],
-        problem: 'د پوهنتون د ازموینو پر مهال د سلګونو پاڼو سلایډونو لوستل ډېر وخت نیسي.',
-        solution: 'د عصري AI او وېب ټکنالوژیو په مرسته داسې پروټوټایپ جوړ شو چې له درسي موادو څخه مهم ټکي بېلوي.'
-      },
-      fa: {
-        title: 'موتور خلاصه‌سازی درسی و آمادگی آزمون',
-        category: 'وب و هوش مصنوعی',
-        shortDescription: 'طرح اولیه سامانه تبدیل جزوات درسی به کارت‌های مرور و آزمونک‌ها.',
-        fullDescription: 'یک سامانه مبتنی بر وب که با به‌کارگیری هوش مصنوعی، متون کتاب‌های درسی را به سرفصل‌های کلیدی و فلش‌کارت‌های مرور تبدیل می‌کند.',
-        features: [
-          'تحلیل و خلاصه‌سازی هوشمند جلسات درسی',
-          'تولید کارت‌های مرور مفاهیم کلیدی',
-          'خروجی سریع به فرمت‌های استاندارد Markdown و JSON',
-          'پشتیبانی از اصطلاحات تخصصی کامپیوتر'
-        ],
-        problem: 'حجم بالای اسلایدهای درسی پیش از امتحانات دانشگاهی و دشواری استخراج نکات کلیدی.',
-        solution: 'طراحی خط پردازش اولیه مبتنی بر وب برای استخراج خودکار چکیده درس‌ها.'
-      }
-    }
-  },
-  {
-    id: 'academic-sync-cli',
-    title: 'Academic Data Sync & Backup Utility',
-    shortDescription: 'A lightweight automation tool for syncing course schedules, organizing lecture files, and managing database backups.',
-    fullDescription: 'A practical utility script designed to automate university coursework file synchronization, organize semester materials, and maintain local SQLite database backups with clean CLI reporting.',
-    category: 'Automation Tool',
-    filterCategories: ['Automation'],
-    technologies: ['Python', 'SQLite', 'JSON', 'Bash'],
-    year: '2026',
-    status: 'In Progress',
-    featured: false,
-    platformBadge: 'CLI Script',
-    storeBadge: 'Prototype',
-    features: [
-      'Automated semester coursework and syllabus directory indexing',
-      'Local SQLite database backup verification and dump scripts',
-      'Cross-platform file organization and duplicate cleanup',
-      'Configurable JSON-driven schedule sync'
-    ],
-    problem: 'Managing semester files, database lecture dumps, and course project repositories manually across different folders leads to scattered copies and accidental data loss.',
-    solution: 'Built a lightweight automated Python and Bash utility that syncs coursework directories, dumps SQLite databases, and generates structured JSON file manifests.',
-    role: 'Student Developer',
-    translations: {
-      ps: {
-        title: 'د پوهنتوني فایلونو او ډېټابېس بیکپ اتومات وسایل',
-        category: 'اتومات وسایل',
-        shortDescription: 'د پوهنتوني موادو، مهالوېش او محلي ډېټابېسونو د اتومات بیکپ او فایلونو د تنظیم وسیله.',
-        fullDescription: 'د Python او Bash پر بنسټ یو عملي اتومات سکرېپټ چې د سمستر درسي فایلونه، نوټونه او د SQLite ډېټابېس محلي نسخې په منظمه توګه خوندي او همغږي کوي.',
-        features: [
-          'د سمستر د درسونو او فایلونو اتومات تنظیم',
-          'د SQLite ډېټابېس منظم بیکپ او کتنه',
-          'د تکراري فایلونو پاکول',
-          'د JSON له لارې د مهالوېش چټک بدلون'
-        ],
-        problem: 'د درسونو، ډېټابېسونو او اسنادو په لاس ساتل ډېر وخت نیسي او کله ناکله مواد ورکېږي.',
-        solution: 'د سپکو اتومات سکرېپټونو په جوړولو سره دا بهیر اتومات شو چې هر ماښام د موادو نسخه په منظم ډول خوندي کوي.'
-      },
-      fa: {
-        title: 'ابزار خودکارسازی همگام‌سازی و پشتیبان‌گیری درسی',
-        category: 'ابزار خودکارسازی',
-        shortDescription: 'اسکریپت کاربردی جهت سازماندهی جزوات، تقویم درسی و تهیه نسخه پشتیبان از دیتابیس‌های محلی.',
-        fullDescription: 'یک اسکریپت خودکارسازی سبک با پایتون و بش برای پشتیبان‌گیری منظم از پایگاه داده‌های درسی SQLite، دسته‌بندی جزوات ترم و سازماندهی فایل‌ها.',
-        features: [
-          'فهرست‌بندی خودکار فایل‌ها و جزوات درسی ترم',
-          'پشتیبان‌گیری خودکار از دیتابیس‌های تمرینی SQLite',
-          'پاکسازی فایل‌های تکراری و بهینه‌سازی فضا',
-          'پیکربندی ساده و انعطاف‌پذیر با فرمت JSON'
-        ],
-        problem: 'پراکندگی فایل‌های درسی و ریسک از دست رفتن تمرین‌های دیتابیس در طول ترم تحصیلی.',
-        solution: 'ایجاد اسکریپت سبک خودکارسازی جهت یکپارچه‌سازی و تهیه نسخه پشتیبان در کمترین زمان.'
+        developerContribution: 'تحلیل نیاز، برنامه‌نویسی اسکریپت‌های Node.js، تست در محیط خط فرمان و اعتبارسنجی خروجی‌ها روی فایل‌های واقعی دانشگاهی.',
       }
     }
   }
