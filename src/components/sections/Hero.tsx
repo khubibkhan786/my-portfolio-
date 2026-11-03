@@ -7,7 +7,7 @@ import {cn} from '../../lib/utils';
 
 export function Hero() {
   const {theme} = useTheme();
-  const {t, isRtl} = useLanguage();
+  const {t, language, isRtl} = useLanguage();
   const isDark = theme === 'dark';
 
   const containerVariants = {
@@ -36,7 +36,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[88vh] lg:min-h-[92vh] flex items-center pt-24 sm:pt-28 pb-14 lg:py-24 overflow-hidden transition-colors duration-300"
+      className="relative min-h-[88vh] lg:min-h-[92vh] flex items-center pt-20 sm:pt-28 pb-12 lg:py-24 overflow-hidden transition-colors duration-300"
     >
       {/* Restrained, Low-Overhead Atmospheric Ambient Lighting */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden select-none" aria-hidden="true">
@@ -65,62 +65,74 @@ export function Hero() {
             animate="visible"
             className="lg:col-span-6 flex flex-col justify-start text-left rtl:text-right"
           >
-            {/* Developer Identity & Academic Kicker with Bidirectional Isolation */}
+            {/* Developer Identity & Academic Description with Strict Mobile Isolation */}
             <motion.div
               variants={itemVariants}
-              className="mb-3.5 sm:mb-4 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 max-w-full"
+              className="mb-3.5 sm:mb-4 flex flex-col items-start gap-2 sm:gap-2.5 max-w-full"
             >
-              {/* Primary Identity: Active Status + Developer Name */}
-              <div className="inline-flex items-center gap-2 shrink-0">
-                <span className="relative flex h-2 w-2">
+              {/* Row 1: Active Status Badge + Full Developer Name */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-white/[0.08] shadow-[0_1px_3px_rgba(15,23,42,0.04)] dark:shadow-none self-start">
+                <span className="relative flex h-2 w-2 shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                 </span>
-                <span
-                  className="font-bold text-slate-900 dark:text-slate-100 tracking-tight text-xs sm:text-sm"
+                <bdi
                   dir={isRtl ? 'rtl' : 'ltr'}
+                  className="font-bold text-slate-900 dark:text-slate-100 tracking-tight text-xs sm:text-sm whitespace-nowrap"
                 >
                   {t.hero.statusBadge}
-                </span>
+                </bdi>
               </div>
 
-              {/* Separator - Visible on tablet/desktop */}
-              <span
-                aria-hidden="true"
-                className="hidden sm:inline-block text-slate-300 dark:text-slate-700 select-none text-xs"
-              >
-                ·
-              </span>
-
-              {/* Academic Specialization / Description Block with Isolated English Terms */}
+              {/* Row 2: Academic Specialization in a Separate, Balanced Text Block with Isolated English Terms */}
               <div
-                className="text-slate-600 dark:text-slate-300 font-medium text-xs sm:text-[13px] leading-relaxed text-balance"
+                className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 font-medium leading-relaxed max-w-full"
                 dir={isRtl ? 'rtl' : 'ltr'}
               >
-                {isRtl ? (
-                  <span className="inline-block max-w-full">
-                    {t.hero.subline.split(/(Computer Science)/g).map((part, idx) => {
-                      if (part === 'Computer Science') {
-                        return (
-                          <bdi
-                            key={idx}
-                            dir="ltr"
-                            className="inline-block font-sans font-semibold text-slate-800 dark:text-slate-200 mx-1 px-1.5 py-0.5 rounded bg-slate-100/90 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 text-[11px] sm:text-xs tracking-tight"
-                          >
-                            Computer Science
-                          </bdi>
-                        );
-                      }
-                      return <span key={idx}>{part}</span>;
-                    })}
-                  </span>
+                {language === 'ps' ? (
+                  <>
+                    <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+                      <span>د</span>
+                      <bdi
+                        dir="ltr"
+                        className="font-mono font-semibold text-slate-800 dark:text-slate-200 px-1.5 py-0.5 rounded-md bg-slate-100/90 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 text-[11px] sm:text-xs tracking-tight"
+                      >
+                        Computer Science
+                      </bdi>
+                      <span>محصل</span>
+                    </span>
+                    <span aria-hidden="true" className="text-slate-300 dark:text-slate-700 select-none">
+                      ·
+                    </span>
+                    <span className="whitespace-nowrap font-medium text-slate-700 dark:text-slate-200">
+                      معلوماتي سیستمونه
+                    </span>
+                  </>
+                ) : language === 'fa' ? (
+                  <>
+                    <span className="whitespace-nowrap">دانشجوی کامپیوتر ساینس</span>
+                    <span aria-hidden="true" className="text-slate-300 dark:text-slate-700 select-none">
+                      ·
+                    </span>
+                    <span className="whitespace-nowrap font-medium text-slate-700 dark:text-slate-200">
+                      سیستم‌های معلوماتی
+                    </span>
+                  </>
                 ) : (
-                  <span>{t.hero.subline}</span>
+                  <>
+                    <span className="whitespace-nowrap font-medium text-slate-800 dark:text-slate-200">
+                      Computer Science
+                    </span>
+                    <span aria-hidden="true" className="text-slate-300 dark:text-slate-700 select-none">
+                      ·
+                    </span>
+                    <span className="whitespace-nowrap">Information Systems Specialization</span>
+                  </>
                 )}
               </div>
             </motion.div>
 
-            {/* Sub-label: Field of study / Role */}
+            {/* Sub-label: Role */}
             <motion.div
               variants={itemVariants}
               className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-2.5 flex items-center gap-2"
@@ -132,7 +144,7 @@ export function Hero() {
             {/* Main Headline - Natural, attractive, confident, and professional */}
             <motion.h1
               variants={itemVariants}
-              className="text-[clamp(2.1rem,4.4vw,3.4rem)] font-extrabold font-outfit tracking-tight text-slate-900 dark:text-white leading-[1.14] mb-3.5 sm:mb-4 text-balance"
+              className="text-[clamp(1.9rem,5.2vw,3.35rem)] font-extrabold font-outfit tracking-tight text-slate-900 dark:text-white leading-[1.18] sm:leading-[1.14] mb-3.5 sm:mb-4 text-balance break-normal"
             >
               {t.hero.headlinePre}{' '}
               <span className="bg-gradient-to-r from-indigo-600 via-sky-500 to-indigo-500 dark:from-indigo-400 dark:via-sky-300 dark:to-cyan-300 bg-clip-text text-transparent inline-block">
@@ -149,16 +161,19 @@ export function Hero() {
               {t.hero.description}
             </motion.p>
 
-            {/* Action Buttons - Prominent & Clear */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3 sm:gap-4">
+            {/* Action Buttons - Prominent, Clear & Mobile Optimized */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto"
+            >
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-semibold text-xs sm:text-sm rounded-xl transition-all duration-200 shadow-md shadow-indigo-600/25 hover:shadow-indigo-600/40 hover:-translate-y-0.5 group cursor-pointer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-semibold text-xs sm:text-sm rounded-xl transition-all duration-200 shadow-md shadow-indigo-600/25 hover:shadow-indigo-600/40 hover:-translate-y-0.5 group cursor-pointer w-full sm:w-auto text-center"
               >
                 <span>{t.hero.viewWork}</span>
                 <ArrowRight
                   className={cn(
-                    'mx-1.5 transition-transform duration-200',
+                    'mx-1.5 transition-transform duration-200 shrink-0',
                     isRtl
                       ? 'rotate-180 group-hover:-translate-x-1'
                       : 'group-hover:translate-x-1'
@@ -169,9 +184,9 @@ export function Hero() {
 
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center px-6 py-3 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 active:scale-[0.98] text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-xs hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-white dark:bg-slate-900/90 hover:bg-slate-50 dark:hover:bg-slate-800 active:scale-[0.98] text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm rounded-xl border border-slate-200/90 dark:border-white/[0.08] shadow-xs hover:-translate-y-0.5 transition-all duration-200 cursor-pointer w-full sm:w-auto text-center"
               >
-                <Mail className={isRtl ? 'ml-2' : 'mr-2'} size={15} />
+                <Mail className={isRtl ? 'ml-2 shrink-0' : 'mr-2 shrink-0'} size={15} />
                 <span>{t.hero.contactMe}</span>
               </a>
             </motion.div>
