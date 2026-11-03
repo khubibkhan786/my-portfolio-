@@ -81,7 +81,7 @@ export const developer = {
             <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#ffbd2e]/90 border border-[#dea123]/50" />
             <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#27c93f]/90 border border-[#1aab29]/50" />
             <span className="ml-1.5 font-mono text-[10.5px] sm:text-[11px] text-slate-400 font-medium tracking-tight">
-              agz@paktia-cs:~
+              agz@workspace:~
             </span>
           </div>
 

@@ -86,7 +86,7 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
     >
       <div className="card-soft-underglow" />
 
-      <div className="relative z-10 bg-white/95 dark:bg-slate-900/95 rounded-2xl overflow-hidden border border-slate-200/90 dark:border-slate-800/90 group-hover:border-indigo-500/50 shadow-xs group-hover:shadow-xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1 transition-all duration-300 flex flex-col h-full backdrop-blur-sm">
+      <div className="relative z-10 bg-white dark:bg-[#0c121e]/95 rounded-2xl overflow-hidden border border-slate-200/90 dark:border-white/[0.08] group-hover:border-indigo-500/50 shadow-[0_2px_12px_rgba(15,23,42,0.04)] group-hover:shadow-[0_12px_32px_rgba(15,23,42,0.08)] dark:group-hover:shadow-[0_12px_32px_rgba(0,0,0,0.5)] group-hover:-translate-y-1 transition-all duration-300 flex flex-col h-full backdrop-blur-sm">
         {/* Subtle Cursor Spotlight */}
         <div
           className="pointer-events-none absolute inset-0 z-20 transition-opacity duration-300 rounded-2xl overflow-hidden"

@@ -29,6 +29,8 @@ export function Services() {
       badge: language === 'ps' ? 'وېب ډیزاین' : language === 'fa' ? 'وب' : 'Web',
       themeClass: 'group-hover:border-sky-500/50',
       badgeClass: 'bg-sky-50 dark:bg-sky-950/80 text-sky-700 dark:text-sky-300 border-sky-200/60 dark:border-sky-800/60',
+      iconBoxClass: 'bg-sky-50/80 dark:bg-sky-950/50 border-sky-200/70 dark:border-sky-800/60',
+      topAccent: 'via-sky-500/40',
       glowColor: 'group-hover:shadow-sky-500/10',
     },
     {
@@ -48,6 +50,8 @@ export function Services() {
       badge: 'AI + Web',
       themeClass: 'group-hover:border-indigo-500/60 ring-1 ring-indigo-500/10',
       badgeClass: 'bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border-indigo-200/80 dark:border-indigo-800/80',
+      iconBoxClass: 'bg-indigo-50/80 dark:bg-indigo-950/50 border-indigo-200/70 dark:border-indigo-800/60',
+      topAccent: 'via-indigo-500/50',
       glowColor: 'group-hover:shadow-indigo-500/15',
     },
     {
@@ -67,6 +71,8 @@ export function Services() {
       badge: 'AI + Mobile',
       themeClass: 'group-hover:border-emerald-500/60 ring-1 ring-emerald-500/10',
       badgeClass: 'bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border-emerald-200/80 dark:border-emerald-800/80',
+      iconBoxClass: 'bg-emerald-50/80 dark:bg-emerald-950/50 border-emerald-200/70 dark:border-emerald-800/60',
+      topAccent: 'via-emerald-500/40',
       glowColor: 'group-hover:shadow-emerald-500/15',
     },
     {
@@ -81,6 +87,8 @@ export function Services() {
       badge: 'UI/UX',
       themeClass: 'group-hover:border-purple-500/50',
       badgeClass: 'bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border-purple-200/60 dark:border-purple-800/60',
+      iconBoxClass: 'bg-purple-50/80 dark:bg-purple-950/50 border-purple-200/70 dark:border-purple-800/60',
+      topAccent: 'via-purple-500/40',
       glowColor: 'group-hover:shadow-purple-500/10',
     },
     {
@@ -95,6 +103,8 @@ export function Services() {
       badge: 'Databases',
       themeClass: 'group-hover:border-teal-500/50',
       badgeClass: 'bg-teal-50 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 border-teal-200/60 dark:border-teal-800/60',
+      iconBoxClass: 'bg-teal-50/80 dark:bg-teal-950/50 border-teal-200/70 dark:border-teal-800/60',
+      topAccent: 'via-teal-500/40',
       glowColor: 'group-hover:shadow-teal-500/10',
     },
     {
@@ -109,6 +119,8 @@ export function Services() {
       badge: 'Optimization',
       themeClass: 'group-hover:border-rose-500/50',
       badgeClass: 'bg-rose-50 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300 border-rose-200/60 dark:border-rose-800/60',
+      iconBoxClass: 'bg-rose-50/80 dark:bg-rose-950/50 border-rose-200/70 dark:border-rose-800/60',
+      topAccent: 'via-rose-500/40',
       glowColor: 'group-hover:shadow-rose-500/10',
     },
   ];
@@ -186,17 +198,29 @@ export function Services() {
               >
                 <div
                   className={cn(
-                    'relative z-10 p-5 sm:p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between shadow-2xs hover:shadow-lg hover:-translate-y-1 bg-white/95 dark:bg-slate-900/95 border-slate-200/90 dark:border-slate-800 backdrop-blur-sm h-full text-left rtl:text-right',
-                    service.themeClass,
-                    service.glowColor
+                    'relative z-10 p-5 sm:p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between bg-white dark:bg-[#0c121e]/90 border-slate-200/90 dark:border-white/[0.08] shadow-[0_2px_12px_rgba(15,23,42,0.04)] hover:shadow-[0_10px_28px_rgba(15,23,42,0.08)] dark:hover:shadow-[0_10px_28px_rgba(0,0,0,0.5)] hover:-translate-y-1 backdrop-blur-sm h-full text-left rtl:text-right overflow-hidden',
+                    service.themeClass
                   )}
                 >
+                  {/* Subtle top accent line */}
+                  <div
+                    className={cn(
+                      'absolute top-0 inset-x-8 h-[2px] bg-gradient-to-r from-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300',
+                      service.topAccent
+                    )}
+                  />
+
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-2xs group-hover:scale-105 transition-all">
+                      <div
+                        className={cn(
+                          'w-11 h-11 rounded-xl border flex items-center justify-center shadow-2xs group-hover:scale-105 transition-all duration-200',
+                          service.iconBoxClass
+                        )}
+                      >
                         {service.icon}
                       </div>
-                      <div className="flex items-center gap-1.5">
+                      <div className="flex items-center gap-2">
                         <span
                           className={cn(
                             'text-[10px] uppercase px-2 py-0.5 rounded-md font-semibold border',

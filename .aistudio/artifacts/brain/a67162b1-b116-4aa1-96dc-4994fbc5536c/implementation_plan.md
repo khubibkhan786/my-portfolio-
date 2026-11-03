@@ -24,5 +24,15 @@
 - **Dark Mode**: Retained deep `#07090e` palette, subtle cards, and indigo/cyan glow without structural distortion.
 - **Light Mode**: Refined secondary text contrast (`--text-muted: #475569`), improved card surface definitions on neutral `#f8fafc` canvas, and ensured crisp borders.
 
-## 5. Natural Multilingual Localization
+## 5. Mobile Hero Typography & Bidirectional Isolation
+- **Dual-Layer Kicker**: Separated developer name and academic specialization into balanced, responsive text blocks that wrap gracefully on small mobile screens (< 390px).
+- **Bidirectional Isolation (`<bdi dir="ltr">`)**: Wrapped embedded English technical terms (`Computer Science`) with `<bdi dir="ltr">` inside RTL contexts, preventing grammar disruption, reversed punctuation, or broken line sequences.
+- **Dynamic Localization**: Ensured `t.hero.statusBadge` properly displays the developer's name in Pashto, Dari, and English without hardcoding.
+
+## 6. Lower Content Cards Polish & Distinction
+- **Services, Skills, Roadmap, Journey & About**: Added subtle top accent gradient lines (1.5px-2px) matching each category or domain color without heavy shadows or garish borders.
+- **Crafted Icon Containers**: Added soft domain-tinted backgrounds and delicate borders to icons across Services, Roadmap, Skills, Work Process, and About.
+- **Light & Dark Surface Consistency**: Standardized light mode cards to `bg-white` with `border-slate-200/90` and `shadow-[0_2px_12px_rgba(15,23,42,0.04)]`, and dark mode cards to `dark:bg-[#0c121e]/90` with `dark:border-white/[0.08]`.
+
+## 7. Natural Multilingual Localization
 - Preserved standard technical terms in English (Android, Web, Database, Full-Stack, AI Integration, React, Kotlin, SQL) while keeping natural phrasing in Pashto and Dari.

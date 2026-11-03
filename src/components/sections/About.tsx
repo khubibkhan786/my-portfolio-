@@ -70,28 +70,37 @@ export function About() {
 
             {/* 3 Structured Academic & Focus Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mt-6 sm:mt-7">
-              <div className="p-4 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-2xs hover:border-indigo-500/40 transition-colors">
-                <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 mb-1.5">
-                  <GraduationCap size={16} />
-                  <span className="text-xs font-bold uppercase tracking-wider">{t.about.educationTitle}</span>
+              <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#0c121e]/90 border border-slate-200/90 dark:border-white/[0.08] shadow-[0_2px_10px_rgba(15,23,42,0.04)] hover:shadow-[0_6px_20px_rgba(15,23,42,0.06)] dark:hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)] hover:border-indigo-500/40 hover:-translate-y-0.5 transition-all duration-200 overflow-hidden">
+                <div className="absolute top-0 inset-x-6 h-[2px] bg-indigo-500/50 opacity-60 group-hover:opacity-100 transition-opacity" />
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-7 h-7 rounded-lg bg-indigo-50/80 dark:bg-indigo-950/60 border border-indigo-200/60 dark:border-indigo-800/60 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                    <GraduationCap size={15} />
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">{t.about.educationTitle}</span>
                 </div>
                 <div className="text-sm font-bold text-slate-900 dark:text-white">{t.about.educationDegree}</div>
                 <div className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-snug">{t.about.educationSub}</div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-2xs hover:border-indigo-500/40 transition-colors">
-                <div className="flex items-center gap-2 text-sky-600 dark:text-sky-400 mb-1.5">
-                  <Code size={16} />
-                  <span className="text-xs font-bold uppercase tracking-wider">{t.about.focusTitle}</span>
+              <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#0c121e]/90 border border-slate-200/90 dark:border-white/[0.08] shadow-[0_2px_10px_rgba(15,23,42,0.04)] hover:shadow-[0_6px_20px_rgba(15,23,42,0.06)] dark:hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)] hover:border-sky-500/40 hover:-translate-y-0.5 transition-all duration-200 overflow-hidden">
+                <div className="absolute top-0 inset-x-6 h-[2px] bg-sky-500/50 opacity-60 group-hover:opacity-100 transition-opacity" />
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-7 h-7 rounded-lg bg-sky-50/80 dark:bg-sky-950/60 border border-sky-200/60 dark:border-sky-800/60 flex items-center justify-center text-sky-600 dark:text-sky-400">
+                    <Code size={15} />
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400">{t.about.focusTitle}</span>
                 </div>
                 <div className="text-sm font-bold text-slate-900 dark:text-white">{t.about.focusDomain}</div>
                 <div className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-snug">{t.about.focusSub}</div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-2xs hover:border-indigo-500/40 transition-colors">
-                <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 mb-1.5">
-                  <Compass size={16} />
-                  <span className="text-xs font-bold uppercase tracking-wider">{t.about.learningTitle}</span>
+              <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#0c121e]/90 border border-slate-200/90 dark:border-white/[0.08] shadow-[0_2px_10px_rgba(15,23,42,0.04)] hover:shadow-[0_6px_20px_rgba(15,23,42,0.06)] dark:hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)] hover:border-purple-500/40 hover:-translate-y-0.5 transition-all duration-200 overflow-hidden">
+                <div className="absolute top-0 inset-x-6 h-[2px] bg-purple-500/50 opacity-60 group-hover:opacity-100 transition-opacity" />
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-7 h-7 rounded-lg bg-purple-50/80 dark:bg-purple-950/60 border border-purple-200/60 dark:border-purple-800/60 flex items-center justify-center text-purple-600 dark:text-purple-400">
+                    <Compass size={15} />
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">{t.about.learningTitle}</span>
                 </div>
                 <div className="text-sm font-bold text-slate-900 dark:text-white">{t.about.learningDomain}</div>
                 <div className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-snug">{t.about.learningSub}</div>

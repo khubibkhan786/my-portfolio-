@@ -53,10 +53,13 @@ export function Contact() {
           whileInView={{opacity: 1, scale: 1, y: 0}}
           viewport={{ once: false, amount: 0.2 }}
           transition={{duration: 0.45, ease: [0.16, 1, 0.3, 1] as const}}
-          className="p-6 sm:p-10 md:p-12 rounded-3xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 backdrop-blur-2xl shadow-xl relative"
+          className="p-6 sm:p-10 md:p-12 rounded-3xl bg-white dark:bg-[#0c121e]/95 border border-slate-200/90 dark:border-white/[0.08] backdrop-blur-2xl shadow-[0_4px_24px_rgba(15,23,42,0.06)] dark:shadow-none relative overflow-hidden"
         >
+          {/* Subtle top accent line */}
+          <div className="absolute top-0 inset-x-12 h-[2px] bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
+
           {/* Top Icon */}
-          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/80 dark:border-indigo-800/60 flex items-center justify-center mx-auto mb-5 text-indigo-600 dark:text-indigo-400 shadow-xs">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-indigo-50/80 dark:bg-indigo-950/60 border border-indigo-200/80 dark:border-indigo-800/60 flex items-center justify-center mx-auto mb-5 text-indigo-600 dark:text-indigo-400 shadow-xs">
             <Mail size={24} />
           </div>
 

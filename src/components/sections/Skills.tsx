@@ -42,12 +42,16 @@ export function Skills() {
           badge: 'bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 border-indigo-200/80 dark:border-indigo-800/60',
           activeRing: 'border-indigo-500/60 dark:border-indigo-500/60 ring-1 ring-indigo-500/20',
           glow: 'from-indigo-500/15 via-transparent to-transparent',
+          iconBox: 'bg-indigo-50/80 dark:bg-indigo-950/60 border-indigo-200/70 dark:border-indigo-800/60',
+          topAccent: 'bg-indigo-500/60',
         };
       case 'databases':
         return {
           badge: 'bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border-emerald-200/80 dark:border-emerald-800/60',
           activeRing: 'border-emerald-500/60 dark:border-emerald-500/60 ring-1 ring-emerald-500/20',
           glow: 'from-emerald-500/15 via-transparent to-transparent',
+          iconBox: 'bg-emerald-50/80 dark:bg-emerald-950/60 border-emerald-200/70 dark:border-emerald-800/60',
+          topAccent: 'bg-emerald-500/60',
         };
       case 'web-mobile':
       default:
@@ -55,6 +59,8 @@ export function Skills() {
           badge: 'bg-sky-50 dark:bg-sky-950/70 text-sky-700 dark:text-sky-300 border-sky-200/80 dark:border-sky-800/60',
           activeRing: 'border-sky-500/60 dark:border-sky-500/60 ring-1 ring-sky-500/20',
           glow: 'from-sky-500/15 via-transparent to-transparent',
+          iconBox: 'bg-sky-50/80 dark:bg-sky-950/60 border-sky-200/70 dark:border-sky-800/60',
+          topAccent: 'bg-sky-500/60',
         };
     }
   };
@@ -140,12 +146,20 @@ export function Skills() {
                 variants={cardVariants}
                 layout
                 className={cn(
-                  'rounded-2xl transition-all duration-300 relative overflow-hidden bg-white/95 dark:bg-slate-900/95 border backdrop-blur-sm text-left rtl:text-right',
+                  'rounded-2xl transition-all duration-300 relative overflow-hidden bg-white dark:bg-[#0c121e]/90 border backdrop-blur-sm text-left rtl:text-right group',
                   isExpanded
                     ? cn(accent.activeRing, 'shadow-lg shadow-indigo-500/5')
-                    : 'border-slate-200/90 dark:border-slate-800 shadow-2xs hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md'
+                    : 'border-slate-200/90 dark:border-white/[0.08] shadow-[0_2px_12px_rgba(15,23,42,0.04)] hover:border-slate-300 dark:hover:border-white/[0.16] hover:shadow-[0_8px_24px_rgba(15,23,42,0.07)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.4)]'
                 )}
               >
+                {/* Subtle top accent line */}
+                <div
+                  className={cn(
+                    'absolute top-0 inset-x-8 h-[2px] transition-opacity duration-300 opacity-60 group-hover:opacity-100',
+                    accent.topAccent
+                  )}
+                />
+
                 {/* Subtle underglow on active */}
                 {isExpanded && (
                   <div
@@ -160,7 +174,12 @@ export function Skills() {
                   <div>
                     {/* Header Row: Icon + Index + Accent Badge */}
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-2xs">
+                      <div
+                        className={cn(
+                          'w-11 h-11 rounded-xl border flex items-center justify-center shadow-2xs group-hover:scale-105 transition-all duration-200',
+                          accent.iconBox
+                        )}
+                      >
                         {getCategoryIcon(category.icon, isExpanded)}
                       </div>
                       <span className="font-mono text-xs font-bold text-slate-400 dark:text-slate-500">

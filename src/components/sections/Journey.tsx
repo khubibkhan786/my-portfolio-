@@ -91,14 +91,26 @@ export function Journey() {
                   {/* Step Card Content */}
                   <div className="flex-1 w-full pl-11 rtl:pl-0 rtl:pr-11 md:pl-0 md:rtl:pr-0">
                     <div
-                      className={`p-5 sm:p-6 rounded-2xl transition-all duration-300 relative ${
+                      className={cn(
+                        'p-5 sm:p-6 rounded-2xl transition-all duration-300 relative text-left rtl:text-right overflow-hidden',
                         isCurrent
-                          ? 'bg-white dark:bg-slate-900 border border-indigo-500/60 shadow-sm shadow-indigo-500/5'
+                          ? 'bg-white dark:bg-[#0c121e]/90 border border-indigo-500/60 shadow-[0_4px_16px_rgba(99,102,241,0.08)]'
                           : isNext
-                          ? 'bg-white/80 dark:bg-slate-900/60 border border-dashed border-indigo-300 dark:border-indigo-800'
-                          : 'bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-2xs'
-                      }`}
+                          ? 'bg-white/90 dark:bg-[#0c121e]/70 border border-dashed border-indigo-300 dark:border-indigo-800/80 shadow-[0_2px_10px_rgba(15,23,42,0.03)]'
+                          : 'bg-white dark:bg-[#0c121e]/90 border border-slate-200/90 dark:border-white/[0.08] shadow-[0_2px_10px_rgba(15,23,42,0.04)] hover:shadow-[0_6px_20px_rgba(15,23,42,0.06)] dark:hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]'
+                      )}
                     >
+                      {/* Subtle top accent */}
+                      <div
+                        className={cn(
+                          'absolute top-0 inset-x-6 h-[2px]',
+                          isCurrent
+                            ? 'bg-emerald-500/60'
+                            : isNext
+                            ? 'bg-purple-500/40'
+                            : 'bg-indigo-500/30'
+                        )}
+                      />
                       {/* Milestone Header - Unboxed Typography */}
                       <div className="flex items-center gap-2 mb-2 text-xs text-slate-500 dark:text-slate-400">
                         <span className="font-outfit font-bold text-indigo-600 dark:text-indigo-400">

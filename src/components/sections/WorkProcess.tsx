@@ -137,14 +137,35 @@ export function WorkProcess() {
                   viewport={{once: false, amount: 0.15}}
                   transition={{duration: 0.4, delay: idx * 0.08}}
                   className={cn(
-                    'group relative p-5 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-2xs hover:shadow-lg hover:-translate-y-1 transition-all flex flex-col justify-between text-left rtl:text-right',
+                    'group relative p-5 rounded-2xl bg-white dark:bg-[#0c121e]/90 border border-slate-200/90 dark:border-white/[0.08] shadow-[0_2px_10px_rgba(15,23,42,0.04)] hover:shadow-[0_8px_22px_rgba(15,23,42,0.08)] dark:hover:shadow-[0_8px_22px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between text-left rtl:text-right overflow-hidden',
                     stage.border
                   )}
                 >
+                  {/* Subtle top accent line */}
+                  <div
+                    className={cn(
+                      'absolute top-0 inset-x-6 h-[2px] transition-opacity duration-200 opacity-60 group-hover:opacity-100',
+                      stage.step === 1 && 'bg-amber-500/50',
+                      stage.step === 2 && 'bg-indigo-500/50',
+                      stage.step === 3 && 'bg-sky-500/50',
+                      stage.step === 4 && 'bg-emerald-500/50',
+                      stage.step === 5 && 'bg-purple-500/50'
+                    )}
+                  />
+
                   <div>
                     {/* Top Row: Stage Step Badge + Simple Icon */}
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-2xs group-hover:scale-105 transition-transform">
+                      <div
+                        className={cn(
+                          'w-10 h-10 rounded-xl border flex items-center justify-center shadow-2xs group-hover:scale-105 transition-transform duration-200',
+                          stage.step === 1 && 'bg-amber-50/80 dark:bg-amber-950/60 border-amber-200/60 dark:border-amber-800/60',
+                          stage.step === 2 && 'bg-indigo-50/80 dark:bg-indigo-950/60 border-indigo-200/60 dark:border-indigo-800/60',
+                          stage.step === 3 && 'bg-sky-50/80 dark:bg-sky-950/60 border-sky-200/60 dark:border-sky-800/60',
+                          stage.step === 4 && 'bg-emerald-50/80 dark:bg-emerald-950/60 border-emerald-200/60 dark:border-emerald-800/60',
+                          stage.step === 5 && 'bg-purple-50/80 dark:bg-purple-950/60 border-purple-200/60 dark:border-purple-800/60'
+                        )}
+                      >
                         {stage.icon}
                       </div>
 

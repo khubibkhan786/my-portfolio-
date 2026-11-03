@@ -65,19 +65,62 @@ export function Hero() {
             animate="visible"
             className="lg:col-span-6 flex flex-col justify-start text-left rtl:text-right"
           >
-            {/* Academic Identity Kicker */}
-            <motion.div variants={itemVariants} className="flex items-center gap-2 mb-3 text-xs font-medium">
-              <span className="flex h-2 w-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" />
-              <span className="text-slate-900 dark:text-slate-200 font-semibold tracking-wide" dir="auto">
-                Abdul Jalil Zwak
+            {/* Developer Identity & Academic Kicker with Bidirectional Isolation */}
+            <motion.div
+              variants={itemVariants}
+              className="mb-3.5 sm:mb-4 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 max-w-full"
+            >
+              {/* Primary Identity: Active Status + Developer Name */}
+              <div className="inline-flex items-center gap-2 shrink-0">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                <span
+                  className="font-bold text-slate-900 dark:text-slate-100 tracking-tight text-xs sm:text-sm"
+                  dir={isRtl ? 'rtl' : 'ltr'}
+                >
+                  {t.hero.statusBadge}
+                </span>
+              </div>
+
+              {/* Separator - Visible on tablet/desktop */}
+              <span
+                aria-hidden="true"
+                className="hidden sm:inline-block text-slate-300 dark:text-slate-700 select-none text-xs"
+              >
+                ·
               </span>
-              <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
-              <span className="text-slate-600 dark:text-slate-400 font-medium">
-                {t.hero.subline}
-              </span>
+
+              {/* Academic Specialization / Description Block with Isolated English Terms */}
+              <div
+                className="text-slate-600 dark:text-slate-300 font-medium text-xs sm:text-[13px] leading-relaxed text-balance"
+                dir={isRtl ? 'rtl' : 'ltr'}
+              >
+                {isRtl ? (
+                  <span className="inline-block max-w-full">
+                    {t.hero.subline.split(/(Computer Science)/g).map((part, idx) => {
+                      if (part === 'Computer Science') {
+                        return (
+                          <bdi
+                            key={idx}
+                            dir="ltr"
+                            className="inline-block font-sans font-semibold text-slate-800 dark:text-slate-200 mx-1 px-1.5 py-0.5 rounded bg-slate-100/90 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 text-[11px] sm:text-xs tracking-tight"
+                          >
+                            Computer Science
+                          </bdi>
+                        );
+                      }
+                      return <span key={idx}>{part}</span>;
+                    })}
+                  </span>
+                ) : (
+                  <span>{t.hero.subline}</span>
+                )}
+              </div>
             </motion.div>
 
-            {/* Sub-label: Field of study */}
+            {/* Sub-label: Field of study / Role */}
             <motion.div
               variants={itemVariants}
               className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-2.5 flex items-center gap-2"

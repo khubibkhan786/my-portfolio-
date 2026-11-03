@@ -140,8 +140,20 @@ export function FutureRoadmap() {
                 whileInView={{opacity: 1, y: 0}}
                 viewport={{once: false, amount: 0.15}}
                 transition={{duration: 0.4, delay: idx * 0.06}}
-                className="group relative p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 shadow-2xs hover:shadow-md hover:border-indigo-500/40 dark:hover:border-indigo-500/40 transition-all flex flex-col justify-between text-left rtl:text-right"
+                className="group relative p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#0c121e]/90 border border-slate-200/90 dark:border-white/[0.08] shadow-[0_2px_10px_rgba(15,23,42,0.04)] hover:shadow-[0_8px_22px_rgba(15,23,42,0.08)] dark:hover:shadow-[0_8px_22px_rgba(0,0,0,0.4)] hover:border-indigo-500/40 dark:hover:border-indigo-500/40 hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between text-left rtl:text-right overflow-hidden"
               >
+                {/* Subtle stage top accent line */}
+                <div
+                  className={cn(
+                    'absolute top-0 inset-x-6 h-[2px] transition-opacity duration-200 opacity-60 group-hover:opacity-100',
+                    stage.stageNumber === 1 && 'bg-sky-500/50',
+                    stage.stageNumber === 2 && 'bg-amber-500/50',
+                    stage.stageNumber === 3 && 'bg-indigo-500/50',
+                    stage.stageNumber === 4 && 'bg-emerald-500/50',
+                    stage.stageNumber === 5 && 'bg-purple-500/50'
+                  )}
+                />
+
                 <div>
                   {/* Top Bar: Number + Icon + Status Badge */}
                   <div className="flex items-center justify-between mb-3">
@@ -149,7 +161,16 @@ export function FutureRoadmap() {
                       <span className="font-mono text-xs font-black text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/70 px-2 py-0.5 rounded-md border border-indigo-200/60 dark:border-indigo-800/60">
                         {numberFormatted}
                       </span>
-                      <div className="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                      <div
+                        className={cn(
+                          'w-7 h-7 rounded-lg flex items-center justify-center border',
+                          stage.stageNumber === 1 && 'bg-sky-50/80 dark:bg-sky-950/50 border-sky-200/60 dark:border-sky-800/50',
+                          stage.stageNumber === 2 && 'bg-amber-50/80 dark:bg-amber-950/50 border-amber-200/60 dark:border-amber-800/50',
+                          stage.stageNumber === 3 && 'bg-indigo-50/80 dark:bg-indigo-950/50 border-indigo-200/60 dark:border-indigo-800/50',
+                          stage.stageNumber === 4 && 'bg-emerald-50/80 dark:bg-emerald-950/50 border-emerald-200/60 dark:border-emerald-800/50',
+                          stage.stageNumber === 5 && 'bg-purple-50/80 dark:bg-purple-950/50 border-purple-200/60 dark:border-purple-800/50'
+                        )}
+                      >
                         {getStageIcon(stage.stageNumber)}
                       </div>
                     </div>
@@ -175,7 +196,7 @@ export function FutureRoadmap() {
                   {stage.skills.slice(0, 3).map((sk) => (
                     <span
                       key={sk}
-                      className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                      className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100/90 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60"
                     >
                       {sk}
                     </span>
