@@ -1,8 +1,7 @@
 import {useState} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
-import {GraduationCap, Code, Sparkles, ChevronDown, ChevronUp, Compass, FileDown, Layers, ArrowUpRight} from 'lucide-react';
+import {GraduationCap, Code, ChevronDown, ChevronUp, Compass, FileDown, Layers, ArrowUpRight} from 'lucide-react';
 import {useLanguage} from '../../context/LanguageContext';
-import {cn} from '../../lib/utils';
 
 export function About() {
   const [expanded, setExpanded] = useState(false);
@@ -13,13 +12,13 @@ export function About() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.08,
       },
     },
   };
 
   const itemVariants = {
-    hidden: {opacity: 0, y: 16},
+    hidden: {opacity: 0, y: 14},
     visible: {
       opacity: 1,
       y: 0,
@@ -28,11 +27,14 @@ export function About() {
   };
 
   return (
-    <section id="about" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/40 dark:bg-[#07090e] relative overflow-hidden transition-colors duration-300">
-      {/* Soft Ambient Background Atmosphere */}
+    <section
+      id="about"
+      className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/40 dark:bg-[#07090e] relative overflow-hidden transition-colors duration-300"
+    >
+      {/* Restrained Ambient Atmosphere */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
-        <div className="absolute -top-24 -left-20 w-[450px] h-[450px] rounded-full bg-gradient-to-br from-indigo-500/10 via-sky-500/8 to-transparent dark:from-indigo-600/10 dark:via-cyan-600/8 dark:to-transparent blur-[90px]" />
-        <div className="absolute -bottom-20 -right-20 w-[420px] h-[420px] rounded-full bg-gradient-to-tl from-purple-500/10 via-indigo-500/8 to-transparent dark:from-purple-600/10 dark:via-indigo-600/8 dark:to-transparent blur-[90px]" />
+        <div className="absolute -top-24 -left-20 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-indigo-500/10 via-sky-500/8 to-transparent dark:from-indigo-600/10 dark:via-cyan-600/8 dark:to-transparent blur-[80px]" />
+        <div className="absolute -bottom-20 -right-20 w-[380px] h-[380px] rounded-full bg-gradient-to-tl from-purple-500/10 via-indigo-500/8 to-transparent dark:from-purple-600/10 dark:via-indigo-600/8 dark:to-transparent blur-[80px]" />
         <div className="absolute inset-0 bg-tech-grid-light dark:bg-tech-grid-dark opacity-20" />
       </div>
 
@@ -41,11 +43,11 @@ export function About() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{once: true, amount: 0.15}}
           className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start"
         >
-          {/* LEFT: Section Heading, Concise Introduction & Information Grid */}
-          <motion.div variants={itemVariants} className="lg:col-span-7">
+          {/* LEFT: Section Heading, Personal Biography & Information Grid */}
+          <motion.div variants={itemVariants} className="lg:col-span-7 text-left rtl:text-right">
             <span className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 font-semibold tracking-wider uppercase text-xs mb-2.5 font-mono">
               <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400" />
               {t.about.tag}
@@ -53,23 +55,23 @@ export function About() {
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-outfit tracking-tight text-slate-900 dark:text-white mb-4 leading-tight text-balance">
               {t.about.headlinePre}{' '}
-              <span className="bg-gradient-to-r from-indigo-600 via-sky-500 to-emerald-500 dark:from-indigo-400 dark:via-sky-300 dark:to-emerald-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-indigo-600 via-sky-500 to-indigo-500 dark:from-indigo-400 dark:via-sky-300 dark:to-cyan-300 bg-clip-text text-transparent">
                 {t.about.headlineHighlight}
               </span>{' '}
               {t.about.headlinePost}
             </h2>
 
-            {/* Concise, Scannable Introduction */}
+            {/* Scannable, Genuine Personal Biography */}
             <div className="space-y-3 text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
               <p>{t.about.intro1}</p>
               <p>{t.about.intro2}</p>
             </div>
 
-            {/* Scannable 4-Column Information Grid */}
+            {/* 4-Column Structured Information Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 sm:mt-7">
               <div className="group relative">
                 <div className="card-soft-underglow" />
-                <div className="relative z-10 p-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-2xs group-hover:shadow-xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm h-full">
+                <div className="relative z-10 p-4 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-2xs group-hover:shadow-lg group-hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-sm h-full">
                   <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 mb-1.5">
                     <GraduationCap size={16} />
                     <span className="text-xs font-bold uppercase tracking-wider">{t.about.educationTitle}</span>
@@ -81,7 +83,7 @@ export function About() {
 
               <div className="group relative">
                 <div className="card-soft-underglow" />
-                <div className="relative z-10 p-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-2xs group-hover:shadow-xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm h-full">
+                <div className="relative z-10 p-4 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-2xs group-hover:shadow-lg group-hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-sm h-full">
                   <div className="flex items-center gap-2 text-sky-600 dark:text-sky-400 mb-1.5">
                     <Code size={16} />
                     <span className="text-xs font-bold uppercase tracking-wider">{t.about.focusTitle}</span>
@@ -93,7 +95,7 @@ export function About() {
 
               <div className="group relative">
                 <div className="card-soft-underglow" />
-                <div className="relative z-10 p-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-2xs group-hover:shadow-xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm h-full">
+                <div className="relative z-10 p-4 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-2xs group-hover:shadow-lg group-hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-sm h-full">
                   <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 mb-1.5">
                     <Layers size={16} />
                     <span className="text-xs font-bold uppercase tracking-wider">{t.about.buildingTitle}</span>
@@ -105,7 +107,7 @@ export function About() {
 
               <div className="group relative">
                 <div className="card-soft-underglow" />
-                <div className="relative z-10 p-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-2xs group-hover:shadow-xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm h-full">
+                <div className="relative z-10 p-4 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 group-hover:border-indigo-500/50 shadow-2xs group-hover:shadow-lg group-hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-sm h-full">
                   <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 mb-1.5">
                     <Compass size={16} />
                     <span className="text-xs font-bold uppercase tracking-wider">{t.about.learningTitle}</span>
@@ -116,11 +118,12 @@ export function About() {
               </div>
             </div>
 
-            {/* Read More Accordion & CV Download Button */}
+            {/* Read More Accordion & Contact/Resume Action */}
             <div className="mt-6 sm:mt-7 flex flex-wrap items-center gap-3">
               <button
                 onClick={() => setExpanded(!expanded)}
-                className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl border border-slate-300 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 text-slate-800 dark:text-slate-200 font-medium text-xs sm:text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shadow-2xs cursor-pointer"
+                className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl border border-slate-300 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 font-medium text-xs sm:text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shadow-2xs cursor-pointer"
+                aria-expanded={expanded}
               >
                 <span>{expanded ? t.about.showLess : t.about.showPrinciples}</span>
                 {expanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
@@ -141,10 +144,10 @@ export function About() {
                   initial={{opacity: 0, height: 0}}
                   animate={{opacity: 1, height: 'auto'}}
                   exit={{opacity: 0, height: 0}}
-                  transition={{duration: 0.3, ease: [0.16, 1, 0.3, 1] as const}}
+                  transition={{duration: 0.25, ease: [0.16, 1, 0.3, 1] as const}}
                   className="overflow-hidden mt-4"
                 >
-                  <div className="p-5 sm:p-6 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                  <div className="p-5 sm:p-6 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                     <h4 className="font-outfit font-bold text-slate-900 dark:text-white text-sm sm:text-base">
                       {t.about.principlesHeading}
                     </h4>
@@ -181,7 +184,7 @@ export function About() {
           {/* RIGHT: Profile Card & Dedicated Currently Building Spotlight Card */}
           <motion.div variants={itemVariants} className="lg:col-span-5 space-y-4 w-full">
             {/* Profile Glance Card */}
-            <div className="p-5 sm:p-6 rounded-3xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-sm backdrop-blur-xl relative overflow-hidden group hover:border-indigo-500/40 transition-colors">
+            <div className="p-5 sm:p-6 rounded-3xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-sm backdrop-blur-xl relative overflow-hidden group hover:border-indigo-500/40 transition-colors">
               <div className="flex items-center gap-3.5">
                 <div className="w-14 h-14 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0 bg-slate-200 dark:bg-slate-800">
                   <img
@@ -208,13 +211,13 @@ export function About() {
             {/* Dedicated Currently Building Spotlight Card */}
             <div className="group relative">
               <div className="card-soft-underglow" />
-              <div className="relative z-10 p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-indigo-50/90 via-white/90 to-emerald-50/70 dark:from-slate-900/95 dark:via-slate-900/95 dark:to-indigo-950/60 border border-indigo-200/70 dark:border-indigo-900/60 group-hover:border-indigo-500/60 shadow-sm group-hover:shadow-2xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1 transition-all duration-300 backdrop-blur-xl">
+              <div className="relative z-10 p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-indigo-50/90 via-white/95 to-emerald-50/70 dark:from-slate-900/95 dark:via-slate-900/95 dark:to-indigo-950/60 border border-indigo-200/70 dark:border-indigo-900/60 group-hover:border-indigo-500/60 shadow-sm group-hover:shadow-xl group-hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-xl text-left rtl:text-right">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-indigo-600 dark:text-indigo-400">
                     {t.about.currentlyBuildingBadge}
                   </span>
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                     {t.about.inDevelopment}
                   </span>
                 </div>

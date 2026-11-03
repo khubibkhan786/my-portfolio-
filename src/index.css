@@ -12,7 +12,7 @@
 }
 
 :root {
-  font-family: "Plus Jakarta Sans", "Vazirmatn", "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Tahoma, sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   scroll-behavior: smooth;
   color-scheme: light;
   --background: #f8fafc;
@@ -22,7 +22,6 @@
   --accent: #4f46e5;
   --border: rgba(226, 232, 240, 0.8);
   --shadow: rgba(15, 23, 42, 0.04);
-  --radius: 1rem;
 }
 
 html.dark {
@@ -36,19 +35,36 @@ html.dark {
   --shadow: rgba(0, 0, 0, 0.4);
 }
 
-/* RTL Language Modern Typography - Vazirmatn & Noto Sans Arabic */
-html[dir="rtl"] {
-  font-family: "Vazirmatn", "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-  letter-spacing: normal !important;
+/* ==========================================================================
+   Language-Aware Multilingual Typography System (Pashto, Dari, English)
+   ========================================================================== */
+
+/* 1. English (Default LTR) */
+html[lang="en"],
+html.lang-en {
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.011em;
+}
+
+/* 2. Pashto (RTL) - Native Vazirmatn with natural shaping and letter connections */
+html[lang="ps"],
+html.lang-ps,
+html[dir="rtl"][lang="ps"] {
+  font-family: "Vazirmatn", "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, sans-serif;
+  letter-spacing: 0 !important;
   line-height: 1.75;
 }
 
-html[dir="rtl"] body {
-  font-family: "Vazirmatn", "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+/* 3. Dari / Persian (RTL) - Natural glyph rendering and line heights */
+html[lang="fa"],
+html.lang-fa,
+html[dir="rtl"][lang="fa"] {
+  font-family: "Vazirmatn", "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, sans-serif;
+  letter-spacing: 0 !important;
   line-height: 1.75;
 }
 
-/* Headings in RTL: Enhanced weight & generous line-height to prevent diacritics clipping */
+/* Semantic RTL Typography Hierarchy (Zero artificial bold distortion) */
 html[dir="rtl"] h1,
 html[dir="rtl"] h2,
 html[dir="rtl"] h3,
@@ -58,89 +74,61 @@ html[dir="rtl"] h6,
 html[dir="rtl"] .font-outfit,
 html[dir="rtl"] .font-syne,
 html[dir="rtl"] .font-space {
-  font-family: "Vazirmatn", "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-weight: 750 !important;
-  line-height: 1.45 !important;
+  font-family: "Vazirmatn", "Noto Sans Arabic", sans-serif;
+  font-weight: 700;
+  line-height: 1.4;
   letter-spacing: 0 !important;
-  font-feature-settings: "kern" 1;
 }
 
-/* Paragraphs & Descriptions: Balanced 450 weight & 1.8 line-height */
-html[dir="rtl"] p {
-  font-family: "Vazirmatn", "Noto Sans Arabic", sans-serif !important;
-  font-weight: 450 !important;
-  line-height: 1.8 !important;
+html[dir="rtl"] p,
+html[dir="rtl"] li {
+  line-height: 1.8;
+  letter-spacing: 0 !important;
 }
 
-/* Text spans, labels, inputs */
 html[dir="rtl"] span,
 html[dir="rtl"] a,
-html[dir="rtl"] button,
-html[dir="rtl"] input,
-html[dir="rtl"] textarea,
-html[dir="rtl"] .font-plus-jakarta {
-  font-family: "Vazirmatn", "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, sans-serif !important;
+html[dir="rtl"] button {
+  font-family: inherit;
+  letter-spacing: 0;
 }
 
-html[dir="rtl"] button,
-html[dir="rtl"] a.font-semibold {
-  font-weight: 600 !important;
-}
-
-/* Maintain crisp LTR for code, terminals, monograms, and tech badges */
-html[dir="rtl"] .font-mono,
-html[dir="rtl"] code,
-html[dir="rtl"] pre,
-html[dir="rtl"] [dir="ltr"] {
+/* 4. Technical Typography - Strictly LTR JetBrains Mono */
+.font-mono,
+code,
+pre,
+kbd,
+samp,
+[dir="ltr"],
+.tech-mono {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
   direction: ltr !important;
   text-align: left !important;
-  font-family: "JetBrains Mono", monospace !important;
-  line-height: 1.5 !important;
+  unicode-bidi: isolate;
+  letter-spacing: -0.02em;
 }
 
-/* Soft Ambient Hover Underglow for Cards ("نرم رنګ") */
-.card-soft-underglow {
-  position: absolute;
-  inset: -3px;
-  border-radius: 1.5rem;
-  background: radial-gradient(circle at 50% 60%, rgba(99, 102, 241, 0.28) 0%, rgba(6, 182, 212, 0.22) 50%, transparent 75%);
-  opacity: 0;
-  pointer-events: none;
-  filter: blur(16px);
-  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: translateY(4px);
-  z-index: 0;
-}
+/* ==========================================================================
+   Themes & Visual Design System
+   ========================================================================== */
 
-.group:hover .card-soft-underglow {
-  opacity: 1;
-  transform: translateY(8px);
-}
-
-.dark .card-soft-underglow {
-  background: radial-gradient(circle at 50% 60%, rgba(99, 102, 241, 0.35) 0%, rgba(6, 182, 212, 0.28) 50%, transparent 75%);
-  filter: blur(20px);
-}
-
-/* Smooth Theme & Surface Transitions */
 body {
   @apply bg-[#f8fafc] text-slate-900 transition-colors duration-300 antialiased selection:bg-indigo-500/20 selection:text-indigo-600;
   overflow-x: hidden;
 }
 
-/* Light Mode: Modern Complex Multi-Tone Ambient Gradient Mesh */
+/* Light Mode: Smooth, clean gradient mesh without heavy blurs */
 html:not(.dark) body {
   background-color: #f8fafc;
   background-image:
-    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 45%),
-    radial-gradient(at 100% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 45%),
-    radial-gradient(at 85% 45%, rgba(168, 85, 247, 0.09) 0px, transparent 45%),
-    radial-gradient(at 15% 75%, rgba(14, 165, 233, 0.09) 0px, transparent 45%),
-    radial-gradient(at 80% 95%, rgba(99, 102, 241, 0.11) 0px, transparent 45%);
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 40%),
+    radial-gradient(at 100% 0%, rgba(56, 189, 248, 0.08) 0px, transparent 40%),
+    radial-gradient(at 85% 45%, rgba(168, 85, 247, 0.06) 0px, transparent 40%),
+    radial-gradient(at 15% 75%, rgba(14, 165, 233, 0.06) 0px, transparent 40%);
   background-attachment: fixed;
 }
 
-/* Dark Mode: Pure, Deep, Original #07090e Palette - Strictly no light gradient */
+/* Dark Mode: Pure #07090e Deep Navy Palette */
 html.dark,
 html.dark body,
 html.dark #root {
@@ -149,24 +137,48 @@ html.dark #root {
   color: #f1f5f9;
 }
 
-/* Subtle Technical Grid Background Utility */
+/* Subtle Technical Grid Utilities */
 .bg-tech-grid-light {
-  background-image: 
-    linear-gradient(to right, rgba(99, 102, 241, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(99, 102, 241, 0.045) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, rgba(99, 102, 241, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.035) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
 .bg-tech-grid-dark {
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+/* Restrained Hover Underglow for Cards */
+.card-soft-underglow {
+  position: absolute;
+  inset: -2px;
+  border-radius: 1.25rem;
+  background: radial-gradient(circle at 50% 60%, rgba(99, 102, 241, 0.18) 0%, rgba(6, 182, 212, 0.14) 50%, transparent 75%);
+  opacity: 0;
+  pointer-events: none;
+  filter: blur(12px);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(2px);
+  z-index: 0;
+}
+
+.group:hover .card-soft-underglow {
+  opacity: 1;
+  transform: translateY(5px);
+}
+
+.dark .card-soft-underglow {
+  background: radial-gradient(circle at 50% 60%, rgba(99, 102, 241, 0.22) 0%, rgba(6, 182, 212, 0.16) 50%, transparent 75%);
+  filter: blur(14px);
 }
 
 /* Refined Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -174,15 +186,66 @@ html.dark #root {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-300/80 dark:bg-slate-700/80 rounded-full hover:bg-slate-400 dark:hover:bg-slate-600 transition-colors;
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full hover:bg-slate-400 dark:hover:bg-slate-600 transition-colors;
+}
+
+/* ==========================================================================
+   Compositor-Thread Keyframe Animations (Zero JS Thread Overhead)
+   ========================================================================== */
+
+@keyframes subtleFloat1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(45deg);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) rotate(65deg);
+  }
+}
+
+@keyframes subtleFloat2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(12px, -15px, 0);
+  }
+}
+
+@keyframes subtleFloat3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-10px, -20px, 0) rotate(90deg);
+  }
+}
+
+.animate-subtle-float-1 {
+  animation: subtleFloat1 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-subtle-float-2 {
+  animation: subtleFloat2 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-subtle-float-3 {
+  animation: subtleFloat3 20s ease-in-out infinite;
+  will-change: transform;
 }
 
 /* Respect Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
-    animation-duration: 0.01ms !important;
+    animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+  .animate-subtle-float-1,
+  .animate-subtle-float-2,
+  .animate-subtle-float-3 {
+    animation: none !important;
   }
 }

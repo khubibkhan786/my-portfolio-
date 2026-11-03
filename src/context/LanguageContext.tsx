@@ -40,6 +40,9 @@ export function LanguageProvider({children}: {children: ReactNode}) {
     root.setAttribute('lang', language);
     root.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
 
+    root.classList.remove('lang-en', 'lang-ps', 'lang-fa');
+    root.classList.add(`lang-${language}`);
+
     if (isRtl) {
       root.classList.add('rtl-mode');
     } else {

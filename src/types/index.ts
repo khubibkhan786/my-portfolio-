@@ -41,15 +41,23 @@ export interface Project {
   };
 }
 
+export type SkillStatus =
+  | 'Applied in Projects'
+  | 'Practical Experience'
+  | 'Learning Foundations'
+  | 'Currently Learning'
+  | 'Active Coursework';
+
 export interface Skill {
   name: string;
-  icon?: string;
-  evidence?: string;
-  proficiency?: number;
+  status?: SkillStatus;
+  projectAssociation?: string;
+  notes?: string;
 }
 
 export interface SkillGroup {
   category: string;
+  description?: string;
   items: Skill[];
 }
 
