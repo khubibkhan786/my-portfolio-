@@ -27,23 +27,38 @@ export function Footer() {
   return (
     <footer className="bg-slate-100/70 dark:bg-[#07090e] border-t border-slate-200/80 dark:border-slate-800/80 py-10 sm:py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 sm:gap-8">
-        {/* AGZ Logo & Identity */}
+        {/* AGZ Logo & Identity - Strictly LTR isolated */}
         <div className="text-center md:text-left rtl:md:text-right">
           <a
             href="#home"
             className="group inline-flex items-center gap-2 mb-2 focus:outline-hidden select-none"
             aria-label="AGZ Home"
+            dir="ltr"
+            style={{ direction: 'ltr' }}
           >
-            <div className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-900 text-white dark:bg-slate-900 border border-slate-700/60 dark:border-slate-800 shadow-2xs group-hover:border-indigo-500/60 transition-all duration-300">
-              <span className="font-outfit font-black tracking-tight text-xs leading-none text-white">
-                AG
-              </span>
-              <span className="font-outfit font-black tracking-tight text-xs leading-none bg-gradient-to-tr from-indigo-400 to-sky-300 bg-clip-text text-transparent">
+            <div
+              className="flex flex-row items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-900 text-white dark:bg-slate-900 border border-slate-700/60 dark:border-slate-800 shadow-2xs group-hover:border-indigo-500/60 transition-all duration-300"
+              dir="ltr"
+              style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
+            >
+              <bdi
+                className="font-outfit font-black tracking-tight text-xs leading-none text-white select-none inline-flex flex-row items-center"
+                dir="ltr"
+                style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
+              >
+                <span>A</span>
+                <span>G</span>
+              </bdi>
+              <bdi
+                className="font-outfit font-black tracking-tight text-xs leading-none bg-gradient-to-tr from-indigo-400 to-sky-300 bg-clip-text text-transparent select-none inline-block"
+                dir="ltr"
+                style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
+              >
                 Z
-              </span>
-              <span className="w-1 h-1 rounded-full bg-cyan-400 ml-0.5" />
+              </bdi>
+              <span className="w-1 h-1 rounded-full bg-cyan-400 ml-0.5" dir="ltr" style={{ direction: 'ltr' }} />
             </div>
-            <span className="text-sm font-bold font-outfit text-slate-900 dark:text-white tracking-tight">
+            <span className="text-sm font-bold font-outfit text-slate-900 dark:text-white tracking-tight" dir="auto">
               {t.hero.statusBadge}
             </span>
           </a>

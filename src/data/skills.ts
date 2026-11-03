@@ -100,10 +100,10 @@ export const simplifiedSkillCategories: SimplifiedSkillCategory[] = [
     translations: {
       ps: {
         title: 'ډېټابېس او د معلوماتو مدیریت',
-        shortSummary: 'د اړیکیزو معلوماتو ماډلینګ، د جدولونو نارملایزېشن، د سکیم ډیزاین او افلاین خوندي کول.',
+        shortSummary: 'د اړوند ډېټابېس ماډلینګ، د جدولونو نارملایزېشن، د سکیم ډیزاین او افلاین خوندي کول.',
         verifiedDetails: [
           {
-            area: 'د اړیکیز ډېټابېس سکیم ډیزاین',
+            area: 'د اړوند ډېټابېس سکیم ډیزاین',
             description: 'د جدولونو اړیکې (ER)، لومړني او بهرني کلیدونه، نارملایزیشن او د معلوماتو بشپړتیا.',
           },
           {
@@ -116,7 +116,7 @@ export const simplifiedSkillCategories: SimplifiedSkillCategory[] = [
           },
           {
             area: 'معلوماتي سیستمونه (Information Systems)',
-            description: 'د پوهنتون په تدریسي نصاب کې د معلوماتو بهیرونه او د سیستمونو تخنیکي تحلیل.',
+            description: 'د اکاډمیک تدریسي نصاب په لړ کې د معلوماتو بهیرونه او د سیستمونو تخنیکي تحلیل.',
           },
         ],
       },
@@ -287,14 +287,14 @@ export const currentlyLearningSkills: SkillItem[] = [
     status: 'learning',
     category: 'databases',
     description: 'Relational data modeling, table relationships, primary/foreign keys, and query optimization.',
-    evidence: 'Paktia University Information Systems coursework & practical lab exercises',
+    evidence: 'Information Systems academic coursework & practical lab exercises',
   },
   {
     name: 'MySQL',
     status: 'learning',
     category: 'databases',
     description: 'Database creation, relational constraints, CRUD operations, and transaction integrity.',
-    evidence: 'University database administration lab assignments and test projects',
+    evidence: 'Database administration coursework and practical test projects',
   },
   {
     name: 'Software Engineering Principles',

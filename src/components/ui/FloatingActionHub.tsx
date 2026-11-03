@@ -100,7 +100,7 @@ export function FloatingActionHub() {
                   {t.hero.statusBadge}
                 </span>
               </div>
-              <span className="text-[10px] text-slate-500 dark:text-slate-400">AGZ Hub</span>
+              <span className="text-[10px] text-slate-500 dark:text-slate-400" dir="ltr" style={{ direction: 'ltr', unicodeBidi: 'isolate' }}>AGZ Hub</span>
             </div>
 
             {/* Action Items List */}

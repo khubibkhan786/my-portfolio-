@@ -38,17 +38,17 @@ export const journeySteps: JourneyStep[] = [
   {
     year: '2026',
     title: 'Computer Science · Information Systems',
-    description: 'Studying programming, databases, networking, application development, and web technologies at Paktia University.',
+    description: 'Studying core programming, databases, networking, mobile development, and modern web technologies.',
     translations: {
       ps: {
         year: '۲۰۲۶',
         title: 'کمپیوټر ساینس · معلوماتي سیستمونه',
-        description: 'په پکتیا پوهنتون کې د پروګرامینګ، ډېټابېسونو، شبکو، اپلیکیشن جوړونې او وېب ټکنالوژیو زده کړه.'
+        description: 'د پروګرامینګ، ډېټابېسونو، شبکو، د موبایل جوړونې او عصري وېب ټکنالوژیو اکاډمیک او عملي زده کړه.'
       },
       fa: {
         year: '۲۰۲۶',
         title: 'کامپیوتر ساینس · سیستم‌های معلوماتی',
-        description: 'تحصیل در رشته سیستم‌های معلوماتی پوهنتون پکتیا و تمرکز بر برنامه‌نویسی، دیتابیس، شبکه و توسعه نرم‌افزار.'
+        description: 'تمرکز بر یادگیری عمیق برنامه‌نویسی، دیتابیس، شبکه و توسعه نرم‌افزارهای کاربردی موبایل و وب.'
       }
     }
   },

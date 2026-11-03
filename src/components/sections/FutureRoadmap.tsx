@@ -71,8 +71,8 @@ export function FutureRoadmap() {
         };
       case 2:
         return {
-          title: language === 'ps' ? 'اړیکیز ډېټابېسونه او SQL' : language === 'fa' ? 'پایگاه‌های داده رابطه‌ای و SQL' : 'Relational Databases & SQL',
-          desc: language === 'ps' ? 'په MySQL او SQL کې د جدولونو ډیزاین، اړیکې، خوندي پوښتنې او د ډېټا نورمالایزیشن.' : language === 'fa' ? 'طراحی اسکیما، نرمال‌سازی، تراکنش‌ها و کوئری‌های رابطه‌ای در MySQL و SQL.' : 'Relational modeling, schema design, table relationships, and SQL querying in MySQL.',
+          title: language === 'ps' ? 'اړوند ډېټابېسونه او SQL' : language === 'fa' ? 'پایگاه‌های داده رابطه‌ای و SQL' : 'Relational Databases & SQL',
+          desc: language === 'ps' ? 'په MySQL او SQL کې د جدولونو ډیزاین، اړیکې، خوندي queries او د ډېټا نارملایزیشن.' : language === 'fa' ? 'طراحی اسکیما، نرمال‌سازی، تراکنش‌ها و کوئری‌های رابطه‌ای در MySQL و SQL.' : 'Relational modeling, schema design, table relationships, and SQL querying in MySQL.',
         };
       case 3:
         return {
@@ -191,10 +191,10 @@ export function FutureRoadmap() {
           <Sparkles size={14} className="text-indigo-500 shrink-0" />
           <span>
             {language === 'ps'
-              ? 'دوامداره زده کړه او وده د پکتیا پوهنتون په تدریسي بهیر او عملي پروژو کې.'
+              ? 'دوامداره زده کړه او مسلکي وده په اکاډمیک تدریسي بهیر او عملي پروژو کې.'
               : language === 'fa'
-              ? 'رشد پیوسته از طریق دروس دانشگاهی پکتیا و ساخت پروژه‌های واقعی و کاربردی.'
-              : 'Grounded progress driven by Paktia University coursework and practical project implementation.'}
+              ? 'رشد پیوسته از طریق مبانی دانشگاهی و ساخت پروژه‌های واقعی و کاربردی.'
+              : 'Grounded progress driven by foundational coursework and practical project implementation.'}
           </span>
         </div>
       </div>

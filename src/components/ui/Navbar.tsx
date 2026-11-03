@@ -84,21 +84,36 @@ export function Navbar() {
         )}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
-          {/* 1. AGZ Brand Monogram Logo */}
+          {/* 1. AGZ Brand Monogram Logo - Strictly LTR isolated */}
           <a
             href="#home"
             className="group flex items-center gap-2 focus:outline-hidden select-none shrink-0"
             aria-label="AGZ Portfolio Home"
+            dir="ltr"
+            style={{ direction: 'ltr' }}
           >
-            <div className="relative flex items-center">
-              <div className="relative flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-slate-900/95 border border-slate-700/60 dark:border-slate-800 shadow-sm shadow-slate-950/20 group-hover:border-indigo-500/60 transition-all duration-300">
-                <span className="font-outfit font-black tracking-tight text-sm leading-none text-white">
-                  AG
-                </span>
-                <span className="font-outfit font-black tracking-tight text-sm leading-none bg-gradient-to-tr from-indigo-400 via-sky-300 to-indigo-200 bg-clip-text text-transparent">
+            <div className="relative flex flex-row items-center" dir="ltr" style={{ direction: 'ltr', unicodeBidi: 'isolate' }}>
+              <div
+                className="relative flex flex-row items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-slate-900/95 border border-slate-700/60 dark:border-slate-800 shadow-sm shadow-slate-950/20 group-hover:border-indigo-500/60 transition-all duration-300"
+                dir="ltr"
+                style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
+              >
+                <bdi
+                  className="font-outfit font-black tracking-tight text-sm leading-none text-white select-none inline-flex flex-row items-center"
+                  dir="ltr"
+                  style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
+                >
+                  <span>A</span>
+                  <span>G</span>
+                </bdi>
+                <bdi
+                  className="font-outfit font-black tracking-tight text-sm leading-none bg-gradient-to-tr from-indigo-400 via-sky-300 to-indigo-200 bg-clip-text text-transparent select-none inline-block"
+                  dir="ltr"
+                  style={{ direction: 'ltr', unicodeBidi: 'isolate' }}
+                >
                   Z
-                </span>
-                <span className="relative flex h-1.5 w-1.5 ml-0.5">
+                </bdi>
+                <span className="relative flex h-1.5 w-1.5 ml-0.5" dir="ltr" style={{ direction: 'ltr' }}>
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-60"></span>
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.9)]"></span>
                 </span>

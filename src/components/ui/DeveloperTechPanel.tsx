@@ -33,7 +33,7 @@ export const developer = {
   name: "Abdul Jalil Zwak",
   title: "Software Developer",
   education: "Computer Science · Information Systems",
-  university: "Paktia University (Class of 2026)",
+  status: "CS Student & Developer (Class of 2026)",
   focus: "Building practical web & mobile applications",
   workflow: "Product planning, architecture, clean code & testing",
   interests: [
@@ -168,8 +168,8 @@ export const developer = {
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-slate-400">university: </span>
-                    <span className="text-emerald-300">"Paktia University (Class of 2026)"</span>
+                    <span className="text-slate-400">status: </span>
+                    <span className="text-emerald-300">"CS Student & Developer (Class of 2026)"</span>
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">

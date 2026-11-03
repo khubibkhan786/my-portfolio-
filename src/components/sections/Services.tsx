@@ -87,7 +87,7 @@ export function Services() {
       id: 'databases',
       title: language === 'ps' ? 'د ډېټابېس لرونکي عملي کاریالونه' : language === 'fa' ? 'برنامه‌های متصل به دیتابیس' : 'Database-Connected Apps',
       description: language === 'ps'
-        ? 'د اړیکیزو جدولونو جوړول، په SQL او MySQL کې د معلوماتو خوندي کول او د هغوی منظم مدیریت.'
+        ? 'د اړوند ډېټابېس جدولونو جوړول، په SQL او MySQL کې د معلوماتو خوندي کول او د هغوی منظم مدیریت.'
         : language === 'fa'
         ? 'طراحی ساختار رابطه‌ای، تنظیم جداول در MySQL و SQLite و ایجاد جریان‌های داده امن و ساختارمند.'
         : 'Designing relational schemas, setting up MySQL/SQLite tables, and creating structured CRUD data flows.',

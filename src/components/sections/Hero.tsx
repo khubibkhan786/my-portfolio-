@@ -68,12 +68,12 @@ export function Hero() {
             {/* Academic Identity Kicker */}
             <motion.div variants={itemVariants} className="flex items-center gap-2 mb-3 text-xs font-medium">
               <span className="flex h-2 w-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" />
-              <span className="text-slate-900 dark:text-slate-200 font-semibold tracking-wide">
+              <span className="text-slate-900 dark:text-slate-200 font-semibold tracking-wide" dir="auto">
                 Abdul Jalil Zwak
               </span>
               <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
-              <span className="text-slate-500 dark:text-slate-400">
-                Paktia University
+              <span className="text-slate-600 dark:text-slate-400 font-medium">
+                {t.hero.subline}
               </span>
             </motion.div>
 
