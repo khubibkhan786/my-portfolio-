@@ -68,6 +68,11 @@ export interface TranslationSchema {
     tag: string;
     headline: string;
     subtitle: string;
+    viewDetails: string;
+    hideDetails: string;
+    verifiedAreasTitle: string;
+    learningTitle: string;
+    learningNote: string;
     categories: {
       practical: string;
       practicalDesc: string;
@@ -273,9 +278,14 @@ export const translations: Record<Language, TranslationSchema> = {
       ],
     },
     skills: {
-      tag: '02 — TECHNICAL TOOLKIT',
-      headline: 'Skills & Technical Status',
-      subtitle: 'An honest, transparent view of technical proficiencies categorized by practical application, active learning, and foundational knowledge.',
+      tag: '02 — TECHNICAL FOUNDATIONS',
+      headline: 'Focused Technical Capabilities',
+      subtitle: 'Structured across core software principles, relational databases, and modern web/mobile development.',
+      viewDetails: 'View Focus Areas',
+      hideDetails: 'Hide Details',
+      verifiedAreasTitle: 'Verified Implementation Areas',
+      learningTitle: 'Continuous Technical Growth',
+      learningNote: 'Continuously strengthening software engineering foundations, studying real-world application architectures, and building practical, reliable digital products.',
       categories: {
         practical: 'Practical Application',
         practicalDesc: 'Technologies genuinely used in real projects, with sufficient understanding to explain, review, and validate their implementation.',
@@ -487,9 +497,14 @@ export const translations: Record<Language, TranslationSchema> = {
       ],
     },
     skills: {
-      tag: '۰۲ — تخنیکي مهارتونه',
-      headline: 'تخنیکي مهارتونه او د زده کړې کچه',
-      subtitle: 'د مهارتونو یو رښتینی او روښانه انځور چې د عملي کارونې، روانو زده کړو او بنسټیزو پوهو له مخې وېشل شوی دی.',
+      tag: '۰۲ — تخنیکي بنسټونه',
+      headline: 'متمرکز تخنیکي مهارتونه',
+      subtitle: 'د سافټویر پراختیا، اړیکیزو ډېټابېسونو او د وېب او موبایل جوړولو په دریو مهمو کټګوریو ویشل شوي.',
+      viewDetails: 'تخنیکي جزئیات',
+      hideDetails: 'پټول',
+      verifiedAreasTitle: 'د عملي پلي کولو باوري برخې',
+      learningTitle: 'دوامداره مسلکي وده',
+      learningNote: 'په دوامداره توګه د سافټویر انجینرۍ د اساساتو پیاوړي کول، د عملي سیسټمونو د معمارۍ زده کړه او د ګټورو او ډاډمنو ډیجیټل محصولاتو جوړول.',
       categories: {
         practical: 'عملي کارونه (Practical Application)',
         practicalDesc: 'هغه ټکنالوژۍ چې په رښتینو پروژو کې کارول شوې او بشپړ عملي پوهاوی ورڅخه لرم.',
@@ -701,9 +716,14 @@ export const translations: Record<Language, TranslationSchema> = {
       ],
     },
     skills: {
-      tag: '۰۲ — جعبه‌ابزار فنی',
-      headline: 'مهارت‌ها و وضعیت فنی',
-      subtitle: 'نگاهی صادقانه و تفکیک‌شده به مهارت‌های فنی در قالب کاربرد عملی، یادگیری جاری و دانش پایه‌ای.',
+      tag: '۰۲ — مبانی و توانمندی‌های فنی',
+      headline: 'مهارت‌ها و توانمندی‌های متمرکز',
+      subtitle: 'ساختاریافته در سه حوزه اصلی: مهندسی نرم‌افزار، پایگاه‌های داده رابطه‌ای و توسعه وب و موبایل.',
+      viewDetails: 'مشاهده جزئیات',
+      hideDetails: 'بستن جزئیات',
+      verifiedAreasTitle: 'حوزه‌های پیاده‌سازی اثبات‌شده',
+      learningTitle: 'رشد مستمر مهندسی',
+      learningNote: 'تقویت پیوسته مبانی مهندسی نرم‌افزار، مطالعه معماری سیستم‌های کاربردی و توسعه هدفمند محصولات دیجیتال و مطمئن.',
       categories: {
         practical: 'کاربرد عملی (Practical Application)',
         practicalDesc: 'فناوری‌هایی که در پروژه‌های واقعی پیاده شده و تسلط کافی برای توضیح و بازبینی آن‌ها وجود دارد.',

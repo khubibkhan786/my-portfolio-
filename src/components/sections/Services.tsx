@@ -6,7 +6,9 @@ import {
   Layout,
   Database,
   Wrench,
-  ArrowUpRight
+  ArrowUpRight,
+  Cpu,
+  Layers
 } from 'lucide-react';
 import {useLanguage} from '../../context/LanguageContext';
 import {cn} from '../../lib/utils';
@@ -16,6 +18,7 @@ export function Services() {
 
   const servicesData = [
     {
+      id: 'web-dev',
       title: language === 'ps' ? 'ځواب ویونکې او عصري وېبپاڼې' : language === 'fa' ? 'وبسایت‌های مدرن و واکنش‌گرا' : 'Modern & Responsive Websites',
       description: language === 'ps'
         ? 'د HTML5، عصري CSS او React په مرسته د چټکو، ښکلو او ګرځنده ته جوړو وېبپاڼو ودانول.'
@@ -24,28 +27,50 @@ export function Services() {
         : 'Fast, accessible, mobile-first websites built with semantic HTML5, modern CSS, and React.',
       icon: <Globe size={22} className="text-sky-600 dark:text-sky-400" />,
       badge: language === 'ps' ? 'وېب ډیزاین' : language === 'fa' ? 'وب' : 'Web',
+      themeClass: 'group-hover:border-sky-500/50',
+      badgeClass: 'bg-sky-50 dark:bg-sky-950/80 text-sky-700 dark:text-sky-300 border-sky-200/60 dark:border-sky-800/60',
+      glowColor: 'group-hover:shadow-sky-500/10',
     },
     {
-      title: language === 'ps' ? 'له AI سره مدغم وېب اپلیکیشنونه' : language === 'fa' ? 'برنامه‌های وب با هوش مصنوعی' : 'Web Apps with AI Features',
+      id: 'ai-web',
+      title: language === 'ps' ? 'له AI سره مدغم وېب اپلیکیشنونه' : language === 'fa' ? 'برنامه‌های وب یکپارچه با هوش مصنوعی' : 'AI-Integrated Web Applications',
       description: language === 'ps'
-        ? 'د مصنوعي هوښیارتیا له APIs سره نښلول شوي وېب کاریالونه د متن تحلیل، هوښیار مرستیال او اتومات کارونو لپاره.'
+        ? 'د هوښیارو APIs په مرسته د عملي وېب کاریالونو جوړول؛ د متن د ارزونې، اتومات بهیرونو او د سمارټ مرستیالانو لپاره.'
         : language === 'fa'
-        ? 'برنامه‌های کاربردی وب با اتصال به مدل‌های هوش مصنوعی جهت خودکارسازی و دستیار هوشمند.'
-        : 'Practical web applications integrating AI APIs for smart text processing, conversational assistance, and workflow automation.',
-      icon: <Sparkles size={22} className="text-amber-500" />,
+        ? 'توسعه برنامه‌های وب با اتصال اصولی به API مدل‌های هوشمند جهت پردازش متن، فیلترسازی هوشمند و خودکارسازی فرآیندها.'
+        : 'Building responsive web interfaces integrated with practical AI APIs for intelligent text processing, natural search filtering, and smart automated workflows.',
+      icon: (
+        <div className="relative">
+          <Globe size={20} className="text-indigo-600 dark:text-indigo-400" />
+          <Sparkles size={11} className="text-amber-500 absolute -top-1.5 -right-1.5 animate-pulse" />
+        </div>
+      ),
       badge: 'AI + Web',
+      themeClass: 'group-hover:border-indigo-500/60 ring-1 ring-indigo-500/10',
+      badgeClass: 'bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border-indigo-200/80 dark:border-indigo-800/80',
+      glowColor: 'group-hover:shadow-indigo-500/15',
     },
     {
-      title: language === 'ps' ? 'د AI اسانتیاوو لرونکي انډروایډ کاریالونه' : language === 'fa' ? 'اپلیکیشن‌های موبایل همراه با AI' : 'Mobile Apps with AI Integration',
+      id: 'ai-mobile',
+      title: language === 'ps' ? 'له AI سره مدغم انډروایډ کاریالونه' : language === 'fa' ? 'اپلیکیشن‌های موبایل یکپارچه با هوش مصنوعی' : 'AI-Integrated Mobile Applications',
       description: language === 'ps'
-        ? 'په کوټلین کې بومي انډروایډ کاریالونه د Room افلاین ډېټابېس، روښانه کارن مخ او هوښیارو ځانګړتیاوو سره.'
+        ? 'په کوټلین کې بومي انډروایډ کاریالونه د هوښیارو اسانتیاوو، افلاین Room ډېټابېس او د ګټورو سمارټ مرستندویانو سره.'
         : language === 'fa'
-        ? 'اپلیکیشن‌های بومی اندروید با کاتلین، دیتابیس محلی آفلاین Room و ادغام قابلیت‌های هوشمند.'
-        : 'Native Android applications in Kotlin featuring offline Room database storage and practical AI integration.',
-      icon: <Smartphone size={22} className="text-emerald-600 dark:text-emerald-400" />,
-      badge: 'Android',
+        ? 'طراحی اپلیکیشن‌های بومی اندروید با کاتلین، بهره‌گیری از قابلیت‌های هوشمند کاربردی، ذخیره‌سازی آفلاین Room و رابط کاربری روان.'
+        : 'Engineering native Android applications with practical on-device intelligence, offline-first local databases, and voice or assistant feature integration.',
+      icon: (
+        <div className="relative">
+          <Smartphone size={20} className="text-emerald-600 dark:text-emerald-400" />
+          <Cpu size={11} className="text-teal-500 absolute -top-1.5 -right-1.5" />
+        </div>
+      ),
+      badge: 'AI + Mobile',
+      themeClass: 'group-hover:border-emerald-500/60 ring-1 ring-emerald-500/10',
+      badgeClass: 'bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border-emerald-200/80 dark:border-emerald-800/80',
+      glowColor: 'group-hover:shadow-emerald-500/15',
     },
     {
+      id: 'ui-design',
       title: language === 'ps' ? 'د کارن مخ (UI) عملي تطبیق' : language === 'fa' ? 'پیاده‌سازی رابط کاربری مدرن' : 'Clean UI Implementation',
       description: language === 'ps'
         ? 'د طرحو، مفکورو او وایرفریمونو اړول په پاک، منظم، لاسرسي وړ او ښکلي کوډ.'
@@ -54,18 +79,26 @@ export function Services() {
         : 'Translating design concepts and wireframes into pixel-perfect, accessible, and intuitive user interfaces.',
       icon: <Layout size={22} className="text-purple-600 dark:text-purple-400" />,
       badge: 'UI/UX',
+      themeClass: 'group-hover:border-purple-500/50',
+      badgeClass: 'bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border-purple-200/60 dark:border-purple-800/60',
+      glowColor: 'group-hover:shadow-purple-500/10',
     },
     {
+      id: 'databases',
       title: language === 'ps' ? 'د ډېټابېس لرونکي عملي کاریالونه' : language === 'fa' ? 'برنامه‌های متصل به دیتابیس' : 'Database-Connected Apps',
       description: language === 'ps'
         ? 'د اړیکیزو جدولونو جوړول، په SQL او MySQL کې د معلوماتو خوندي کول او د هغوی منظم مدیریت.'
         : language === 'fa'
         ? 'طراحی ساختار رابطه‌ای، تنظیم جداول در MySQL و SQLite و ایجاد جریان‌های داده امن و ساختارمند.'
         : 'Designing relational schemas, setting up MySQL/SQLite tables, and creating structured CRUD data flows.',
-      icon: <Database size={22} className="text-emerald-600 dark:text-emerald-400" />,
+      icon: <Database size={22} className="text-teal-600 dark:text-teal-400" />,
       badge: 'Databases',
+      themeClass: 'group-hover:border-teal-500/50',
+      badgeClass: 'bg-teal-50 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 border-teal-200/60 dark:border-teal-800/60',
+      glowColor: 'group-hover:shadow-teal-500/10',
     },
     {
+      id: 'optimization',
       title: language === 'ps' ? 'د سافټویر سمون او د سرعت ښه والی' : language === 'fa' ? 'بهینه‌سازی و ارتقای برنامه‌ها' : 'App Improvements & Refinement',
       description: language === 'ps'
         ? 'د کوډ پاکول، په موبایل کې د نیمګړتیاوو اصلاح، د پورته کېدو د چټکتیا لوړول او د کاروونکي د تجربې ښه کول.'
@@ -74,6 +107,9 @@ export function Services() {
         : 'Refactoring codebases, optimizing load speeds, resolving responsive layout bugs, and enhancing overall user experience.',
       icon: <Wrench size={22} className="text-rose-500" />,
       badge: 'Optimization',
+      themeClass: 'group-hover:border-rose-500/50',
+      badgeClass: 'bg-rose-50 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300 border-rose-200/60 dark:border-rose-800/60',
+      glowColor: 'group-hover:shadow-rose-500/10',
     },
   ];
 
@@ -109,15 +145,16 @@ export function Services() {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
+        {/* Repeating Section Header */}
         <motion.div
           initial={{opacity: 0, y: 14}}
           whileInView={{opacity: 1, y: 0}}
-          viewport={{once: true, amount: 0.2}}
+          viewport={{once: false, amount: 0.2}}
           transition={{duration: 0.45, ease: [0.16, 1, 0.3, 1]}}
           className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-14 gap-4 sm:gap-6"
         >
           <div>
-            <span className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 font-semibold tracking-wider uppercase text-xs mb-2.5 font-outfit">
+            <span className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 font-semibold tracking-wider uppercase text-xs mb-2.5">
               <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400" />
               {t.services.tag}
             </span>
@@ -135,7 +172,7 @@ export function Services() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{once: true, amount: 0.15}}
+          viewport={{once: false, amount: 0.15}}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           {servicesData.map((service, idx) => {
@@ -143,54 +180,64 @@ export function Services() {
 
             return (
               <motion.div
-                key={service.title}
+                key={service.id}
                 variants={cardVariants}
                 className="group relative flex flex-col justify-between"
               >
-                <div className="relative z-10 p-5 sm:p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between shadow-2xs hover:shadow-lg hover:-translate-y-1 bg-white/95 dark:bg-slate-900/95 border-slate-200/90 dark:border-slate-800 hover:border-indigo-500/50 dark:hover:border-indigo-500/50 backdrop-blur-sm h-full text-left rtl:text-right"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-2xs group-hover:scale-105 group-hover:border-indigo-500/40 transition-all">
-                      {service.icon}
+                <div
+                  className={cn(
+                    'relative z-10 p-5 sm:p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between shadow-2xs hover:shadow-lg hover:-translate-y-1 bg-white/95 dark:bg-slate-900/95 border-slate-200/90 dark:border-slate-800 backdrop-blur-sm h-full text-left rtl:text-right',
+                    service.themeClass,
+                    service.glowColor
+                  )}
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-2xs group-hover:scale-105 transition-all">
+                        {service.icon}
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span
+                          className={cn(
+                            'text-[10px] uppercase px-2 py-0.5 rounded-md font-semibold border',
+                            service.badgeClass
+                          )}
+                        >
+                          {service.badge}
+                        </span>
+                        <span className="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">
+                          {indexString}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-[10px] uppercase px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200/60 dark:border-indigo-800/60">
-                        {service.badge}
-                      </span>
-                      <span className="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">
-                        {indexString}
-                      </span>
-                    </div>
+
+                    <h3 className="text-base font-bold font-outfit text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                      {service.title}
+                    </h3>
+
+                    <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+                      {service.description}
+                    </p>
                   </div>
 
-                  <h3 className="text-base font-bold font-outfit text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-                    {service.description}
-                  </p>
+                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
+                    <span className="text-[11px] font-medium">
+                      {language === 'ps' ? 'عملي او ډاډمن تطبیق' : language === 'fa' ? 'پیاده‌سازی اصولی و مطمئن' : 'Practical & Reliable Build'}
+                    </span>
+                    <ArrowUpRight
+                      size={14}
+                      className={cn(
+                        'transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5',
+                        isRtl ? 'rotate-[-90deg]' : ''
+                      )}
+                    />
+                  </div>
                 </div>
-
-                <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
-                  <span className="text-[11px] font-medium">
-                    {language === 'ps' ? 'عملي او ډاډمن تطبیق' : language === 'fa' ? 'پیاده‌سازی اصولی و مطمئن' : 'Practical & Reliable Build'}
-                  </span>
-                  <ArrowUpRight
-                    size={14}
-                    className={cn(
-                      'transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5',
-                      isRtl ? 'rotate-[-90deg]' : ''
-                    )}
-                  />
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
-      </motion.div>
-    </div>
-  </section>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
+    </section>
   );
 }

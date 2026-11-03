@@ -75,7 +75,7 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
       layout
       initial={{opacity: 0, y: 14}}
       whileInView={{opacity: 1, y: 0}}
-      viewport={{once: true, amount: 0.15}}
+      viewport={{once: false, amount: 0.15}}
       exit={{opacity: 0, scale: 0.98}}
       transition={{duration: 0.35, ease: [0.16, 1, 0.3, 1]}}
       onMouseEnter={() => setIsHovered(true)}
@@ -380,7 +380,7 @@ export function Projects() {
         <motion.div
           initial={{opacity: 0, y: 14}}
           whileInView={{opacity: 1, y: 0}}
-          viewport={{once: true, amount: 0.2}}
+          viewport={{once: false, amount: 0.2}}
           transition={{duration: 0.45, ease: [0.16, 1, 0.3, 1]}}
           className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4 sm:gap-6"
         >

@@ -78,6 +78,29 @@ export interface SkillCategoryGroup {
   items: SkillItem[];
 }
 
+export interface SimplifiedSkillCategory {
+  id: 'software-dev' | 'databases' | 'web-mobile';
+  title: string;
+  shortSummary: string;
+  icon: string;
+  verifiedDetails: {
+    area: string;
+    description: string;
+  }[];
+  translations?: {
+    ps?: {
+      title?: string;
+      shortSummary?: string;
+      verifiedDetails?: {area: string; description: string}[];
+    };
+    fa?: {
+      title?: string;
+      shortSummary?: string;
+      verifiedDetails?: {area: string; description: string}[];
+    };
+  };
+}
+
 export interface RoadmapStage {
   stageNumber: number;
   id: string;

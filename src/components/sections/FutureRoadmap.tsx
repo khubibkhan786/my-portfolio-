@@ -110,7 +110,7 @@ export function FutureRoadmap() {
         <motion.div
           initial={{opacity: 0, y: 14}}
           whileInView={{opacity: 1, y: 0}}
-          viewport={{once: true, amount: 0.2}}
+          viewport={{once: false, amount: 0.2}}
           transition={{duration: 0.45, ease: [0.16, 1, 0.3, 1]}}
           className="text-center max-w-2xl mx-auto mb-12 sm:mb-14"
         >
@@ -138,7 +138,7 @@ export function FutureRoadmap() {
                 key={stage.id}
                 initial={{opacity: 0, y: 14}}
                 whileInView={{opacity: 1, y: 0}}
-                viewport={{once: true, amount: 0.15}}
+                viewport={{once: false, amount: 0.15}}
                 transition={{duration: 0.4, delay: idx * 0.06}}
                 className="group relative p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 shadow-2xs hover:shadow-md hover:border-indigo-500/40 dark:hover:border-indigo-500/40 transition-all flex flex-col justify-between text-left rtl:text-right"
               >

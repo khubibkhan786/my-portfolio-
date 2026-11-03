@@ -1,8 +1,222 @@
-import {SkillItem, SkillCategoryGroup, RoadmapStage, SkillStatus} from '../types';
+import {SkillItem, SkillCategoryGroup, SimplifiedSkillCategory, RoadmapStage, SkillStatus} from '../types';
 
-export type {SkillItem, SkillCategoryGroup, RoadmapStage, SkillStatus};
+export type {SkillItem, SkillCategoryGroup, SimplifiedSkillCategory, RoadmapStage, SkillStatus};
 
-// 1. USING: Technologies applied in practical software projects
+// Simplified 3 Core Technical Categories for Clean, Uncluttered Presentation
+export const simplifiedSkillCategories: SimplifiedSkillCategory[] = [
+  {
+    id: 'software-dev',
+    title: 'Software Development',
+    shortSummary: 'Object-oriented fundamentals, structured code architecture, and disciplined problem solving.',
+    icon: 'Terminal',
+    verifiedDetails: [
+      {
+        area: 'Object-Oriented Programming (OOP)',
+        description: 'Class hierarchies, inheritance, encapsulation, and modular design principles in Java and modern languages.',
+      },
+      {
+        area: 'Clean Application Architecture',
+        description: 'Separation of concerns, reusable component structures, and maintainable project organization.',
+      },
+      {
+        area: 'Version Control & Git Workflow',
+        description: 'Branch management, pull requests, semantic commit discipline, and collaborative repository management.',
+      },
+      {
+        area: 'Systematic Debugging & Testing',
+        description: 'Root-cause analysis, unit validation, error logging, and iterative code refinement.',
+      },
+    ],
+    translations: {
+      ps: {
+        title: 'د سافټویر پراختیا او انجینري',
+        shortSummary: 'د شیء محوره پروګرامینګ (OOP) بنسټونه، د کاریالونو جوړښت، د منطق تحلیل او منظم ډیبګنګ.',
+        verifiedDetails: [
+          {
+            area: 'شیء محوره پروګرامینګ (OOP)',
+            description: 'په جاوا او اړوندو ژبو کې کلاسونه، وراثت، انکپسولیشن او د کوډ ماژولار ویش.',
+          },
+          {
+            area: 'د پروژې پاکه او منظمه معماري',
+            description: 'د دندو جلاوالی، د برخو بیا کارول او د کوډ معیاري او روښانه جوړښت.',
+          },
+          {
+            area: 'د ګېټ او نسخو کنټرول',
+            description: 'په Git او GitHub کې د څانګو مدیریت، د بدلونونو ثبتول او د پروژو منظم ساتل.',
+          },
+          {
+            area: 'منظم ډیبګنګ او ارزونه',
+            description: 'د تخنیکي ستونزو موندل، منطقي سمون، ازموینه او د کوډ پرله‌پسې پاکول.',
+          },
+        ],
+      },
+      fa: {
+        title: 'توسعه نرم‌افزار و مهندسی',
+        shortSummary: 'مبانی برنامه‌نویسی شی‌گرا (OOP)، معماری برنامه‌ها، طراحی الگوریتم و عیب‌یابی اصولی.',
+        verifiedDetails: [
+          {
+            area: 'برنامه‌نویسی شی‌گرا (OOP)',
+            description: 'پیاده‌سازی کلاس‌ها، وراثت، کپسوله‌سازی و طراحی ساختاریافته در جاوا و زبان‌های مدرن.',
+          },
+          {
+            area: 'معماری و ساختار تمیز کد',
+            description: 'تفکیک مسئولیت‌ها، کامپوننت‌های ماژولار و سازمان‌دهی اصولی و قابل‌نگهداری پروژه‌ها.',
+          },
+          {
+            area: 'کنترل نسخه با گیت (Git & GitHub)',
+            description: 'مدیریت شاخه‌ها، مستندسازی تغییرات و مدیریت منسجم ریپازیتوری‌های کد.',
+          },
+          {
+            area: 'عیب‌یابی سیستماتیک و ارزیابی',
+            description: 'ریشه‌یابی خطاها، بهینه‌سازی منطق اجرایی، تست عملکردی و ارتقای پایداری برنامه.',
+          },
+        ],
+      },
+    },
+  },
+  {
+    id: 'databases',
+    title: 'Database & Data Management',
+    shortSummary: 'Relational data modeling, table normalization, schema design, and local offline database storage.',
+    icon: 'Database',
+    verifiedDetails: [
+      {
+        area: 'Relational Schema Design',
+        description: 'Entity-relationship modeling, primary & foreign keys, normalization, and relational integrity constraints.',
+      },
+      {
+        area: 'SQL Querying & MySQL',
+        description: 'Writing structured CRUD operations, joins, aggregations, and practical database administration.',
+      },
+      {
+        area: 'Local & Offline-First Storage',
+        description: 'Embedded database caching, Android Room DB architecture, and dependable offline persistence.',
+      },
+      {
+        area: 'Information Systems Management',
+        description: 'Coursework in structured data flows, business requirements, and operational data organization.',
+      },
+    ],
+    translations: {
+      ps: {
+        title: 'ډېټابېس او د معلوماتو مدیریت',
+        shortSummary: 'د اړیکیزو معلوماتو ماډلینګ، د جدولونو نارملایزېشن، د سکیم ډیزاین او افلاین خوندي کول.',
+        verifiedDetails: [
+          {
+            area: 'د اړیکیز ډېټابېس سکیم ډیزاین',
+            description: 'د جدولونو اړیکې (ER)، لومړني او بهرني کلیدونه، نارملایزیشن او د معلوماتو بشپړتیا.',
+          },
+          {
+            area: 'په SQL او MySQL کې پوښتنې',
+            description: 'د CRUD عملیات، د جدولونو نښلول (Joins)، د معلوماتو فلټر او د ډېټابېس مدیریت.',
+          },
+          {
+            area: 'محلي او افلاین ډېټابېس',
+            description: 'په موبایل کې د Room ډېټابېس کارول او د انټرنیټ پرته د معلوماتو ډاډمنه ذخیره.',
+          },
+          {
+            area: 'معلوماتي سیستمونه (Information Systems)',
+            description: 'د پوهنتون په تدریسي نصاب کې د معلوماتو بهیرونه او د سیستمونو تخنیکي تحلیل.',
+          },
+        ],
+      },
+      fa: {
+        title: 'پایگاه داده و مدیریت داده‌ها',
+        shortSummary: 'مدل‌سازی رابطه‌ای داده‌ها، نرمال‌سازی جداول، طراحی اسکیمای دیتابیس و ذخیره‌سازی آفلاین.',
+        verifiedDetails: [
+          {
+            area: 'طراحی ساختار رابطه‌ای دیتابیس',
+            description: 'مدل‌سازی ER، کلیدهای اصلی و خارجی، نرمال‌سازی و حفظ یکپارچگی ارجاعی داده‌ها.',
+          },
+          {
+            area: 'پرس‌وجوهای SQL و MySQL',
+            description: 'عملیات CRUD، پیوند جداول (Joins)، فیلترسازی و مدیریت اصولی جداول داده.',
+          },
+          {
+            area: 'دیتابیس محلی و کارکرد آفلاین',
+            description: 'به‌کارگیری دیتابیس Room در اندروید جهت ذخیره‌سازی پایدار و دسترسی بدون اینترنت.',
+          },
+          {
+            area: 'سیستم‌های معلوماتی (Information Systems)',
+            description: 'آشنایی آکادمیک با تحلیل جریان‌های داده، نیازمندی‌های سازمانی و ساختاردهی اطلاعات.',
+          },
+        ],
+      },
+    },
+  },
+  {
+    id: 'web-mobile',
+    title: 'Web & Mobile Development',
+    shortSummary: 'Building responsive web interfaces and native mobile apps with practical AI-driven enhancements.',
+    icon: 'Smartphone',
+    verifiedDetails: [
+      {
+        area: 'Modern Web Applications (React & TypeScript)',
+        description: 'Component lifecycles, state management hooks, typed contracts, and dynamic user interfaces.',
+      },
+      {
+        area: 'Responsive UI Design (Tailwind CSS)',
+        description: 'Mobile-first layout design, accessible contrast, custom themes, and refined micro-interactions.',
+      },
+      {
+        area: 'Native Android Development (Kotlin)',
+        description: 'Android Studio lifecycle, Material Design UI, background threads, and production APK packaging.',
+      },
+      {
+        area: 'Practical AI API Integration',
+        description: 'Integrating external AI model APIs to power smart text assistance, automated workflows, and assistive features.',
+      },
+    ],
+    translations: {
+      ps: {
+        title: 'د وېب او موبایل پراختیا',
+        shortSummary: 'د چټکو او ځواب ویونکو وېبپاڼو او بومي انډروایډ کاریالونو جوړول له عملي هوښیارو اسانتیاوو سره.',
+        verifiedDetails: [
+          {
+            area: 'عصري وېب کاریالونه (React & TypeScript)',
+            description: 'ماډولار کمپوننټونه، د سټیټ منظم مدیریت، ټایپ-سیف کوډ او روان کارن انټرفیس.',
+          },
+          {
+            area: 'ځواب ویونکی وېب ډیزاین (Tailwind CSS)',
+            description: 'د ټولو سکرینونو لپاره جوړ ډیزاین، تیاره او روښانه رنګونه او دقیق مایکرو انټریکشنونه.',
+          },
+          {
+            area: 'بومي انډروایډ پراختیا (Kotlin)',
+            description: 'په Android Studio کې د ایکټیویټي لایف سایکل، مټیریل ډیزاین او د APK جوړول.',
+          },
+          {
+            area: 'د عملي AI APIs مدغم کول',
+            description: 'د هوښیارو ماډلونو له APIs سره نښلول د مرستیال، اتومات کار او د کاروونکي د اسانتیا لپاره.',
+          },
+        ],
+      },
+      fa: {
+        title: 'توسعه وب و موبایل',
+        shortSummary: 'ساخت رابط‌های کاربری واکنش‌گرا و اپلیکیشن‌های بومی موبایل با ادغام قابلیت‌های هوشمند کاربردی.',
+        verifiedDetails: [
+          {
+            area: 'برنامه‌های مدرن وب (React و TypeScript)',
+            description: 'توسعه کامپوننت‌محور، مدیریت ساختاریافته وضعیت، تایپ‌سیف بودن و کاربری روان.',
+          },
+          {
+            area: 'طراحی واکنش‌گرا (Tailwind CSS)',
+            description: 'سازگاری کامل با موبایل و دسکتاپ، کنتراست استاندارد، پوسته‌های دارک و لایت.',
+          },
+          {
+            area: 'توسعه بومی اندروید با کاتلین',
+            description: 'چرخه حیات اکتیویتی در Android Studio، استانداردهای متریال دیزاین و خروجی APK.',
+          },
+          {
+            area: 'ادغام قابلیت‌های کاربردی هوش مصنوعی',
+            description: 'اتصال به API مدل‌های هوشمند جهت پردازش متن، پاسخ‌دهی خودکار و بهبود تجربه کاربری.',
+          },
+        ],
+      },
+    },
+  },
+];
+
+// Preserved for backward compatibility
 export const practicalSkills: SkillItem[] = [
   {
     name: 'React 19',
@@ -67,7 +281,6 @@ export const practicalSkills: SkillItem[] = [
   },
 ];
 
-// 2. LEARNING: Actively studied through university coursework and ongoing development
 export const currentlyLearningSkills: SkillItem[] = [
   {
     name: 'SQL & Relational Databases',
@@ -99,10 +312,8 @@ export const currentlyLearningSkills: SkillItem[] = [
   },
 ];
 
-// For backward compatibility
 export const foundationalSkills: SkillItem[] = [];
 
-// Grouped by Category for categorized display
 export const skillCategoriesData: SkillCategoryGroup[] = [
   {
     category: 'Using in Projects',

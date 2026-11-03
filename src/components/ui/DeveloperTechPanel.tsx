@@ -44,7 +44,7 @@ export const developer = {
   ]
 };`;
       case 'tech':
-        return `{\n  "using_in_projects": [\n    "React 19", "TypeScript", "Kotlin", "Tailwind CSS", "JavaScript (ES6+)"\n  ],\n  "currently_learning": [\n    "SQL & Relational Databases", "MySQL", "Software Engineering Principles", "Java (OOP)"\n  ],\n  "tools": [\n    "Git & GitHub", "Android Studio", "VS Code"\n  ]\n}`;
+        return `{\n  "core_capabilities": [\n    "Software Development (OOP, Clean Architecture, Git)",\n    "Database & Data Management (Relational Schemas, SQL, Room DB)",\n    "Web & Mobile Development (React 19, TypeScript, Kotlin, AI Integration)"\n  ],\n  "tools": [\n    "Git & GitHub", "Android Studio", "VS Code"\n  ]\n}`;
       case 'focus':
         return `$ cat ./software-engineering-roadmap.md
 01. Core Programming & OOP ....... Java, OOP concepts, algorithms, structured code

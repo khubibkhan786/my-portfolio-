@@ -43,7 +43,7 @@ export function About() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{once: true, amount: 0.15}}
+          viewport={{once: false, amount: 0.15}}
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start"
         >
           {/* LEFT COLUMN: Section Heading, Personal Biography & Core Academic Pillars */}

@@ -94,7 +94,7 @@ export function WorkProcess() {
         <motion.div
           initial={{opacity: 0, y: 14}}
           whileInView={{opacity: 1, y: 0}}
-          viewport={{once: true, amount: 0.2}}
+          viewport={{once: false, amount: 0.15}}
           transition={{duration: 0.45, ease: [0.16, 1, 0.3, 1]}}
           className="text-center max-w-2xl mx-auto mb-12 sm:mb-14"
         >
@@ -134,7 +134,7 @@ export function WorkProcess() {
                   key={stage.step}
                   initial={{opacity: 0, y: 14}}
                   whileInView={{opacity: 1, y: 0}}
-                  viewport={{once: true, amount: 0.15}}
+                  viewport={{once: false, amount: 0.15}}
                   transition={{duration: 0.4, delay: idx * 0.08}}
                   className={cn(
                     'group relative p-5 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-2xs hover:shadow-lg hover:-translate-y-1 transition-all flex flex-col justify-between text-left rtl:text-right',
@@ -189,7 +189,7 @@ export function WorkProcess() {
         <motion.div
           initial={{opacity: 0, y: 10}}
           whileInView={{opacity: 1, y: 0}}
-          viewport={{once: true, amount: 0.2}}
+          viewport={{once: false, amount: 0.15}}
           transition={{duration: 0.4}}
           className="mt-10 p-5 sm:p-6 rounded-2xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-left rtl:text-right"
         >

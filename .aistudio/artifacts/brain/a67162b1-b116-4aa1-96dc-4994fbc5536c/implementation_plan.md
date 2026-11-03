@@ -1,76 +1,94 @@
-# Implementation Plan: AGZ Developer Portfolio — Master Visual Refinement & UX Simplification (Completed)
+# Implementation Plan: AGZ Developer Portfolio — Typography, Design System & Professional Polish (Completed)
 
-This document records the master visual refinement, UX simplification, and layout balance for the AGZ Developer Portfolio of Abdul Jalil Zwak (Computer Science student at Paktia University specializing in Information Systems).
-
----
-
-## 1. Hero / First Screen Alignment & Natural Statement
-
-- **Pashto Prompt Alignment Addressed**: "لومړی په لومړی صفحه کی دکوډ کارت لږ پورته انتال کړه چی له عنوان سره سم او مناسب راشی" -> The interactive code terminal panel (`DeveloperTechPanel`) in the hero was shifted upward (`items-start` on grid, `lg:-mt-2 xl:-mt-3`) so that on desktop screens the top bar of the code card aligns with the main headline and academic kicker.
-- **Natural, Attractive & Confident Headline**:
-  - **English**: *"Building reliable web & mobile applications with clean, thoughtful code."*
-  - **Pashto**: *"د عملي او باوري وېب او موبایل سافټویرونو جوړول او پراختیا."*
-  - **Dari**: *"توسعه و ساخت برنامه‌های کاربردی وب و موبایل با کدنویسی اصولی و مدرن."*
-- **Single Concise Supporting Sentence**: Reduced introductory text to one short, natural sentence communicating professional identity within seconds without repetition or artificial fluff.
-- **Visual Decluttering**: Removed redundant bottom statistics metrics boxes, creating balanced vertical symmetry between the headline/CTAs on the left and the interactive code preview on the right.
-- **Prominent CTAs**: Clear, accessible primary buttons for "View My Work" (`#projects`) and "Contact Me" (`#contact`).
+This document records the design system unification, modern font streamlining, repeatable scroll-triggered animations, distinct AI service architecture, and skills section simplification for the AGZ Developer Portfolio of Abdul Jalil Zwak (Computer Science student at Paktia University specializing in Information Systems).
 
 ---
 
-## 2. Technical Skills — Simplified 2-Group Presentation
+## 1. Modern Font System & Typography Polish
 
-- **Clear Distinction**: Simplified presentation into two transparent, easy-to-scan groups:
-  1. **Using (In Projects / عملي کارول / کاربرد عملی)**:
-     - React 19, TypeScript, Kotlin, Tailwind CSS, JavaScript (ES6+), Git & GitHub, Android Studio, VS Code.
-     - Accompanied by practical application notes and real project associations (`Lemunz Aw Azkar`, `Student Academic Portal`).
-  2. **Learning (University Coursework / روانه زده کړه / در حال یادگیری)**:
-     - SQL & Relational Databases, MySQL, Software Engineering Principles, Java & OOP.
-     - Clear academic context (Paktia University Information Systems curriculum & lab exercises).
-- **Anti-Clutter**: Eliminated artificial percentages, progress bars, fake scores, and future goals masquerading as current skills.
-- **Quick Filtering**: Added filter tabs (*All*, *Using*, *Learning*) with badge counters and responsive card layout.
-
----
-
-## 3. Future Development Roadmap — Minimal & Professional 5-Stage Path
-
-- **Streamlined from 7 to 5 Compact Stages**:
-  - **Stage 01**: Core Programming & OOP (Java foundations, algorithms, structured code) — *Foundations*
-  - **Stage 02**: Relational Databases & SQL (MySQL, schema design, query optimization) — *Learning*
-  - **Stage 03**: Modern Web & Frontend (React 19, TypeScript, responsive UX & APIs) — *Using*
-  - **Stage 04**: Mobile & Practical AI Features (Kotlin, Android Jetpack, Room DB, practical AI APIs) — *Using*
-  - **Stage 05**: Full-Stack Software Engineering (End-to-end architectures, backend services, deployment) — *Planned*
-- **Visual Presentation**: Compact card layout with number badges (`01`–`05`), status chips, short 1-sentence descriptions, and key technology chips without technical essays.
+- **Strict 3-Font Family Combination**:
+  - **English (LTR)**: `Plus Jakarta Sans` (400, 500, 600, 700, 800) for all headings, body copy, and UI text.
+  - **Pashto & Dari (RTL)**: `Vazirmatn` (400, 500, 600, 700, 800) for natural Nastaliq/Naskh Arabic glyph shaping and optimal line heights (1.75–1.8).
+  - **Code & Terminal Only**: `JetBrains Mono` (400, 500, 600) exclusively for `<pre>`, `<code>`, `.code-mono`, and terminal tabs.
+- **Font Performance & Asset Optimization**:
+  - Eliminated unnecessary font requests from Google Fonts (`Outfit`, `Space Grotesk`, `Noto Sans Arabic`), reducing HTTP overhead.
+  - Retained `font-display: swap` for zero-FOIT initial rendering.
+  - Retained fallback cascades (`system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`).
+  - Preloaded Google Fonts DNS preconnects (`fonts.googleapis.com`, `fonts.gstatic.com`).
 
 ---
 
-## 4. Practical Software Services (Including AI Integration)
+## 2. Separate AI Development Services
 
-- **6 Independent Practical Service Cards**:
-  1. **Modern & Responsive Websites**: Fast, mobile-first websites with semantic HTML5, modern CSS, and React.
-  2. **Web Applications with AI-Powered Features**: Practical web apps integrating AI APIs for text assistance, smart search, and automated workflows.
-  3. **Mobile Applications with AI Integration**: Native Android apps in Kotlin with Room database persistence and practical AI tools.
-  4. **Clean User Interface Implementation**: Converting design concepts and wireframes into pixel-perfect, accessible, and responsive frontend code.
-  5. **Database-Connected Applications**: Relational database architecture, structured SQL queries, and secure data storage in MySQL/SQLite.
-  6. **Application Improvements & Refinements**: Refactoring existing codebases, optimizing load times, resolving responsive layout bugs, and enhancing UX.
-- **Authentic Representation**: No unsupported claims of enterprise cloud clusters or advanced AI research; strictly focused on practical, dependable software building.
-
----
-
-## 5. Work Process — Dedicated 5-Stage Visual Progression (`WorkProcess.tsx`)
-
-- **Dedicated Visual Section**: Added between Services and Projects (`#process`).
-- **5 Progressive Stages**:
-  1. **Understanding Requirements**: Clarifying core goals, user needs, and functional scope.
-  2. **Planning & Architecture**: Structuring UI workflows, database schemas, and component architecture.
-  3. **Development & Implementation**: Writing clean, modular, and type-safe code using modern best practices.
-  4. **Testing & Refinement**: Validating responsiveness, performance checks, debugging, and polishing interactions.
-  5. **Delivery & Support**: Deploying reliable code, providing clear documentation, and ongoing maintenance.
-- **Visual Progression**: Subtle horizontal connecting progression line on desktop, step badges (`01`–`05`), distinct icons, and directional arrows respecting RTL/LTR.
+- **Two Distinct, Independent Service Cards**:
+  1. **AI-Integrated Web Applications**:
+     - *Visual Identity*: Indigo/Sky-blue accent, dual icon (`Globe` + glowing `Sparkles`), badge: `AI + Web`.
+     - *Concise Scope*: Practical web interfaces integrated with AI model APIs for smart text processing, natural search filtering, and automated workflows.
+     - *Hover Micro-Interaction*: Indigo ring & glow transition, elevation.
+  2. **AI-Integrated Mobile Applications**:
+     - *Visual Identity*: Emerald/Teal accent, dual icon (`Smartphone` + `Cpu`), badge: `AI + Mobile`.
+     - *Concise Scope*: Native Android applications with practical on-device intelligence, offline-first Room database storage, and voice/assistant integration.
+     - *Hover Micro-Interaction*: Emerald ring & glow transition, elevation.
+- **Honest Positioning**: Clearly communicates ability to integrate practical AI APIs and on-device features without hyperbolic claims.
 
 ---
 
-## 6. Complete Multilingual & Hardware Performance Compliance
+## 3. Simplified Skills Section (3 Main Expandable Categories)
 
-- **100% Trilingual Completeness**: Natural, idiomatic translations in English (`en`), Pashto (`ps`), and Dari (`fa`) across every section.
-- **RTL & LTR Harmony**: Perfect typography, alignment, and directional arrows across all three languages.
-- **Ultra-Lightweight & Smooth**: Zero heavy 3D overhead, CSS-driven ambient lighting, low memory footprint, smooth on Intel Celeron N4000 hardware.
+- **Completely Simplified Structure**:
+  - Replaced long technology inventories and progress meters with 3 clean, high-level categories:
+    1. **Software Development**: Object-oriented fundamentals, structured code architecture, and disciplined problem solving.
+    2. **Database & Data Management**: Relational data modeling, table normalization, schema design, and local offline database storage.
+    3. **Web & Mobile Development**: Building responsive web interfaces and native mobile apps with practical AI-driven enhancements.
+- **Interactive State**:
+  - *Default State*: Short introduction, 3 compact cards. All detailed technical items hidden to eliminate cognitive clutter.
+  - *On Click*: Smooth accordion expansion displaying verified focus areas (area name + concise description with checkmark).
+  - *Collapse*: User can toggle back to the compact state effortlessly.
+- **Continuous Learning Statement**:
+  - Replaced technical syllabus with one natural, honest statement:
+    - *English*: "Continuously strengthening software engineering foundations, studying real-world application architectures, and building practical, reliable digital products."
+    - *Pashto*: "په دوامداره توګه د سافټویر انجینرۍ د اساساتو پیاوړي کول، د عملي سیسټمونو د معمارۍ زده کړه او د ګټورو او ډاډمنو ډیجیټل محصولاتو جوړول."
+    - *Dari*: "تقویت پیوسته مبانی مهندسی نرم‌افزار، مطالعه معماری سیستم‌های کاربردی و توسعه هدفمند محصولات دیجیتال و مطمئن."
+  - Zero technology lists, zero percentages, zero progress bars.
+
+---
+
+## 4. Repeat Scroll-Triggered Animations
+
+- **Repeated Viewport Entry**:
+  - Replaced all `viewport={{ once: true }}` configurations with `viewport={{ once: false, amount: 0.15 }}` across:
+    - `About.tsx`
+    - `Skills.tsx`
+    - `FutureRoadmap.tsx`
+    - `Services.tsx`
+    - `WorkProcess.tsx`
+    - `Projects.tsx` (both header and project cards)
+    - `Journey.tsx`
+    - `Contact.tsx`
+  - Elements gracefully re-animate with subtle fade, slide, and stagger every time the user scrolls back into view.
+  - Compositor-thread performance preserved without heavy JS delays.
+  - Full respect for `prefers-reduced-motion: reduce`.
+
+---
+
+## 5. Unified Design System & Dual-Theme Polish
+
+- **Standardized Spacing & Grids**:
+  - Consistent container: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`.
+  - Consistent section spacing: `py-16 sm:py-20 lg:py-24`.
+  - Consistent card border radius: `rounded-2xl` and `rounded-3xl`.
+  - Consistent borders: `border-slate-200/90 dark:border-slate-800`.
+- **Dark Mode**: Retains deep `#07090e` navy identity with subtle indigo and cyan atmospheric ambient lighting.
+- **Light Mode**: Soft `#f8fafc` background, crisp dark slate text (`text-slate-900`), balanced contrast, clean white card surfaces (`bg-white/95`), and subtle shadows.
+
+---
+
+## 6. Multilingual Parity & Responsive Validation
+
+- **Languages Tested**:
+  - **English (`en`)**: LTR, Plus Jakarta Sans, natural editorial typography.
+  - **Pashto (`ps`)**: RTL, Vazirmatn, native phrasing, natural letter shaping and proper text direction.
+  - **Dari (`fa`)**: RTL, Vazirmatn, balanced typography and cultural appropriateness.
+- **Build & Quality Check**:
+  - `lint_applet` passed (`tsc --noEmit` with zero errors).
+  - `compile_applet` passed (`Build succeeded - the applet is compiled`).
