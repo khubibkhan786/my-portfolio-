@@ -71,7 +71,7 @@ export function Services() {
           className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-14 gap-4 sm:gap-6"
         >
           <div>
-            <span className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 font-semibold tracking-wider uppercase text-xs mb-2.5 font-mono">
+            <span className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 font-semibold tracking-wider uppercase text-xs mb-2.5 font-outfit">
               <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400" />
               {t.services.tag}
             </span>
@@ -101,7 +101,7 @@ export function Services() {
                 variants={cardVariants}
                 className="group relative flex flex-col justify-between"
               >
-                {/* Soft Ambient Hover Underglow ("نرم رنګ") */}
+                {/* Soft Ambient Hover Underglow */}
                 <div className="card-soft-underglow" />
 
                 <div className="relative z-10 p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between shadow-xs group-hover:shadow-2xl group-hover:shadow-indigo-500/10 group-hover:-translate-y-1.5 bg-white/95 dark:bg-slate-900/95 border-slate-200/90 dark:border-slate-800 group-hover:border-indigo-500/50 backdrop-blur-sm h-full">
@@ -111,10 +111,10 @@ export function Services() {
                         {service.icon}
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200/60 dark:border-indigo-800/60">
+                        <span className="text-[10px] uppercase px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200/60 dark:border-indigo-800/60">
                           {service.badge}
                         </span>
-                        <span className="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">
+                        <span className="text-xs font-bold text-slate-400 dark:text-slate-500">
                           {indexString}
                         </span>
                       </div>
@@ -130,7 +130,7 @@ export function Services() {
                   </div>
 
                   <div className="pt-3.5 border-t border-slate-200/60 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
-                    <span className="text-[11px] font-mono">{t.services.productionQuality}</span>
+                    <span className="text-[11px] font-medium">{t.services.productionQuality}</span>
                     <ArrowUpRight
                       size={15}
                       className={cn(

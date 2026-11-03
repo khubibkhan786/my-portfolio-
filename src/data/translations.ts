@@ -48,9 +48,6 @@ export interface TranslationSchema {
     focusTitle: string;
     focusDomain: string;
     focusSub: string;
-    buildingTitle: string;
-    buildingProject: string;
-    buildingSub: string;
     learningTitle: string;
     learningDomain: string;
     learningSub: string;
@@ -61,11 +58,13 @@ export interface TranslationSchema {
     principlesP1: string;
     principlesList: string[];
     principlesP2: string;
-    currentlyBuildingBadge: string;
-    inDevelopment: string;
-    companionDesc: string;
-    targetAndroid: string;
-    viewInProjects: string;
+    profileRole: string;
+    profileUniversity: string;
+    directionTitle: string;
+    directionBadge: string;
+    directionDesc: string;
+    interestsTitle: string;
+    interests: string[];
   };
   skills: {
     tag: string;
@@ -194,16 +193,13 @@ export const translations: Record<Language, TranslationSchema> = {
         'I enjoy turning ideas into useful applications and continuously improving my understanding through coursework, personal projects, and hands-on experimentation.',
       educationTitle: 'Education',
       educationDegree: 'Computer Science',
-      educationSub: 'Information Systems · Paktia University · 2026',
-      focusTitle: 'Focus',
+      educationSub: 'Information Systems · Paktia University · Class of 2026',
+      focusTitle: 'Core Focus',
       focusDomain: 'Software Development',
-      focusSub: 'Java, Kotlin, JavaScript, SQL',
-      buildingTitle: 'Currently Building',
-      buildingProject: 'لمونځ او اذکار',
-      buildingSub: 'Android · Kotlin · Offline-first',
-      learningTitle: 'Learning',
-      learningDomain: 'Full-Stack Development',
-      learningSub: 'APIs, Backend Architecture & Advanced Software Engineering',
+      focusSub: 'Kotlin, Java, JavaScript, TypeScript, SQL',
+      learningTitle: 'Learning Direction',
+      learningDomain: 'Full-Stack Foundations',
+      learningSub: 'APIs, Backend Architecture & Software Engineering',
       showLess: 'Show Less',
       showPrinciples: 'My Development Principles',
       requestResume: 'Request Resume / CV',
@@ -211,21 +207,27 @@ export const translations: Record<Language, TranslationSchema> = {
       principlesP1:
         'I build practical solutions and keep code understandable. I prioritize learning through real projects, choosing simple and reliable solutions over unnecessary complexity.',
       principlesList: [
-        'Build practical solutions',
-        'Keep code understandable',
-        'Learn through real projects',
-        'Prefer simple and reliable solutions',
-        'Improve through iteration',
-        'Respect privacy and efficient resource usage',
+        'Build practical solutions that solve real needs',
+        'Write clean, readable, and maintainable code',
+        'Learn deeply through hands-on project implementation',
+        'Choose reliable, simple architectures over unnecessary complexity',
+        'Respect privacy and efficient resource usage in every build',
       ],
       principlesP2:
         'I improve through iteration while respecting privacy and efficient resource usage in every project I develop.',
-      currentlyBuildingBadge: 'Current Project',
-      inDevelopment: 'Active Project',
-      companionDesc:
-        'A practical Islamic Android application focused on prayer times, Adhkar, Tasbih, Duas, Qibla, and other useful daily Islamic features with lightweight offline usability.',
-      targetAndroid: 'Target: Android · Kotlin',
-      viewInProjects: 'View in Projects',
+      profileRole: 'Computer Science Student',
+      profileUniversity: 'Paktia University · Information Systems',
+      directionTitle: 'Academic & Engineering Direction',
+      directionBadge: 'Information Systems',
+      directionDesc:
+        'Currently advancing in relational database systems, native Android development, and responsive web architecture while maintaining strong academic standing at Paktia University.',
+      interestsTitle: 'Primary Interests',
+      interests: [
+        'Android Application Development',
+        'Relational Database Modeling (SQL)',
+        'Responsive Web Interfaces (React)',
+        'Offline-First System Architecture',
+      ],
     },
     skills: {
       tag: '02 — TECHNICAL TOOLKIT',
@@ -355,13 +357,10 @@ export const translations: Record<Language, TranslationSchema> = {
       educationSub: 'معلوماتي سیستمونه · پکتیا پوهنتون · ۲۰۲۶',
       focusTitle: 'کاري تمرکز',
       focusDomain: 'سافټویر جوړونه',
-      focusSub: 'جاوا، کوټلین، جاواسکریپټ، SQL',
-      buildingTitle: 'اوسنی کار',
-      buildingProject: 'لمونځ او اذکار',
-      buildingSub: 'انډروایډ · کوټلین · افلاین',
-      learningTitle: 'د زده کړې لور',
-      learningDomain: 'بشپړ سټیک معمارۍ',
-      learningSub: 'APIs، بیک اینډ او پرمختللې سافټویر انجینري',
+      focusSub: 'کوټلین، جاوا، جاواسکریپټ، ټایپ‌سکرېپټ، SQL',
+      learningTitle: 'د زده کړې مسیر',
+      learningDomain: 'بشپړ سټیک اساسي بنسټونه',
+      learningSub: 'APIs، بیک اینډ او سافټویر انجینري',
       showLess: 'لږ ښودل',
       showPrinciples: 'زما پرمختیایي اصول',
       requestResume: 'د سي وي غوښتنه',
@@ -369,21 +368,27 @@ export const translations: Record<Language, TranslationSchema> = {
       principlesP1:
         'زه په عملي حل لارو او د اسانه او منظم کوډ په لیکلو باور لرم. زما لومړیتوب له رښتینو پروژو زده کړه ده، او د بې ځایه پېچلتیاوو پر ځای ساده او ډاډمنې لارې غوره ګڼم.',
       principlesList: [
-        'د عملي او ګټورو حل لارو جوړول',
-        'د کوډ اسانه او پوهېدونکی ساتل',
-        'له رښتینو پروژو عملي زده کړه',
-        'د ساده او باوري لارو غوره ګڼل',
-        'په تدریجي تمرین د کار ښه کول',
-        'د کاروونکو محرمیت او د سرچینو سپما',
+        'د رښتینو اړتیاوو لپاره عملي حل لارې جوړول',
+        'د پاک، منظم او پوهېدونکي کوډ لیکل',
+        'له رښتینو عملي پروژو څخه ژوره زده کړه',
+        'د بې ځایه پېچلتیاوو پر ځای د ساده او باوري معمارۍ غوره کول',
+        'د کاروونکو محرمیت او د سرچینو سپما په پام کې نیول',
       ],
       principlesP2:
-        'زه تل هڅه کوم چې په تدریجي تمرین خپل کارونه ښه کړم او د کاروونکو د معلوماتو خوندیتوب او د بېټرۍ او سرچینو کم مصرف ته پام وکړم.',
-      currentlyBuildingBadge: 'اوسنۍ پروژه',
-      inDevelopment: 'فعاله پروژه',
-      companionDesc:
-        'د لمانځه د وختونو، مسنونو اذکارو، تسبېح، دعاګانو او قبلې لپاره یو عملي او افلاین انډروایډ اپلیکیشن چې په سپک او ساده ډیزاین جوړ شوی دی.',
-      targetAndroid: 'پلیټفارم: انډروایډ · کوټلین',
-      viewInProjects: 'پروژو کې کتل',
+        'زه په تدریجي تمرین، فکري ډیزاین او داسې کوډ لیکلو باور لرم چې ساتنه او پراختیا یې اسانه وي.',
+      profileRole: 'د کمپیوټر ساینس محصل',
+      profileUniversity: 'پکتیا پوهنتون · معلوماتي سیستمونه',
+      directionTitle: 'اکاډمیک او انجینري مسیر',
+      directionBadge: 'معلوماتي سیستمونه',
+      directionDesc:
+        'په پکتیا پوهنتون کې د اړیکیزو ډېټابېسونو سیستم، د انډروایډ اپلیکیشن جوړولو او د چټکو وېبپاڼو په معمارۍ کې پرمختګ.',
+      interestsTitle: 'اصلي لېوالتیاوې',
+      interests: [
+        'د انډروایډ اپلیکیشن جوړول',
+        'د ډېټابېس ماډلینګ (SQL)',
+        'د عصري وېب مخپاڼې (React)',
+        'افلاین سیستمونه او بې‌انټرنېټه کارېدنه',
+      ],
     },
     skills: {
       tag: '۰۲ — تخنیکي وسایل او مهارتونه',
@@ -513,13 +518,10 @@ export const translations: Record<Language, TranslationSchema> = {
       educationSub: 'سیستم‌های معلوماتی · پوهنتون پکتیا · ۲۰۲۶',
       focusTitle: 'تمرکز فنی',
       focusDomain: 'توسعه نرم‌افزار',
-      focusSub: 'جاوا، کاتلین، جاوااسکریپت، SQL',
-      buildingTitle: 'پروژه در حال ساخت',
-      buildingProject: 'لمونځ او اذکار',
-      buildingSub: 'اندروید · کاتلین · آفلاین',
-      learningTitle: 'اهداف یادگیری',
-      learningDomain: 'توسعه فول‌استک',
-      learningSub: 'APIs، معماری بک‌اند و مهندسی نرم‌افزار پیشرفته',
+      focusSub: 'کاتلین، جاوا، جاوااسکریپت، تایپ‌اسکریپت، SQL',
+      learningTitle: 'اهداف آموزشی',
+      learningDomain: 'پایه‌های توسعه فول‌استک',
+      learningSub: 'APIs، معماری نرم‌افزار و دیتابیس',
       showLess: 'نمایش کمتر',
       showPrinciples: 'اصول توسعه من',
       requestResume: 'درخواست سی‌وی / رزومه',
@@ -527,21 +529,27 @@ export const translations: Record<Language, TranslationSchema> = {
       principlesP1:
         'به ساخت راه‌حل‌های کاربردی و کدهای خوانا باور دارم. یادگیری از طریق پروژه‌های واقعی را ترجیح می‌دهم و راه‌حل‌های ساده و قابل‌اطمینان را بر پیچیدگی‌های غیرضروری مقدم می‌دانم.',
       principlesList: [
-        'ساخت راه‌حل‌های کاربردی و مفید',
-        'نوشتن کدهای خوانا و قابل‌درک',
-        'یادگیری از طریق پروژه‌های واقعی',
-        'ترجیح راه‌حل‌های ساده و قابل‌اطمینان',
-        'بهبود مداوم با بازبینی مستمر',
-        'احترام به حریم خصوصی و بهینه‌سازی منابع',
+        'ساخت راه‌حل‌های کاربردی برای نیازهای واقعی',
+        'نوشتن کدهای خوانا، استاندارد و قابل‌درک',
+        'یادگیری عمیق از طریق پروژه‌های واقعی',
+        'ترجیح معماری‌های ساده و مطمئن بر پیچیدگی‌های زائد',
+        'احترام به حریم خصوصی کاربر و بهینه‌سازی منابع سیستم',
       ],
       principlesP2:
         'با بازبینی مستمر پروژه‌هایم را بهبود می‌بخشم و به حریم خصوصی کاربر و مصرف بهینه منابع سیستم احترام می‌گذارم.',
-      currentlyBuildingBadge: 'پروژه فعلی',
-      inDevelopment: 'پروژه فعال',
-      companionDesc:
-        'یک اپلیکیشن کاربردی و آفلاین اندروید برای اوقات شرعی نماز، اذکار، تسبیح، ادعیه و جهت قبله با محیطی ساده، روان و بدون تبلیغات.',
-      targetAndroid: 'پلتفرم: اندروید · کاتلین',
-      viewInProjects: 'مشاهده در پروژه‌ها',
+      profileRole: 'دانشجوی کامپیوتر ساینس',
+      profileUniversity: 'پوهنتون پکتیا · سیستم‌های معلوماتی',
+      directionTitle: 'مسیر آکادمیک و مهندسی',
+      directionBadge: 'سیستم‌های معلوماتی',
+      directionDesc:
+        'تعمیق پایه‌های سیستم‌های پایگاه داده رابطه‌ای، توسعه اپلیکیشن بومی اندروید و رابط‌های مدرن وب در پوهنتون پکتیا.',
+      interestsTitle: 'علاقه‌مندی‌های اصلی',
+      interests: [
+        'توسعه اپلیکیشن‌های اندروید',
+        'طراحی و مدلسازی دیتابیس (SQL)',
+        'رابط‌های کاربری واکنش‌گرا (React)',
+        'معماری سیستم‌های آفلاین‌محور',
+      ],
     },
     skills: {
       tag: '۰۲ — جعبه‌ابزار فنی',

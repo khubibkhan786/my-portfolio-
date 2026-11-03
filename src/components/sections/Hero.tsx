@@ -79,7 +79,7 @@ export function Hero() {
             {/* Sub-label: Field of study */}
             <motion.div
               variants={itemVariants}
-              className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-2 font-mono flex items-center gap-2"
+              className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-2.5 flex items-center gap-2"
             >
               <Code2 size={14} className="shrink-0" />
               <span>{t.hero.role}</span>

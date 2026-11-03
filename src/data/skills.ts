@@ -1,199 +1,164 @@
-import {SkillGroup, SkillStatus} from '../types';
+export interface SkillItem {
+  name: string;
+  description: string;
+}
 
-export const skillGroups: SkillGroup[] = [
+export interface SkillCategoryGroup {
+  category: string;
+  tagline: string;
+  items: SkillItem[];
+}
+
+export const verifiedSkillCategories: SkillCategoryGroup[] = [
   {
-    category: 'Android Development',
-    description: 'Native mobile engineering focused on clean architecture and offline reliability.',
+    category: 'Programming Languages',
+    tagline: 'Core languages studied and applied in software projects',
     items: [
       {
         name: 'Kotlin',
-        status: 'Applied in Projects',
-        projectAssociation: 'لمونځ او اذکار (Android App)',
-        notes: 'Primary language for modern native Android development'
+        description: 'Modern language for native Android development and clean architecture',
       },
       {
         name: 'Java',
-        status: 'Practical Experience',
-        projectAssociation: 'Academic Coursework & Android',
-        notes: 'Object-oriented programming and Android core fundamentals'
-      },
-      {
-        name: 'Android SDK',
-        status: 'Applied in Projects',
-        projectAssociation: 'لمونځ او اذکار',
-        notes: 'Activities, services, notifications, and material UI'
-      },
-      {
-        name: 'Room Database & SQLite',
-        status: 'Applied in Projects',
-        projectAssociation: 'لمونځ او اذکار',
-        notes: 'Local persistent storage and offline-first caching'
-      }
-    ]
-  },
-  {
-    category: 'Web Development',
-    description: 'Modern, responsive client interfaces with structured component architecture.',
-    items: [
-      {
-        name: 'React',
-        status: 'Applied in Projects',
-        projectAssociation: 'Student Academic Portal & UI',
-        notes: 'Functional components, hooks, and declarative state flows'
-      },
-      {
-        name: 'TypeScript',
-        status: 'Applied in Projects',
-        projectAssociation: 'Student Academic Portal',
-        notes: 'Type-safe interfaces and robust frontend codebases'
+        description: 'Object-oriented programming, academic coursework, and Android core',
       },
       {
         name: 'JavaScript (ES6+)',
-        status: 'Applied in Projects',
-        projectAssociation: 'د هوا حالاتو (Weather App)',
-        notes: 'Asynchronous fetch, DOM event processing, and scripting'
+        description: 'Asynchronous fetch, DOM logic, and web project scripting',
+      },
+      {
+        name: 'TypeScript',
+        description: 'Type-safe interfaces and structured frontend application logic',
+      },
+    ],
+  },
+  {
+    category: 'Android Development',
+    tagline: 'Native mobile engineering with offline reliability',
+    items: [
+      {
+        name: 'Android SDK',
+        description: 'Activities, services, notifications, and material UI architecture',
+      },
+      {
+        name: 'Room & SQLite',
+        description: 'Local relational persistence and offline-first database caching',
+      },
+      {
+        name: 'XML UI & Layouts',
+        description: 'Responsive mobile layouts, custom components, and navigation',
+      },
+    ],
+  },
+  {
+    category: 'Web Development',
+    tagline: 'Modern, responsive client interfaces with declarative state',
+    items: [
+      {
+        name: 'React',
+        description: 'Functional components, hooks, and clean declarative state flows',
       },
       {
         name: 'Tailwind CSS',
-        status: 'Practical Experience',
-        projectAssociation: 'Responsive Portfolios & Dashboards',
-        notes: 'Utility-first clean layout design and responsive media queries'
+        description: 'Utility-first responsive layouts and clean design systems',
       },
       {
         name: 'HTML5 & CSS3',
-        status: 'Applied in Projects',
-        projectAssociation: 'All Web Projects',
-        notes: 'Semantic accessibility, responsive grids, and clean layout'
-      }
-    ]
+        description: 'Semantic markup, accessible structure, and responsive design',
+      },
+    ],
   },
   {
     category: 'Databases',
-    description: 'Relational data modeling, query optimization, and local data persistence.',
+    tagline: 'Relational data modeling, schema design, and local storage',
     items: [
       {
         name: 'SQL',
-        status: 'Active Coursework',
-        projectAssociation: 'Paktia University Coursework',
-        notes: 'Relational query design, indexing, joins, and schemas'
+        description: 'Relational query design, table schemas, indexing, and joins',
       },
       {
         name: 'MySQL',
-        status: 'Active Coursework',
-        projectAssociation: 'Information Systems Lab',
-        notes: 'Server database schemas and relational table design'
+        description: 'Relational database management and academic lab coursework',
       },
       {
         name: 'SQLite',
-        status: 'Applied in Projects',
-        projectAssociation: 'لمونځ او اذکار & Data Utilities',
-        notes: 'Lightweight client-side relational storage without server overhead'
-      }
-    ]
+        description: 'Serverless, lightweight local storage for offline applications',
+      },
+    ],
   },
   {
     category: 'Development Tools',
-    description: 'Essential daily engineering environments, version control, and build tooling.',
+    tagline: 'Daily engineering environments, version control, and build systems',
     items: [
       {
         name: 'Git & GitHub',
-        status: 'Applied in Projects',
-        projectAssociation: 'Portfolio & Project Repositories',
-        notes: 'Branching, commit history, and remote collaboration'
+        description: 'Version control, branch management, and project repositories',
       },
       {
         name: 'Android Studio',
-        status: 'Practical Experience',
-        projectAssociation: 'Native App Profiling & Builds',
-        notes: 'Emulator debugging, Gradle configuration, and APK assembly'
+        description: 'Native Android SDK profiling, Gradle configuration, and emulator debugging',
       },
       {
         name: 'VS Code',
-        status: 'Practical Experience',
-        projectAssociation: 'Daily Coding Environment',
-        notes: 'Workspace customization, extensions, and fast editing'
+        description: 'Primary coding environment, workspace setup, and extensions',
       },
       {
         name: 'Node.js & npm',
-        status: 'Practical Experience',
-        projectAssociation: 'Tooling & Automation Scripts',
-        notes: 'CLI automation, package execution, and frontend pipelines'
-      }
-    ]
+        description: 'Package management, automation scripts, and frontend build tools',
+      },
+    ],
   },
-  {
-    category: 'Automation & Scripting',
-    description: 'Practical automation and AI-assisted workflows for academic efficiency.',
-    items: [
-      {
-        name: 'Workflow Automation',
-        status: 'Applied in Projects',
-        projectAssociation: 'Workflow Automation Toolkit',
-        notes: 'Batch file processing and structured study card generation'
-      },
-      {
-        name: 'AI-assisted Development',
-        status: 'Practical Experience',
-        projectAssociation: 'Daily Workflow Acceleration',
-        notes: 'Prompt engineering and rapid architecture exploration'
-      },
-      {
-        name: 'RESTful API Integration',
-        status: 'Applied in Projects',
-        projectAssociation: 'Weather App & AI Prototypes',
-        notes: 'Consuming HTTP endpoints and parsing JSON responses'
-      }
-    ]
-  }
 ];
 
-export interface SkillRoadmapTier {
-  id: 'foundations' | 'developing' | 'learning';
+export interface RoadmapGroup {
+  id: 'foundations' | 'developing' | 'future';
   title: string;
   badge: string;
   description: string;
   skills: string[];
 }
 
-export const skillRoadmapTiers: SkillRoadmapTier[] = [
+export const learningRoadmapGroups: RoadmapGroup[] = [
   {
     id: 'foundations',
     title: 'Established Foundations',
     badge: 'Core',
     description: 'Technologies thoroughly practiced through academic coursework and hands-on projects.',
     skills: [
-      'Kotlin & Java',
-      'SQL & SQLite',
-      'HTML5 / CSS3',
+      'Kotlin',
+      'Java',
+      'SQL',
+      'SQLite',
+      'HTML5 & CSS3',
       'Git & GitHub',
-      'Android SDK & Studio'
-    ]
+      'Android Studio',
+    ],
   },
   {
     id: 'developing',
     title: 'Actively Developing',
     badge: 'In Progress',
-    description: 'Skills actively being applied and strengthened across current personal and web projects.',
+    description: 'Skills actively being strengthened across current personal and web projects.',
     skills: [
-      'JavaScript (ES6+)',
       'TypeScript',
       'React',
       'Tailwind CSS',
       'Room Persistence',
-      'REST APIs'
-    ]
+      'JavaScript (ES6+)',
+      'REST APIs',
+    ],
   },
   {
-    id: 'learning',
-    title: 'Targeted Roadmap',
-    badge: 'Next',
-    description: 'Upcoming academic semester targets and planned software engineering competencies.',
+    id: 'future',
+    title: 'Future Learning Goals',
+    badge: 'Planned',
+    description: 'Targeted expansion areas for upcoming academic semesters and software engineering growth.',
     skills: [
       'Backend REST APIs',
       'Advanced Kotlin Coroutines',
       'Full-Stack Architecture',
       'Automated Software Testing',
-      'Database Query Optimization'
-    ]
-  }
+      'Database Optimization',
+    ],
+  },
 ];

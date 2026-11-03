@@ -43,7 +43,7 @@ export function Journey() {
           transition={{duration: 0.45, ease: [0.16, 1, 0.3, 1]}}
           className="text-center max-w-xl mx-auto mb-14 sm:mb-16"
         >
-          <span className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 font-semibold tracking-wider uppercase text-xs mb-2.5 font-mono">
+          <span className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 font-semibold tracking-wider uppercase text-xs mb-2.5 font-outfit">
             <Milestone size={13} />
             <span>{t.journey.tag}</span>
           </span>
@@ -101,7 +101,7 @@ export function Journey() {
                     >
                       {/* Milestone Header - Unboxed Typography */}
                       <div className="flex items-center gap-2 mb-2 text-xs text-slate-500 dark:text-slate-400">
-                        <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400">
+                        <span className="font-outfit font-bold text-indigo-600 dark:text-indigo-400">
                           {stepYear}
                         </span>
 

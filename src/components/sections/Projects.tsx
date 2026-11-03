@@ -108,7 +108,7 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
           ) : (
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/10 via-slate-800/10 to-sky-600/10 flex flex-col items-center justify-center p-6 group-hover:scale-105 transition-transform duration-500">
               <Code2 size={30} className="text-indigo-600/40 dark:text-indigo-400/40 mb-1" />
-              <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 font-medium">
+              <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
                 {category}
               </span>
             </div>
@@ -121,7 +121,7 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
           <div className="absolute top-3 left-3 right-3 z-10 flex items-center justify-between gap-1.5 pointer-events-none">
             <div className="flex items-center gap-1.5">
               {project.platformBadge && (
-                <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-slate-900/85 text-white backdrop-blur-md border border-white/10 shadow-2xs">
+                <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-900/85 text-white backdrop-blur-md border border-white/10 shadow-2xs">
                   {project.platformBadge}
                 </span>
               )}
@@ -164,7 +164,7 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
                 {category}
               </span>
               <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
-              <span className="font-mono text-[11px]">{project.year}</span>
+              <span className="text-[11px] font-medium">{project.year}</span>
             </div>
           </div>
 
@@ -183,13 +183,13 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
             {project.technologies.slice(0, 4).map((tech) => (
               <span
                 key={tech}
-                className="text-[10px] sm:text-[11px] font-mono text-slate-700 dark:text-slate-300 bg-slate-100/90 dark:bg-slate-800/80 px-2 py-0.5 rounded-md border border-slate-200/70 dark:border-slate-700/70"
+                className="text-[10px] sm:text-[11px] font-medium text-slate-700 dark:text-slate-300 bg-slate-100/90 dark:bg-slate-800/80 px-2 py-0.5 rounded-md border border-slate-200/70 dark:border-slate-700/70"
               >
                 {tech}
               </span>
             ))}
             {project.technologies.length > 4 && (
-              <span className="text-[10px] text-slate-400 font-mono py-0.5">
+              <span className="text-[10px] text-slate-400 font-medium py-0.5">
                 +{project.technologies.length - 4}
               </span>
             )}
@@ -220,7 +220,7 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
                 <span>{t.projects.sourceCode}</span>
               </a>
             ) : (
-              <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500">
+              <span className="text-[10px] font-medium text-slate-400 dark:text-slate-500">
                 {isCompleted ? t.projects.statusCompleted : t.projects.statusInProgress}
               </span>
             )}
@@ -396,7 +396,7 @@ export function Projects() {
           className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4 sm:gap-6"
         >
           <div>
-            <span className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 font-semibold tracking-wider uppercase text-xs mb-2 font-mono">
+            <span className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 font-semibold tracking-wider uppercase text-xs mb-2 font-outfit">
               <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400" />
               {t.projects.tag}
             </span>
@@ -448,7 +448,7 @@ export function Projects() {
                   <span>{label}</span>
                   <span
                     className={cn(
-                      'text-[10px] font-mono px-1.5 py-0.5 rounded-full transition-colors font-medium',
+                      'text-[10px] font-bold px-1.5 py-0.5 rounded-full transition-colors',
                       isActive
                         ? 'bg-indigo-600/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 font-bold'
                         : 'bg-slate-200/70 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
@@ -467,7 +467,7 @@ export function Projects() {
                 <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400" />
                 <span>
                   {t.projects.filters[selectedCategory]}:{' '}
-                  <strong className="font-mono">{filteredProjects.length}</strong>
+                  <strong className="font-bold">{filteredProjects.length}</strong>
                 </span>
               </span>
               <button
@@ -481,7 +481,7 @@ export function Projects() {
           )}
         </div>
 
-        {/* 1. PROMINENT FEATURED PROJECT PRESENTATION (Requirement 9) */}
+        {/* 1. PROMINENT FEATURED PROJECT PRESENTATION */}
         {showFeaturedSpotlight && (
           <motion.div
             initial={{opacity: 0, y: 16}}
@@ -519,7 +519,7 @@ export function Projects() {
                       <Star size={12} className="fill-white" />
                       <span>Featured Project</span>
                     </span>
-                    <span className="px-2.5 py-1 rounded-full text-[11px] font-mono font-bold bg-slate-900/85 text-white backdrop-blur-md border border-white/15">
+                    <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-slate-900/85 text-white backdrop-blur-md border border-white/15">
                       {featuredProject.platformBadge || 'Android'}
                     </span>
                   </div>
@@ -540,7 +540,7 @@ export function Projects() {
                         {featuredCategory}
                       </span>
                       <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
-                      <span className="font-mono text-xs">{featuredProject.year}</span>
+                      <span className="text-xs font-medium">{featuredProject.year}</span>
                     </div>
 
                     <h3 className="text-xl sm:text-2xl font-extrabold font-outfit text-slate-900 dark:text-white mb-3 tracking-tight">
@@ -575,7 +575,7 @@ export function Projects() {
                         {featuredProject.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="text-xs font-mono font-medium text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-200/80 dark:border-slate-700"
+                            className="text-xs font-medium text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-200/80 dark:border-slate-700"
                           >
                             {tech}
                           </span>
@@ -630,7 +630,7 @@ export function Projects() {
           <div>
             {showFeaturedSpotlight && (
               <div className="flex items-center justify-between mb-5">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 font-mono">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 font-outfit">
                   Additional Verified Projects & Prototypes ({remainingProjects.length})
                 </h3>
               </div>
@@ -687,7 +687,7 @@ export function Projects() {
               {/* Modal Header */}
               <div className="p-6 border-b border-slate-200/80 dark:border-slate-800 flex items-start justify-between gap-4">
                 <div>
-                  <div className="flex items-center gap-2 text-xs font-mono text-indigo-600 dark:text-indigo-400 mb-1">
+                  <div className="flex items-center gap-2 text-xs text-indigo-600 dark:text-indigo-400 mb-1 font-medium">
                     <span>{modalCategory}</span>
                     <span>·</span>
                     <span>{activeModalProject.year}</span>
@@ -725,7 +725,7 @@ export function Projects() {
                 )}
 
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-mono">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-outfit">
                     Overview
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -735,7 +735,7 @@ export function Projects() {
 
                 {modalProblem && (
                   <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-mono">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-outfit">
                       {t.projects.problemTitle}
                     </h4>
                     <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -746,7 +746,7 @@ export function Projects() {
 
                 {modalSolution && (
                   <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-mono">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-outfit">
                       {t.projects.solutionTitle}
                     </h4>
                     <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -757,7 +757,7 @@ export function Projects() {
 
                 {modalFeatures && modalFeatures.length > 0 && (
                   <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2.5 font-mono">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2.5 font-outfit">
                       {t.projects.keyFeatures}
                     </h4>
                     <ul className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
@@ -772,14 +772,14 @@ export function Projects() {
                 )}
 
                 <div dir="ltr">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-mono text-left rtl:text-right">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-2 font-outfit text-left rtl:text-right">
                     {t.projects.techStack}
                   </h4>
                   <div className="flex flex-wrap gap-1.5">
                     {activeModalProject.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="text-xs font-mono font-medium text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700"
+                        className="text-xs font-medium text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700"
                       >
                         {tech}
                       </span>
