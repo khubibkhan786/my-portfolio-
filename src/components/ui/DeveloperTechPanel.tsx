@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
-import {Terminal, User, Layers, Sparkles, Copy, Check, ShieldCheck} from 'lucide-react';
+import {Terminal, User, Layers, Copy, Check, ShieldCheck} from 'lucide-react';
 import {cn} from '../../lib/utils';
 import {useTheme} from '../../context/ThemeContext';
 
@@ -15,7 +15,7 @@ interface TabItem {
 
 const tabs: TabItem[] = [
   {id: 'profile', label: 'Profile', filename: 'Developer.ts', icon: User},
-  {id: 'tech', label: 'Tech Focus', filename: 'TechnicalFocus.json', icon: Layers},
+  {id: 'tech', label: 'Tech Focus', filename: 'TechnicalSkills.json', icon: Layers},
   {id: 'focus', label: 'Roadmap', filename: 'EngineeringRoadmap.sh', icon: Terminal},
 ];
 
@@ -34,26 +34,24 @@ export const developer = {
   title: "Software Developer",
   education: "Computer Science · Information Systems",
   university: "Paktia University (Class of 2026)",
-  positioning: "Building thoughtful software. Solving real problems.",
-  workflow: "Product planning, architecture, implementation & code review",
+  focus: "Building practical web & mobile applications",
+  workflow: "Product planning, architecture, clean code & testing",
   interests: [
-    "Software Engineering",
-    "Full-Stack Development",
-    "Mobile (Native Android)",
-    "AI-Integrated Systems"
+    "Practical Software Engineering",
+    "Modern Web (React 19 & TypeScript)",
+    "Native Android (Kotlin & Room DB)",
+    "AI-Integrated Applications"
   ]
 };`;
       case 'tech':
-        return `{\n  "practical_application": ["Kotlin", "React 19", "TypeScript", "Tailwind CSS", "HTML5", "CSS3", "JavaScript"],\n  "currently_learning": ["SQL", "MySQL (Relational Databases)", "Software Architecture"],\n  "foundational_knowledge": ["Java (OOP)", "Node.js Basics", "Data Structures"],\n  "tools": ["Git & GitHub", "Android Studio", "VS Code"]\n}`;
+        return `{\n  "using_in_projects": [\n    "React 19", "TypeScript", "Kotlin", "Tailwind CSS", "JavaScript (ES6+)"\n  ],\n  "currently_learning": [\n    "SQL & Relational Databases", "MySQL", "Software Engineering Principles", "Java (OOP)"\n  ],\n  "tools": [\n    "Git & GitHub", "Android Studio", "VS Code"\n  ]\n}`;
       case 'focus':
         return `$ cat ./software-engineering-roadmap.md
-1. Programming Foundations .... Java, OOP, Data Structures, Problem Solving
-2. Database Engineering ....... SQL, MySQL, Relational Design, Normalization
-3. Modern Web Development ..... TypeScript, React 19, Responsive UI, Web APIs
-4. Backend Architecture ....... [Path Open: Java/Spring Boot vs TS/Node.js]
-5. Mobile Engineering ......... Kotlin, Android Jetpack, Room, Offline-First
-6. AI-Integrated Software ..... Secure AI APIs, Chat UX, Streaming, RAG
-7. Full-Stack Engineering ..... Complete End-to-End Multi-Platform Systems`;
+01. Core Programming & OOP ....... Java, OOP concepts, algorithms, structured code
+02. Relational Databases ......... SQL, MySQL, table schemas, query design
+03. Modern Web & Frontend ........ React 19, TypeScript, responsive UX & APIs
+04. Mobile & Practical AI ........ Kotlin Android, Room DB, AI API integration
+05. Full-Stack Engineering ....... Multi-platform systems, secure backend APIs`;
     }
   };
 
@@ -107,7 +105,7 @@ export const developer = {
           </button>
         </div>
 
-        {/* Tab Switcher - Segmented Terminal File Tabs */}
+        {/* Tab Switcher */}
         <div className="flex items-center gap-1 px-3 pt-2 bg-[#0c121e] border-b border-slate-800/80 overflow-x-auto no-scrollbar">
           {tabs.map((tab) => {
             const Icon = tab.icon;
@@ -133,7 +131,7 @@ export const developer = {
           })}
         </div>
 
-        {/* Tab 1: Profile (Developer.ts) */}
+        {/* Tab Content */}
         <div className="p-4 sm:p-5 font-mono text-xs sm:text-[13px] leading-relaxed overflow-x-auto min-h-[260px] bg-[#0a0e17]">
           <AnimatePresence mode="wait">
             <motion.div
@@ -146,7 +144,7 @@ export const developer = {
               {activeTab === 'profile' && (
                 <div className="space-y-1 text-slate-300">
                   <div className="text-slate-500 italic mb-2">
-                    // Verified Developer Profile
+                    // AGZ Developer Profile
                   </div>
                   <div>
                     <span className="text-purple-400 font-semibold">export const </span>
@@ -176,12 +174,12 @@ export const developer = {
                   </div>
                   <div className="pl-4">
                     <span className="text-slate-400">headline: </span>
-                    <span className="text-amber-300">"Building Thoughtful Software. Solving Real Problems."</span>
+                    <span className="text-amber-300">"Building Practical Web & Mobile Applications"</span>
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-slate-400">direction: </span>
-                    <span className="text-sky-300">"Practical full-stack, native mobile & AI-integrated software"</span>
+                    <span className="text-slate-400">interests: </span>
+                    <span className="text-sky-300">["Web Apps", "Native Android", "Databases", "AI Integration"]</span>
                   </div>
                   <div>
                     <span className="text-slate-300">{'}'};</span>
@@ -189,31 +187,25 @@ export const developer = {
                 </div>
               )}
 
-              {/* Tab 2: Tech Stack (TechnicalFocus.json) */}
+              {/* Tab 2: Tech Focus */}
               {activeTab === 'tech' && (
                 <div className="space-y-1 text-slate-300">
                   <div className="text-slate-500 italic mb-2">
-                    // Categorized Technical Proficiencies
+                    // Technical Skills Breakdown
                   </div>
                   <div>
                     <span className="text-slate-400">{'{'}</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-sky-300">"practical_application"</span>
+                    <span className="text-sky-300">"using_in_projects"</span>
                     <span className="text-slate-400">: </span>
-                    <span className="text-emerald-300">["Kotlin", "React 19", "TypeScript", "Tailwind CSS", "HTML/CSS"]</span>
+                    <span className="text-emerald-300">["React 19", "TypeScript", "Kotlin", "Tailwind CSS", "JavaScript"]</span>
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
                     <span className="text-sky-300">"currently_learning"</span>
                     <span className="text-slate-400">: </span>
-                    <span className="text-amber-300">["SQL", "MySQL (Relational Databases)", "Software Architecture"]</span>
-                    <span className="text-slate-400">,</span>
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-sky-300">"foundational_knowledge"</span>
-                    <span className="text-slate-400">: </span>
-                    <span className="text-indigo-300">["Java (OOP)", "Node.js Basics", "Data Structures"]</span>
+                    <span className="text-amber-300">["SQL & Relational Databases", "MySQL", "Software Engineering", "Java (OOP)"]</span>
                     <span className="text-slate-400">,</span>
                   </div>
                   <div className="pl-4">
@@ -227,7 +219,7 @@ export const developer = {
                 </div>
               )}
 
-              {/* Tab 3: Current Focus (EngineeringRoadmap.sh) */}
+              {/* Tab 3: Current Focus (5 Stages) */}
               {activeTab === 'focus' && (
                 <div className="space-y-1.5 text-xs text-slate-300 font-mono">
                   <div className="text-emerald-400 flex items-center gap-1.5 mb-2">
@@ -235,60 +227,46 @@ export const developer = {
                     <span>cat ./software-engineering-roadmap.md</span>
                   </div>
 
-                  <div className="space-y-1 text-slate-300 text-[11px] leading-relaxed">
+                  <div className="space-y-1.5 text-slate-300 text-[11px] leading-relaxed">
                     <div className="flex items-center justify-between gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                      <span className="text-slate-200">1. Programming Foundations (Java, OOP)</span>
+                      <span className="text-slate-200">1. Core Programming & OOP (Java)</span>
                       <span className="text-[10px] font-bold text-sky-400 bg-sky-950/70 px-2 py-0.5 rounded border border-sky-800/60 shrink-0">
-                        FOUNDATIONAL
+                        FOUNDATIONS
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                      <span className="text-slate-200">2. Database Engineering (SQL & MySQL)</span>
-                      <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/70 px-2 py-0.5 rounded border border-emerald-800/60 shrink-0">
+                      <span className="text-slate-200">2. Relational Databases & SQL (MySQL)</span>
+                      <span className="text-[10px] font-bold text-amber-400 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800/60 shrink-0">
                         LEARNING
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                      <span className="text-slate-200">3. Modern Web (TypeScript & React 19)</span>
+                      <span className="text-slate-200">3. Modern Web & Frontend (React 19, TS)</span>
                       <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/70 px-2 py-0.5 rounded border border-emerald-800/60 shrink-0">
-                        PRACTICAL
+                        USING
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                      <span className="text-slate-200">4. Backend (Spring Boot vs Node.js)</span>
-                      <span className="text-[10px] font-bold text-purple-400 bg-purple-950/70 px-2 py-0.5 rounded border border-purple-800/60 shrink-0">
-                        PATH OPEN
-                      </span>
-                    </div>
-
-                    <div className="flex items-center justify-between gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                      <span className="text-slate-200">5. Mobile (Kotlin & Native Android)</span>
+                      <span className="text-slate-200">4. Mobile & Practical AI (Kotlin, APIs)</span>
                       <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/70 px-2 py-0.5 rounded border border-emerald-800/60 shrink-0">
-                        PRACTICAL
+                        USING
                       </span>
                     </div>
 
                     <div className="flex items-center justify-between gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                      <span className="text-slate-200">6. AI-Integrated Software (Secure APIs)</span>
-                      <span className="text-[10px] font-bold text-amber-400 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800/60 shrink-0">
-                        ROADMAP
-                      </span>
-                    </div>
-
-                    <div className="flex items-center justify-between gap-2 p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                      <span className="text-slate-200">7. Full-Stack Software Engineering</span>
+                      <span className="text-slate-200">5. Full-Stack Software Engineering</span>
                       <span className="text-[10px] font-bold text-indigo-400 bg-indigo-950/70 px-2 py-0.5 rounded border border-indigo-800/60 shrink-0">
-                        LONG-TERM
+                        PLANNED
                       </span>
                     </div>
                   </div>
 
                   <div className="pt-2 text-slate-400 text-[11px] flex items-center gap-1.5">
                     <ShieldCheck size={12} className="text-emerald-400 shrink-0" />
-                    <span>Progression grounded in verified coursework and real building</span>
+                    <span>Real coursework & practical implementation path</span>
                   </div>
                 </div>
               )}

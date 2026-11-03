@@ -1,5 +1,5 @@
 import {motion} from 'framer-motion';
-import {ArrowRight, Mail, ArrowUpRight, GraduationCap, Code2} from 'lucide-react';
+import {ArrowRight, Mail, Code2} from 'lucide-react';
 import {DeveloperTechPanel} from '../ui/DeveloperTechPanel';
 import {useTheme} from '../../context/ThemeContext';
 import {useLanguage} from '../../context/LanguageContext';
@@ -36,7 +36,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[92vh] flex items-center pt-24 sm:pt-28 pb-16 lg:py-28 overflow-hidden transition-colors duration-300"
+      className="relative min-h-[88vh] lg:min-h-[92vh] flex items-center pt-24 sm:pt-28 pb-14 lg:py-24 overflow-hidden transition-colors duration-300"
     >
       {/* Restrained, Low-Overhead Atmospheric Ambient Lighting */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden select-none" aria-hidden="true">
@@ -56,16 +56,17 @@ export function Hero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-14 items-center">
-          {/* LEFT: Expressive Headline, Developer Identity & Clear CTAs */}
+        {/* Balanced Grid: Aligned items-start with Code Card elevated to match headline level */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 items-start pt-1 sm:pt-2">
+          {/* LEFT: Expressive Natural Headline, Developer Identity & Clear CTAs */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-6 flex flex-col justify-center text-left rtl:text-right"
+            className="lg:col-span-6 flex flex-col justify-start text-left rtl:text-right"
           >
-            {/* Academic Identity Kicker - Quiet, Unboxed Text (Zero-Pill Discipline) */}
-            <motion.div variants={itemVariants} className="flex items-center gap-2 mb-3 sm:mb-4 text-xs font-medium">
+            {/* Academic Identity Kicker */}
+            <motion.div variants={itemVariants} className="flex items-center gap-2 mb-3 text-xs font-medium">
               <span className="flex h-2 w-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20" />
               <span className="text-slate-900 dark:text-slate-200 font-semibold tracking-wide">
                 Abdul Jalil Zwak
@@ -85,10 +86,10 @@ export function Hero() {
               <span>{t.hero.role}</span>
             </motion.div>
 
-            {/* Main Headline */}
+            {/* Main Headline - Natural, attractive, confident, and professional */}
             <motion.h1
               variants={itemVariants}
-              className="text-[clamp(2.1rem,4.5vw,3.4rem)] font-extrabold font-outfit tracking-tight text-slate-900 dark:text-white leading-[1.12] mb-4 sm:mb-5 text-balance"
+              className="text-[clamp(2.1rem,4.4vw,3.4rem)] font-extrabold font-outfit tracking-tight text-slate-900 dark:text-white leading-[1.14] mb-3.5 sm:mb-4 text-balance"
             >
               {t.hero.headlinePre}{' '}
               <span className="bg-gradient-to-r from-indigo-600 via-sky-500 to-indigo-500 dark:from-indigo-400 dark:via-sky-300 dark:to-cyan-300 bg-clip-text text-transparent inline-block">
@@ -97,16 +98,16 @@ export function Hero() {
               {t.hero.headlinePost}
             </motion.h1>
 
-            {/* Supporting Description */}
+            {/* Supporting Description - Reduced to one concise, natural supporting sentence */}
             <motion.p
               variants={itemVariants}
-              className="text-sm sm:text-base lg:text-[17px] text-slate-600 dark:text-slate-300 leading-relaxed mb-6 sm:mb-8 max-w-xl text-balance font-normal"
+              className="text-sm sm:text-base lg:text-[16.5px] text-slate-600 dark:text-slate-300 leading-relaxed mb-6 sm:mb-8 max-w-xl text-balance font-normal"
             >
               {t.hero.description}
             </motion.p>
 
-            {/* Action Buttons */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8 sm:mb-10">
+            {/* Action Buttons - Prominent & Clear */}
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3 sm:gap-4">
               <a
                 href="#projects"
                 className="inline-flex items-center justify-center px-6 py-3 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-semibold text-xs sm:text-sm rounded-xl transition-all duration-200 shadow-md shadow-indigo-600/25 hover:shadow-indigo-600/40 hover:-translate-y-0.5 group cursor-pointer"
@@ -131,47 +132,14 @@ export function Hero() {
                 <span>{t.hero.contactMe}</span>
               </a>
             </motion.div>
-
-            {/* Verified Student Deliverables Ribbon */}
-            <motion.div
-              variants={itemVariants}
-              className="pt-5 border-t border-slate-200/80 dark:border-slate-800/80 grid grid-cols-3 gap-2.5 sm:gap-3 max-w-lg"
-            >
-              <div className="p-3 rounded-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 text-center sm:text-left rtl:sm:text-right shadow-2xs">
-                <div className="text-base sm:text-lg font-black font-outfit text-indigo-600 dark:text-indigo-400">
-                  {t.hero.metrics.metric1Value}
-                </div>
-                <div className="text-[11px] text-slate-600 dark:text-slate-400 font-medium truncate mt-0.5">
-                  {t.hero.metrics.metric1Label}
-                </div>
-              </div>
-
-              <div className="p-3 rounded-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 text-center sm:text-left rtl:sm:text-right shadow-2xs">
-                <div className="text-sm sm:text-base font-bold font-outfit text-emerald-600 dark:text-emerald-400 truncate">
-                  {t.hero.metrics.metric2Value}
-                </div>
-                <div className="text-[11px] text-slate-600 dark:text-slate-400 font-medium truncate mt-0.5">
-                  {t.hero.metrics.metric2Label}
-                </div>
-              </div>
-
-              <div className="p-3 rounded-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 text-center sm:text-left rtl:sm:text-right shadow-2xs">
-                <div className="text-base sm:text-lg font-black font-outfit text-sky-600 dark:text-sky-400">
-                  {t.hero.metrics.metric3Value}
-                </div>
-                <div className="text-[11px] text-slate-600 dark:text-slate-400 font-medium truncate mt-0.5">
-                  {t.hero.metrics.metric3Label}
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
 
-          {/* RIGHT: Redesigned Developer Snapshot Panel (Strictly LTR for code) */}
+          {/* RIGHT: Shifted upward on desktop to align directly with the headline */}
           <motion.div
-            initial={{opacity: 0, scale: 0.97, y: 12}}
+            initial={{opacity: 0, scale: 0.98, y: 10}}
             animate={{opacity: 1, scale: 1, y: 0}}
-            transition={{duration: 0.55, delay: 0.15, ease: [0.16, 1, 0.3, 1]}}
-            className="lg:col-span-6 flex justify-center lg:justify-end w-full min-w-0"
+            transition={{duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1]}}
+            className="lg:col-span-6 flex justify-center lg:justify-end w-full min-w-0 lg:-mt-2 xl:-mt-3"
             dir="ltr"
           >
             <DeveloperTechPanel />

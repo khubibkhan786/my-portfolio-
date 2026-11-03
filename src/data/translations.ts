@@ -209,11 +209,11 @@ export const translations: Record<Language, TranslationSchema> = {
       statusBadge: 'Abdul Jalil Zwak',
       subline: 'Computer Science · Information Systems · Paktia University',
       role: 'Software Developer',
-      headlinePre: 'Building Thoughtful Software.',
-      headlineHighlight: 'Solving Real Problems.',
-      headlinePost: '',
+      headlinePre: 'Building reliable',
+      headlineHighlight: 'web & mobile applications',
+      headlinePost: 'with clean, thoughtful code.',
       description:
-        'I am a Computer Science student specializing in Information Systems, focused on building practical software applications and developing meaningful digital solutions. My work involves exploring product ideas, planning application structures, making design decisions, guiding implementation, reviewing code, solving technical problems, and continuously improving software products. I am particularly interested in Software Engineering, full-stack development, mobile and web applications, and AI-integrated software.',
+        'Computer Science student & developer crafting responsive web apps, native Android software, and clean digital experiences.',
       viewWork: 'View My Work',
       contactMe: 'Contact Me',
       metrics: {
@@ -423,11 +423,11 @@ export const translations: Record<Language, TranslationSchema> = {
       statusBadge: 'عبدالجلیل ځواک',
       subline: 'د کمپیوټر ساینس محصل · معلوماتي سیستمونه · پکتیا پوهنتون',
       role: 'د سافټویر جوړونکی',
-      headlinePre: 'د باوري او ګټورو سافټویرونو جوړول؛',
-      headlineHighlight: 'د اصلي ستونزو هوارول.',
-      headlinePost: '',
+      headlinePre: 'د عملي او باوري',
+      headlineHighlight: 'وېب او موبایل سافټویرونو',
+      headlinePost: 'جوړول او پراختیا.',
       description:
-        'زه په پکتیا پوهنتون کې د کمپیوټر ساینس پوهنځي د معلوماتي سیستمونو محصل یم، چې د عملي سافټویرونو پر جوړولو او د ګټورو ډیجیټل حل لارو پر وړاندې کولو تمرکز لرم. زما کار د نویو محصولي مفکورو څېړنه، د اپلیکیشن د جوړښت پلانول، د ډیزاین پرېکړې کول، د تطبیق لارښوونه، د کوډ بیا کتنه، د تخنیکي خنډونو هوارول او د سافټویرونو دوامداره ښه والی رانغاړي. زه په ځانګړي ډول د سافټویر انجینرۍ، فل سټیک پراختیا، موبایل او وېب اپلیکیشنونو او له AI سره د سافټویرونو یوځای کولو ته پوره لېواله یم.',
+        'د معلوماتي سیستمونو محصل او پروګرامر، چې د باوري وېبپاڼو، انډروایډ کاریالونو او ساده، چټکو کارن مخونو په جوړولو بوخت یم.',
       viewWork: 'زما کارونه وګورئ',
       contactMe: 'اړیکه ونیسئ',
       metrics: {
@@ -637,11 +637,11 @@ export const translations: Record<Language, TranslationSchema> = {
       statusBadge: 'عبدالجلیل ځواک',
       subline: 'دانشجوی کامپیوتر ساینس · سیستم‌های معلوماتی · پوهنتون پکتیا',
       role: 'توسعه‌دهنده نرم‌افزار',
-      headlinePre: 'ساخت نرم‌افزارهای سنجیده و کاربردی؛',
-      headlineHighlight: 'حل مسائل واقعی.',
-      headlinePost: '',
+      headlinePre: 'توسعه و ساخت',
+      headlineHighlight: 'برنامه‌های کاربردی وب و موبایل',
+      headlinePost: 'با کدنویسی اصولی و مدرن.',
       description:
-        'من دانشجوی کامپیوتر ساینس در پوهنتون پکتیا با گرایش سیستم‌های معلوماتی هستم که بر توسعه نرم‌افزارهای کاربردی و راهکارهای معنادار دیجیتال تمرکز دارم. کار من شامل ایده‌پردازی محصولات، ساختاربندی نرم‌افزار، تصمیم‌گیری‌های طراحی، بازبینی کد، حل چالش‌های فنی و ارتقای مستمر محصولات نرم‌افزاری است. به‌ویژه به مهندسی نرم‌افزار، توسعه فول‌استک، برنامه‌های وب و موبایل و نرم‌افزارهای مبتنی بر هوش مصنوعی علاقه‌مند هستم.',
+        'دانشجوی سیستم‌های معلوماتی و توسعه‌دهنده نرم‌افزار، متمرکز بر ساخت برنامه‌های وب، موبایل بومی و تجارب کاربری روان.',
       viewWork: 'مشاهده کارهای من',
       contactMe: 'تماس با من',
       metrics: {

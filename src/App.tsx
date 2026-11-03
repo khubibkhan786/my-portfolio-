@@ -8,6 +8,7 @@ import {About} from './components/sections/About';
 import {Skills} from './components/sections/Skills';
 import {FutureRoadmap} from './components/sections/FutureRoadmap';
 import {Services} from './components/sections/Services';
+import {WorkProcess} from './components/sections/WorkProcess';
 import {Projects} from './components/sections/Projects';
 import {Journey} from './components/sections/Journey';
 import {Contact} from './components/sections/Contact';
@@ -75,6 +76,7 @@ function PortfolioContent({loading}: {loading: boolean}) {
             <Skills />
             <FutureRoadmap />
             <Services />
+            <WorkProcess />
             <Projects />
             <Journey />
             <Contact />

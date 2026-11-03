@@ -1,58 +1,79 @@
 import {motion} from 'framer-motion';
 import {
   Globe,
-  Layout,
+  Sparkles,
   Smartphone,
+  Layout,
   Database,
   Wrench,
-  Sparkles,
-  ArrowUpRight,
-  ShieldCheck,
-  CheckCircle2,
-  FileCode2
+  ArrowUpRight
 } from 'lucide-react';
 import {useLanguage} from '../../context/LanguageContext';
 import {cn} from '../../lib/utils';
 
 export function Services() {
-  const {t, isRtl} = useLanguage();
+  const {t, language, isRtl} = useLanguage();
 
   const servicesData = [
     {
-      title: t.services.s1Title,
-      description: t.services.s1Desc,
+      title: language === 'ps' ? 'ځواب ویونکې او عصري وېبپاڼې' : language === 'fa' ? 'وبسایت‌های مدرن و واکنش‌گرا' : 'Modern & Responsive Websites',
+      description: language === 'ps'
+        ? 'د HTML5، عصري CSS او React په مرسته د چټکو، ښکلو او ګرځنده ته جوړو وېبپاڼو ودانول.'
+        : language === 'fa'
+        ? 'ساخت وبسایت‌های مدرن، پرسرعت و بهینه‌سازی‌شده برای تمامی اندازه‌های صفحه نمایش.'
+        : 'Fast, accessible, mobile-first websites built with semantic HTML5, modern CSS, and React.',
       icon: <Globe size={22} className="text-sky-600 dark:text-sky-400" />,
-      badge: 'Web',
+      badge: language === 'ps' ? 'وېب ډیزاین' : language === 'fa' ? 'وب' : 'Web',
     },
     {
-      title: t.services.s2Title,
-      description: t.services.s2Desc,
-      icon: <FileCode2 size={22} className="text-indigo-600 dark:text-indigo-400" />,
-      badge: 'Portfolio',
+      title: language === 'ps' ? 'له AI سره مدغم وېب اپلیکیشنونه' : language === 'fa' ? 'برنامه‌های وب با هوش مصنوعی' : 'Web Apps with AI Features',
+      description: language === 'ps'
+        ? 'د مصنوعي هوښیارتیا له APIs سره نښلول شوي وېب کاریالونه د متن تحلیل، هوښیار مرستیال او اتومات کارونو لپاره.'
+        : language === 'fa'
+        ? 'برنامه‌های کاربردی وب با اتصال به مدل‌های هوش مصنوعی جهت خودکارسازی و دستیار هوشمند.'
+        : 'Practical web applications integrating AI APIs for smart text processing, conversational assistance, and workflow automation.',
+      icon: <Sparkles size={22} className="text-amber-500" />,
+      badge: 'AI + Web',
     },
     {
-      title: t.services.s3Title,
-      description: t.services.s3Desc,
+      title: language === 'ps' ? 'د AI اسانتیاوو لرونکي انډروایډ کاریالونه' : language === 'fa' ? 'اپلیکیشن‌های موبایل همراه با AI' : 'Mobile Apps with AI Integration',
+      description: language === 'ps'
+        ? 'په کوټلین کې بومي انډروایډ کاریالونه د Room افلاین ډېټابېس، روښانه کارن مخ او هوښیارو ځانګړتیاوو سره.'
+        : language === 'fa'
+        ? 'اپلیکیشن‌های بومی اندروید با کاتلین، دیتابیس محلی آفلاین Room و ادغام قابلیت‌های هوشمند.'
+        : 'Native Android applications in Kotlin featuring offline Room database storage and practical AI integration.',
+      icon: <Smartphone size={22} className="text-emerald-600 dark:text-emerald-400" />,
+      badge: 'Android',
+    },
+    {
+      title: language === 'ps' ? 'د کارن مخ (UI) عملي تطبیق' : language === 'fa' ? 'پیاده‌سازی رابط کاربری مدرن' : 'Clean UI Implementation',
+      description: language === 'ps'
+        ? 'د طرحو، مفکورو او وایرفریمونو اړول په پاک، منظم، لاسرسي وړ او ښکلي کوډ.'
+        : language === 'fa'
+        ? 'تبدیل طرح‌های گرافیکی و ایده‌ها به رابط‌های کاربری تمیز، استاندارد، ماژولار و دسترس‌پذیر.'
+        : 'Translating design concepts and wireframes into pixel-perfect, accessible, and intuitive user interfaces.',
       icon: <Layout size={22} className="text-purple-600 dark:text-purple-400" />,
       badge: 'UI/UX',
     },
     {
-      title: t.services.s4Title,
-      description: t.services.s4Desc,
-      icon: <Wrench size={22} className="text-amber-600 dark:text-amber-400" />,
-      badge: 'Optimization',
-    },
-    {
-      title: t.services.s5Title,
-      description: t.services.s5Desc,
+      title: language === 'ps' ? 'د ډېټابېس لرونکي عملي کاریالونه' : language === 'fa' ? 'برنامه‌های متصل به دیتابیس' : 'Database-Connected Apps',
+      description: language === 'ps'
+        ? 'د اړیکیزو جدولونو جوړول، په SQL او MySQL کې د معلوماتو خوندي کول او د هغوی منظم مدیریت.'
+        : language === 'fa'
+        ? 'طراحی ساختار رابطه‌ای، تنظیم جداول در MySQL و SQLite و ایجاد جریان‌های داده امن و ساختارمند.'
+        : 'Designing relational schemas, setting up MySQL/SQLite tables, and creating structured CRUD data flows.',
       icon: <Database size={22} className="text-emerald-600 dark:text-emerald-400" />,
       badge: 'Databases',
     },
     {
-      title: t.services.s6Title,
-      description: t.services.s6Desc,
-      icon: <Smartphone size={22} className="text-emerald-600 dark:text-emerald-400" />,
-      badge: 'Android',
+      title: language === 'ps' ? 'د سافټویر سمون او د سرعت ښه والی' : language === 'fa' ? 'بهینه‌سازی و ارتقای برنامه‌ها' : 'App Improvements & Refinement',
+      description: language === 'ps'
+        ? 'د کوډ پاکول، په موبایل کې د نیمګړتیاوو اصلاح، د پورته کېدو د چټکتیا لوړول او د کاروونکي د تجربې ښه کول.'
+        : language === 'fa'
+        ? 'بازنویسی کد، افزایش سرعت بارگذاری، رفع خطاهای ریسپانسیو و ارتقای تجربه کلی کاربری.'
+        : 'Refactoring codebases, optimizing load speeds, resolving responsive layout bugs, and enhancing overall user experience.',
+      icon: <Wrench size={22} className="text-rose-500" />,
+      badge: 'Optimization',
     },
   ];
 
@@ -115,7 +136,7 @@ export function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{once: true, amount: 0.15}}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12 sm:mb-14"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           {servicesData.map((service, idx) => {
             const indexString = `0${idx + 1}`;
@@ -126,102 +147,50 @@ export function Services() {
                 variants={cardVariants}
                 className="group relative flex flex-col justify-between"
               >
-                <div className="card-soft-underglow" />
-
-                <div className="relative z-10 p-5 sm:p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between shadow-xs group-hover:shadow-lg group-hover:-translate-y-1 bg-white/95 dark:bg-slate-900/95 border-slate-200/90 dark:border-slate-800 group-hover:border-indigo-500/50 backdrop-blur-sm h-full text-left rtl:text-right">
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-2xs group-hover:scale-105 group-hover:border-indigo-500/40 transition-all">
-                        {service.icon}
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-[10px] uppercase px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200/60 dark:border-indigo-800/60">
-                          {service.badge}
-                        </span>
-                        <span className="text-xs font-bold text-slate-400 dark:text-slate-500">
-                          {indexString}
-                        </span>
-                      </div>
-                    </div>
-
-                    <h3 className="text-base font-bold font-outfit text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                      {service.title}
-                    </h3>
-
-                    <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-                      {service.description}
-                    </p>
-                  </div>
-
-                  <div className="pt-3 border-t border-slate-200/60 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
-                    <span className="text-[11px] font-medium">{t.services.productionQuality}</span>
-                    <ArrowUpRight
-                      size={14}
-                      className={cn(
-                        'transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5',
-                        isRtl ? 'rotate-[-90deg]' : ''
-                      )}
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-
-        {/* 7-Step Responsible Delivery Process Container */}
-        <motion.div
-          initial={{opacity: 0, y: 14}}
-          whileInView={{opacity: 1, y: 0}}
-          viewport={{once: true, amount: 0.15}}
-          transition={{duration: 0.45}}
-          className="p-6 sm:p-8 rounded-3xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-sm"
-        >
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-200/80 dark:border-slate-800 text-left rtl:text-right">
-            <div>
-              <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-1 font-outfit">
-                <ShieldCheck size={16} />
-                <span>{t.services.processTitle}</span>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-                {t.services.processSubtitle}
-              </p>
-            </div>
-
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl transition-colors shadow-xs shrink-0 self-start md:self-auto cursor-pointer"
-            >
-              <span>{t.nav.letsTalk}</span>
-              <ArrowUpRight size={13} className={isRtl ? 'rotate-[-90deg]' : ''} />
-            </a>
-          </div>
-
-          {/* 7 Steps Horizontal/Grid Stepper */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-3">
-            {t.services.processSteps.map((step, idx) => (
-              <div
-                key={idx}
-                className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-800 flex flex-col justify-between text-left rtl:text-right"
+                <div className="relative z-10 p-5 sm:p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between shadow-2xs hover:shadow-lg hover:-translate-y-1 bg-white/95 dark:bg-slate-900/95 border-slate-200/90 dark:border-slate-800 hover:border-indigo-500/50 dark:hover:border-indigo-500/50 backdrop-blur-sm h-full text-left rtl:text-right"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="w-5 h-5 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 font-bold text-[10px] flex items-center justify-center">
-                    {idx + 1}
-                  </span>
-                  {idx < 6 && (
-                    <span className="hidden lg:block text-slate-300 dark:text-slate-700 text-xs">
-                      →
-                    </span>
-                  )}
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shadow-2xs group-hover:scale-105 group-hover:border-indigo-500/40 transition-all">
+                      {service.icon}
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[10px] uppercase px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-semibold border border-indigo-200/60 dark:border-indigo-800/60">
+                        {service.badge}
+                      </span>
+                      <span className="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">
+                        {indexString}
+                      </span>
+                    </div>
+                  </div>
+
+                  <h3 className="text-base font-bold font-outfit text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    {service.title}
+                  </h3>
+
+                  <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+                    {service.description}
+                  </p>
                 </div>
-                <div className="text-xs font-bold text-slate-800 dark:text-slate-200 leading-snug">
-                  {step.replace(/^\d+\.\s*/, '')}
+
+                <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
+                  <span className="text-[11px] font-medium">
+                    {language === 'ps' ? 'عملي او ډاډمن تطبیق' : language === 'fa' ? 'پیاده‌سازی اصولی و مطمئن' : 'Practical & Reliable Build'}
+                  </span>
+                  <ArrowUpRight
+                    size={14}
+                    className={cn(
+                      'transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5',
+                      isRtl ? 'rotate-[-90deg]' : ''
+                    )}
+                  />
                 </div>
               </div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
-    </section>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </div>
+  </section>
   );
 }

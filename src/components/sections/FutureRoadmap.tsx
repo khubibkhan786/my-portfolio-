@@ -1,14 +1,12 @@
 import {motion} from 'framer-motion';
 import {
   Compass,
-  ArrowRight,
   Database,
   Code2,
-  Server,
   Smartphone,
-  Sparkles,
   Layers,
-  HelpCircle,
+  Sparkles,
+  ArrowRight,
   CheckCircle2,
   Clock
 } from 'lucide-react';
@@ -24,33 +22,75 @@ export function FutureRoadmap() {
       case 1:
         return <Code2 size={18} className="text-sky-600 dark:text-sky-400" />;
       case 2:
-        return <Database size={18} className="text-emerald-600 dark:text-emerald-400" />;
+        return <Database size={18} className="text-amber-600 dark:text-amber-400" />;
       case 3:
         return <Layers size={18} className="text-indigo-600 dark:text-indigo-400" />;
       case 4:
-        return <Server size={18} className="text-purple-600 dark:text-purple-400" />;
-      case 5:
         return <Smartphone size={18} className="text-emerald-600 dark:text-emerald-400" />;
-      case 6:
-        return <Sparkles size={18} className="text-amber-500" />;
-      case 7:
-        return <Compass size={18} className="text-indigo-600 dark:text-indigo-400" />;
+      case 5:
+        return <Compass size={18} className="text-purple-600 dark:text-purple-400" />;
       default:
         return <Compass size={18} />;
     }
   };
 
-  const getStageLocalized = (stageNumber: number) => {
-    const key = `s${stageNumber}` as keyof typeof t.roadmap.stages;
-    const titleKey = `${key}Title` as keyof typeof t.roadmap.stages;
-    const subtitleKey = `${key}Subtitle` as keyof typeof t.roadmap.stages;
-    const descKey = `${key}Desc` as keyof typeof t.roadmap.stages;
+  const getStageBadge = (stageNumber: number, status: string) => {
+    switch (stageNumber) {
+      case 1:
+        return {
+          label: language === 'ps' ? 'بنسټونه' : language === 'fa' ? 'مبانی' : 'Foundations',
+          style: 'bg-sky-50 dark:bg-sky-950/80 text-sky-700 dark:text-sky-300 border-sky-200/80 dark:border-sky-800/60',
+        };
+      case 2:
+        return {
+          label: language === 'ps' ? 'روانه زده کړه' : language === 'fa' ? 'در حال یادگیری' : 'Learning',
+          style: 'bg-amber-50 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 border-amber-200/80 dark:border-amber-800/60',
+        };
+      case 3:
+      case 4:
+        return {
+          label: language === 'ps' ? 'عملي کارول' : language === 'fa' ? 'کاربرد عملی' : 'Active Build',
+          style: 'bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border-emerald-200/80 dark:border-emerald-800/60',
+        };
+      case 5:
+      default:
+        return {
+          label: language === 'ps' ? 'راتلونکی پړاو' : language === 'fa' ? 'هدف آتی' : 'Planned',
+          style: 'bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border-purple-200/80 dark:border-purple-800/60',
+        };
+    }
+  };
 
-    return {
-      title: t.roadmap.stages[titleKey] || '',
-      subtitle: t.roadmap.stages[subtitleKey] || '',
-      desc: t.roadmap.stages[descKey] || ''
-    };
+  // Localized stage copy
+  const getStageDetails = (stageNumber: number) => {
+    switch (stageNumber) {
+      case 1:
+        return {
+          title: language === 'ps' ? 'د پروګرامینګ بنسټونه او OOP' : language === 'fa' ? 'مبانی برنامه‌نویسی و شی‌گرایی' : 'Core Programming & OOP',
+          desc: language === 'ps' ? 'د جاوا ژبه، د شی‌ګرایۍ اصول، الګورېتمونه او د جوړښت لرونکي سافټویر اساسات.' : language === 'fa' ? 'مفاهیم شی‌گرایی، ساختار داده‌ها، الگوریتم‌ها و کدنویسی ساختارمند در جاوا.' : 'Java fundamentals, object-oriented concepts, algorithms, and structured coding hygiene.',
+        };
+      case 2:
+        return {
+          title: language === 'ps' ? 'اړیکیز ډېټابېسونه او SQL' : language === 'fa' ? 'پایگاه‌های داده رابطه‌ای و SQL' : 'Relational Databases & SQL',
+          desc: language === 'ps' ? 'په MySQL او SQL کې د جدولونو ډیزاین، اړیکې، خوندي پوښتنې او د ډېټا نورمالایزیشن.' : language === 'fa' ? 'طراحی اسکیما، نرمال‌سازی، تراکنش‌ها و کوئری‌های رابطه‌ای در MySQL و SQL.' : 'Relational modeling, schema design, table relationships, and SQL querying in MySQL.',
+        };
+      case 3:
+        return {
+          title: language === 'ps' ? 'عصري وېب او فرانت اینډ' : language === 'fa' ? 'توسعه وب مدرن و فرانت‌اند' : 'Modern Web & Frontend',
+          desc: language === 'ps' ? 'په React 19، TypeScript او Tailwind کې د ځواب ویونکو او چټکو وېبپاڼو جوړول.' : language === 'fa' ? 'توسعه رابط‌های کاربری واکنش‌گرا و سریع با React 19، TypeScript و Tailwind CSS.' : 'Responsive, type-safe web interfaces and state architecture using React 19 & TypeScript.',
+        };
+      case 4:
+        return {
+          title: language === 'ps' ? 'موبایل او د AI عملي اسانتیاوې' : language === 'fa' ? 'موبایل و ابزارهای هوش مصنوعی' : 'Mobile & Practical AI Features',
+          desc: language === 'ps' ? 'په کوټلین کې بومي انډروایډ اپلیکیشنونه، افلاین Room ډېټابېس او د AI APIs نښلول.' : language === 'fa' ? 'توسعه بومی اندروید با کاتلین، دیتابیس Room و اتصال به APIهای هوش مصنوعی.' : 'Native Android apps in Kotlin with offline Room storage and practical AI API integration.',
+        };
+      case 5:
+      default:
+        return {
+          title: language === 'ps' ? 'بشپړ سټیک سافټویر انجینري' : language === 'fa' ? 'مهندسی نرم‌افزار فول‌استک' : 'Full-Stack Software Engineering',
+          desc: language === 'ps' ? 'له وېب او موبایل څخه تر سرورونو، ډېټابېسونو او کلاوډ پورې د پوره محصولاتو وړاندې کول.' : language === 'fa' ? 'یکپارچه‌سازی فرانت‌اند، کلاینت موبایل، سرویس‌های سرور، دیتابیس و تست خودکار.' : 'Unifying web & mobile clients with secure backend services, databases, and deployment.',
+        };
+    }
   };
 
   return (
@@ -75,7 +115,7 @@ export function FutureRoadmap() {
           className="text-center max-w-2xl mx-auto mb-12 sm:mb-14"
         >
           <div className="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-semibold text-xs tracking-wider uppercase mb-2.5">
-            <Compass size={13} />
+            <Compass size={14} />
             <span>{t.roadmap.tag}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-outfit tracking-tight text-slate-900 dark:text-white leading-tight">
@@ -86,11 +126,12 @@ export function FutureRoadmap() {
           </p>
         </motion.div>
 
-        {/* 7 Stages Responsive Stepper Flow */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 mb-12">
+        {/* 5 Compact Stages Grid with Visual Progression */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
           {softwareEngineeringRoadmap.map((stage, idx) => {
-            const localized = getStageLocalized(stage.stageNumber);
-            const isStage4 = stage.stageNumber === 4;
+            const details = getStageDetails(stage.stageNumber);
+            const badge = getStageBadge(stage.stageNumber, stage.status);
+            const numberFormatted = `0${stage.stageNumber}`;
 
             return (
               <motion.div
@@ -98,115 +139,64 @@ export function FutureRoadmap() {
                 initial={{opacity: 0, y: 14}}
                 whileInView={{opacity: 1, y: 0}}
                 viewport={{once: true, amount: 0.15}}
-                transition={{duration: 0.4, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1]}}
-                className={cn(
-                  'p-5 sm:p-6 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-2xs hover:border-indigo-500/40 hover:shadow-md transition-all flex flex-col justify-between text-left rtl:text-right relative overflow-hidden',
-                  isStage4 ? 'lg:col-span-12 bg-gradient-to-br from-white via-purple-50/20 to-white dark:from-slate-900 dark:via-purple-950/20 dark:to-slate-900 border-purple-300/60 dark:border-purple-900/60' : 'lg:col-span-6'
-                )}
+                transition={{duration: 0.4, delay: idx * 0.06}}
+                className="group relative p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 shadow-2xs hover:shadow-md hover:border-indigo-500/40 dark:hover:border-indigo-500/40 transition-all flex flex-col justify-between text-left rtl:text-right"
               >
                 <div>
-                  {/* Top Bar: Stage Number + Icon + Status Badge */}
-                  <div className="flex items-center justify-between gap-3 mb-3">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-center shrink-0">
+                  {/* Top Bar: Number + Icon + Status Badge */}
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-xs font-black text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/70 px-2 py-0.5 rounded-md border border-indigo-200/60 dark:border-indigo-800/60">
+                        {numberFormatted}
+                      </span>
+                      <div className="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
                         {getStageIcon(stage.stageNumber)}
-                      </div>
-                      <div>
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 block font-outfit">
-                          {t.roadmap.stagePrefix} 0{stage.stageNumber}
-                        </span>
-                        <h3 className="text-base font-bold font-outfit text-slate-900 dark:text-white leading-tight">
-                          {localized.title || stage.title}
-                        </h3>
                       </div>
                     </div>
 
-                    <span
-                      className={cn(
-                        'px-2.5 py-0.5 rounded-full text-[10.5px] font-semibold border shrink-0',
-                        stage.status === 'foundational'
-                          ? 'bg-sky-50 dark:bg-sky-950/70 text-sky-700 dark:text-sky-300 border-sky-200/70 dark:border-sky-800/60'
-                          : stage.status === 'current'
-                          ? 'bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border-emerald-200/70 dark:border-emerald-800/60'
-                          : 'bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 border-indigo-200/70 dark:border-indigo-800/60'
-                      )}
-                    >
-                      {stage.status === 'foundational'
-                        ? t.roadmap.foundationalBadge
-                        : stage.status === 'current'
-                        ? t.roadmap.currentBadge
-                        : t.roadmap.futureBadge}
+                    <span className={cn('text-[10px] font-bold px-2 py-0.5 rounded-full border', badge.style)}>
+                      {badge.label}
                     </span>
                   </div>
 
-                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium mb-2">
-                    {localized.subtitle || stage.subtitle}
+                  {/* Stage Title */}
+                  <h3 className="text-sm font-bold font-outfit text-slate-900 dark:text-white mb-1.5 leading-snug">
+                    {details.title}
+                  </h3>
+
+                  {/* Concise Description */}
+                  <p className="text-[12px] text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+                    {details.desc}
                   </p>
+                </div>
 
-                  <p className="text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-                    {localized.desc || stage.description}
-                  </p>
-
-                  {/* Stage 4: Open Backend Path Callout */}
-                  {isStage4 && (
-                    <div className="p-3.5 rounded-xl bg-purple-50/80 dark:bg-purple-950/40 border border-purple-200/80 dark:border-purple-800/60 mb-4 text-xs space-y-1.5">
-                      <div className="flex items-center gap-1.5 font-bold text-purple-900 dark:text-purple-300 font-outfit">
-                        <HelpCircle size={14} className="text-purple-600 dark:text-purple-400 shrink-0" />
-                        <span>{t.roadmap.backendDecisionTitle}</span>
-                      </div>
-                      <p className="text-[12px] text-purple-800 dark:text-purple-300/90 leading-relaxed">
-                        {t.roadmap.stages.s4Decision}
-                      </p>
-                    </div>
-                  )}
-
-                  {/* Skills Tag List */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {stage.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="text-xs font-medium text-slate-700 dark:text-slate-300 bg-slate-100/90 dark:bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-200/70 dark:border-slate-700/70"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+                {/* Tech Chips */}
+                <div className="pt-2.5 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap gap-1">
+                  {stage.skills.slice(0, 3).map((sk) => (
+                    <span
+                      key={sk}
+                      className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                    >
+                      {sk}
+                    </span>
+                  ))}
                 </div>
               </motion.div>
             );
           })}
         </div>
 
-        {/* Closing Vision Banner */}
-        <motion.div
-          initial={{opacity: 0, y: 12}}
-          whileInView={{opacity: 1, y: 0}}
-          viewport={{once: true, amount: 0.2}}
-          transition={{duration: 0.45}}
-          className="p-5 sm:p-6 rounded-2xl bg-indigo-50/70 dark:bg-slate-900/80 border border-indigo-200/80 dark:border-indigo-900/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left rtl:sm:text-right"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-sm">
-              <Compass size={20} />
-            </div>
-            <div>
-              <div className="text-xs sm:text-sm font-bold font-outfit text-slate-900 dark:text-white">
-                {t.roadmap.closingStatement}
-              </div>
-              <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
-                Paktia University Information Systems · Abdul Jalil Zwak
-              </div>
-            </div>
-          </div>
-
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl transition-colors shadow-xs shrink-0 cursor-pointer"
-          >
-            <span>{t.hero.viewWork}</span>
-            <ArrowRight size={13} className={isRtl ? 'rotate-180' : ''} />
-          </a>
-        </motion.div>
+        {/* Minimal Bottom Anchor */}
+        <div className="p-4 rounded-2xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 max-w-2xl mx-auto text-center text-xs text-slate-600 dark:text-slate-400 flex items-center justify-center gap-2">
+          <Sparkles size={14} className="text-indigo-500 shrink-0" />
+          <span>
+            {language === 'ps'
+              ? 'دوامداره زده کړه او وده د پکتیا پوهنتون په تدریسي بهیر او عملي پروژو کې.'
+              : language === 'fa'
+              ? 'رشد پیوسته از طریق دروس دانشگاهی پکتیا و ساخت پروژه‌های واقعی و کاربردی.'
+              : 'Grounded progress driven by Paktia University coursework and practical project implementation.'}
+          </span>
+        </div>
       </div>
     </section>
   );
