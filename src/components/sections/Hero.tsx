@@ -71,7 +71,7 @@ export function Hero() {
               className="mb-3.5 sm:mb-4 flex flex-col items-start gap-2 sm:gap-2.5 max-w-full"
             >
               {/* Row 1: Active Status Badge + Full Developer Name */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-white/[0.08] shadow-[0_1px_3px_rgba(15,23,42,0.04)] dark:shadow-none self-start">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-white/[0.08] shadow-[0_2px_8px_rgba(15,23,42,0.04)] dark:shadow-none self-start">
                 <span className="relative flex h-2 w-2 shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
