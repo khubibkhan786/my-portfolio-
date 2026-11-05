@@ -1,15 +1,16 @@
 import {Project} from '../types';
+import zwakWeatherBanner from '../assets/images/zwak_weather_banner.png';
 
 export const projects: Project[] = [
   {
     id: 'zwak-weather',
     title: 'Zwak Weather',
-    shortDescription: 'A smart multilingual weather application providing forecasts, interactive radar, agricultural insights, and online AI assistance.',
-    fullDescription: 'Zwak Weather is a modern, high-precision Android weather application engineered by AGZ Labs. It delivers localized meteorological forecasts, interactive radar maps, specialized agricultural insights (Zarghoona Hawa), and an Online AI Weather Assistant across four languages (Pashto, Dari, Arabic, and English). Built natively with Kotlin and Jetpack Compose, it features smart GPS location detection and Room Database local caching for reliable access during intermittent network drops.',
+    shortDescription: 'A multilingual weather application offering forecasts, radar, agricultural insights, air quality, and weather news.',
+    fullDescription: 'Zwak Weather is a modern, high-precision Android weather application engineered by AGZ Labs. It delivers accurate meteorological forecasts, interactive radar maps, specialized agricultural indicators (Zarghoona Hawa), air quality monitoring, and climate news across four languages (Pashto, Dari, Arabic, and English). Built natively with Kotlin and Jetpack Compose, it features smart GPS location detection and Room Database local caching for reliable access to previously retrieved forecasts.',
     category: 'Android Application',
-    filterCategories: ['Mobile', 'AI'],
+    filterCategories: ['Mobile'],
     technologies: ['Kotlin', 'Jetpack Compose', 'Android'],
-    image: '/assets/aistudio/Zwak_Weather__Smart_Forecasting_App_31d52db9.png',
+    image: zwakWeatherBanner,
     year: '2025',
     status: 'Completed',
     featured: true,
@@ -17,91 +18,92 @@ export const projects: Project[] = [
     platformBadge: 'Android Application',
     storeBadge: 'AGZ Labs · v2.5.0',
     featureHighlights: [
-      'Multilingual: Pashto, Dari, Arabic & English',
-      'Interactive Radar & 24h Forecast Curves',
-      'Agricultural Insights (Zarghoona Hawa)',
-      'Online AI Weather Assistant'
+      'Real-Time Weather & 7-Day Forecasts',
+      'Interactive Weather Radar & Air Quality',
+      'Agricultural Intelligence (Zarghoona Hawa)',
+      'Four-Language Native Support'
     ],
-    productVision: 'To provide a dependable, culturally localized weather intelligence platform tailored for everyday people, travelers, and agricultural communities across Afghanistan and internationally.',
-    designAndPlanning: 'Designed a high-clarity Jetpack Compose UI with native Pashto, Dari, Arabic, and English typography, dynamic weather condition accents, interactive radar layers, and a dedicated Zarghoona Hawa agricultural advisory view.',
-    architecture: 'Clean modern Android architecture with Jetpack Compose declarative UI, asynchronous weather API ingestion, Room Database local storage and caching, and an Online AI Assistant service for contextual advice.',
+    productVision: 'To provide a dependable, unified, and accessible meteorological platform tailored for everyday commuters, families, and agricultural communities.',
+    designAndPlanning: 'Designed a high-clarity Jetpack Compose UI with native Pashto, Dari, Arabic, and English typography, dynamic atmospheric condition styling, interactive radar maps, and a specialized Zarghoona Hawa agricultural view.',
+    architecture: 'Clean modern Android architecture with Jetpack Compose declarative UI, asynchronous weather data ingestion, and Room Database local caching for reliable continuity.',
     features: [
-      'Real-time atmospheric conditions & 24h hourly forecast curves',
-      'Smart GPS automatic location & provincial search',
-      'Interactive weather radar tracking storms, rain & wind vectors',
-      'Online AI Weather Assistant for natural language planning & guidance',
-      'Agricultural weather insights & crop advisories (Zarghoona Hawa)',
-      'Severe weather alerts for floods, storms & frost',
-      'Air Quality Index (AQI) monitoring & health tips',
-      'Weather & climate news feed',
-      'Four-language native support: Pashto, Dari, Arabic, and English',
-      'Adaptive Dark & Light themes with high visual contrast'
+      'Real-Time Weather & Forecasts',
+      'Smart GPS Location',
+      'Interactive Weather Radar',
+      'Agricultural Intelligence',
+      'Severe Weather Alerts',
+      'Air Quality Monitoring',
+      'Climate & Weather News',
+      'Four-Language Support',
+      'Dark & Light Themes'
     ],
     challengesAndSolutions: [
       {
-        challenge: 'Limited native Pashto and Dari language support and awkward RTL rendering in international weather apps.',
-        solution: 'Built first-class multilingual architecture with native typography, full bidirectional text isolation, and cultural date/number formatting.'
+        challenge: 'Fragmented Weather Information: Weather forecasts, radar, air quality, and environmental information are spread across different services.',
+        solution: 'Multiple weather information sources consolidated into one intuitive application.'
       },
       {
-        challenge: 'Unreliable mobile connectivity causing blank screens or app crashes in rural areas.',
-        solution: 'Integrated Android Room Database for local data storage and caching, keeping previously loaded forecasts accessible during network drops.'
+        challenge: 'Limited Agricultural Insights: General weather applications often lack practical agricultural indicators such as evapotranspiration, soil moisture, and spraying conditions.',
+        solution: 'Agricultural calculations and crop insights integrated directly into daily planning.'
       },
       {
-        challenge: 'Lack of specialized agricultural weather insights in standard consumer weather apps.',
-        solution: 'Engineered the Zarghoona Hawa module to compute optimal spraying windows, soil moisture metrics, and frost risk warnings.'
+        challenge: 'Complex Weather Data: Meteorological information can be difficult for ordinary people to understand and use in daily decisions.',
+        solution: 'Understandable weather visualizations and clear hourly and 7-day forecast curves.'
+      },
+      {
+        challenge: 'Severe Weather Preparedness: Understanding and preparing for heatwaves, frost, strong winds, dust storms, and potential flooding is a significant challenge.',
+        solution: 'Severe weather alerts and proactive warnings for extreme conditions.'
       }
     ],
-    developerContribution: 'Conceived product architecture at AGZ Labs, designed UI in Jetpack Compose, integrated REST weather endpoints, built Room Database local caching layers, implemented multilingual RTL/LTR support, and connected the Online AI Assistant.',
+    developerContribution: 'Conceived product architecture at AGZ Labs, designed UI in Jetpack Compose, integrated REST weather endpoints, built Room Database local caching layers, implemented multilingual RTL/LTR typography, and engineered the Zarghoona Hawa agricultural module.',
     role: 'Lead Android Developer & UI/UX Designer',
     translations: {
       ps: {
         title: 'ځواک ویدر (Zwak Weather)',
         category: 'د انډروایډ کاریال',
-        shortDescription: 'د هوا حالاتو هوښیار او څو ژبنی کاریال؛ له رادار، کرنیزو معلوماتو او آنلاین AI مرستیال سره.',
-        fullDescription: 'ځواک ویدر د AGZ Labs لخوا جوړ شوی یو پرمختللی انډروایډ کاریال دی چې په څلورو ژبو (پښتو، دري، عربي او انګلیسي) د هوا ژوندي حالات، ۲۴ ساعته وړاندوینه، انټراکټیف رادار، کرنیز معلومات (زرغونه هوا) او آنلاین AI مرستیال وړاندې کوي.',
-        productVision: 'ټولو خلکو، مسافرو او کروندګرو ته په خپله ژبه د باور وړ، کره او مسلکي اقلیمي معلوماتو وړاندې کول.',
+        shortDescription: 'د هوا حالاتو څو ژبنی کاریال چې د هوا وړاندوینې، رادار، کرنیز معلومات، د هوا کیفیت او تازه خبرونه وړاندې کوي.',
+        fullDescription: 'ځواک ویدر د AGZ Labs لخوا جوړ شوی یو پرمختللی انډروایډ کاریال دی چې په څلورو ژبو (پښتو، دري، عربي او انګلیسي) د هوا ژوندي حالات، د ۷ ورځو وړاندوینه، انټراکټیف رادار، کرنیز معلومات (زرغونه هوا)، د هوا کیفیت او اقلیمي خبرونه وړاندې کوي.',
+        productVision: 'ټولو هېوادوالو، مسافرو او کروندګرو ته په روښانه ژبه او لوړ دقت د باوري او یو موټي اقلیمي معلوماتو وړاندې کول.',
         featureHighlights: [
-          'څو ژبنۍ بڼه: پښتو، دري، عربي او انګلیسي',
-          'انټراکټیف رادار او د تودوخې ۲۴ ساعته منحني',
-          'کرنیز معلومات او لارښوونې (زرغونه هوا)',
-          'د هوا ځیرک آنلاین AI مرستیال'
+          'د هوا ژوندی حالت او ۷ ورځنۍ وړاندوینه',
+          'انټراکټیف رادار او د هوا کیفیت',
+          'کرنیز معلومات (زرغونه هوا)',
+          'په څلورو ژبو بشپړ ملاتړ'
         ],
         features: [
-          'د هوا د حالاتو ژوندي معلومات او ۲۴ ساعته وړاندوینه',
-          'د GPS سمارټ ځای موندنه او د ولایتونو چټکه پلټنه',
-          'انټراکټیف رادار د ورېځو، بادونو او بارانونو د څار لپاره',
-          'آنلاین AI هوا مرستیال د ورځني او کرنیز پلان جوړولو لپاره',
-          'کرنیز معلومات او د فصلونو ساتنې لارښوونې (زرغونه هوا)',
-          'د سختې هوا او سېلابونو بېړني خبرتیاوې',
-          'د هوا د ککړتیا (AQI) دوامداره څارنه',
-          'د اقلیم او هوا تازه خبرونه',
-          'په څلورو ژبو (پښتو، دري، عربي، انګلیسي) بشپړ ملاتړ',
-          'د شپې او ورځې (Dark & Light) غوره بڼې'
+          'د هوا ژوندی حالت او وړاندوینې (Real-Time Weather & Forecasts)',
+          'د GPS سمارټ موقعیت موندنه (Smart GPS Location)',
+          'انټراکټیف اقلیمي رادار (Interactive Weather Radar)',
+          'کرنیز معلومات او پوهه (Agricultural Intelligence)',
+          'د سختې هوا بېړنۍ خبرتیاوې (Severe Weather Alerts)',
+          'د هوا د کیفیت څارنه (Air Quality Monitoring)',
+          'د اقلیم او هوا تازه خبرونه (Climate & Weather News)',
+          'په څلورو ژبو بشپړ ملاتړ (Four-Language Support)',
+          'د ورځې او شپې بڼې (Dark & Light Themes)'
         ]
       },
       fa: {
         title: 'زواک ویدر (Zwak Weather)',
         category: 'اپلیکیشن اندروید',
-        shortDescription: 'اپلیکیشن هوشمند و چندزبانه هواشناسی با پیش‌بینی دقیق، رادار، بینش‌های زراعتی و دستیار آنلاین AI.',
-        fullDescription: 'زواک ویدر اپلیکیشن پیشرفته هواشناسی اندروید از AGZ Labs است که با کاتلین و Jetpack Compose توسعه یافته و اطلاعات دقیق جوی، رادار تعاملی، توصیه‌های زراعتی (زرغونه هوا) و دستیار آنلاین AI را به چهار زبان ارائه می‌دهد.',
-        productVision: 'تسهیل دسترسی عموم مردم، مسافران و کشاورزان به اطلاعات اقلیمی بومی‌سازی‌شده با بالاترین دقت و زبان مادری.',
+        shortDescription: 'اپلیکیشن چندزبانه هواشناسی شامل پیش‌بینی وضع هوا، رادار، بینش‌های زراعتی، کیفیت هوا و اخبار جوی.',
+        fullDescription: 'زواک ویدر اپلیکیشن پیشرفته هواشناسی اندروید از AGZ Labs است که با کاتلین و Jetpack Compose توسعه یافته و اطلاعات دقیق جوی، رادار تعاملی، توصیه‌های زراعتی (زرغونه هوا)، پایش کیفیت هوا و اخبار اقلیمی را به چهار زبان ارائه می‌دهد.',
+        productVision: 'تسهیل دسترسی عموم مردم، مسافران و کشاورزان به اطلاعات اقلیمی یکپارچه و بومی‌سازی‌شده با بالاترین دقت و زبان مادری.',
         featureHighlights: [
-          'چندزبانه: پشتو، دری، عربی و انگلیسی',
-          'رادار تعاملی و نمودار ۲۴ ساعته تغییرات دما',
-          'بینش‌های هواشناسی زراعتی (زرغونه هوا)',
-          'دستیار آنلاین هوشمند AI'
+          'پیش‌بینی زنده جوی و ۷ روزه',
+          'رادار تعاملی و کیفیت هوا',
+          'بینش‌های زراعتی (زرغونه هوا)',
+          'پشتیبانی از چهار زبان'
         ],
         features: [
-          'پیش‌بینی زنده جوی و نمودار ۲۴ ساعته تغییرات دما',
-          'مکان‌یابی هوشمند با GPS و جستجوی ولایات',
-          'رادار تعاملی برای رصد ابرها، بادها و بارندگی',
-          'دستیار آنلاین AI برای پاسخ به سؤالات روزمره و سفری',
-          'بینش‌های هواشناسی زراعتی (زرغونه هوا)',
+          'پیش‌بینی زنده جوی و پیش‌بینی وضع هوا',
+          'مکان‌یابی هوشمند با GPS',
+          'رادار تعاملی هواشناسی',
+          'بینش‌های زراعتی و شاخص‌های کشت',
           'هشدارهای فوری شرایط نامساعد جوی',
-          'پایش کیفیت هوا و ذرات معلق (AQI)',
-          'اخبار و مقالات هواشناسی و اقلیم',
-          'پشتیبانی چهارزبانه (پشتو، دری، عربی و انگلیسی)',
-          'تم‌های بهینه تاریک و روشن (Dark & Light)'
+          'پایش شاخص کیفیت هوا (AQI)',
+          'اخبار و مقالات آب و هوا',
+          'پشتیبانی از چهار زبان',
+          'تم‌های بهینه تاریک و روشن'
         ]
       }
     }

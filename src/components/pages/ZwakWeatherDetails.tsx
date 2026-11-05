@@ -29,6 +29,7 @@ import {
 import {useTheme} from '../../context/ThemeContext';
 import {useLanguage} from '../../context/LanguageContext';
 import {cn} from '../../lib/utils';
+import zwakWeatherBanner from '../../assets/images/zwak_weather_banner.png';
 
 interface ZwakWeatherDetailsProps {
   onBack: () => void;
@@ -66,7 +67,7 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
       title: 'Zwak Weather',
       tagline: 'Smart Weather for Everyone',
       shortDescription:
-        'A smart multilingual weather application providing forecasts, interactive radar, agricultural insights, and online AI assistance.',
+        'A multilingual weather application offering forecasts, radar, agricultural insights, air quality, and weather news.',
       coverImageAlt: 'Zwak Weather - Smart Forecasting Application Branded Banner',
       quickJump: 'Quick Navigation',
       navAppInfo: 'App Info',
@@ -80,30 +81,30 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
       // Section A: App Info
       appInfoTitle: 'App Info & Core Purpose',
       appInfoSubtitle:
-        'A dependable, culturally localized weather platform crafted for everyday commuters, families, travelers, and agricultural communities.',
+        'A comprehensive multilingual weather application offering forecasts, radar, agricultural insights, air quality, and weather news.',
       appInfoIntro:
-        'Zwak Weather is a modern, high-precision Android weather application engineered by AGZ Labs. Conceived to overcome the longstanding digital divide in meteorological tools, it brings accurate atmospheric forecasts, live radar tracking, and specialized farming advice to users in their mother tongue—with first-class native support for Pashto, Dari, Arabic, and English.',
+        'Zwak Weather is a modern, high-precision Android weather application engineered by AGZ Labs. Conceived to unify fragmented meteorological information, it delivers accurate atmospheric forecasts, live radar maps, specialized agricultural indicators, and air quality metrics across four languages: Pashto, Dari, Arabic, and English.',
       appInfoPoints: [
         {
-          title: 'Smart Daily Meteorological Guidance',
-          desc: 'Instant real-time temperature, "feels like" indices, humidity, atmospheric pressure, and 24-hour hourly progression curves for any locality.',
+          title: 'Real-Time Meteorological Guidance',
+          desc: 'Instant real-time temperature, "feels like" index, humidity, atmospheric pressure, and structured 24-hour and 7-day forecast curves for any locality.',
         },
         {
-          title: 'Interactive Radar & Visual Storm Tracking',
-          desc: 'Live interactive radar layers to monitor storm fronts, moving precipitation, cloud cover, and seasonal wind currents with fluid map navigation.',
+          title: 'Interactive Weather Radar & Air Quality',
+          desc: 'Dynamic interactive radar layers to track storm paths, precipitation density, and wind vectors alongside live Air Quality Index (AQI) monitoring.',
         },
         {
-          title: 'Specialized Agricultural Advisory',
-          desc: 'Actionable agro-meteorological guidance (Zarghoona Hawa) designed to help farmers calculate spraying hours, monitor soil condition, and avert frost damage.',
+          title: 'Agricultural Calculations & Crop Insights',
+          desc: 'Actionable agro-meteorological guidance (Zarghoona Hawa) designed to calculate optimal spraying hours, soil moisture balance, and early frost warnings.',
         },
         {
-          title: 'Online AI Weather Assistant',
-          desc: 'An intelligent online conversational assistant ready to answer natural queries on travel planning, clothing recommendations, and agricultural precautions.',
+          title: 'Severe Weather Alerts & Preparedness',
+          desc: 'High-visibility safety warnings for impending heatwaves, frost, strong winds, dust storms, and potential flooding to keep communities prepared.',
         },
       ],
       supportedLanguagesHeading: 'Supported Languages (Native RTL & LTR)',
       supportedLanguagesList: [
-        {name: 'Pashto (پښتو)', note: 'Culturally native fonts & regional district names'},
+        {name: 'Pashto (پښتو)', note: 'Culturally native typography & regional district names'},
         {name: 'Dari (دری)', note: 'Full Persian/Dari localization & standard numbers'},
         {name: 'Arabic (العربية)', note: 'Accurate terminology & Arabic typography'},
         {name: 'English', note: 'Global metrics, international formats & clean hierarchy'},
@@ -112,129 +113,140 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
       // Section B: The Challenges
       challengesTitle: 'The Challenges',
       challengesSubtitle:
-        'Real-world problems that motivated the creation of a tailored regional weather application.',
+        'Real-world problems that motivated the creation of a tailored, all-in-one weather platform.',
       challengesList: [
         {
-          id: 'lang',
-          title: 'Limited Pashto & Dari Support in Weather Applications',
-          desc: 'The vast majority of international weather apps either ignore Pashto and Dari completely or generate broken, disconnected right-to-left text that is uncomfortable or impossible to read.',
-          icon: Languages,
+          id: 'fragmented',
+          title: 'Fragmented Weather Information',
+          desc: 'Weather forecasts, radar, air quality, and environmental information are spread across different services, forcing users to juggle multiple apps to get a complete picture.',
+          icon: Layers,
           color: 'from-amber-500/20 to-orange-500/5',
           border: 'border-amber-200 dark:border-amber-800/60',
-          badge: 'Language Barrier',
+          badge: 'Fragmentation',
         },
         {
-          id: 'local',
-          title: 'Difficulty Accessing Localized Weather Information',
-          desc: 'Residents across Afghan provinces, districts, and rural communities struggle to find localized data. Global apps typically aggregate distant airports or return generic coordinates rather than authentic regional forecasts.',
-          icon: MapPin,
-          color: 'from-sky-500/20 to-blue-500/5',
-          border: 'border-sky-200 dark:border-sky-800/60',
-          badge: 'Regional Blindspot',
-        },
-        {
-          id: 'agri',
-          title: 'Lack of Specialized Agricultural Weather Insights',
-          desc: 'While agriculture sustains millions of families, mainstream weather apps only display raw temperatures. Farmers had no easy digital tool to assess frost hazards, soil moisture trends, or optimal pesticide spraying windows.',
+          id: 'agricultural',
+          title: 'Limited Agricultural Insights',
+          desc: 'General weather applications often lack practical agricultural indicators such as evapotranspiration, soil moisture, and spraying conditions essential for farming operations.',
           icon: Leaf,
           color: 'from-emerald-500/20 to-teal-500/5',
           border: 'border-emerald-200 dark:border-emerald-800/60',
           badge: 'Farming Gap',
         },
         {
-          id: 'offline',
-          title: 'Unreliable Experiences with Unstable Internet Connectivity',
-          desc: 'Mobile internet in many regions suffers from frequent dropouts. When a connection was interrupted, conventional apps crashed, showed permanent error screens, or wiped previously viewed weather forecasts.',
-          icon: WifiOff,
+          id: 'complex',
+          title: 'Complex Weather Data',
+          desc: 'Meteorological information can be difficult for ordinary people to understand and use in daily decisions due to dense charts, technical jargon, and unintuitive layouts.',
+          icon: Wind,
+          color: 'from-sky-500/20 to-blue-500/5',
+          border: 'border-sky-200 dark:border-sky-800/60',
+          badge: 'Usability',
+        },
+        {
+          id: 'severe',
+          title: 'Severe Weather Preparedness',
+          desc: 'Understanding and preparing for heatwaves, frost, strong winds, dust storms, and potential flooding is a significant challenge when alerts are delayed or buried.',
+          icon: AlertTriangle,
           color: 'from-rose-500/20 to-red-500/5',
           border: 'border-rose-200 dark:border-rose-800/60',
-          badge: 'Network Drops',
+          badge: 'Safety Hazard',
         },
       ],
 
       // Section C: The Solution
       solutionTitle: 'The Solution',
       solutionSubtitle:
-        'How Zwak Weather solves these real challenges through thoughtful engineering, local data caching, and user-centric design.',
+        'How Zwak Weather addresses these challenges through thoughtful engineering, comprehensive data unification, and user-centric design.',
       solutionList: [
         {
-          title: 'Native Multilingual Typography & Bidirectional Isolation',
-          desc: 'Engineered dedicated typography layouts for Pashto, Dari, Arabic, and English. Proper RTL/LTR directional text isolation ensures numerals, symbols, and meteorological units render flawlessly.',
-          icon: Globe,
+          title: 'Multiple Weather Information Sources in One Application',
+          desc: 'Consolidates live conditions, atmospheric indices, radar maps, air quality, and agricultural parameters into a single unified mobile platform.',
+          icon: Layers,
         },
         {
-          title: 'Real-Time Weather Services & Smart GPS Geolocation',
-          desc: 'Integrated modern high-accuracy weather data streams with responsive GPS positioning. Users can automatically detect their exact coordinate conditions or look up any provincial center with one tap.',
-          icon: MapPin,
+          title: 'Hourly & 7-Day Forecasts',
+          desc: 'Delivers structured 24-hour progression curves and 7-day extended trajectories for precise short-term and weekly planning.',
+          icon: Calendar,
         },
         {
-          title: 'Interactive Weather Radar Maps',
-          desc: 'Integrated dynamic graphical radar layers allowing users to visualize cloud concentrations, storm paths, precipitation intensity, and atmospheric wind flows in real time.',
-          icon: Radio,
-        },
-        {
-          title: 'Agricultural Intelligence Module (Zarghoona Hawa)',
-          desc: 'Created a specialized agro-meteorological tool that analyzes weather variables to compute clear recommendations: optimal spraying hours, soil moisture estimates, and early frost warnings.',
+          title: 'Agricultural Calculations & Crop Insights',
+          desc: 'Computes field-tested agro-meteorological metrics including evapotranspiration, soil moisture estimates, and optimal pesticide spraying windows.',
           icon: Leaf,
         },
         {
-          title: 'Local Data Storage & Caching via Room Database',
-          desc: 'Implemented Android Room Database to cache the most recent weather forecasts locally. When internet connectivity drops momentarily, users can still access their previously retrieved forecasts without blank screens.',
-          icon: Database,
+          title: 'Understandable Weather Visualizations',
+          desc: 'Presents complex meteorological datasets through intuitive temperature curves, clear color scales, and accessible condition icons.',
+          icon: SunMoon,
         },
         {
-          title: 'Online AI Weather Assistant',
-          desc: 'Developed an interactive online AI assistant accessible whenever connected to the internet. Users can ask natural questions in their preferred language to plan trips, farm operations, or daily activities.',
-          icon: Cpu,
+          title: 'Severe Weather Alerts',
+          desc: 'Provides prominent early notifications for flash floods, dust storms, extreme temperatures, and frost to safeguard people and livelihoods.',
+          icon: AlertTriangle,
+        },
+        {
+          title: 'Interactive Radar & Air Quality Information',
+          desc: 'Enables users to visually inspect moving precipitation systems and track live particulate matter (PM2.5, PM10) on dynamic maps.',
+          icon: Radio,
+        },
+        {
+          title: 'Four-Language Support',
+          desc: 'Features culturally native typography and flawless RTL/LTR bidirectional isolation across Pashto, Dari, Arabic, and English.',
+          icon: Globe,
         },
       ],
 
       // Section D: The Results
       resultsTitle: 'The Results',
       resultsSubtitle:
-        'Concrete, practical value delivered to everyday users, commuters, and farmers.',
+        'Short, realistic benefits delivered to everyday users, commuters, and growers.',
       resultsList: [
         {
-          title: 'Weather Information in Four Languages',
-          desc: 'Eliminates linguistic obstacles, enabling millions of Pashto, Dari, Arabic, and English speakers to access atmospheric intelligence in clear, native typography.',
-          metric: '4 Languages',
-          highlight: 'Zero text distortion',
+          title: 'Convenient Access to Weather Information',
+          desc: 'Eliminates the need to switch between disjointed weather apps by bringing all vital environmental data together in one place.',
+          metric: 'All-in-One',
+          highlight: 'Unified convenience',
         },
         {
-          title: 'Easier Access to Local Weather Conditions',
-          desc: 'Fast, GPS-assisted location detection and regional city directories make finding local forecasts quick, intuitive, and hassle-free.',
-          metric: '1-Tap GPS',
-          highlight: 'Precise coordinates',
+          title: 'Better Understanding of Weather Conditions',
+          desc: 'Clear visual curves and plain-language summaries help non-specialists easily interpret atmospheric trends and daily shifts.',
+          metric: 'Clear UI',
+          highlight: 'Intuitive curves',
         },
         {
-          title: 'Useful Agricultural Weather Insights',
-          desc: 'Practical, easy-to-understand farm weather guidance empowers growers to protect crops, prevent pesticide waste, and schedule harvest work proactively.',
-          metric: 'Zarghoona Hawa',
+          title: 'More Informed Agricultural Planning',
+          desc: 'Growers can schedule irrigation, fertilizer application, and harvesting with greater precision and confidence.',
+          metric: 'Agro Tools',
           highlight: 'Practical crop care',
         },
         {
-          title: 'Multiple Weather Services in One Application',
-          desc: 'Consolidates live conditions, 24h hourly forecast curves, interactive radar, agricultural advisories, severe weather alerts, and climate news into a single lightweight app.',
-          metric: 'All-in-One',
-          highlight: 'Unified experience',
+          title: 'Improved Awareness of Severe Weather Risks',
+          desc: 'Timely hazard alerts ensure people and communities take proactive precautions against extreme weather events.',
+          metric: 'Early Alerts',
+          highlight: 'Proactive safety',
         },
         {
-          title: 'Access to Cached Data During Connection Interruptions',
-          desc: 'Room Database local caching guarantees that previously retrieved weather data remains readable even when traveling through dead zones or during network outages.',
-          metric: 'Room Caching',
-          highlight: 'Zero crash on disconnect',
+          title: 'Access to Previously Cached Information',
+          desc: 'Android Room Database ensures previously retrieved forecasts and radar frames remain viewable during intermittent network drops.',
+          metric: 'Local Cache',
+          highlight: 'Offline continuity',
+        },
+        {
+          title: 'Multilingual Accessibility',
+          desc: 'Native typography and full bidirectional text support ensure millions of people can read vital forecasts in their mother tongue.',
+          metric: '4 Languages',
+          highlight: 'Native RTL/LTR',
         },
       ],
 
-      // Section E: Key Features (10 visual cards)
+      // Section E: Key Features (9 visual cards)
       featuresTitle: 'Key Features',
       featuresSubtitle:
-        'Explore the ten core capabilities engineered into Zwak Weather for daily utility.',
+        'Explore the nine core implemented capabilities engineered into Zwak Weather.',
       featureCards: [
         {
           num: '01',
           title: 'Real-Time Weather & Forecasts',
-          desc: 'Live temperature, humidity, wind velocity, barometric pressure, and structured 24-hour hourly outlooks with intuitive temperature curves.',
+          desc: 'Live temperature, humidity, wind velocity, barometric pressure, and structured 24-hour and 7-day forecast curves.',
           icon: CloudSun,
         },
         {
@@ -251,42 +263,36 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
         },
         {
           num: '04',
-          title: 'Online AI Weather Assistant',
-          desc: 'Interactive online assistant providing natural conversational answers to everyday queries regarding outdoor plans, appropriate clothing, and travel precautions.',
-          icon: Cpu,
-        },
-        {
-          num: '05',
-          title: 'Agricultural Insights (Zarghoona Hawa)',
-          desc: 'Specialized agro-meteorological advisories calculating ideal chemical spraying hours, soil moisture balance, and early sub-zero frost risks for crops.',
+          title: 'Agricultural Intelligence',
+          desc: 'Specialized agro-meteorological advisories calculating ideal chemical spraying hours, soil moisture balance, and early frost risks.',
           icon: Leaf,
         },
         {
-          num: '06',
+          num: '05',
           title: 'Severe Weather Alerts',
           desc: 'High-visibility safety warnings for impending flash floods, dust storms, severe thunderstorms, extreme heat, and heavy frost.',
           icon: AlertTriangle,
         },
         {
-          num: '07',
+          num: '06',
           title: 'Air Quality Monitoring',
-          desc: 'Live Air Quality Index (AQI) tracking particulate matter (PM2.5, PM10) and atmospheric pollutants with health precautions for vulnerable groups.',
+          desc: 'Live Air Quality Index (AQI) tracking particulate matter (PM2.5, PM10) and atmospheric pollutants with health precautions.',
           icon: Wind,
         },
         {
-          num: '08',
-          title: 'Weather & Climate News',
-          desc: 'Curated meteorological bulletins, seasonal seasonal outlooks, and regional environmental updates directly accessible in the news feed.',
+          num: '07',
+          title: 'Climate & Weather News',
+          desc: 'Curated meteorological bulletins, seasonal outlooks, and regional environmental updates directly accessible in the app.',
           icon: Calendar,
         },
         {
-          num: '09',
+          num: '08',
           title: 'Four-Language Support',
           desc: 'Fluid switching between Pashto, Dari, Arabic, and English with culturally native typography, full RTL alignment, and zero interface overlap.',
           icon: Languages,
         },
         {
-          num: '10',
+          num: '09',
           title: 'Dark & Light Themes',
           desc: 'Thoughtfully designed dual color palettes providing optimal contrast in bright daylight and eye comfort during low-light nighttime reading.',
           icon: SunMoon,
@@ -301,7 +307,6 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
         {title: 'Main Weather Dashboard', key: 'dashboard'},
         {title: 'Interactive Radar', key: 'radar'},
         {title: 'Agricultural Intelligence', key: 'agri'},
-        {title: 'Online AI Assistant', key: 'ai'},
         {title: 'Weather Forecast', key: 'forecast'},
       ],
       galleryItems: [
@@ -315,7 +320,7 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
             'Current temperature card with sun/condition illustration',
             'Hourly 24-hour outlook cards with localized time markers',
             'Smooth temperature curve diagram showing daily thermal shifts',
-            'Bottom navigation: Home, Radar, AI Assistant, Air Quality, News',
+            'Bottom navigation: Home, Radar, Agriculture, Air Quality, News',
           ],
         },
         {
@@ -342,19 +347,6 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
             'Frost risk indicator warning farmers 24–48 hours before sub-zero drops',
             'Evapotranspiration & soil surface moisture estimates for irrigation timing',
             'Crop-specific advisory bulletins written in accessible everyday language',
-          ],
-        },
-        {
-          id: 'ai',
-          title: 'Online AI Weather Assistant',
-          subtitle: 'Conversational weather guidance when connected to the internet',
-          description:
-            'The Online AI Assistant enables users to ask practical questions in natural language—such as "Can I pour concrete today?" or "Should I irrigate my wheat field tomorrow?". Accessible whenever internet is active, it delivers concise, practical answers.',
-          points: [
-            'Natural language queries supported in Pashto, Dari, Arabic, and English',
-            'Context-aware suggestions based on currently retrieved location forecast',
-            'Practical recommendations for clothing, outdoor travel, and farm work',
-            'Active glowing bottom action trigger for instant 1-tap access',
           ],
         },
         {
@@ -387,7 +379,7 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
       ],
       connectivityNoteTitle: 'Important Connectivity & Offline Notice',
       connectivityNoteDesc:
-        'Internet connection is required for live real-time weather retrieval, interactive radar layers, climate news updates, and Online AI Assistant consultations. The application is not fully offline; rather, Android Room Database acts as local data storage and caching to guarantee that previously loaded weather forecasts remain accessible even during temporary connection drops.',
+        'Internet connection is required for live real-time weather retrieval, interactive radar layers, and climate news updates. The application is not fully offline; rather, Android Room Database acts as local data storage and caching to guarantee that previously loaded weather forecasts remain accessible even during temporary connection drops.',
     },
 
     ps: {
@@ -399,7 +391,7 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
       title: 'ځواک ویدر (Zwak Weather)',
       tagline: 'د ټولو لپاره هوښیاره هوا',
       shortDescription:
-        'د هوا حالاتو هوښیار او څو ژبنی کاریال؛ له رادار، کرنیزو معلوماتو او آنلاین AI مرستیال سره.',
+        'د هوا حالاتو څو ژبنی کاریال چې د هوا وړاندوینې، رادار، کرنیز معلومات، د هوا کیفیت او تازه خبرونه وړاندې کوي.',
       coverImageAlt: 'ځواک ویدر - د هوا پېژندنې د هوښیار انډروایډ کاریال بنر',
       quickJump: 'چټک لاسرسی',
       navAppInfo: 'د کاریال پېژندنه',
@@ -413,25 +405,25 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
       // Section A: App Info
       appInfoTitle: 'د کاریال پېژندنه او بنسټیزه موخه',
       appInfoSubtitle:
-        'یو باوري او بومي اقلیمي کاریال چې د مسافرو، عامو خلکو، زده‌کوونکو او کروندګرو لپاره په مسلکي ډول جوړ شوی دی.',
+        'یو جامع څو ژبنی اقلیمي کاریال چې د هوا وړاندوینې، رادار، کرنیز معلومات، د هوا کیفیت او اقلیمي خبرونه وړاندې کوي.',
       appInfoIntro:
-        'ځواک ویدر (Zwak Weather) د AGZ Labs لخوا په کوټلین او Jetpack Compose کې یو پرمختللی انډروایډ کاریال دی. دا کاریال د دې لپاره طرحه شوی چې په خپلو ملي ژبو (پښتو او دري) ترڅنګ په عربي او انګلیسي کې د هوا دقیق حالات، انټراکټیف رادار او کرنیزې سپارښتنې په خورا روان او روښانه ډیزاین کې وړاندې کړي.',
+        'ځواک ویدر (Zwak Weather) د AGZ Labs لخوا په کوټلین او Jetpack Compose کې یو پرمختللی انډروایډ کاریال دی. دا کاریال د متفرقه او شیندلو اقلیمي معلوماتو د یوځای کولو لپاره طرحه شوی چې په خپلو ملي ژبو (پښتو او دري) ترڅنګ په عربي او انګلیسي کې د هوا دقیق حالات، انټراکټیف رادار، کرنیز معلومات او د هوا کیفیت وړاندې کوي.',
       appInfoPoints: [
         {
           title: 'د هوا ژوندی او ۲۴ ساعته څار',
-          desc: 'د سمدستي تودوخې، احساس کېدونکې درجې، رطوبت، باد او ۲۴ ساعته ګرافيکې وړاندوینه د هېواد د هرې سیمې لپاره.',
+          desc: 'د سمدستي تودوخې، احساس کېدونکې درجې، رطوبت، باد او ۲۴ ساعته او ۷ ورځنۍ ګرافیکي وړاندوینه د هرې سیمې لپاره.',
         },
         {
-          title: 'انټراکټیف اقلیمي رادار',
-          desc: 'پر نقشه د ورېځو، د باران شدت او موسمي بادونو ژوندی او بصري لیدلوری له اسانه کنټرول سره.',
+          title: 'انټراکټیف رادار او د هوا کیفیت',
+          desc: 'پر نقشه د ورېځو، د باران شدت او د بادونو ژوندی لیدلوری د هوا د ککړتیا (AQI) له دوامداره څار سره.',
         },
         {
           title: 'د کرنې لپاره ځانګړي معلومات (زرغونه هوا)',
-          desc: 'د کروندګرو لپاره عملي مشورې؛ د درملو د شیندلو مناسب وخت، د خاورې لندبل او د شپې د یخنۍ (Frost) مخکینۍ خبرتیا.',
+          desc: 'د کروندګرو لپاره عملي مشورې؛ د درملو د شیندلو مناسب وخت، د خاورې لندبل او د شپې د یخنۍ مخکینۍ خبرتیا.',
         },
         {
-          title: 'آنلاین AI د هوا مرستیال',
-          desc: 'یو ځیرک آنلاین مرستیال چې د انټرنېټ پر مهال په خپله ژبه د سفر، کالیو او کرنیزو پلانونو په هکله ستاسو پوښتنو ته ځواب وایي.',
+          title: 'د سختې هوا بېړنۍ خبرتیاوې',
+          desc: 'د ناڅاپي سېلابونو، سختې یخنۍ، دوړو او طوفانونو او د تودوخې د څپو پر وړاندې د خوندیتوب روښانه خبرتیاوې.',
         },
       ],
       supportedLanguagesHeading: 'ملاتړ شوې ژبې (بشپړ RTL او LTR ملاتړ)',
@@ -444,127 +436,138 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
 
       // Section B: The Challenges
       challengesTitle: 'اصلي ستونزې او ننګونې',
-      challengesSubtitle: 'هغه ستونزې چې د دغه بومي او ځانګړي هوا کاریال د جوړولو لامل شوې.',
+      challengesSubtitle: 'هغه ننګونې چې د یوه منظم او جامع اقلیمي سیستم اړتیا یې روښانه کړه.',
       challengesList: [
         {
-          id: 'lang',
-          title: 'په نړیوالو کاریالونو کې د پښتو او دري کمزوری ملاتړ',
-          desc: 'ډېری بهرني کاریالونه پښتو او دري ته پام نه کوي، یا که وي هم، ټکي او کلمې په مات او خراب شکل راځي چې لوستل یې ستونزمن دي.',
-          icon: Languages,
+          id: 'fragmented',
+          title: 'شیندلي او جلا اقلیمي معلومات',
+          desc: 'د هوا وړاندوینې، رادار، د هوا کیفیت او چاپېریالي معلومات په بېلابېلو ایپسونو او خدماتو کې خپاره دي او کاروونکي اړ وو څو پروګرامونه وڅاري.',
+          icon: Layers,
           color: 'from-amber-500/20 to-orange-500/5',
           border: 'border-amber-200 dark:border-amber-800/60',
-          badge: 'د ژبې ستونزه',
+          badge: 'د معلوماتو شیندل',
         },
         {
-          id: 'local',
-          title: 'د سیمه‌ییزې او ولسوالیو په کچه د هوا معلوماتو ته سخت لاسرسی',
-          desc: 'د هېواد په بېلابېلو ولایتونو او ولسوالیو کې خلک دقیقو معلوماتو ته لاسرسی نه لري؛ عام نړیوال ایپس یوازې د لرې پرتو هوايي ډګرونو تخمیني مالومات ښيي.',
-          icon: MapPin,
-          color: 'from-sky-500/20 to-blue-500/5',
-          border: 'border-sky-200 dark:border-sky-800/60',
-          badge: 'سیمه‌ییزه نیمګړتیا',
-        },
-        {
-          id: 'agri',
-          title: 'د کرنې لپاره د اړینو اقلیمي معلوماتو نشتوالی',
-          desc: 'کرنه زموږ د میلیونونو هېوادوالو اساسي برخه ده، خو عادي ایپس یوازې تودوخه ښيي او د درملو د شیندلو، یخنۍ او خاورې د لندبل په اړه هېڅ عملي لارښوونه نه لري.',
+          id: 'agricultural',
+          title: 'د کرنې لپاره د ځانګړو معلوماتو کمښت',
+          desc: 'عام موسمي کاریالونه د کرنې لپاره اړین شاخصونه لکه د خاورې لندبل، تبخیر او د کیمیاوي درملو شیندلو مناسب شرایط نه وړاندې کوي.',
           icon: Leaf,
           color: 'from-emerald-500/20 to-teal-500/5',
           border: 'border-emerald-200 dark:border-emerald-800/60',
-          badge: 'د کرنې خلا',
+          badge: 'د کرنې تشه',
         },
         {
-          id: 'offline',
-          title: 'د انټرنېټ له پرچاوۍ سره د کاریال درېدل او خطاوې',
-          desc: 'په هېواد کې د موبایل انټرنېټ پرله‌پسې قطع او وصل کېږي؛ کله چې اړیکه به پرې شوه، عادي پروګرامونه به ودرېدل یا به یې ټول لوستل شوي معلومات پاک کړل.',
-          icon: WifiOff,
+          id: 'complex',
+          title: 'د موسمي ارقامو پېچلتیا',
+          desc: 'د هوا پېچلي تخنیکي معلومات او درانده ګرافونه د عامو خلکو لپاره په ورځنیو چارو کې د پوهېدو او کارېدو وړ نه دي.',
+          icon: Wind,
+          color: 'from-sky-500/20 to-blue-500/5',
+          border: 'border-sky-200 dark:border-sky-800/60',
+          badge: 'پېچلتیا',
+        },
+        {
+          id: 'severe',
+          title: 'له سختو موسمي حالاتو سره مبارزه',
+          desc: 'د تودوخې د څپو، سختې یخنۍ، دوړو او طوفانونو او سېلابونو پر وړاندې پر وخت پوهاوی او چمتووالی یوه لویه ننګونه ده.',
+          icon: AlertTriangle,
           color: 'from-rose-500/20 to-red-500/5',
           border: 'border-rose-200 dark:border-rose-800/60',
-          badge: 'د شبکې ستونزې',
+          badge: 'بېړني حالات',
         },
       ],
 
       // Section C: The Solution
       solutionTitle: 'عملي حل لارې',
       solutionSubtitle:
-        'ځواک ویدر څنګه د اصولي کوډنګ او ځیرک ډیزاین له لارې دغه ټولې ننګونې هوارې کړې دي.',
+        'ځواک ویدر څنګه دغه ننګونې د یو موټي ډیزاین او عملي معمارۍ له لارې حل کړې دي.',
       solutionList: [
         {
-          title: 'اصیله څو ژبنۍ تایپوګرافي او د RTL بشپړ ملاتړ',
-          desc: 'د پښتو او دري ژبو لپاره ځانګړي جوړ شوي فونټونه او دوه طرفه ملاتړ (Bi-directional Isolation) چې شمیرې او انګلیسي کلمې بې له تېروتنې سمې ښيي.',
-          icon: Globe,
+          title: 'په یو اپلیکیشن کې د هوا د بېلابېلو معلوماتو راټولول',
+          desc: 'د هوا حالات، رادار، د تودوخې کچه، د هوا کیفیت او د کرنې شاخصونه ټول په یوه منظم او سپک اپلیکیشن کې سره یوځای شول.',
+          icon: Layers,
         },
         {
-          title: 'د هوا ژوندي معلومات او د GPS سمارټ موقعیت موندنه',
-          desc: 'له باوري موسمي سرورونو سره مستقیم نښلون او په یو کلیک سره د خپلې سیمې یا هر ولایت دقیق کواډینیټونه راباسي.',
-          icon: MapPin,
+          title: 'ساعت په ساعت او ۷ ورځنۍ وړاندوینې',
+          desc: 'د ۲۴ ساعتونو او اوو راتلونکو ورځو لپاره د تودوخې د بدلون منظمې او دقیقې منحني وړاندې کوي.',
+          icon: Calendar,
         },
         {
-          title: 'د هوا متحرک او انټراکټیف رادار',
-          desc: 'پر نقشه د ورېځو او بارانونو ژوندی بهیر ښودل ترڅو کاروونکي وکولای شي د راتلونکو څو ساعتونو د موسمي حالاتو پرمختګ تعقیب کړي.',
-          icon: Radio,
-        },
-        {
-          title: 'د کرنیزو معلوماتو ځانګړی ماډیول (زرغونه هوا)',
-          desc: 'د کروندګرو د اړتیاوو پر بنسټ جوړ شوی سیستم چې د کیمیاوي درملو د شیندلو تر ټولو ښه وخت او د یخ وهلو خطر فوري په ګوته کوي.',
+          title: 'کرنیز حسابونه او د فصلونو روښانه شاخصونه',
+          desc: 'د خاورې لندبل، د کیمیاوي درملو د شیندلو د وخت ټاکل او د حاصلاتو د یخنۍ مخکینۍ سپارښتنې محاسبه کوي.',
           icon: Leaf,
         },
         {
-          title: 'د Room Database له لارې محلي زېرمه او کشنګ (Caching)',
-          desc: 'په ټیلفون کې د وروستیو ترلاسه شوو معلوماتو اتومات زېرمه کول، ترڅو د انټرنېټ د پرېکېدو پر مهال هم مخکني معلومات پر سکرین موجود وي او ایپ ونه درېږي.',
-          icon: Database,
+          title: 'د پوهېدو وړ او ساده بصري ګرافونه',
+          desc: 'د هوا پېچلي معلومات په روانو رنګونو، ساده نښانو او د تودوخې په اسانه ګرافونو کې ښيي.',
+          icon: SunMoon,
         },
         {
-          title: 'آنلاین AI د هوا ځیرک مرستیال',
-          desc: 'د انټرنېټ د نښلون پر مهال، کاروونکی کولای شي په خپله ژبه د سفر، کور او کرنې په هکله د پوهېدو وړ فوري ځوابونه او سپارښتنې ترلاسه کړي.',
-          icon: Cpu,
+          title: 'د سختې هوا بېړنۍ خبرتیاوې',
+          desc: 'د سېلابونو، طوفانونو، د تودوخې د زیاتوالي او کنګل کېدو پر وړاندې سمدستي خبرداري ورکوي.',
+          icon: AlertTriangle,
+        },
+        {
+          title: 'انټراکټیف رادار او د هوا د کیفیت معلومات',
+          desc: 'پر نقشه د بارانونو د تېرېدو څارنه او د هوا د ککړتیا (AQI) او زیانمنو ذرو ژوندۍ څارنه اسانه کوي.',
+          icon: Radio,
+        },
+        {
+          title: 'په څلورو ژبو بشپړ بومي ملاتړ',
+          desc: 'په پښتو، دري، عربي او انګلیسي ژبو د اصیلو فونټونو او دوه طرفه متونو (RTL/LTR) بې‌عیبه ملاتړ.',
+          icon: Globe,
         },
       ],
 
       // Section D: The Results
       resultsTitle: 'لاسته راوړنې او عملي ارزښت',
-      resultsSubtitle: 'هغه ارزښت چې دغه کاریال د هېوادوالو او کاروونکو ورځني ژوند ته ورزیات کړی.',
+      resultsSubtitle: 'هغه رښتیني ارزښتونه چې د کاروونکو او کروندګرو ورځني ژوند ته یې ګټه رسولې ده.',
       resultsList: [
         {
-          title: 'په څلورو ژبو د هوا کره معلومات',
-          desc: 'د ژبې ټول خنډونه له منځه یوړل شول او هېوادوال په خپله ژبه له ټولو اسانتیاوو ګټه اخلي.',
-          metric: '۴ ژبې',
-          highlight: 'بې له ژبني خنډ',
-        },
-        {
-          title: 'د سیمې هوا ته اسانه او فوري لاسرسی',
-          desc: 'د GPS په مرسته په یوې ثانیې کې د خپلې شاوخوا سیمې او کلي دقیق معلومات ترلاسه کېږي.',
-          metric: 'سمدستي GPS',
-          highlight: 'بې درکه وخت ضایع کول',
-        },
-        {
-          title: 'د کرنې لپاره ګټور او ژغورونکي معلومات',
-          desc: 'کروندګرو ته مرسته کوي چې خپل حاصلات د ناڅاپه یخنۍ او ناسم وخت د درملو شیندلو له تاوانه وژغوري.',
-          metric: 'زرغونه هوا',
-          highlight: 'د کروندګرو ملګری',
-        },
-        {
-          title: 'ګڼ شمېر اقلیمي خدمات په یوه اپلیکیشن کې',
-          desc: 'رادار، ۲۴ ساعته وړاندوینه، د هوا کیفیت، خبرونه او آنلاین مرستیال ټول په یو منظم ځای کې سره راټول شول.',
+          title: 'د هوا معلوماتو ته اسانه او چټک لاسرسی',
+          desc: 'د جلا جلا ایپسونو د لټون اړتیا پای ته ورسېده او ټول اړین چاپیریالي معلومات په یو ځای کې موندل کېږي.',
           metric: 'ټول په یو کې',
-          highlight: 'سپک او منظم',
+          highlight: 'اسانه لاسرسی',
         },
         {
-          title: 'د انټرنېټ پرېکون پر مهال مخکنیو معلوماتو ته لاسرسی',
-          desc: 'په Room ډېټابېس کې د کشنګ له برکته، په سفر یا کمزوري انټرنېټ کې مخکني معلومات پر سکرین پاتې کېږي.',
+          title: 'د اقلیمي حالاتو ښه او روښانه پوهېدنه',
+          desc: 'ساده توضیحات او روښانه ګرافونه هر چا ته مرسته کوي چې د هوا پر بدلونونو په اسانۍ پوه شي.',
+          metric: 'روښانه ډیزاین',
+          highlight: 'ساده پوهېدنه',
+        },
+        {
+          title: 'لا ډېر باوري کرنیز پلان جوړول',
+          desc: 'کروندګر کولای شي د اوبو لګولو، درمل شیندلو او حاصل ټولو وختونه په پوره ډاډ سره تنظیم کړي.',
+          metric: 'زرغونه هوا',
+          highlight: 'د کرنې مرسته',
+        },
+        {
+          title: 'د سختې هوا له خطرونو مخکینی پوهاوی',
+          desc: 'د خطرونو پر وخت پیغامونه خلکو ته دا موکه ورکوي چې د موسمي افتونو پر وړاندې احتیاطي تدابیر ونیسي.',
+          metric: 'بېړني پیغامونه',
+          highlight: 'خوندیتوب',
+        },
+        {
+          title: 'په محلي حافظه کې زېرمه شوو معلوماتو ته لاسرسی',
+          desc: 'په Room ډېټابېس کې د کشنګ له امله، د شبکې د موقتي پرېکون پر مهال هم مخکني معلومات پر سکرین روښانه پاتې کېږي.',
           metric: 'محلي کشنګ',
-          highlight: 'له تېروتنې خلاص',
+          highlight: 'له خطا خوندي',
+        },
+        {
+          title: 'په څلورو ژبو اسانه لاسرسی',
+          desc: 'اصیله تایپوګرافي میلیونونو وګړو ته اجازه ورکوي چې د هوا حالات په خپله ژبه ولولي.',
+          metric: '۴ ژبې',
+          highlight: 'بومي خط',
         },
       ],
 
-      // Section E: Key Features
-      featuresTitle: 'د کاریال مهمې لس ځانګړنې',
-      featuresSubtitle: 'د ځواک ویدر هغه ۱۰ بنسټیزې وړتیاوې چې کارول یې خوندور او باوري کړي دي.',
+      // Section E: Key Features (9 visual cards)
+      featuresTitle: 'د کاریال نهه بنسټیزې ځانګړنې',
+      featuresSubtitle: 'د ځواک ویدر هغه ۹ پلې شوې وړتیاوې چې کارول یې باوري کړي دي.',
       featureCards: [
         {
           num: '۰۱',
           title: 'د هوا ژوندی حالت او ۲۴ ساعته وړاندوینه',
-          desc: 'د تودوخې درجه، احساس کېدونکې درجه، رطوبت او د ۲۴ ساعتونو د بدلونونو ګرافیکي منحني.',
+          desc: 'د تودوخې درجه، احساس کېدونکې درجه، رطوبت او د ۲۴ ساعتونو او ۷ ورځو ګرافیکي منحني.',
           icon: CloudSun,
         },
         {
@@ -581,42 +584,36 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
         },
         {
           num: '۰۴',
-          title: 'آنلاین AI د هوا مرستیال',
-          desc: 'د انټرنېټ پر وخت په طبیعي ژبه د سفر، جامو او ورځنیو کارونو په اړه د ځیرکو مشورو اخیستل.',
-          icon: Cpu,
-        },
-        {
-          num: '۰۵',
           title: 'کرنیز معلومات (زرغونه هوا)',
           desc: 'د کرنې، د درملو شیندلو د وخت، د خاورې د لندبل او د یخنۍ د خطر مخکینۍ سپارښتنې.',
           icon: Leaf,
         },
         {
-          num: '۰۶',
+          num: '۰۵',
           title: 'د سختې هوا بېړنۍ خبرتیاوې',
           desc: 'د سختو سېلابونو، دوړو، طوفانونو او ناڅاپي یخنۍ په اړه د خطر سمدستي پیغامونه.',
           icon: AlertTriangle,
         },
         {
-          num: '۰۷',
+          num: '۰۶',
           title: 'د هوا د کیفیت څارنه (AQI)',
           desc: 'د هوا د ککړتیا او زهرجنو ذرو کچه د روغتیایي سپارښتنو سره د حساسو خلکو لپاره.',
           icon: Wind,
         },
         {
-          num: '۰۸',
+          num: '۰۷',
           title: 'د اقلیم او هوا تازه خبرونه',
           desc: 'د سیمې او هېواد د اقلیمي بدلونونو او هوا پېژندنې خبرونه او مقالې په اپلیکیشن کې دننه.',
           icon: Calendar,
         },
         {
-          num: '۰۹',
+          num: '۰۸',
           title: 'په څلورو ژبو بشپړ ملاتړ',
           desc: 'د پښتو، دري، عربي او انګلیسي ژبو ترمنځ سمدستي او ارام بدلون له اصلي ښکلي خط سره.',
           icon: Languages,
         },
         {
-          num: '۱۰',
+          num: '۰۹',
           title: 'د ورځې او شپې غوره بڼې (Dark & Light)',
           desc: 'د سترګو د ساتنې او په لمر کې د لوړ کنټراسټ او لوستلو لپاره دوه معیاري ډیزاینونه.',
           icon: SunMoon,
@@ -631,7 +628,6 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
         {title: 'د هوا اصلي ډشبورډ', key: 'dashboard'},
         {title: 'د هوا رادار', key: 'radar'},
         {title: 'کرنیز معلومات (زرغونه هوا)', key: 'agri'},
-        {title: 'آنلاین AI مرستیال', key: 'ai'},
         {title: 'د څو ورځو وړاندوینه', key: 'forecast'},
       ],
       galleryItems: [
@@ -645,7 +641,7 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
             'د تودوخې اصلي کارت له لمرین سمبول سره',
             'د ساعت په ساعت وړاندوینه د پښتو نښانو سره',
             'د تودوخې د بدلون ګرافیکي منحني',
-            'لاندینی مینو: کور، رادار، AI مرستیال، د هوا ککړتیا، خبرونه',
+            'لاندینی مینو: کور، رادار، کرنه، د هوا ککړتیا، خبرونه',
           ],
         },
         {
@@ -672,19 +668,6 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
             'د یخنۍ او منفي درجو مخکینۍ خبرتیا ۲۴ تر ۴۸ ساعته مخکې',
             'د خاورې د لندبل او اوبو لګولو اټکل',
             'د هر فصل لپاره ساده او د پوهېدو وړ لارښوونې',
-          ],
-        },
-        {
-          id: 'ai',
-          title: 'آنلاین AI د هوا مرستیال',
-          subtitle: 'د انټرنېټ د شتون پر مهال ژوندی او ځیرک ملګری',
-          description:
-            'آنلاین AI مرستیال کاروونکو ته اجازه ورکوي چې په پښتو پوښتنه وکړي: "ایا نن د غنمو اوبه کول سم دي؟" یا "سبا سفر لپاره څه ډول جامې واغوندم؟" او فوري منطقي ځواب ترې ترلاسه کړي.',
-          points: [
-            'په پښتو، دري، عربي او انګلیسي ژبو طبیعي خبرې او پوښتنې',
-            'د هماغه ښار د هوا له مخې دقیقې او هدفمنې مشورې',
-            'د سفر، روغتیا او کار په اړه عملي وړاندیزونه',
-            'په اصلي سکرین کې د چټک لاسرسي بټن',
           ],
         },
         {
@@ -717,7 +700,7 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
       ],
       connectivityNoteTitle: 'د انټرنېټ اړتیا او د افلاین کشنګ مهم وضاحت',
       connectivityNoteDesc:
-        'د هوا د ژوندیو معلوماتو، د رادار د نقشو، تازه خبرونو او آنلاین AI مرستیال د کارېدو لپاره د انټرنېټ شتون حتمي دی. کاریال سل په سلو کې افلاین نه دی، بلکې په ټیلفون کې Room ډېټابېس د محلي ذخیرې او کشنګ دنده ترسره کوي ترڅو د انټرنېټ د موقتي پرېکون پر مهال هم مخکني راښکته شوي معلومات پر سکرین روښانه پاتې شي او کاروونکی له خالي پاڼې سره مخ نشي.',
+        'د هوا د ژوندیو معلوماتو، د رادار د نقشو او تازه خبرونو د کارېدو لپاره د انټرنېټ شتون حتمي دی. کاریال سل په سلو کې افلاین نه دی، بلکې په ټیلفون کې Room ډېټابېس د محلي ذخیرې او کشنګ دنده ترسره کوي ترڅو د انټرنېټ د موقتي پرېکون پر مهال هم مخکني راښکته شوي معلومات پر سکرین روښانه پاتې شي او کاروونکی له خالي پاڼې سره مخ نشي.',
     },
 
     fa: {
@@ -729,7 +712,7 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
       title: 'زواک ویدر (Zwak Weather)',
       tagline: 'هواشناسی هوشمند برای همه',
       shortDescription:
-        'اپلیکیشن هوشمند و چندزبانه هواشناسی با پیش‌بینی دقیق، رادار، بینش‌های زراعتی و دستیار آنلاین AI.',
+        'اپلیکیشن چندزبانه هواشناسی شامل پیش‌بینی وضع هوا، رادار، بینش‌های زراعتی، کیفیت هوا و اخبار جوی.',
       coverImageAlt: 'بنر رسمی زواک ویدر - اپلیکیشن هوشمند هواشناسی اندروید',
       quickJump: 'دسترسی سریع',
       navAppInfo: 'معرفی برنامه',
@@ -743,25 +726,25 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
       // Section A: App Info
       appInfoTitle: 'معرفی برنامه و هدف اصلی',
       appInfoSubtitle:
-        'سامانه پیشرفته و بومی هواشناسی اندروید برای مسافران، شهروندان، دانشجویان و جامعه زراعت.',
+        'یک سامانه جامع چندزبانه هواشناسی برای ارائه پیش‌بینی دقیق، رادار، بینش‌های زراعتی، کیفیت هوا و اخبار جوی.',
       appInfoIntro:
-        'زواک ویدر (Zwak Weather) یک اپلیکیشن مدرن هواشناسی با دقت بالا است که توسط AGZ Labs طراحی و با زبان کاتلین و Jetpack Compose پیاده‌سازی شده است. این اپلیکیشن با هدف ارائه پیش‌بینی دقیق آب و هوا، رادار زنده جوی و توصیه‌های تخصصی کشاورزی به چهار زبان (پشتو، دری، عربی و انگلیسی) توسعه یافته است.',
+        'زواک ویدر (Zwak Weather) یک اپلیکیشن مدرن هواشناسی است که توسط AGZ Labs طراحی و با زبان کاتلین و Jetpack Compose پیاده‌سازی شده است. این اپلیکیشن داده‌های پراکنده هواشناسی را یکپارچه کرده و پیش‌بینی‌های ۲۴ ساعته و ۷ روزه، رادار تعاملی، توصیه‌های زراعتی و پایش کیفیت هوا را به چهار زبان (پشتو، دری، عربی و انگلیسی) ارائه می‌دهد.',
       appInfoPoints: [
         {
-          title: 'پایش زنده هوا و پیش‌بینی ۲۴ ساعته',
-          desc: 'نمایش آنی دما، دمای احساسی، رطوبت، فشار هوا و منحنی گرافیکی تغییرات دما در طول شبانه‌روز.',
+          title: 'پایش زنده هوا و پیش‌بینی دقیق',
+          desc: 'نمایش آنی دما، دمای احساسی، رطوبت، فشار هوا و نمودار پیوسته تغییرات دما در طول شبانه‌روز و ۷ روز آینده.',
         },
         {
-          title: 'رادار تعاملی و پایش حرکت ابرها',
-          desc: 'رادار هواشناسی تصویری بر روی نقشه جهت رصد جبهه‌های بارشی، ابرها و بادهای منطقه‌ای با ناوبری روان.',
+          title: 'رادار تعاملی و پایش کیفیت هوا',
+          desc: 'رادار هواشناسی تصویری بر روی نقشه جهت رصد جبهه‌های بارشی و باد به همراه پایش شاخص کیفیت هوا (AQI).',
         },
         {
           title: 'بینش‌های هواشناسی زراعتی (زرغونه هوا)',
           desc: 'راهنمایی‌های میدانی برای دهاقین جهت تعیین ساعات سمپاشی، برآورد رطوبت خاک و هشدار زودهنگام سرمازدگی.',
         },
         {
-          title: 'دستیار آنلاین هوشمند AI',
-          desc: 'پاسخ‌گویی به سؤالات کاربردی در خصوص برنامه‌ریزی سفر، نوع لباس و هشدارهای فصلی در زمان اتصال به اینترنت.',
+          title: 'هشدارهای شرایط نامساعد جوی',
+          desc: 'اعلان‌های فوری در برابر موج‌های گرما، سرمازدگی، طوفان‌های گرد و غبار و سیلاب‌ها جهت حفظ ایمنی.',
         },
       ],
       supportedLanguagesHeading: 'زبان‌های پشتیبانی‌شده (طراحی اصیل RTL و LTR)',
@@ -774,126 +757,137 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
 
       // Section B: The Challenges
       challengesTitle: 'چالش‌ها و نیازهای واقعی',
-      challengesSubtitle: 'مشکلاتی که ضرورت طراحی یک سامانه بومی و کامل هواشناسی را آشکار ساخت.',
+      challengesSubtitle: 'مشکلاتی که ضرورت طراحی یک سامانه جامع و یکپارچه هواشناسی را نشان داد.',
       challengesList: [
         {
-          id: 'lang',
-          title: 'پشتیبانی ضعیف برنامه‌های بین‌المللی از زبان‌های پشتو و دری',
-          desc: 'اکثر برنامه‌های هواشناسی دنیا زبان‌های ملی ما را پشتیبانی نمی‌کنند یا حروف را بریده‌بریده و معکوس نشان می‌دهند که خوانایی را از بین می‌برد.',
-          icon: Languages,
+          id: 'fragmented',
+          title: 'پراکندگی اطلاعات هواشناسی',
+          desc: 'پیش‌بینی‌ها، رادار، کیفیت هوا و داده‌های زیست‌محیطی در سرویس‌های متعددی پراکنده‌اند و کاربر را مجبور به استفاده از چندین اپلیکیشن می‌کردند.',
+          icon: Layers,
           color: 'from-amber-500/20 to-orange-500/5',
           border: 'border-amber-200 dark:border-amber-800/60',
-          badge: 'مانع زبانی',
+          badge: 'پراکندگی اطلاعات',
         },
         {
-          id: 'local',
-          title: 'دشواری در دسترسی به اطلاعات محلی و ولسوالی‌ها',
-          desc: 'در ولایات و مناطق مختلف، دسترسی به داده‌های آب و هوای نقطه به نقطه بسیار دشوار است و برنامه‌های خارجی صرفاً نام فرودگاه‌های دوردست را نشان می‌دهند.',
-          icon: MapPin,
-          color: 'from-sky-500/20 to-blue-500/5',
-          border: 'border-sky-200 dark:border-sky-800/60',
-          badge: 'خلاء منطقه‌ای',
-        },
-        {
-          id: 'agri',
-          title: 'نبود تحلیل‌های تخصصی آب و هوا برای کشاورزی',
-          desc: 'با وجود آنکه زراعت معیشت میلیون‌ها نفر را تأمین می‌کند، برنامه‌های عادی فقط دمای هوا را نشان می‌دهند و هیچ توصیه‌ای در مورد زمان سمپاشی یا سرمازدگی ندارند.',
+          id: 'agricultural',
+          title: 'محدودیت بینش‌های تخصصی کشاورزی',
+          desc: 'برنامه‌های عمومی هواشناسی فاقد شاخص‌های عملی زراعت مانند تبخیر-تعرق، رطوبت خاک و شرایط سمپاشی هستند.',
           icon: Leaf,
           color: 'from-emerald-500/20 to-teal-500/5',
           border: 'border-emerald-200 dark:border-emerald-800/60',
           badge: 'خلاء زراعتی',
         },
         {
-          id: 'offline',
-          title: 'تجربه نامناسب در زمان افت یا قطعی اینترنت',
-          desc: 'نوسانات شبکه اینترنت در مناطق مختلف باعث توقف ناگهانی اپلیکیشن‌ها و پاک شدن داده‌های هواشناسی قبلی می‌شد.',
-          icon: WifiOff,
+          id: 'complex',
+          title: 'پیچیدگی تحلیل داده‌های اقلیمی',
+          desc: 'داده‌های خام هواشناسی و نمودارهای فنی برای درک و استفاده روزمره عموم دشوارند و نیازمند تصویرسازی ساده هستند.',
+          icon: Wind,
+          color: 'from-sky-500/20 to-blue-500/5',
+          border: 'border-sky-200 dark:border-sky-800/60',
+          badge: 'پیچیدگی داده',
+        },
+        {
+          id: 'severe',
+          title: 'آمادگی ناکافی در برابر شرایط حاد جوی',
+          desc: 'آگاهی زودهنگام و مقابله با موج‌های گرما، سرمازدگی، طوفان‌های گرد و غبار و سیلاب‌ها نیازمند هشدارهای سریع و به موقع است.',
+          icon: AlertTriangle,
           color: 'from-rose-500/20 to-red-500/5',
           border: 'border-rose-200 dark:border-rose-800/60',
-          badge: 'قطعی شبکه',
+          badge: 'مخاطرات جوی',
         },
       ],
 
       // Section C: The Solution
       solutionTitle: 'راهکارهای مهندسی‌شده',
-      solutionSubtitle: 'پاسخ زواک ویدر به این چالش‌ها از طریق معماری هوشمند و کش محلی داده‌ها.',
+      solutionSubtitle: 'پاسخ زواک ویدر به این چالش‌ها از طریق یکپارچه‌سازی و طراحی کاربرمحور.',
       solutionList: [
         {
-          title: 'تایپوگرافی اصیل چندزبانه و جداسازی جهت‌دار متون (Bidi)',
-          desc: 'پیاده‌سازی چیدمان اختصاصی برای زبان‌های راست‌به‌چپ با فونت‌های چشم‌نواز که ارقام و اصطلاحات انگلیسی را کاملاً خوانا حفظ می‌کند.',
-          icon: Globe,
+          title: 'تجمیع منابع چندگانه هواشناسی در یک برنامه',
+          desc: 'یکپارچه‌سازی پیش‌بینی زنده، رادار، کیفیت هوا، اخبار و شاخص‌های زراعتی در یک محیط هماهنگ و سبک.',
+          icon: Layers,
         },
         {
-          title: 'سرویس‌های زنده هواشناسی و مکان‌یابی دقیق GPS',
-          desc: 'اتصال به منابع معتبر جوی و مکان‌یابی سریع با GPS جهت استخراج آنی شرایط جوی موقعیت فعلی با یک کلیک.',
-          icon: MapPin,
+          title: 'پیش‌بینی‌های ساعتی و ۷ روزه',
+          desc: 'ارائه منحنی‌های پیوسته ۲۴ ساعته و روند هفتگی تغییرات جوی برای برنامه‌ریزی دقیق کوتاه‌مدت و هفتگی.',
+          icon: Calendar,
         },
         {
-          title: 'رادار تعاملی و متحرک هواشناسی',
-          desc: 'لایه‌های بصری رادار برای مشاهده زنده توده‌های بارشی، ابرها، باد و توفان‌ها بر روی نقشه با امکان زوم.',
-          icon: Radio,
-        },
-        {
-          title: 'ماژول بینش‌های زراعتی (زرغونه هوا)',
-          desc: 'ابزاری میدانی برای تحلیل متغیرهای جوی و ارائه راهکارهای روشن در مورد مناسب‌ترین ساعت سمپاشی و هشدار سرمازدگی.',
+          title: 'محاسبات زراعتی و توصیه‌های مراقبت از محصولات',
+          desc: 'محاسبه متغیرهای تبخیر-تعرق، رطوبت خاک و تعیین زمان مناسب سمپاشی برای بهبود تصمیم‌گیری دهاقین.',
           icon: Leaf,
         },
         {
-          title: 'ذخیره‌سازی و کش محلی با پایگاه داده Room',
-          desc: 'ذخیره خودکار آخرین داده‌های پیش‌بینی‌شده در دیتابیس Room تا در صورت قطعی موقت اینترنت، اطلاعات قبلی بدون خطا در دسترس بماند.',
-          icon: Database,
+          title: 'تصویرسازی‌های ساده و قابل درک اقلیمی',
+          desc: 'نمایش نمودارهای قابل‌فهم، رنگ‌بندی استاندارد و آیکون‌های متناسب برای فهم آسان شرایط آب و هوا.',
+          icon: SunMoon,
         },
         {
-          title: 'دستیار آنلاین هوشمند AI',
-          desc: 'دستیار تعاملی هوش مصنوعی در زمان اتصال به اینترنت برای ارائه راهکارهای عملی پیرامون وضعیت هوا و فعالیت‌های روزمره.',
-          icon: Cpu,
+          title: 'هشدارهای شرایط سخت جوی',
+          desc: 'ارسال هشدارهای فوری پیش از وقوع سیلاب، تندباد، گرمای طاقت‌فرسا و سرمازدگی ناگهانی.',
+          icon: AlertTriangle,
+        },
+        {
+          title: 'رادار تعاملی و پایش شاخص کیفیت هوا',
+          desc: 'امکان مشاهده مسیر بارش‌ها بر روی نقشه و پایش آنلاین ذرات معلق (PM2.5, PM10).',
+          icon: Radio,
+        },
+        {
+          title: 'پشتیبانی کامل از چهار زبان',
+          desc: 'پیاده‌سازی تایپوگرافی اصیل پشتو، دری، عربی و انگلیسی با جداسازی جهت‌دار کامل متن (Bidi).',
+          icon: Globe,
         },
       ],
 
       // Section D: The Results
       resultsTitle: 'نتایج عملی و ارزش‌های ارائه‌شده',
-      resultsSubtitle: 'تأثیر واقعی زواک ویدر در تسهیل زندگی روزمره کاربران و جامعه کشاورزی.',
+      resultsSubtitle: 'مزایای کاربردی و ملموس زواک ویدر برای عموم شهروندان، مسافران و کشاورزان.',
       resultsList: [
         {
-          title: 'اطلاعات آب و هوا به چهار زبان',
-          desc: 'حذف کامل موانع زبانی برای میلیون‌ها کاربر به زبان‌های پشتو، دری، عربی و انگلیسی.',
-          metric: '۴ زبان',
-          highlight: 'بدون به‌هم‌ریختگی متن',
-        },
-        {
-          title: 'دسترسی سریع به وضعیت هوای محلی',
-          desc: 'شناسایی خودکار شهرها و ولسوالی‌ها با GPS بدون نیاز به جستجوهای طولانی و خسته‌کننده.',
-          metric: 'GPS تک‌کلیک',
-          highlight: 'مختصات دقیق',
-        },
-        {
-          title: 'توصیه‌های کاربردی هواشناسی زراعتی',
-          desc: 'توانمندسازی دهاقین جهت جلوگیری از خسارت سرمازدگی و هدررفت کود و سموم شیمیایی.',
-          metric: 'زرغونه هوا',
-          highlight: 'حفاظت از محصولات',
-        },
-        {
-          title: 'تجمیع خدمات چندگانه هواشناسی در یک برنامه',
-          desc: 'یکپارچه‌سازی رادار، پیش‌بینی ۲۴ ساعته، کیفیت هوا، هشدارها و اخبار در یک محیط سبک و سریع.',
+          title: 'دسترسی سریع و آسان به اطلاعات هواشناسی',
+          desc: 'رفع نیاز به نصب برنامه‌های پراکنده با تجمیع تمام شاخص‌های جوی در یک نرم‌افزار واحد.',
           metric: 'همه‌در‌یکی',
-          highlight: 'سبک و منسجم',
+          highlight: 'دسترسی یکپارچه',
+        },
+        {
+          title: 'درک بهتر و کاربردی از وضعیت جوی',
+          desc: 'نمودارهای روان و متن‌های ساده که فهم روند تغییرات هوا را برای هر کاربری آسان می‌سازد.',
+          metric: 'طراحی شفاف',
+          highlight: 'فهم آسان',
+        },
+        {
+          title: 'برنامه‌ریزی زراعی دقیق‌تر و آگاهانه‌تر',
+          desc: 'کمک به کشاورزان در زمان‌بندی سمپاشی، آبیاری و برداشت محصول با اطمینان بالاتر.',
+          metric: 'زرغونه هوا',
+          highlight: 'حفاظت زراعی',
+        },
+        {
+          title: 'ارتقای هوشیاری نسبت به مخاطرات حاد آب و هوایی',
+          desc: 'هشدارهای زودهنگام که امکان آمادگی در برابر نوسانات شدید اقلیمی را فراهم می‌سازند.',
+          metric: 'هشدارهای فوری',
+          highlight: 'ایمنی بالاتر',
         },
         {
           title: 'دسترسی به اطلاعات کش‌شده در قطعی اینترنت',
-          desc: 'کش محلی داده‌ها در Room Database باعث می‌شود پیش‌بینی‌های قبلی در زمان عدم دسترسی به شبکه روی صفحه حفظ شود.',
+          desc: 'کش محلی داده‌ها در Room Database باعث می‌شود پیش‌بینی‌های قبلی در زمان عدم دسترسی به شبکه بدون خطا نمایش داده شوند.',
           metric: 'کش دیتابیس Room',
-          highlight: 'بدون صفحه سفید',
+          highlight: 'پایداری آفلاین',
+        },
+        {
+          title: 'دسترسی چندزبانه بدون مانع',
+          desc: 'نمایش بی‌نقص متون به زبان مادری بدون به‌هم‌ریختگی حروف یا برعکس شدن اعداد.',
+          metric: '۴ زبان',
+          highlight: 'تایپوگرافی اصیل',
         },
       ],
 
-      // Section E: Key Features
-      featuresTitle: 'ده ویژگی کلیدی برنامه',
-      featuresSubtitle: 'مرور قابلیت‌های اساسی زواک ویدر که تجربه‌ای مطمئن و مدرن می‌سازند.',
+      // Section E: Key Features (9 visual cards)
+      featuresTitle: 'نه ویژگی کلیدی برنامه',
+      featuresSubtitle: 'مرور قابلیت‌های اساسی و پیاده‌سازی‌شده زواک ویدر.',
       featureCards: [
         {
           num: '۰۱',
           title: 'پیش‌بینی زنده و ۲۴ ساعته هوا',
-          desc: 'نمایش زنده دما، دمای احساسی، رطوبت، سرعت باد و نمودار پیوسته تغییرات دما در طول شبانه‌روز.',
+          desc: 'نمایش زنده دما، دمای احساسی، رطوبت، سرعت باد و نمودار پیوسته تغییرات دما در طول شبانه‌روز و ۷ روز آینده.',
           icon: CloudSun,
         },
         {
@@ -910,42 +904,36 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
         },
         {
           num: '۰۴',
-          title: 'دستیار آنلاین AI هواشناسی',
-          desc: 'دستیار آنلاین جهت پاسخ به پرسش‌های کاربردی درباره لباس مناسب، سفر و فعالیت‌های باز.',
-          icon: Cpu,
-        },
-        {
-          num: '۰۵',
           title: 'بینش‌های زراعتی (زرغونه هوا)',
           desc: 'راهنماهای ویژه دهقانان برای تعیین ساعات ایمن سمپاشی، رطوبت خاک و اخطار دمای زیر صفر.',
           icon: Leaf,
         },
         {
-          num: '۰۶',
+          num: '۰۵',
           title: 'هشدارهای شرایط سخت جوی',
           desc: 'پیام‌های فوری برای مقابله با سیلاب، توفان گرد و غبار، گرمای شدید و یخبندان ناگهانی.',
           icon: AlertTriangle,
         },
         {
-          num: '۰۷',
+          num: '۰۶',
           title: 'پایش شاخص کیفیت هوا (AQI)',
           desc: 'اندازه‌گیری غلظت ذرات معلق (PM2.5 و PM10) به همراه هشدارهای سلامتی برای افراد حساس.',
           icon: Wind,
         },
         {
-          num: '۰۸',
+          num: '۰۷',
           title: 'اخبار و مقالات اقلیم و هوا',
           desc: 'دسترسی به جدیدترین اطلاعیه‌های جوی و مقالات تغییرات اقلیمی در داخل اپلیکیشن.',
           icon: Calendar,
         },
         {
-          num: '۰۹',
+          num: '۰۸',
           title: 'پشتیبانی از چهار زبان',
           desc: 'جابجایی بی‌درنگ میان پشتو، دری، عربی و انگلیسی با فونت‌های اصیل و بدون تداخل بصری.',
           icon: Languages,
         },
         {
-          num: '۱۰',
+          num: '۰۹',
           title: 'تم‌های تاریک و روشن (Dark & Light)',
           desc: 'دو حالت رنگی استاندارد برای خوانایی عالی در زیر نور خورشید و آرامش چشم در شب.',
           icon: SunMoon,
@@ -960,7 +948,6 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
         {title: 'داشبورد اصلی هوا', key: 'dashboard'},
         {title: 'رادار هواشناسی', key: 'radar'},
         {title: 'بینش‌های زراعتی', key: 'agri'},
-        {title: 'دستیار آنلاین AI', key: 'ai'},
         {title: 'پیش‌بینی چندروزه', key: 'forecast'},
       ],
       galleryItems: [
@@ -974,7 +961,7 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
             'کارت وضعیت فعلی با تصویرسازی اختصاصی آفتاب و ابرها',
             'کارت‌های پیش‌بینی ۲۴ ساعته با زمان‌بندی دقیق',
             'منحنی پیوسته تغییرات دما در طول شبانه‌روز',
-            'منوی دسترسی سریع: خانه، رادار، دستیار AI، کیفیت هوا، اخبار',
+            'منوی دسترسی سریع: خانه، رادار، زراعت، کیفیت هوا، اخبار',
           ],
         },
         {
@@ -1001,19 +988,6 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
             'هشدار زودهنگام خطر سرمازدگی ۲۴ تا ۴۸ ساعت قبل از افت شدید دما',
             'سنجش تقریبی رطوبت سطح خاک و تعریق جهت تعیین دور آبیاری',
             'توصیه‌های کاربردی به زبان ساده و قابل‌فهم برای عموم دهاقین',
-          ],
-        },
-        {
-          id: 'ai',
-          title: 'دستیار آنلاین AI هواشناسی',
-          subtitle: 'پاسخ‌گویی به سؤالات روزمره هنگام اتصال به اینترنت',
-          description:
-            'دستیار هوشمند به کاربران امکان می‌دهد سؤالات واقعی مانند "آیا فردا برای سمپاشی مناسب است؟" را به زبان مادری بپرسند و پاسخ‌های متناسب با هوا دریافت کنند.',
-          points: [
-            'گفتگوی طبیعی به زبان‌های پشتو، دری، عربی و انگلیسی',
-            'توصیه‌های مبتنی بر پیش‌بینی آب و هوای فعلی منطقه کاربر',
-            'مشاوره‌های عملی در حوزه سفر، پوشش مناسب و فعالیت‌های زراعتی',
-            'دکمه برجسته در منوی پایین برای دسترسی آسان با یک لمس',
           ],
         },
         {
@@ -1046,7 +1020,7 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
       ],
       connectivityNoteTitle: 'یادداشت مهم در خصوص اینترنت و کش محلی',
       connectivityNoteDesc:
-        'اتصال به اینترنت برای دریافت اطلاعات زنده، بارگذاری نقشه‌های رادار، اخبار و دستیار آنلاین هوش مصنوعی الزامی است. این اپلیکیشن کاملاً آفلاین نیست؛ بلکه پایگاه داده محلی Room به عنوان کش عمل می‌کند تا در صورت قطعی موقت شبکه اینترنت، پیش‌بینی‌های قبلاً دانلود شده بدون اشکال روی صفحه نمایش باقی بمانند و کاربر با صفحه خالی روبرو نشود.',
+        'اتصال به اینترنت برای دریافت اطلاعات زنده، بارگذاری نقشه‌های رادار و اخبار الزامی است. این اپلیکیشن کاملاً آفلاین نیست؛ بلکه پایگاه داده محلی Room به عنوان کش عمل می‌کند تا در صورت قطعی موقت شبکه اینترنت، پیش‌بینی‌های قبلاً دانلود شده بدون اشکال روی صفحه نمایش باقی بمانند و کاربر با صفحه خالی روبرو نشود.',
     },
   };
 
@@ -1258,7 +1232,7 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
             <div className="relative group rounded-3xl overflow-hidden border border-slate-200/90 dark:border-white/[0.1] shadow-2xl bg-slate-950 mt-3">
               <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[21/9] w-full overflow-hidden bg-slate-900 flex items-center justify-center">
                 <img
-                  src="/assets/aistudio/Zwak_Weather__Smart_Forecasting_App_31d52db9.png"
+                  src={zwakWeatherBanner}
                   alt={t.coverImageAlt}
                   className="w-full h-full object-cover object-center group-hover:scale-[1.015] transition-transform duration-700 ease-out"
                 />
@@ -1638,7 +1612,7 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
             {/* Visual Viewport with Actual UI Asset Representation */}
             <div className="lg:col-span-7 bg-slate-950 relative min-h-[340px] sm:min-h-[420px] flex items-center justify-center p-6 overflow-hidden">
               <img
-                src="/assets/aistudio/Zwak_Weather__Smart_Forecasting_App_31d52db9.png"
+                src={zwakWeatherBanner}
                 alt={currentGalleryItem.title}
                 className="w-full h-full object-cover rounded-2xl opacity-90 shadow-2xl"
               />
@@ -1729,7 +1703,7 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
               </div>
               <div className="p-2 sm:p-4 bg-slate-950">
                 <img
-                  src="/assets/aistudio/Zwak_Weather__Smart_Forecasting_App_31d52db9.png"
+                  src={zwakWeatherBanner}
                   alt="Zwak Weather Full Banner"
                   className="w-full h-auto max-h-[80vh] object-contain rounded-xl"
                 />
