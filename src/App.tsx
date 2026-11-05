@@ -17,10 +17,40 @@ import {AmbientCursor} from './components/ui/AmbientCursor';
 import {FloatingParticles} from './components/ui/FloatingParticles';
 import {ScrollToTop} from './components/ui/ScrollToTop';
 import {FloatingActionHub} from './components/ui/FloatingActionHub';
+import {ZwakWeatherDetails} from './components/pages/ZwakWeatherDetails';
 
 function PortfolioContent({loading}: {loading: boolean}) {
   const {theme} = useTheme();
   const isDark = theme === 'dark';
+  const [activeProjectPage, setActiveProjectPage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === '#project/zwak-weather' || hash.startsWith('#project/zwak-weather')) {
+        setActiveProjectPage('zwak-weather');
+      } else if (!hash.startsWith('#project/')) {
+        setActiveProjectPage(null);
+      }
+    };
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const handleOpenProjectDetails = (projectId: string) => {
+    setActiveProjectPage(projectId);
+    window.location.hash = `#project/${projectId}`;
+  };
+
+  const handleBackToPortfolio = () => {
+    setActiveProjectPage(null);
+    window.location.hash = '#projects';
+  };
+
+  if (activeProjectPage === 'zwak-weather') {
+    return <ZwakWeatherDetails onBack={handleBackToPortfolio} />;
+  }
 
   return (
     <>
@@ -77,7 +107,7 @@ function PortfolioContent({loading}: {loading: boolean}) {
             <FutureRoadmap />
             <Services />
             <WorkProcess />
-            <Projects />
+            <Projects onOpenProjectDetails={handleOpenProjectDetails} />
             <Journey />
             <Contact />
           </main>

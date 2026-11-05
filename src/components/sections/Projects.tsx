@@ -42,14 +42,17 @@ const FILTER_OPTIONS: FilterOption[] = [
 interface ProjectCardProps {
   project: Project;
   onSelect: (project: Project) => void;
+  onOpenProjectDetails?: (projectId: string) => void;
 }
 
 // Compact, Refined Developer Project Card for Grid
-function ProjectCard({project, onSelect}: ProjectCardProps) {
+function ProjectCard({project, onSelect, onOpenProjectDetails}: ProjectCardProps) {
   const {t, language, isRtl} = useLanguage();
   const cardRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({x: 0, y: 0});
   const [isHovered, setIsHovered] = useState(false);
+
+  const isDedicated = project.hasDedicatedPage || project.id === 'zwak-weather';
 
   const title =
     (language !== 'en' && project.translations?.[language as 'ps' | 'fa']?.title) || project.title;
@@ -57,6 +60,8 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
     (language !== 'en' && project.translations?.[language as 'ps' | 'fa']?.category) || project.category;
   const shortDescription =
     (language !== 'en' && project.translations?.[language as 'ps' | 'fa']?.shortDescription) || project.shortDescription;
+  const featureHighlights =
+    (language !== 'en' && project.translations?.[language as 'ps' | 'fa']?.featureHighlights) || project.featureHighlights;
 
   const isCompleted = project.status === 'Completed';
 
@@ -67,6 +72,14 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
     });
+  };
+
+  const handleCardClick = () => {
+    if (isDedicated && onOpenProjectDetails) {
+      onOpenProjectDetails(project.id);
+    } else {
+      onSelect(project);
+    }
   };
 
   return (
@@ -82,7 +95,7 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setIsHovered(false)}
       className="group relative flex flex-col h-full cursor-pointer"
-      onClick={() => onSelect(project)}
+      onClick={handleCardClick}
     >
       <div className="card-soft-underglow" />
 
@@ -176,9 +189,21 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
           </h3>
 
           {/* Short Description */}
-          <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-[13px] leading-relaxed mb-4 flex-grow line-clamp-2">
+          <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-[13px] leading-relaxed mb-3 flex-grow line-clamp-2">
             {shortDescription}
           </p>
+
+          {/* 3-4 Important Feature Highlights */}
+          {featureHighlights && featureHighlights.length > 0 && (
+            <div className="mb-3.5 space-y-1.5 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-800/60">
+              {featureHighlights.slice(0, 4).map((highlight, idx) => (
+                <div key={idx} className="flex items-center gap-2 text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 font-medium">
+                  <CheckCircle2 size={12} className="text-indigo-500 shrink-0" />
+                  <span className="line-clamp-1">{highlight}</span>
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Technology Badges */}
           <div className="flex flex-wrap gap-1.5 mb-4" dir="ltr">
@@ -197,34 +222,64 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
             )}
           </div>
 
-          {/* Card Footer: View Case Study Trigger */}
-          <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between mt-auto">
-            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400 group-hover:gap-2 transition-all">
-              <span>{t.projects.viewCaseStudy}</span>
-              <ArrowUpRight
-                size={14}
-                className={cn(
-                  'transition-transform',
-                  isRtl ? 'rotate-[-90deg]' : 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'
-                )}
-              />
-            </span>
-
-            {project.github ? (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="text-[11px] text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 font-medium"
+          {/* Card Footer */}
+          <div className="pt-3 border-t border-slate-100 dark:border-slate-800 mt-auto">
+            {isDedicated ? (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (onOpenProjectDetails) {
+                    onOpenProjectDetails(project.id);
+                  }
+                }}
+                className="w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-colors shadow-xs hover:shadow-indigo-500/20 active:scale-[0.98] cursor-pointer"
               >
-                <Github size={12} />
-                <span>{t.projects.sourceCode}</span>
-              </a>
+                <span>
+                  {language === 'ps'
+                    ? 'د پروژې بشپړ جزییات وګورئ'
+                    : language === 'fa'
+                    ? 'مشاهده جزئیات پروژه'
+                    : 'View Project Details'}
+                </span>
+                <ArrowUpRight
+                  size={14}
+                  className={cn(
+                    'transition-transform',
+                    isRtl ? 'rotate-[-90deg]' : 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'
+                  )}
+                />
+              </button>
             ) : (
-              <span className="text-[10px] font-medium text-slate-400 dark:text-slate-500">
-                {isCompleted ? t.projects.statusCompleted : t.projects.statusInProgress}
-              </span>
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400 group-hover:gap-2 transition-all">
+                  <span>{t.projects.viewCaseStudy}</span>
+                  <ArrowUpRight
+                    size={14}
+                    className={cn(
+                      'transition-transform',
+                      isRtl ? 'rotate-[-90deg]' : 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'
+                    )}
+                  />
+                </span>
+
+                {project.github ? (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-[11px] text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 font-medium"
+                  >
+                    <Github size={12} />
+                    <span>{t.projects.sourceCode}</span>
+                  </a>
+                ) : (
+                  <span className="text-[10px] font-medium text-slate-400 dark:text-slate-500">
+                    {isCompleted ? t.projects.statusCompleted : t.projects.statusInProgress}
+                  </span>
+                )}
+              </div>
             )}
           </div>
         </div>
@@ -233,7 +288,11 @@ function ProjectCard({project, onSelect}: ProjectCardProps) {
   );
 }
 
-export function Projects() {
+interface ProjectsProps {
+  onOpenProjectDetails?: (projectId: string) => void;
+}
+
+export function Projects({onOpenProjectDetails}: ProjectsProps = {}) {
   const {t, language, isRtl} = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<FilterCategory>('all');
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
@@ -615,6 +674,7 @@ export function Projects() {
                     key={project.id}
                     project={project}
                     onSelect={(proj) => setActiveModalProject(proj)}
+                    onOpenProjectDetails={onOpenProjectDetails}
                   />
                 ))}
               </AnimatePresence>

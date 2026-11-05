@@ -29,12 +29,15 @@ export interface Project {
   architecture?: string;
   developerContribution?: string;
   challengesAndSolutions?: ProjectChallenge[];
+  hasDedicatedPage?: boolean;
+  featureHighlights?: string[];
   translations?: {
     ps?: {
       title?: string;
       category?: string;
       shortDescription?: string;
       fullDescription?: string;
+      featureHighlights?: string[];
       features?: string[];
       problem?: string;
       solution?: string;
@@ -49,6 +52,7 @@ export interface Project {
       category?: string;
       shortDescription?: string;
       fullDescription?: string;
+      featureHighlights?: string[];
       features?: string[];
       problem?: string;
       solution?: string;
