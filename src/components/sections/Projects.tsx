@@ -52,7 +52,7 @@ function ProjectCard({project, onSelect, onOpenProjectDetails}: ProjectCardProps
   const [mousePos, setMousePos] = useState({x: 0, y: 0});
   const [isHovered, setIsHovered] = useState(false);
 
-  const isDedicated = project.hasDedicatedPage || project.id === 'zwak-weather';
+  const isDedicated = project.hasDedicatedPage || project.id === 'zwak-weather' || project.id === 'hidayat-lar';
 
   const title =
     (language !== 'en' && project.translations?.[language as 'ps' | 'fa']?.title) || project.title;
@@ -543,7 +543,21 @@ export function Projects({onOpenProjectDetails}: ProjectsProps = {}) {
             <div className="relative z-10 rounded-3xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-sm group-hover:border-indigo-500/50 group-hover:shadow-2xl group-hover:shadow-indigo-500/10 transition-all duration-300 backdrop-blur-xl">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
                 {/* Large Preview Media */}
-                <div className="lg:col-span-7 relative min-h-[280px] sm:min-h-[360px] overflow-hidden bg-slate-100 dark:bg-slate-800">
+                <div
+                  onClick={() => {
+                    const isFeaturedDedicated =
+                      featuredProject.hasDedicatedPage ||
+                      featuredProject.id === 'zwak-weather' ||
+                      featuredProject.id === 'hidayat-lar';
+                    if (isFeaturedDedicated && onOpenProjectDetails) {
+                      onOpenProjectDetails(featuredProject.id);
+                    } else {
+                      setActiveModalProject(featuredProject);
+                    }
+                  }}
+                  className="lg:col-span-7 relative min-h-[280px] sm:min-h-[360px] overflow-hidden bg-slate-100 dark:bg-slate-800 cursor-pointer"
+                  title="View Dedicated Project Details"
+                >
                   {featuredProject.image ? (
                     <img
                       src={featuredProject.image}
@@ -630,7 +644,17 @@ export function Projects({onOpenProjectDetails}: ProjectsProps = {}) {
                   {/* Actions: View Case Study, GitHub link */}
                   <div className="pt-4 border-t border-slate-200/80 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
                     <button
-                      onClick={() => setActiveModalProject(featuredProject)}
+                      onClick={() => {
+                        const isFeaturedDedicated =
+                          featuredProject.hasDedicatedPage ||
+                          featuredProject.id === 'zwak-weather' ||
+                          featuredProject.id === 'hidayat-lar';
+                        if (isFeaturedDedicated && onOpenProjectDetails) {
+                          onOpenProjectDetails(featuredProject.id);
+                        } else {
+                          setActiveModalProject(featuredProject);
+                        }
+                      }}
                       className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl transition-all shadow-md shadow-indigo-600/20 active:scale-[0.98] cursor-pointer"
                     >
                       <span>{t.projects.viewCaseStudy}</span>

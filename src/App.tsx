@@ -18,6 +18,7 @@ import {FloatingParticles} from './components/ui/FloatingParticles';
 import {ScrollToTop} from './components/ui/ScrollToTop';
 import {FloatingActionHub} from './components/ui/FloatingActionHub';
 import {ZwakWeatherDetails} from './components/pages/ZwakWeatherDetails';
+import {HidayatLarDetails} from './components/pages/HidayatLarDetails';
 
 function PortfolioContent({loading}: {loading: boolean}) {
   const {theme} = useTheme();
@@ -29,6 +30,13 @@ function PortfolioContent({loading}: {loading: boolean}) {
       const hash = window.location.hash;
       if (hash === '#project/zwak-weather' || hash.startsWith('#project/zwak-weather')) {
         setActiveProjectPage('zwak-weather');
+      } else if (
+        hash === '#project/hidayat-lar' ||
+        hash.startsWith('#project/hidayat-lar') ||
+        hash === '#project/lemunz-azkar' ||
+        hash.startsWith('#project/lemunz-azkar')
+      ) {
+        setActiveProjectPage('hidayat-lar');
       } else if (!hash.startsWith('#project/')) {
         setActiveProjectPage(null);
       }
@@ -50,6 +58,10 @@ function PortfolioContent({loading}: {loading: boolean}) {
 
   if (activeProjectPage === 'zwak-weather') {
     return <ZwakWeatherDetails onBack={handleBackToPortfolio} />;
+  }
+
+  if (activeProjectPage === 'hidayat-lar') {
+    return <HidayatLarDetails onBack={handleBackToPortfolio} />;
   }
 
   return (

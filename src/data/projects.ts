@@ -121,6 +121,7 @@ export const projects: Project[] = [
     year: '2025',
     status: 'Completed',
     featured: true,
+    hasDedicatedPage: true,
     platformBadge: 'Native Android',
     storeBadge: 'AGZ Labs · v2.0',
     featureHighlights: [
