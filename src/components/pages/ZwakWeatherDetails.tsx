@@ -1229,16 +1229,25 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
             </div>
 
             {/* Provided Branded Banner Showcase Container */}
-            <div className="relative group rounded-3xl overflow-hidden border border-slate-200/90 dark:border-white/[0.1] shadow-2xl bg-slate-950 mt-3">
-              <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[21/9] w-full overflow-hidden bg-slate-900 flex items-center justify-center">
+            <div className="relative group rounded-3xl overflow-hidden border border-slate-200/90 dark:border-white/[0.1] shadow-2xl bg-slate-950 mt-3 max-w-5xl mx-auto">
+              <div className="relative w-full min-h-[260px] sm:min-h-[360px] lg:min-h-[420px] max-h-[500px] overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-sky-950/40 flex items-center justify-center p-3 sm:p-5">
+                {/* Soft ambient background blur */}
+                <img
+                  src={zwakWeatherBanner}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30 dark:opacity-40 scale-110 pointer-events-none"
+                />
+
+                {/* Crisp, uncropped full poster */}
                 <img
                   src={zwakWeatherBanner}
                   alt={t.coverImageAlt}
-                  className="w-full h-full object-cover object-center group-hover:scale-[1.015] transition-transform duration-700 ease-out"
+                  className="relative z-10 w-full h-auto max-h-[460px] object-contain rounded-2xl shadow-xl transition-transform duration-500 group-hover:scale-[1.01]"
                 />
 
                 {/* Subtle Hover Gradient Scrim */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none opacity-80 z-10" />
 
                 {/* Overlay Badge Bar */}
                 <div className="absolute bottom-4 left-4 right-4 z-20 flex flex-wrap items-center justify-between gap-3 text-white pointer-events-none">
@@ -1610,13 +1619,19 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
           {/* Active Screen Detail View */}
           <div className="rounded-3xl bg-white dark:bg-[#0c121e]/90 border border-slate-200/90 dark:border-white/[0.08] shadow-md overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch">
             {/* Visual Viewport with Actual UI Asset Representation */}
-            <div className="lg:col-span-7 bg-slate-950 relative min-h-[340px] sm:min-h-[420px] flex items-center justify-center p-6 overflow-hidden">
+            <div className="lg:col-span-7 bg-slate-950 relative min-h-[300px] sm:min-h-[380px] flex items-center justify-center p-4 sm:p-6 overflow-hidden">
+              <img
+                src={zwakWeatherBanner}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover blur-xl opacity-25 scale-110 pointer-events-none"
+              />
               <img
                 src={zwakWeatherBanner}
                 alt={currentGalleryItem.title}
-                className="w-full h-full object-cover rounded-2xl opacity-90 shadow-2xl"
+                className="relative z-10 w-full h-auto max-h-[380px] object-contain rounded-2xl opacity-95 shadow-2xl"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none z-10" />
 
               <div className="absolute top-4 left-4 z-20">
                 <span className="px-3 py-1 rounded-xl text-xs font-bold bg-black/70 backdrop-blur-md text-white border border-white/20">

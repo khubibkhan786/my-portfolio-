@@ -366,8 +366,8 @@ export function Projects({onOpenProjectDetails}: ProjectsProps = {}) {
   const featuredCategory =
     (language !== 'en' && featuredProject.translations?.[language as 'ps' | 'fa']?.category) || featuredProject.category;
   const featuredDesc =
-    (language !== 'en' && featuredProject.translations?.[language as 'ps' | 'fa']?.fullDescription) ||
-    featuredProject.fullDescription;
+    (language !== 'en' && featuredProject.translations?.[language as 'ps' | 'fa']?.shortDescription) ||
+    featuredProject.shortDescription;
   const featuredFeatures =
     (language !== 'en' && featuredProject.translations?.[language as 'ps' | 'fa']?.features) ||
     featuredProject.features;
@@ -555,17 +555,28 @@ export function Projects({onOpenProjectDetails}: ProjectsProps = {}) {
                       setActiveModalProject(featuredProject);
                     }
                   }}
-                  className="lg:col-span-7 relative min-h-[280px] sm:min-h-[360px] overflow-hidden bg-slate-100 dark:bg-slate-800 cursor-pointer"
+                  className="lg:col-span-7 relative min-h-[260px] sm:min-h-[340px] lg:min-h-[380px] flex items-center justify-center p-3 sm:p-5 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950/40 overflow-hidden cursor-pointer group/media"
                   title="View Dedicated Project Details"
                 >
                   {featuredProject.image ? (
-                    <img
-                      src={featuredProject.image}
-                      alt={featuredTitle}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                      loading="eager"
-                      referrerPolicy="no-referrer"
-                    />
+                    <>
+                      {/* Ambient background blur */}
+                      <img
+                        src={featuredProject.image}
+                        alt=""
+                        aria-hidden="true"
+                        className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30 dark:opacity-40 scale-110 pointer-events-none"
+                      />
+
+                      {/* Crisp, uncropped full poster */}
+                      <img
+                        src={featuredProject.image}
+                        alt={featuredTitle}
+                        className="relative z-10 w-full h-auto max-h-[360px] sm:max-h-[420px] object-contain rounded-2xl shadow-xl transition-transform duration-500 group-hover/media:scale-[1.01]"
+                        loading="eager"
+                        referrerPolicy="no-referrer"
+                      />
+                    </>
                   ) : (
                     <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/30 via-slate-900/60 to-emerald-900/30 flex items-center justify-center p-8">
                       <Smartphone size={56} className="text-indigo-400/40" />

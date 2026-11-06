@@ -1230,22 +1230,31 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
           </div>
 
           {/* Hero Banner Showcase with Lightbox Trigger */}
-          <div className="relative group rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800/90 shadow-2xl bg-slate-900">
-            <div className="aspect-[16/10] sm:aspect-[16/9] lg:aspect-[21/10] w-full overflow-hidden relative">
+          <div className="relative group rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800/90 shadow-2xl bg-slate-950 max-w-5xl mx-auto">
+            <div className="relative w-full min-h-[260px] sm:min-h-[360px] lg:min-h-[420px] max-h-[500px] overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950/40 flex items-center justify-center p-3 sm:p-5">
+              {/* Soft ambient background blur */}
+              <img
+                src={hidayatLarBanner}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30 dark:opacity-40 scale-110 pointer-events-none"
+              />
+
+              {/* Crisp, uncropped full poster */}
               <img
                 src={hidayatLarBanner}
                 alt={t.coverImageAlt}
-                className="w-full h-full object-cover object-center group-hover:scale-[1.015] transition-transform duration-700 ease-out"
+                className="relative z-10 w-full h-auto max-h-[460px] object-contain rounded-2xl shadow-xl transition-transform duration-500 group-hover:scale-[1.01]"
                 loading="eager"
               />
 
               {/* Gradient Scrim & Branding Label */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20 pointer-events-none z-10" />
 
               {/* Lightbox Zoom Trigger */}
               <button
                 onClick={() => setIsBannerModalOpen(true)}
-                className="absolute top-4 right-4 z-10 p-2.5 rounded-2xl bg-slate-900/75 hover:bg-slate-900 text-white backdrop-blur-md border border-white/20 shadow-lg transition-all active:scale-95 cursor-pointer flex items-center gap-1.5 text-xs font-semibold"
+                className="absolute top-4 right-4 z-20 p-2.5 rounded-2xl bg-slate-900/75 hover:bg-slate-900 text-white backdrop-blur-md border border-white/20 shadow-lg transition-all active:scale-95 cursor-pointer flex items-center gap-1.5 text-xs font-semibold"
                 title="Expand Poster"
               >
                 <Maximize2 size={14} />
@@ -1253,7 +1262,7 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
               </button>
 
               {/* Bottom Tagline on Poster */}
-              <div className="absolute bottom-4 left-4 right-4 z-10 flex flex-wrap items-center justify-between gap-2 text-white">
+              <div className="absolute bottom-4 left-4 right-4 z-20 flex flex-wrap items-center justify-between gap-2 text-white pointer-events-none">
                 <div className="flex items-center gap-2">
                   <div className="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-xs font-mono shadow-md">
                     HL
