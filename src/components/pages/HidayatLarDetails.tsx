@@ -1067,10 +1067,27 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
     <div
       dir={isRtl ? 'rtl' : 'ltr'}
       className={cn(
-        'min-h-screen transition-colors duration-300 font-sans',
+        'min-h-screen transition-colors duration-300 relative',
         isDark ? 'bg-[#07090e] text-slate-100 selection:bg-indigo-500/30' : 'bg-slate-50 text-slate-900 selection:bg-indigo-500/20'
       )}
     >
+      {/* Background Ambience */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+        <div
+          className={cn(
+            'absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full blur-[140px] pointer-events-none transition-colors duration-500',
+            isDark ? 'bg-indigo-600/10' : 'bg-indigo-200/30'
+          )}
+        />
+        <div
+          className={cn(
+            'absolute top-2/3 -left-20 w-[480px] h-[480px] rounded-full blur-[150px] pointer-events-none transition-colors duration-500',
+            isDark ? 'bg-emerald-600/10' : 'bg-emerald-200/30'
+          )}
+        />
+        <div className={`absolute inset-0 ${isDark ? 'bg-tech-grid-dark' : 'bg-tech-grid-light'} opacity-20`} />
+      </div>
+
       {/* Floating Header / Breadcrumbs & Navigation */}
       <header className="sticky top-0 z-40 backdrop-blur-xl border-b transition-colors bg-white/80 dark:bg-[#07090e]/80 border-slate-200/80 dark:border-slate-800/80">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
@@ -1078,7 +1095,7 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <button
               onClick={onBack}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-colors shadow-2xs cursor-pointer group"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-colors shadow-2xs cursor-pointer group font-outfit"
               title={t.backButton}
             >
               <ArrowLeft
@@ -1090,7 +1107,7 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
 
             <div className="h-4 w-px bg-slate-200 dark:bg-slate-800 hidden sm:block" />
 
-            <nav className="hidden md:flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+            <nav className="hidden md:flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-outfit">
               <button onClick={onBack} className="hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer">
                 {t.breadcrumbPortfolio}
               </button>
@@ -1099,7 +1116,7 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
                 {t.breadcrumbProjects}
               </button>
               <ChevronRight size={12} className={isRtl ? 'rotate-180' : ''} />
-              <span className="font-semibold text-indigo-600 dark:text-indigo-400 truncate max-w-[160px]">
+              <span className="font-semibold text-indigo-600 dark:text-indigo-400 truncate max-w-[160px] font-outfit">
                 {t.title}
               </span>
             </nav>
@@ -1115,20 +1132,20 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
             >
               {copiedLink ? <Check size={16} className="text-emerald-500" /> : <Share2 size={16} />}
               {copiedLink && (
-                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-md whitespace-nowrap">
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-md whitespace-nowrap font-outfit">
                   {t.linkCopied}
                 </span>
               )}
             </button>
 
             {/* Language Switcher */}
-            <div className="flex items-center p-0.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 text-xs">
+            <div className="flex items-center p-0.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 text-xs font-outfit">
               {(['en', 'ps', 'fa'] as const).map((lang) => (
                 <button
                   key={lang}
                   onClick={() => setLanguage(lang)}
                   className={cn(
-                    'px-2.5 py-1 rounded-lg font-medium transition-all cursor-pointer',
+                    'px-2.5 py-1 rounded-lg font-medium transition-all cursor-pointer font-outfit',
                     language === lang
                       ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 font-bold shadow-2xs'
                       : 'text-slate-500 hover:text-slate-900 dark:hover:text-slate-200'
@@ -1160,17 +1177,17 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
 
           {/* Badges & Meta */}
           <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-600/10 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-600/10 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60 font-outfit">
               <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400 animate-pulse" />
               <span>{t.brandBadge}</span>
             </span>
 
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 font-outfit">
               <CheckCircle2 size={12} />
               <span>{t.versionBadge}</span>
             </span>
 
-            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-outfit">
               <Languages size={12} />
               <span>Pashto · Dari · Arabic · English</span>
             </span>
@@ -1180,12 +1197,12 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
           <div className="space-y-3 mb-6">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-outfit text-slate-900 dark:text-white flex flex-wrap items-center gap-3">
               <span>{t.title}</span>
-              <span className="text-2xl sm:text-4xl text-indigo-600 dark:text-indigo-400 font-serif font-bold">
+              <span className="text-2xl sm:text-4xl text-indigo-600 dark:text-indigo-400 font-outfit font-bold">
                 ({t.arabicTitle})
               </span>
             </h1>
 
-            <p className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-emerald-600 via-indigo-600 to-sky-600 dark:from-emerald-400 dark:via-indigo-300 dark:to-sky-400 bg-clip-text text-transparent">
+            <p className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-emerald-600 via-indigo-600 to-sky-600 dark:from-emerald-400 dark:via-indigo-300 dark:to-sky-400 bg-clip-text text-transparent font-outfit">
               {t.tagline}
             </p>
 
@@ -1200,7 +1217,7 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
               <div className="w-8 h-8 rounded-xl bg-amber-500/10 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-2">
                 <Clock size={18} />
               </div>
-              <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Prayer Times</h4>
+              <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-0.5 font-outfit">Prayer Times</h4>
               <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">Astronomical Calculations</p>
             </div>
 
@@ -1208,7 +1225,7 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
               <div className="w-8 h-8 rounded-xl bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-2">
                 <Bot size={18} />
               </div>
-              <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Islamic AI</h4>
+              <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-0.5 font-outfit">Islamic AI</h4>
               <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">Religious Inquiries & Fiqh</p>
             </div>
 
@@ -1216,7 +1233,7 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
               <div className="w-8 h-8 rounded-xl bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-2">
                 <Compass size={18} />
               </div>
-              <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-0.5">Qibla Compass</h4>
+              <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-0.5 font-outfit">Qibla Compass</h4>
               <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">Hardware Sensor Fusion</p>
             </div>
 
@@ -1224,27 +1241,18 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
               <div className="w-8 h-8 rounded-xl bg-sky-500/10 dark:bg-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center mb-2">
                 <WifiOff size={18} />
               </div>
-              <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-0.5">100% Offline Core</h4>
+              <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-0.5 font-outfit">100% Offline Core</h4>
               <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">Zero Commercial Ads</p>
             </div>
           </div>
 
-          {/* Hero Banner Showcase with Lightbox Trigger */}
+          {/* Hero Banner Showcase Container - Edge to Edge Fill */}
           <div className="relative group rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800/90 shadow-2xl bg-slate-950 max-w-5xl mx-auto">
-            <div className="relative w-full min-h-[260px] sm:min-h-[360px] lg:min-h-[420px] max-h-[500px] overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950/40 flex items-center justify-center p-3 sm:p-5">
-              {/* Soft ambient background blur */}
-              <img
-                src={hidayatLarBanner}
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30 dark:opacity-40 scale-110 pointer-events-none"
-              />
-
-              {/* Crisp, uncropped full poster */}
+            <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/10] overflow-hidden">
               <img
                 src={hidayatLarBanner}
                 alt={t.coverImageAlt}
-                className="relative z-10 w-full h-auto max-h-[460px] object-contain rounded-2xl shadow-xl transition-transform duration-500 group-hover:scale-[1.01]"
+                className="w-full h-full object-cover object-center group-hover:scale-[1.01] transition-transform duration-700 ease-out"
                 loading="eager"
               />
 
@@ -1254,7 +1262,7 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
               {/* Lightbox Zoom Trigger */}
               <button
                 onClick={() => setIsBannerModalOpen(true)}
-                className="absolute top-4 right-4 z-20 p-2.5 rounded-2xl bg-slate-900/75 hover:bg-slate-900 text-white backdrop-blur-md border border-white/20 shadow-lg transition-all active:scale-95 cursor-pointer flex items-center gap-1.5 text-xs font-semibold"
+                className="absolute top-4 right-4 z-20 p-2.5 rounded-2xl bg-slate-900/75 hover:bg-slate-900 text-white backdrop-blur-md border border-white/20 shadow-lg transition-all active:scale-95 cursor-pointer flex items-center gap-1.5 text-xs font-semibold font-outfit"
                 title="Expand Poster"
               >
                 <Maximize2 size={14} />
@@ -1267,9 +1275,9 @@ export function HidayatLarDetails({onBack}: HidayatLarDetailsProps) {
                   <div className="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-xs font-mono shadow-md">
                     HL
                   </div>
-                  <span className="font-bold text-sm tracking-wide">Hidayat Lar · AGZ Labs</span>
+                  <span className="font-bold text-sm tracking-wide font-outfit">Hidayat Lar · AGZ Labs</span>
                 </div>
-                <span className="text-xs font-medium text-slate-200 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+                <span className="text-xs font-medium text-slate-200 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 font-outfit">
                   {t.subTagline}
                 </span>
               </div>

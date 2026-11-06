@@ -1230,20 +1230,12 @@ export function ZwakWeatherDetails({onBack}: ZwakWeatherDetailsProps) {
 
             {/* Provided Branded Banner Showcase Container */}
             <div className="relative group rounded-3xl overflow-hidden border border-slate-200/90 dark:border-white/[0.1] shadow-2xl bg-slate-950 mt-3 max-w-5xl mx-auto">
-              <div className="relative w-full min-h-[260px] sm:min-h-[360px] lg:min-h-[420px] max-h-[500px] overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-sky-950/40 flex items-center justify-center p-3 sm:p-5">
-                {/* Soft ambient background blur */}
-                <img
-                  src={zwakWeatherBanner}
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30 dark:opacity-40 scale-110 pointer-events-none"
-                />
-
-                {/* Crisp, uncropped full poster */}
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/10] overflow-hidden bg-slate-950">
+                {/* Full poster filling container edge-to-edge */}
                 <img
                   src={zwakWeatherBanner}
                   alt={t.coverImageAlt}
-                  className="relative z-10 w-full h-auto max-h-[460px] object-contain rounded-2xl shadow-xl transition-transform duration-500 group-hover:scale-[1.01]"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.01]"
                 />
 
                 {/* Subtle Hover Gradient Scrim */}
