@@ -347,9 +347,9 @@ export function Projects({onOpenProjectDetails}: ProjectsProps = {}) {
     return projects.filter((p) => isProjectInFilter(p, selectedCategory));
   }, [selectedCategory]);
 
-  // Featured flagship project (لمونځ او اذکار)
+  // Featured flagship project (Hidayat Lar - هدایت لار)
   const featuredProject = useMemo(() => {
-    return projects.find((p) => p.id === 'lemunz-azkar') || projects[0];
+    return projects.find((p) => p.id === 'hidayat-lar' || p.id === 'lemunz-azkar') || projects[0];
   }, []);
 
   const showFeaturedSpotlight = selectedCategory === 'all' || isProjectInFilter(featuredProject, selectedCategory);

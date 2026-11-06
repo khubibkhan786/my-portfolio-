@@ -1,5 +1,6 @@
 import {Project} from '../types';
 import zwakWeatherBanner from '../assets/images/zwak_weather_banner.png';
+import hidayatLarBanner from '../assets/images/hidayat_lar_banner.png';
 
 export const projects: Project[] = [
   {
@@ -109,165 +110,110 @@ export const projects: Project[] = [
     }
   },
   {
-    id: 'lemunz-azkar',
-    title: 'لمونځ او اذکار',
-    shortDescription: 'A practical Islamic Android application focused on prayer times, Adhkar, Tasbih, Duas, Qibla, and offline usability.',
-    fullDescription: 'A practical native Android application built with Kotlin, focused on accurate prayer times, daily Adhkar, Tasbih counter, authentic Duas, and Qibla direction. The project emphasizes 100% offline usability, lightweight memory consumption, clean typography, and zero background telemetry.',
+    id: 'hidayat-lar',
+    title: 'Hidayat Lar — Islamic Companion & AI Assistant',
+    shortDescription: 'A smart native Android companion combining astronomical prayer times, Qibla compass, Adhkar, Duas, nearby mosque locator, and an Islamic AI Assistant.',
+    fullDescription: 'Hidayat Lar (هدایت لار) is an advanced native Android application developed by AGZ Labs to serve as an intelligent, lifelong Islamic companion. Engineered with high-precision astronomical prayer calculation algorithms, a hardware sensor-based Qibla compass, an authentic digital Tasbih with haptic feedback, a comprehensive catalog of Duas and Hadith, a GPS-driven nearby mosques locator, and an Islamic AI Assistant to answer religious and fiqh inquiries. Available in four languages (Pashto, Dari, Arabic, and English), it emphasizes 100% offline usability for essential worship tools with zero ads and complete privacy.',
     category: 'Android Application',
-    filterCategories: ['Mobile'],
-    technologies: ['Kotlin', 'Android SDK', 'SQLite', 'Room Database', 'XML Layouts', 'Android Studio'],
-    image: '/src/assets/images/project_prayer_app_1790485013658.jpg',
+    filterCategories: ['Mobile', 'AI'],
+    technologies: ['Kotlin', 'Jetpack Compose', 'Android SDK', 'Room Database', 'GPS & Sensors', 'Islamic AI Assistant'],
+    image: hidayatLarBanner,
     year: '2025',
     status: 'Completed',
     featured: true,
     platformBadge: 'Native Android',
-    storeBadge: 'Offline-First APK',
-    productVision: 'To provide a dependable, lightweight Islamic daily companion that respects user privacy, works reliably in remote areas without internet access, and delivers zero distraction.',
-    designAndPlanning: 'Planned user flows around quick access to prayer countdowns and daily remembrances. Chose high-contrast typography, large touch targets for the digital Tasbih, and an uncluttered screen hierarchy.',
-    architecture: 'Offline-first native Android architecture leveraging Room Database as the single source of truth over SQLite, with asynchronous query dispatching to avoid main-thread blocking.',
+    storeBadge: 'AGZ Labs · v2.0',
+    featureHighlights: [
+      'Astronomical Prayer Times & Auto Location',
+      'Islamic AI Assistant for Religious Inquiries',
+      'Precision Sensor-Based Qibla Compass',
+      'Digital Tasbih, Authentic Adhkar & Duas',
+      'Nearby Mosques & Jumats GPS Locator',
+      'Four Languages (Pashto, Dari, Arabic, English)'
+    ],
+    productVision: 'To provide Muslims worldwide with a dependable, dignified, and technologically refined digital companion that enriches daily worship, offers instant religious guidance, and functions seamlessly without constant connectivity.',
+    designAndPlanning: 'Crafted a serene, distraction-free Jetpack Compose user interface featuring authentic Islamic motifs, balanced RTL/LTR typography for Arabic, Pashto, Dari, and English, smooth haptic micro-interactions for the digital Tasbih counter, and an ergonomic bottom navigation layout.',
+    architecture: 'Offline-first native Android architecture leveraging Kotlin and Jetpack Compose. Utilizes Room Database for sub-millisecond local retrieval of prayer tables, Azkar, and Duas, hardware azimuth sensor fusion for the Qibla compass, and asynchronous dispatching for the Islamic AI Assistant.',
     features: [
-      'Accurate astronomical prayer times calculation',
-      'Daily morning & evening Adhkar, Tasbih & authentic Duas catalog',
-      'Hardware sensor-based Qibla direction compass indicator',
-      '100% offline persistence with local Room & SQLite database',
-      'Zero advertising, zero analytics trackers, and low battery consumption'
+      'Accurate astronomical prayer times calculation with auto GPS location',
+      'Real-time countdown timer to next prayer and congregation guidance',
+      'Islamic AI Assistant providing instant answers to religious questions',
+      'Sensor-driven high-precision Qibla direction compass',
+      'Digital Tasbih counter with haptic vibration feedback and lap targets',
+      'Authentic morning, evening, and after-prayer Adhkar collections',
+      'Extensive catalog of authentic Duas from the Holy Quran and Hadith',
+      'Nearby Mosques & Jumats finder with real-time walking distance',
+      'Four-language interface (Pashto, Dari, Arabic, and English)',
+      'Optimized Dark and Light themes with zero advertisements'
     ],
     challengesAndSolutions: [
       {
-        challenge: 'Maintaining instant prayer calculation and remembrance loading without internet connectivity in rural zones.',
-        solution: 'Pre-seeded a structured local SQLite database via Room with indexed calculation tables, ensuring sub-10ms lookup times completely offline.'
+        challenge: 'Delivering accurate prayer calculations and authentic texts in remote areas without internet access.',
+        solution: 'Embedded pre-indexed astronomical calculation algorithms and comprehensive religious texts inside a local Room/SQLite database for 100% offline availability.'
       },
       {
-        challenge: 'Preventing UI stutter during sensor reading updates for the Qibla compass indicator.',
-        solution: 'Implemented smoothed low-pass filtering on device orientation azimuth sensors and isolated UI re-renders.'
-      }
-    ],
-    developerContribution: 'Conceived the application structure, designed the navigation and UI layout in XML, structured the Room database schema and seed data, wrote and verified Kotlin logic, conducted real-device debugging on low-resource hardware, and tested offline state persistence.',
-    role: 'Android Developer (Design, Architecture & Implementation)',
-    translations: {
-      ps: {
-        title: 'لمونځ او اذکار',
-        category: 'انډروایډ کاریال',
-        shortDescription: 'د لمانځه د وختونو، مسنونو اذکارو، تسبېح او قبلې ښودلو لپاره عملي او بې‌انټرنېټه انډروایډ کاریال.',
-        fullDescription: 'یو عملي او بومي انډروایډ کاریال چې په کوټلین کې جوړ شوی، د لمانځه دقیق وختونه، سهاري او ماښامني اذکار، ګڼونکې تسبېح، مسنونې دعاګانې او قبله په خورا سپک او ډاډمن ډیزاین کې وړاندې کوي.',
-        productVision: 'د یو داسې باوري، پاک او افلاین ملګري رامنځته کول چې په لرو پرتو سیمو کې له انټرنېټ پرته په چټکۍ کار وکړي او هېڅ ډول اعلانات یا دروندوالی ونه لري.',
-        designAndPlanning: 'د اسانه لاسرسي لپاره د سکرینونو پلانول، د تسبېح لپاره لوی او پوهېدونکي بټنې، او د متنونو روښانه خطاطي او ترتیب.',
-        architecture: 'د Room Database او محلي SQLite پر بنسټ افلاین معمارۍ پلي کول، چې ټول معلومات پر ټیلفون خوندي ساتي او بېټرۍ کمه لګوي.',
-        features: [
-          'د لمانځه د وختونو دقیق حساب',
-          'د مسنونو اذکارو، دعاګانو او تسبېح بشپړه ټولګه',
-          'د قبلې لوري ښودونکی کمپاس',
-          'سل په سلو کې افلاین کارېدنه په Room / SQLite کې',
-          'له اعلاناتو او د بېټرۍ له بې‌ځایه مصرف څخه پاک'
-        ],
-        challengesAndSolutions: [
-          {
-            challenge: 'له انټرنېټ پرته د لمانځه او اذکارو د معلوماتو سمدستي او بې‌ځنډه ښودل.',
-            solution: 'په محلي Room ډېټابېس کې د منظمو جدولونو ډیزاین چې په څو مېلي‌ثانیو کې معلومات راباسي.'
-          }
-        ],
-        developerContribution: 'د کاریال فکري پلان، په XML کې د کاروونکي مخپاڼې ډیزاین، د Room ډېټابېس جدولونو جوړول، په کوټلین کې د منطق پلي کول او څارنه، او په کمزورو موبایلونو کې د هغه عملي ازمویل او سمون.',
+        challenge: 'Integrating an intelligent AI Assistant while maintaining rapid response times and preserving offline reliability.',
+        solution: 'Decoupled offline worship features from the online AI assistant, ensuring all core daily tools remain instant and available even without a network.'
       },
-      fa: {
-        title: 'نماز و اذکار',
-        category: 'اپلیکیشن اندروید',
-        shortDescription: 'اپلیکیشن کاربردی و کاملاً آفلاین اندروید برای اوقات شرعی، اذکار، تسبیح، ادعیه و قبله‌نما.',
-        fullDescription: 'یک برنامه کاربردی بومی اندروید با کاتلین، متمرکز بر محاسبه دقیق اوقات شرعی، اذکار روزانه، شمارنده تسبیح، ادعیه مأثوره و جهت قبله با رابط کاربری روان و بهینه.',
-        productVision: 'ایجاد ابزاری سبک، معتبر و بدون آگهی برای تسهیل عبادات روزانه که حتی در دورافتاده‌ترین نقاط بدون اینترنت به راحتی کار کند.',
-        designAndPlanning: 'طراحی گام‌به‌گام صفحات جهت دسترسی زیر یک ثانیه به اذکار و اوقات، با تأکید بر خوانایی متن و دکمه‌های مناسب لمسی.',
-        architecture: 'معماری مبتنی بر داده‌های محلی با پایگاه داده Room و SQLite بدون وابستگی به سرورهای خارجی.',
-        features: [
-          'محاسبه دقیق اوقات شرعی نمازها',
-          'مجموعه اذکار صبح و شام، ادعیه و تسبیح دیجیتال',
-          'قبله‌نمای سبک مبتنی بر سنسور جهت‌یاب',
-          'عملکرد کاملاً آفلاین با پایگاه داده محلی',
-          'حفظ حریم خصوصی، بدون تبلیغات و با حداقل مصرف باتری'
-        ],
-        challengesAndSolutions: [
-          {
-            challenge: 'فراخوانی آنی صدها ذکر و دعا بدون کندی در دستگاه‌های ضعیف‌تر.',
-            solution: 'ایندکس‌گذاری دقیق در SQLite و بارگذاری غیرهمگام در لایه داده با Room.'
-          }
-        ],
-        developerContribution: 'برنامه‌ریزی ساختار پروژه، طراحی رابط کاربری در XML، پیاده‌سازی اسکیما و کدهای دیتابیس Room، برنامه‌نویسی و تست منطق کاتلین، و بهینه‌سازی عملکرد روی دستگاه‌های واقعی.',
-      }
-    }
-  },
-  {
-    id: 'weather-app',
-    title: 'د هوا حالاتو',
-    shortDescription: 'A responsive real-time weather tracking application providing accurate regional forecasts.',
-    fullDescription: 'A responsive web application that provides real-time meteorological updates, 5-day regional forecasts, and atmospheric condition metrics with high performance on low-bandwidth networks.',
-    category: 'Web Application',
-    filterCategories: ['Web'],
-    technologies: ['JavaScript', 'HTML5', 'CSS3', 'Weather API', 'Responsive Design'],
-    image: '/src/assets/images/project_weather_app_1790485024344.jpg',
-    year: '2025',
-    status: 'Completed',
-    featured: true,
-    platformBadge: 'Web Application',
-    storeBadge: 'Live Service',
-    productVision: 'To deliver weather and atmospheric data in a clean, high-speed interface that loads reliably even over slower 3G mobile connections.',
-    designAndPlanning: 'Engineered a clear visual dashboard displaying temperature, wind, humidity, and forecast timeline with dynamic atmospheric condition accents.',
-    architecture: 'Lightweight client-side architecture using modular JavaScript with asynchronous fetch handlers, data normalization, and localized cached state.',
-    features: [
-      'Real-time atmospheric condition and temperature updates',
-      'Structured 5-day forecast with daily temperature highs and lows',
-      'Dynamic weather condition styling and visual indicators',
-      'Responsive design ensuring comfortable usability across smartphones and laptops'
-    ],
-    challengesAndSolutions: [
       {
-        challenge: 'Handling API rate limits and network latency on unstable mobile connections.',
-        solution: 'Implemented client-side session caching for recently queried locations to prevent duplicate requests and provide instant feedback.'
+        challenge: 'Managing mixed bi-directional scripts (Arabic Quranic verses, Pashto/Dari text, and English technical terms) cleanly on diverse screen sizes.',
+        solution: 'Implemented strict Unicode bidirectional isolation (dir="ltr" / dir="rtl") and custom typographic scales to prevent awkward character wrapping.'
       }
     ],
-    developerContribution: 'Designed the UI layout and wireframes, wrote the frontend JavaScript logic and asynchronous API handling, structured responsive CSS styles, and tested cross-device responsiveness.',
-    role: 'Frontend Developer (UI Design & JavaScript Implementation)',
+    developerContribution: 'Conceived product architecture at AGZ Labs, designed the UI/UX in Jetpack Compose, built the local Room database schema, developed sensor fusion algorithms for the Qibla compass, integrated the Islamic AI Assistant module, and verified RTL localization.',
+    role: 'Lead Android Developer & UI/UX Designer',
     translations: {
       ps: {
-        title: 'د هوا حالاتو څارونکی',
-        category: 'وېب کاریال',
-        shortDescription: 'د سیمې د هوا حالاتو ژوندی او باوري وړاندوینه کوونکی چټک وېب کاریال.',
-        fullDescription: 'یو عصري وېب کاریال چې د سیمې د هوا دقیق معلومات، پنځه ورځنۍ وړاندوینه او موسمي بدلونونه په زړه پورې، سپک او باوري ډیزاین کې ښیي.',
-        productVision: 'د هوا د معلوماتو چټک وړاندې کول په داسې ساده مخپاڼه کې چې حتی په کمزوري انټرنېټ کې هم په څو ثانیو کې خلاصه شي.',
-        designAndPlanning: 'د تودوخې، باد، رطوبت او ورځني مهالوېش روښانه وېش ترڅو هر څوک پرې ژر پوه شي.',
-        architecture: 'د جاواسکریپټ ماډیولر کوډ چې د هوا له سرورونو معلومات اخلي او له چاڼ وروسته یې ژر پر مخپاڼه ښيي.',
+        title: 'هدایت لار (Hidayat Lar)',
+        category: 'د انډروایډ بومي کاریال',
+        shortDescription: 'د لمانځه دقیق وختونه، د قبلې کمپاس، مسنون اذکار، تسبېح، نږدې جوماتونه او اسلامي AI مرستیال.',
+        fullDescription: 'هدایت لار د AGZ Labs لخوا جوړ شوی یو پرمختللی انډروایډ کاریال دی چې د اسلامي ژوند د لارښوونې لپاره ډیزاین شوی. دا کاریال د لمانځه دقیق فلکي وختونه، د قبلې کمپاس، ډیجیټل تسبېح، مسنون اذکار او دعاګانې، د نږدې جوماتونو موندنه او د دیني پوښتنو لپاره اسلامي AI مرستیال په څلورو ژبو (پښتو، دري، عربي او انګلیسي) وړاندې کوي.',
+        productVision: 'ټولو مسلمانانو ته د یو داسې باوري، ښکلي او ګټور ملګري وړاندې کول چې عبادت اسانه کړي، پوښتنو ته ځواب ووایي او سل په سلو کې د کاروونکي محرمیت وساتي.',
+        featureHighlights: [
+          'د لمانځه دقیق وختونه او د قبلې کمپاس',
+          'د دیني پوښتنو لپاره اسلامي AI مرستیال',
+          'ډیجیټل تسبېح او مسنون اذکار او دعاګانې',
+          'د نږدې جوماتونو موندونکی (GPS)',
+          'په څلورو ژبو (پښتو، دري، عربي، انګلیسي) ملاتړ'
+        ],
         features: [
-          'د هوا د حالاتو ژوندي معلومات',
-          'د پنځو راتلونکو ورځو وړاندوینه',
-          'د هوا له حال سره برابر بصري رنګونه او نښانې',
-          'په موبایل او کمپیوټر کې بشپړ ځواب ویونکی ډیزاین'
-        ],
-        challengesAndSolutions: [
-          {
-            challenge: 'په ضعیف انټرنېټ کې د معلوماتو د تکراري ښکته کولو مخنیوی.',
-            solution: 'په براوزر کې د معلوماتو موقتي ساتنه ترڅو ورته غوښتنې سمدستي ځواب شي.'
-          }
-        ],
-        developerContribution: 'د ټولې مخپاڼې ډیزاین، په جاواسکریپټ کې د ډېټا راوړلو او تنظیم کوډ لیکل، د ځواب ویونکي CSS تنظیمول او په بېلابېلو وسیلو کې یې ازمویل.',
+          'د لمانځه دقیق فلکي وختونه او د راتلونکي لمانځه پاتې وخت',
+          'د دیني او فقهي پوښتنو لپاره اسلامي AI مرستیال (Islamic AI Assistant)',
+          'د موبایل د سنسرونو پر مټ د قبلې دقیق لوری (Qibla Compass)',
+          'ډیجیټل تسبېح د وایبریشن او غږیز غبرګون سره (Tasbih & Adhkar)',
+          'سهاري، ماښامني او له لمانځه وروسته مستند اذکار او مسنونې دعاګانې',
+          'د قران او احادیثو څخه د غوره دعاګانو ټولګه (Duas & Hadith)',
+          'د نږدې جوماتونو او جمعو موندنه د GPS له لارې (Nearby Mosques)',
+          'په څلورو ژبو بشپړ ملاتړ (پښتو، دري، عربي او انګلیسي)',
+          'سل په سلو کې افلاین کارېدنه د عباداتو او اذکارو لپاره',
+          'د ورځې او شپې تمونه پرته له اعلاناتو او اضافي مصارفو'
+        ]
       },
       fa: {
-        title: 'سامانه وضعیت آب و هوا',
-        category: 'وب اپلیکیشن',
-        shortDescription: 'سامانه آنلاین و سریع پیش‌بینی وضعیت جوی و هواشناسی منطقه‌ای.',
-        fullDescription: 'یک وب‌اپلیکیشن واکنش‌گرا برای ارائه آخرین اطلاعات جوی، پیش‌بینی پنج‌روزه و تغییرات دما با سرعت بالا و حجم مصرفی اندک.',
-        productVision: 'دسترسی سریع و شفاف به پیش‌بینی وضعیت هوا بدون تبلیغات و در کمترین زمان ممکن حتی روی خطوط اینترنت کم‌سرعت.',
-        designAndPlanning: 'دسته‌بندی منظم شاخص‌های هوا (دما، سرعت باد، رطوبت) در کارت‌های استاندارد با کنتراست مطلوب.',
-        architecture: 'معماری ماژولار فرانت‌اند با جاوااسکریپت و فراخوانی بهینه داده‌ها از API با مدیریت کش موقت.',
+        title: 'هدایت لار (Hidayat Lar)',
+        category: 'اپلیکیشن بومی اندروید',
+        shortDescription: 'اوقات شرعی نجومی، قبله‌نما، اذکار و ادعیه، تسبیح هوشمند، مکان‌یاب مساجد و دستیار هوش مصنوعی اسلامی.',
+        fullDescription: 'هدایت لار یک اپلیکیشن بومی و پیشرفته اندروید از AGZ Labs است که به عنوان همراه جامع سبک زندگی اسلامی عمل می‌کند. این برنامه با امکاناتی نظیر اوقات شرعی دقیق، قبله‌نمای سنسوری، تسبیح دیجیتال با لرزش، گنجینه ادعیه مأثوره، مکان‌یابی مساجد اطراف و دستیار هوش مصنوعی پاسخگوی مسائل شرعی به چهار زبان عرضه شده است.',
+        productVision: 'ارائه ابزاری معتبر، زیبا و امن برای تسهیل عبادات روزانه و پاسخ به نیازهای دینی با بهره‌گیری از هوش مصنوعی و کارکرد آفلاین.',
+        featureHighlights: [
+          'اوقات شرعی نجومی و قبله‌نما',
+          'دستیار هوش مصنوعی برای مسائل دینی',
+          'تسبیح دیجیتال و گنجینه اذکار و ادعیه',
+          'مکان‌یاب مساجد با GPS',
+          'پشتیبانی کامل از چهار زبان'
+        ],
         features: [
-          'بروزرسانی زنده وضعیت و دمای هوا',
-          'پیش‌بینی ۵ روزه با نمایش حداکثر و حداقل دما',
-          'استایل پویا و متناسب با شرایط بارانی، آفتابی و ابری',
-          'سازگاری کامل با صفحه نمایش انواع موبایل و لپ‌تاپ'
-        ],
-        challengesAndSolutions: [
-          {
-            challenge: 'مدیریت خطاهای شبکه هنگام قطع و وصل شدن اینترنت.',
-            solution: 'پیاده‌سازی مکانیزم نمایش خطای واضح و بارگذاری از حافظه موقت مرورگر.'
-          }
-        ],
-        developerContribution: 'ایده‌پردازی و طراحی رابط کاربری، پیاده‌سازی منطق جاوااسکریپت، بهینه‌سازی کدهای CSS و آزمودن عملکرد در مرورگرهای مختلف.',
+          'محاسبه دقیق اوقات شرعی و شمارش معکوس تا نماز بعدی',
+          'دستیار هوش مصنوعی اسلامی برای پاسخگویی به سوالات دینی و فقهی',
+          'قبله‌نمای دقیق مبتنی بر سنسورهای سخت‌افزاری دستگاه',
+          'شمارنده تسبیح دیجیتال با بازخورد هپتیک (ویبره)',
+          'مجموعه کامل اذکار صبح و شام و تعقیبات نماز',
+          'گنجینه ادعیه مستند از قرآن و سنت نبوی',
+          'مکان‌یاب مساجد و نمازهای جمعه با محاسبه دقیق فاصله (GPS)',
+          'پشتیبانی از چهار زبان (پشتو، دری، عربی و انگلیسی)',
+          'عملکرد آفلاین بدون وابستگی دائمی به اینترنت',
+          'طراحی بهینه با تم‌های شب و روز بدون تبلیغات'
+        ]
       }
     }
   },

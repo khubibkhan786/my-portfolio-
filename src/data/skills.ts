@@ -239,8 +239,8 @@ export const practicalSkills: SkillItem[] = [
     status: 'practical',
     category: 'mobile',
     description: 'Native Android UI, activity lifecycle, and offline Room database integration.',
-    evidence: 'Lemunz Aw Azkar production APK',
-    projectAssociation: ['lemunz-azkar'],
+    evidence: 'Hidayat Lar & Zwak Weather Android applications',
+    projectAssociation: ['hidayat-lar', 'zwak-weather'],
   },
   {
     name: 'Tailwind CSS',
@@ -254,8 +254,8 @@ export const practicalSkills: SkillItem[] = [
     status: 'practical',
     category: 'web',
     description: 'Asynchronous APIs, DOM manipulation, and interactive client workflows.',
-    evidence: 'Weather Tracking App & automation tools',
-    projectAssociation: ['weather-app', 'workflow-automation-toolkit'],
+    evidence: 'Student Academic Portal & workflow automation tools',
+    projectAssociation: ['student-portal-hub', 'workflow-automation-toolkit'],
   },
   {
     name: 'Git & GitHub',
@@ -270,7 +270,7 @@ export const practicalSkills: SkillItem[] = [
     category: 'tools',
     description: 'Android IDE: Gradle build systems, layout inspections, and device debugging.',
     evidence: 'Used for compiling, debugging, and packaging APKs',
-    projectAssociation: ['lemunz-azkar'],
+    projectAssociation: ['hidayat-lar', 'zwak-weather'],
   },
   {
     name: 'VS Code',
